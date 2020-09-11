@@ -1,0 +1,1279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.1 (Python 3.7.4 on darwin)" generated="20200907 17:17:49.558" rpa="false">
+<suite id="s1" name="mggr-create-GDK-scooter" source="/Users/peter.yf.cheng/Gitlab/Automation-test/MyGogoro_web/integration/web/mggr-create-GDK-scooter.robot">
+<test id="s1-t1" name="Create new GDK scooter">
+<kw name="Mapping Scooter VIN And Batteries" type="setup">
+<kw name="Generate Random String" library="String">
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<arguments>
+<arg>8</arg>
+<arg>[NUMBERS]</arg>
+</arguments>
+<assign>
+<var>${swap_id}</var>
+</assign>
+<msg timestamp="20200907 17:17:51.897" level="INFO">${swap_id} = 77848469</msg>
+<status status="PASS" starttime="20200907 17:17:51.896" endtime="20200907 17:17:51.897"></status>
+</kw>
+<kw name="Create Scooter">
+<kw name="Setup Scooter Variables">
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${Scooter}</arg>
+<arg>${Scooters('B22318608', 'BUS')}</arg>
+</arguments>
+<msg timestamp="20200907 17:17:51.911" level="INFO">${Scooter} = &lt;MyGogoroObject.Scooters object at 0x102f22c90&gt;</msg>
+<status status="PASS" starttime="20200907 17:17:51.899" endtime="20200907 17:17:51.912"></status>
+</kw>
+<status status="PASS" starttime="20200907 17:17:51.897" endtime="20200907 17:17:51.912"></status>
+</kw>
+<kw name="Scooters Post" library="LibScooters">
+<doc>Create scooter</doc>
+<arguments>
+<arg>${Scooter.company_code}</arg>
+<arg>TW</arg>
+<arg>${Scooter.scooter_vin}\</arg>
+<arg>${Scooter.scooter_guid}</arg>
+<arg>${Scooter.matnr}</arg>
+<arg>${Scooter.atmel_key}</arg>
+<arg>${Scooter.state}</arg>
+<arg>${Scooter.es_state}\</arg>
+<arg>${Scooter.ecu_status}</arg>
+<arg>${Scooter.keyfobs_status}</arg>
+<arg>keyfobs_id=${Scooter.keyfobs_id}\</arg>
+<arg>motor_num=${Scooter.motor_num}</arg>
+<arg>atmel_sn=${Scooter.atmel_sn}</arg>
+<arg>ecu_mac=${Scooter.ecu_mac}\</arg>
+<arg>ecu_sn=${Scooter.ecu_sn}</arg>
+<arg>manufacture_date=${Scooter.manufacture_date}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200907 17:17:52.618" level="INFO">http://10.6.1.46:3032/app/cipher?env=pa&amp;app=pa&amp;resource=pa&amp;username=pa.gen_admin@gogoro.com&amp;password=123</msg>
+<msg timestamp="20200907 17:17:53.069" level="INFO">Response message: 200
+Body: {
+    "code": 0,
+    "total_count": 1,
+    "data": [
+        {
+            "scooter_id": "ZRVPwkEm",
+            "scooter_guid": "f73f4eba-fd2e-4091-b434-59e526413b78",
+            "vin": "PASWSBBH2CDDF6BTE",
+            "brand_company_code": "GSS",
+            "material_num": "PIBUS-160-ORI",
+            "atmel_key": "F7cDSHtJzDlhds8CESv8s8K7Vu3drHt/iYPDrNHCXDlqv+l/7in+0PVPbq/ZjRdrFQiMXd7JpeoBjOkr2u2d6bmj6u4Wscsi1bpbgJc5qDQpP1nkECT4CXlaqioiZKUkFh4vGlmEjXHTCKVJaqvt9gylXw5sqwMtDqTwtq2B2to=",
+            "atmel_sn": "0123F61FCBFED2A0B1",
+            "state": 9,
+            "es_state": 13,
+            "manufacture_time": 1599436800,
+            "country_code": "TW",
+            "ecu_mac": "rpNx83uY",
+            "motor_num": "PIBUS-160-ORI"
+        }
+    ],
+    "error_list": []
+}
+CURL:
+   curl -i --request POST --url https://pa-goplatform.gogoro.com:443/go-platform/v1/scooters \
+   --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI0RF82RE04Nm9BQ2ZkNWwzLTMzVzU4LVVQTUZoQVEzV1FWbDVQSFVoTE5BIn0.eyJqdGkiOiI2Nzc4ZmRhOC03NGE4LTQ2NDEtOGUzOC03YjQ5ZDI0OTkyN2EiLCJleHAiOjE1OTk0NzExNzMsIm5iZiI6MCwiaWF0IjoxNTk5NDcwMjczLCJpc3MiOiJodHRwczovL3BhLWF1dGgta2V5Y2xvYWsuZ29nb3JvLmNvbS9hdXRoL3JlYWxtcy9nb2dvcm8iLCJhdWQiOiJwYSIsInN1YiI6IjIwMzUxNjllLTQ4NmQtNDM1YS1iMTZiLTgxMjdkYzM2MGFlZiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImF1dGgiLCJhdXRoX3RpbWUiOjAsInNlc3Npb25fc3RhdGUiOiIxMWQ4NDFlMS03MzVmLTRjMzktODAyYS1mNmI0MTJiZWU2OGIiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImFwcF9wYSJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InBhIjp7InJvbGVzIjpbInBhX2FkbWluIl19fSwiYXV0aG9yaXphdGlvbiI6eyJwZXJtaXNzaW9ucyI6W3sic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6IjhiMzFiZDgxLTEzZmEtNDhjMC1hZGRlLWUyMDZlYzdlYjgzNyIsInJzbmFtZSI6ImdvZ29yb191c2VyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNDZhZmRhYzYtNzg3ZC00ZDdmLWJjMWMtMDM2M2QzNjlkNTI3IiwicnNuYW1lIjoic2Nvb3Rlcl9jb250cmFjdCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImU4YWJjMTA3LTM0ZTgtNDdhYS04NjY4LTg4ODMyNmUwMjczOCIsInJzbmFtZSI6ImdvX2NoYXJnZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3ODc1MWJmNi00ZjU0LTQ0OTUtYTQ4YS0xMDA3MWE4Y2U0YTkiLCJyc25hbWUiOiJlbXBsb3llZSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImY0ZTVkNTJlLTQwNGQtNGY4OC1iNmEwLWY3N2I1NjBjMzA1MSIsInJzbmFtZSI6ImVzX2NhdGVnb3J5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiYTMxMzNjOWEtYzZkMC00ZTA1LThmZDgtZDBiMWM4OTA1Yzk1IiwicnNuYW1lIjoidm0ifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI1YTg0MTYyZC04MzM4LTRjY2ItOTNjYS05NjY4MDQ1ZmU4NmIiLCJyc25hbWUiOiJzY29vdGVyX2RlbGl2ZXJ5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzViYTRhMjEtYmFhNS00MDYwLTljZTktNTM4YzAxODcxNDAzIiwicnNuYW1lIjoic3dhIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiODFkZTc4MzktNjM0ZC00Yzc3LWI0MjEtODI4NDdlNzllNmNhIiwicnNuYW1lIjoiYmF0dGVyeSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImQzODhjM2IzLTNjMzItNDE1OC04NTM4LTZhZmNiZGU5YmRhZiIsInJzbmFtZSI6ImVzX2JpbGxfd3JpdGVvZmYifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiIxN2NkOGY0OC0yODBjLTQ5ZDQtOWFlZS05YWFjNmY5MmFlZjEiLCJyc25hbWUiOiJzY29vdGVyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzYxMmEwYjQtZDMxYS00MDA5LWJkZjQtODAxMmRjMmE1N2M3IiwicnNuYW1lIjoiZXNfYmlsbCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6Ijg4MDM5NDlhLWJiMjctNDMzNS1iMGQ4LWNmMTc5NjQ3NjA5OSIsInJzbmFtZSI6ImNvbXBhbnkifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4Y2U1ZDY0Ny0yMzViLTQ4OTItYWU0OC05NmJlZmM5OWUyMDYiLCJyc25hbWUiOiJzYWxlc19vcmRlciJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImYxNTE0ZWVjLWJhN2EtNGU5Ny05ZWRhLThmZmMxNjAzYjg0ZSIsInJzbmFtZSI6ImNhcnJpZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4MmY3NTY1Yy04OTllLTRjOTItOWM2MC1hNWM3MDI5ZjZlYTAiLCJyc25hbWUiOiJyd19wYWQifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3OTczODk4NC1mYTA2LTQ0NDYtYWVlZS1iYjlhMjlhMzM4MjQiLCJyc25hbWUiOiJwcmljaW5nIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiMzZmZjhlMmMtMzgyMy00MGI4LTk5NjYtZjZmZGI2YjMxYzRiIiwicnNuYW1lIjoicGFydHMifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI5NmY1MWIxNy1kZjU3LTQ0YWQtYjllMS1jMDE5ZTMwMGFhNDkiLCJyc25hbWUiOiJzY29vdGVyX2NvbnRyYWN0X3VzZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiJkMDg5MGYwMy01YzBmLTQ4MTQtYjExZS1mN2NjNmVlNzIyNzUiLCJyc25hbWUiOiJiYW5rIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNjI4MTY4YzItNjkxYS00NzliLTljNmYtZTIzNDE5MjlmY2EyIiwicnNuYW1lIjoiZXNfY29udHJhY3QifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3YjBmZWY2Yi0yZjdhLTQ1MGItYmJjMC1jMTZjMjg3YzE0NWYiLCJyc25hbWUiOiJzZXJ2aWNlX29yZGVyIn1dfSwic2NvcGUiOiJlbXBsb3llZSBlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImNvbXBhbnlfaWQiOiJacExieE5RSyIsImRlcGFydG1lbnRfaWQiOiJhNm1uTU5vYiIsImVtcGxveWVlX2lkIjoieUptNHFPTGEiLCJuYW1lIjoicGEgZ2VuX2FkbWluIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20iLCJnaXZlbl9uYW1lIjoicGEiLCJmYW1pbHlfbmFtZSI6Imdlbl9hZG1pbiIsImVtYWlsIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20ifQ.ACtb2ANK9tTfL-lm2GB_LI8ZtrZt5ouHbzOAewEaINJhmg9bXP5O7opMNyNLEnbWT9em8Ri0xtcoKoiUi7-sRB8D4rtuCldTEQADB0IVov0k8gCUhyecx4fckj2-aVRclibPAOBNnn4KH2Mn4tchoGyjCfVtGPhJMelxwFAdUMUjZOfjp45n9Exxo-SS3ZLwHiDHnaGNiCyiS5KlwDrYOnV5kYe0QB-EGRbTCnM1R6yaz063aq4MYMvEZqKl7nG3fHFx9tDlfLkoG6dQch7dBF9uNryoXqWY5SHVXIUtv00pmI9Inybtm9mvbzgW3vUkp1DHe7HaMonk6JWOwfXJjg' \
+   --header 'content-type: application/json' --header 'go-client: pa' \
+   --data '{
+    "op_code": "add",
+    "add_data": [
+        {
+            "deletion_flag": null,
+            "company_code": "B22318608",
+            "country_code": "TW",
+            "scooter_vin": "PASWSBBH2CDDF6BTE",
+            "scooter_guid": "f73f4eba-fd2e-4091-b434-59e526413b78",
+            "matnr": "PIBUS-160-ORI",
+            "motor_num": "PIBUS-160-ORI",
+            "atmel_key": "ED554638AD91C64694A39262CA1A3C14663B8ACBDF8E074E98BBD965EA1969C8",
+            "atmel_sn": "0123F61FCBFED2A0B1",
+            "battery_count": null,
+            "manufacture_date": "2020-09-07",
+            "color_code": null,
+            "state": "9",
+            "es_state": "13",
+            "ecu_mac": "rpNx83uY",
+            "ecu_sn": "MABBQUFCBBIwABYzRQBkEA==",
+            "ecu_status": "1",
+            "keyfobs": [
+                {
+                    "id": "559",
+                    "mac": null,
+                    "sn": null,
+                    "status": "1"
+                }
+            ]
+        }
+    ]
+}'</msg>
+<msg timestamp="20200907 17:17:53.069" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200907 17:17:51.913" endtime="20200907 17:17:53.069"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${scooter_Id}</arg>
+<arg>${resp.json()['data'][0]['scooter_id']}</arg>
+</arguments>
+<msg timestamp="20200907 17:17:53.073" level="INFO">${scooter_Id} = ZRVPwkEm</msg>
+<status status="PASS" starttime="20200907 17:17:53.070" endtime="20200907 17:17:53.073"></status>
+</kw>
+<status status="PASS" starttime="20200907 17:17:51.897" endtime="20200907 17:17:53.073"></status>
+</kw>
+<kw name="Create Batteries">
+<kw name="${index} IN RANGE [ 2 ]" type="for">
+<kw name="${index} = 0" type="foritem">
+<kw name="Create Battery">
+<arguments>
+<arg>${index}</arg>
+</arguments>
+<kw name="Setup Battery Variables">
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${Battery}</arg>
+<arg>${Batteries()}</arg>
+</arguments>
+<msg timestamp="20200907 17:17:53.077" level="INFO">${Battery} = &lt;MyGogoroObject.Batteries object at 0x102fac3d0&gt;</msg>
+<status status="PASS" starttime="20200907 17:17:53.075" endtime="20200907 17:17:53.077"></status>
+</kw>
+<status status="PASS" starttime="20200907 17:17:53.074" endtime="20200907 17:17:53.077"></status>
+</kw>
+<kw name="Batteries Post" library="LibBatteries">
+<doc>Create batteries</doc>
+<arguments>
+<arg>${Battery.battery_guid}</arg>
+<arg>${Battery.battery_sn}</arg>
+<arg>${Battery.charge_cycles}\</arg>
+<arg>${Battery.state}</arg>
+<arg>${Battery.manufacture_date}</arg>
+<arg>${Battery.pn}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200907 17:17:53.822" level="INFO">http://10.6.1.46:3032/app/cipher?env=pa&amp;app=pa&amp;resource=pa&amp;username=pa.gen_admin@gogoro.com&amp;password=123</msg>
+<msg timestamp="20200907 17:17:54.086" level="INFO">Response message: 200
+Body: {
+    "code": 0,
+    "total_count": 1,
+    "data": [
+        {
+            "battery_guid": "00f55d60-f307-4fdd-8881-5318b8e7fdaa",
+            "battery_sn": "TWPASWHT1QVDX",
+            "supplier": "string",
+            "country_code": "TW",
+            "manufacture_date": 1599436800,
+            "version": "string",
+            "hw_revision": "AS",
+            "avail_status": 1
+        }
+    ]
+}
+CURL:
+   curl -i --request POST --url https://pa-goplatform.gogoro.com:443/go-platform/v1/batteries \
+   --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI0RF82RE04Nm9BQ2ZkNWwzLTMzVzU4LVVQTUZoQVEzV1FWbDVQSFVoTE5BIn0.eyJqdGkiOiI0Njg4M2FiZS1lOTMwLTQ3Y2YtYjRkYS1hYTc4ZTZiZjEyNzkiLCJleHAiOjE1OTk0NzExNzQsIm5iZiI6MCwiaWF0IjoxNTk5NDcwMjc0LCJpc3MiOiJodHRwczovL3BhLWF1dGgta2V5Y2xvYWsuZ29nb3JvLmNvbS9hdXRoL3JlYWxtcy9nb2dvcm8iLCJhdWQiOiJwYSIsInN1YiI6IjIwMzUxNjllLTQ4NmQtNDM1YS1iMTZiLTgxMjdkYzM2MGFlZiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImF1dGgiLCJhdXRoX3RpbWUiOjAsInNlc3Npb25fc3RhdGUiOiI1YjEyM2RhNy1lNzMxLTQwNDAtYjhhYy03NjZiNDJhZDZlNTEiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImFwcF9wYSJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InBhIjp7InJvbGVzIjpbInBhX2FkbWluIl19fSwiYXV0aG9yaXphdGlvbiI6eyJwZXJtaXNzaW9ucyI6W3sic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6IjhiMzFiZDgxLTEzZmEtNDhjMC1hZGRlLWUyMDZlYzdlYjgzNyIsInJzbmFtZSI6ImdvZ29yb191c2VyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNDZhZmRhYzYtNzg3ZC00ZDdmLWJjMWMtMDM2M2QzNjlkNTI3IiwicnNuYW1lIjoic2Nvb3Rlcl9jb250cmFjdCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImU4YWJjMTA3LTM0ZTgtNDdhYS04NjY4LTg4ODMyNmUwMjczOCIsInJzbmFtZSI6ImdvX2NoYXJnZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3ODc1MWJmNi00ZjU0LTQ0OTUtYTQ4YS0xMDA3MWE4Y2U0YTkiLCJyc25hbWUiOiJlbXBsb3llZSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImY0ZTVkNTJlLTQwNGQtNGY4OC1iNmEwLWY3N2I1NjBjMzA1MSIsInJzbmFtZSI6ImVzX2NhdGVnb3J5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiYTMxMzNjOWEtYzZkMC00ZTA1LThmZDgtZDBiMWM4OTA1Yzk1IiwicnNuYW1lIjoidm0ifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI1YTg0MTYyZC04MzM4LTRjY2ItOTNjYS05NjY4MDQ1ZmU4NmIiLCJyc25hbWUiOiJzY29vdGVyX2RlbGl2ZXJ5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzViYTRhMjEtYmFhNS00MDYwLTljZTktNTM4YzAxODcxNDAzIiwicnNuYW1lIjoic3dhIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiODFkZTc4MzktNjM0ZC00Yzc3LWI0MjEtODI4NDdlNzllNmNhIiwicnNuYW1lIjoiYmF0dGVyeSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImQzODhjM2IzLTNjMzItNDE1OC04NTM4LTZhZmNiZGU5YmRhZiIsInJzbmFtZSI6ImVzX2JpbGxfd3JpdGVvZmYifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiIxN2NkOGY0OC0yODBjLTQ5ZDQtOWFlZS05YWFjNmY5MmFlZjEiLCJyc25hbWUiOiJzY29vdGVyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzYxMmEwYjQtZDMxYS00MDA5LWJkZjQtODAxMmRjMmE1N2M3IiwicnNuYW1lIjoiZXNfYmlsbCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6Ijg4MDM5NDlhLWJiMjctNDMzNS1iMGQ4LWNmMTc5NjQ3NjA5OSIsInJzbmFtZSI6ImNvbXBhbnkifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4Y2U1ZDY0Ny0yMzViLTQ4OTItYWU0OC05NmJlZmM5OWUyMDYiLCJyc25hbWUiOiJzYWxlc19vcmRlciJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImYxNTE0ZWVjLWJhN2EtNGU5Ny05ZWRhLThmZmMxNjAzYjg0ZSIsInJzbmFtZSI6ImNhcnJpZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4MmY3NTY1Yy04OTllLTRjOTItOWM2MC1hNWM3MDI5ZjZlYTAiLCJyc25hbWUiOiJyd19wYWQifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3OTczODk4NC1mYTA2LTQ0NDYtYWVlZS1iYjlhMjlhMzM4MjQiLCJyc25hbWUiOiJwcmljaW5nIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiMzZmZjhlMmMtMzgyMy00MGI4LTk5NjYtZjZmZGI2YjMxYzRiIiwicnNuYW1lIjoicGFydHMifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI5NmY1MWIxNy1kZjU3LTQ0YWQtYjllMS1jMDE5ZTMwMGFhNDkiLCJyc25hbWUiOiJzY29vdGVyX2NvbnRyYWN0X3VzZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiJkMDg5MGYwMy01YzBmLTQ4MTQtYjExZS1mN2NjNmVlNzIyNzUiLCJyc25hbWUiOiJiYW5rIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNjI4MTY4YzItNjkxYS00NzliLTljNmYtZTIzNDE5MjlmY2EyIiwicnNuYW1lIjoiZXNfY29udHJhY3QifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3YjBmZWY2Yi0yZjdhLTQ1MGItYmJjMC1jMTZjMjg3YzE0NWYiLCJyc25hbWUiOiJzZXJ2aWNlX29yZGVyIn1dfSwic2NvcGUiOiJlbXBsb3llZSBlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImNvbXBhbnlfaWQiOiJacExieE5RSyIsImRlcGFydG1lbnRfaWQiOiJhNm1uTU5vYiIsImVtcGxveWVlX2lkIjoieUptNHFPTGEiLCJuYW1lIjoicGEgZ2VuX2FkbWluIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20iLCJnaXZlbl9uYW1lIjoicGEiLCJmYW1pbHlfbmFtZSI6Imdlbl9hZG1pbiIsImVtYWlsIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20ifQ.iqEt_nVvF04tSo-YJnOTsc2WSLLhrQobGbbRtGX8PiZCAmUsPxhJZU47AuadvLU6y9RmX2CPNRTV1kBTU7w2FFOnwO-WF050R-tHIepFL3ZlPWSERyVJo5nnmnp3GPL9Q15DFSSWJa5SaPPM9woHtg7sjRjxrkVmGyH_G_GijOrH5ZOCqYsLrX3mm9weATxD1SIcSTIcfreEP5ar7hBQI1nCTaOzgfj_iO8Tvv1uX9G4HGa9uK-TO3q5NSKBq7ie79M_YaybL_Uk5-LXY--5Pz__T75GtMmMjfleuRw1_X__sV3XjhEBY9qIjyl7t5-N8mtMoGwkYcWIeNkzCl-x5g' \
+   --header 'content-type: application/json' --header 'go-client: pa' \
+   --data '{
+    "op_code": "add",
+    "add_data": [
+        {
+            "battery_guid": "00f55d60-f307-4fdd-8881-5318b8e7fdaa",
+            "battery_sn": "TWPASWHT1QVDX",
+            "company_code": "1300",
+            "charge_cycles": "0",
+            "asset_type": "string",
+            "asset_owner": "string",
+            "state": "1",
+            "version": "string",
+            "supplier": "string",
+            "country_code": "TW",
+            "manufacture_date": "2020-09-07",
+            "stock_in_date": "string",
+            "stock_out_date": "string",
+            "pn": "QA_TEST_75",
+            "model_no": "string",
+            "manufacture_sn": "string",
+            "mainboard_pn": "string",
+            "mainboard_sn": "string",
+            "bb1_pn": "string",
+            "bb1_sn": "string",
+            "bb2_pn": "string",
+            "bb2_sn": "string",
+            "bb3_pn": "string",
+            "bb3_sn": "string",
+            "fpc_pn": "string",
+            "fpc_sn": "string",
+            "weight": "string"
+        }
+    ]
+}'</msg>
+<msg timestamp="20200907 17:17:54.086" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200907 17:17:53.078" endtime="20200907 17:17:54.086"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${battery_guid${index}}</arg>
+<arg>${Battery.battery_guid}</arg>
+</arguments>
+<msg timestamp="20200907 17:17:54.090" level="INFO">${battery_guid0} = 00f55d60-f307-4fdd-8881-5318b8e7fdaa</msg>
+<status status="PASS" starttime="20200907 17:17:54.087" endtime="20200907 17:17:54.090"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${battery_sn${index}}</arg>
+<arg>${Battery.battery_sn}</arg>
+</arguments>
+<msg timestamp="20200907 17:17:54.092" level="INFO">${battery_sn0} = TWPASWHT1QVDX</msg>
+<status status="PASS" starttime="20200907 17:17:54.090" endtime="20200907 17:17:54.093"></status>
+</kw>
+<status status="PASS" starttime="20200907 17:17:53.074" endtime="20200907 17:17:54.093"></status>
+</kw>
+<status status="PASS" starttime="20200907 17:17:53.074" endtime="20200907 17:17:54.093"></status>
+</kw>
+<kw name="${index} = 1" type="foritem">
+<kw name="Create Battery">
+<arguments>
+<arg>${index}</arg>
+</arguments>
+<kw name="Setup Battery Variables">
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${Battery}</arg>
+<arg>${Batteries()}</arg>
+</arguments>
+<msg timestamp="20200907 17:17:54.094" level="INFO">${Battery} = &lt;MyGogoroObject.Batteries object at 0x102fc1a90&gt;</msg>
+<status status="PASS" starttime="20200907 17:17:54.094" endtime="20200907 17:17:54.094"></status>
+</kw>
+<status status="PASS" starttime="20200907 17:17:54.093" endtime="20200907 17:17:54.094"></status>
+</kw>
+<kw name="Batteries Post" library="LibBatteries">
+<doc>Create batteries</doc>
+<arguments>
+<arg>${Battery.battery_guid}</arg>
+<arg>${Battery.battery_sn}</arg>
+<arg>${Battery.charge_cycles}\</arg>
+<arg>${Battery.state}</arg>
+<arg>${Battery.manufacture_date}</arg>
+<arg>${Battery.pn}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200907 17:17:54.804" level="INFO">http://10.6.1.46:3032/app/cipher?env=pa&amp;app=pa&amp;resource=pa&amp;username=pa.gen_admin@gogoro.com&amp;password=123</msg>
+<msg timestamp="20200907 17:17:54.878" level="INFO">Response message: 200
+Body: {
+    "code": 0,
+    "total_count": 1,
+    "data": [
+        {
+            "battery_guid": "e471c619-6958-4176-854b-1fca210364bc",
+            "battery_sn": "TWPASWKQ78Z4B",
+            "supplier": "string",
+            "country_code": "TW",
+            "manufacture_date": 1599436800,
+            "version": "string",
+            "hw_revision": "AS",
+            "avail_status": 1
+        }
+    ]
+}
+CURL:
+   curl -i --request POST --url https://pa-goplatform.gogoro.com:443/go-platform/v1/batteries \
+   --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI0RF82RE04Nm9BQ2ZkNWwzLTMzVzU4LVVQTUZoQVEzV1FWbDVQSFVoTE5BIn0.eyJqdGkiOiI1NjZmMDdiMy1iMzFlLTRmZjgtOTA4MS01NjhmZGRkOTRlZDQiLCJleHAiOjE1OTk0NzExNzUsIm5iZiI6MCwiaWF0IjoxNTk5NDcwMjc1LCJpc3MiOiJodHRwczovL3BhLWF1dGgta2V5Y2xvYWsuZ29nb3JvLmNvbS9hdXRoL3JlYWxtcy9nb2dvcm8iLCJhdWQiOiJwYSIsInN1YiI6IjIwMzUxNjllLTQ4NmQtNDM1YS1iMTZiLTgxMjdkYzM2MGFlZiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImF1dGgiLCJhdXRoX3RpbWUiOjAsInNlc3Npb25fc3RhdGUiOiJiZTYzNTQ1OS05MGEyLTQwODktOTIzZC0yYTM4NTYyYTRkMTUiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImFwcF9wYSJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InBhIjp7InJvbGVzIjpbInBhX2FkbWluIl19fSwiYXV0aG9yaXphdGlvbiI6eyJwZXJtaXNzaW9ucyI6W3sic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6IjhiMzFiZDgxLTEzZmEtNDhjMC1hZGRlLWUyMDZlYzdlYjgzNyIsInJzbmFtZSI6ImdvZ29yb191c2VyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNDZhZmRhYzYtNzg3ZC00ZDdmLWJjMWMtMDM2M2QzNjlkNTI3IiwicnNuYW1lIjoic2Nvb3Rlcl9jb250cmFjdCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImU4YWJjMTA3LTM0ZTgtNDdhYS04NjY4LTg4ODMyNmUwMjczOCIsInJzbmFtZSI6ImdvX2NoYXJnZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3ODc1MWJmNi00ZjU0LTQ0OTUtYTQ4YS0xMDA3MWE4Y2U0YTkiLCJyc25hbWUiOiJlbXBsb3llZSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImY0ZTVkNTJlLTQwNGQtNGY4OC1iNmEwLWY3N2I1NjBjMzA1MSIsInJzbmFtZSI6ImVzX2NhdGVnb3J5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiYTMxMzNjOWEtYzZkMC00ZTA1LThmZDgtZDBiMWM4OTA1Yzk1IiwicnNuYW1lIjoidm0ifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI1YTg0MTYyZC04MzM4LTRjY2ItOTNjYS05NjY4MDQ1ZmU4NmIiLCJyc25hbWUiOiJzY29vdGVyX2RlbGl2ZXJ5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzViYTRhMjEtYmFhNS00MDYwLTljZTktNTM4YzAxODcxNDAzIiwicnNuYW1lIjoic3dhIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiODFkZTc4MzktNjM0ZC00Yzc3LWI0MjEtODI4NDdlNzllNmNhIiwicnNuYW1lIjoiYmF0dGVyeSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImQzODhjM2IzLTNjMzItNDE1OC04NTM4LTZhZmNiZGU5YmRhZiIsInJzbmFtZSI6ImVzX2JpbGxfd3JpdGVvZmYifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiIxN2NkOGY0OC0yODBjLTQ5ZDQtOWFlZS05YWFjNmY5MmFlZjEiLCJyc25hbWUiOiJzY29vdGVyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzYxMmEwYjQtZDMxYS00MDA5LWJkZjQtODAxMmRjMmE1N2M3IiwicnNuYW1lIjoiZXNfYmlsbCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6Ijg4MDM5NDlhLWJiMjctNDMzNS1iMGQ4LWNmMTc5NjQ3NjA5OSIsInJzbmFtZSI6ImNvbXBhbnkifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4Y2U1ZDY0Ny0yMzViLTQ4OTItYWU0OC05NmJlZmM5OWUyMDYiLCJyc25hbWUiOiJzYWxlc19vcmRlciJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImYxNTE0ZWVjLWJhN2EtNGU5Ny05ZWRhLThmZmMxNjAzYjg0ZSIsInJzbmFtZSI6ImNhcnJpZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4MmY3NTY1Yy04OTllLTRjOTItOWM2MC1hNWM3MDI5ZjZlYTAiLCJyc25hbWUiOiJyd19wYWQifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3OTczODk4NC1mYTA2LTQ0NDYtYWVlZS1iYjlhMjlhMzM4MjQiLCJyc25hbWUiOiJwcmljaW5nIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiMzZmZjhlMmMtMzgyMy00MGI4LTk5NjYtZjZmZGI2YjMxYzRiIiwicnNuYW1lIjoicGFydHMifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI5NmY1MWIxNy1kZjU3LTQ0YWQtYjllMS1jMDE5ZTMwMGFhNDkiLCJyc25hbWUiOiJzY29vdGVyX2NvbnRyYWN0X3VzZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiJkMDg5MGYwMy01YzBmLTQ4MTQtYjExZS1mN2NjNmVlNzIyNzUiLCJyc25hbWUiOiJiYW5rIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNjI4MTY4YzItNjkxYS00NzliLTljNmYtZTIzNDE5MjlmY2EyIiwicnNuYW1lIjoiZXNfY29udHJhY3QifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3YjBmZWY2Yi0yZjdhLTQ1MGItYmJjMC1jMTZjMjg3YzE0NWYiLCJyc25hbWUiOiJzZXJ2aWNlX29yZGVyIn1dfSwic2NvcGUiOiJlbXBsb3llZSBlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImNvbXBhbnlfaWQiOiJacExieE5RSyIsImRlcGFydG1lbnRfaWQiOiJhNm1uTU5vYiIsImVtcGxveWVlX2lkIjoieUptNHFPTGEiLCJuYW1lIjoicGEgZ2VuX2FkbWluIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20iLCJnaXZlbl9uYW1lIjoicGEiLCJmYW1pbHlfbmFtZSI6Imdlbl9hZG1pbiIsImVtYWlsIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20ifQ.W8T20cT4mm6IO5QfpnfviemVFCRCgrIOT2jcpMX6yZ3rtkVSpU02TZ8nY5oQzMyZyniFAhYzHTCg-ZLQrHCBTFMv_Z6LzSYa3dOad9oNB3U2bQlRTQ9Mw8o3CCsH3kHidycX6WQtuYacatfVhXuLe01gJ3O_X1znfkGud119hh8w8tCp1EWUbGQQQCC8-beYRTMMKGSS5rHaSlnMSODMrijgnvjztOAcLSSL2mF6uTo5qLDLkVgf-WMAD1RiQ5T0ID6RjaGZ5CMzzMtWVGKoGMDl0qR8xw7tyfoVudID4ws7l5LO2yDfNmS2fiv86IjYUR70hZbU-OZ0FVW8EAECrg' \
+   --header 'content-type: application/json' --header 'go-client: pa' \
+   --data '{
+    "op_code": "add",
+    "add_data": [
+        {
+            "battery_guid": "e471c619-6958-4176-854b-1fca210364bc",
+            "battery_sn": "TWPASWKQ78Z4B",
+            "company_code": "1300",
+            "charge_cycles": "0",
+            "asset_type": "string",
+            "asset_owner": "string",
+            "state": "1",
+            "version": "string",
+            "supplier": "string",
+            "country_code": "TW",
+            "manufacture_date": "2020-09-07",
+            "stock_in_date": "string",
+            "stock_out_date": "string",
+            "pn": "QA_TEST_08",
+            "model_no": "string",
+            "manufacture_sn": "string",
+            "mainboard_pn": "string",
+            "mainboard_sn": "string",
+            "bb1_pn": "string",
+            "bb1_sn": "string",
+            "bb2_pn": "string",
+            "bb2_sn": "string",
+            "bb3_pn": "string",
+            "bb3_sn": "string",
+            "fpc_pn": "string",
+            "fpc_sn": "string",
+            "weight": "string"
+        }
+    ]
+}'</msg>
+<msg timestamp="20200907 17:17:54.879" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200907 17:17:54.095" endtime="20200907 17:17:54.879"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${battery_guid${index}}</arg>
+<arg>${Battery.battery_guid}</arg>
+</arguments>
+<msg timestamp="20200907 17:17:54.882" level="INFO">${battery_guid1} = e471c619-6958-4176-854b-1fca210364bc</msg>
+<status status="PASS" starttime="20200907 17:17:54.879" endtime="20200907 17:17:54.882"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${battery_sn${index}}</arg>
+<arg>${Battery.battery_sn}</arg>
+</arguments>
+<msg timestamp="20200907 17:17:54.884" level="INFO">${battery_sn1} = TWPASWKQ78Z4B</msg>
+<status status="PASS" starttime="20200907 17:17:54.882" endtime="20200907 17:17:54.884"></status>
+</kw>
+<status status="PASS" starttime="20200907 17:17:54.093" endtime="20200907 17:17:54.885"></status>
+</kw>
+<status status="PASS" starttime="20200907 17:17:54.093" endtime="20200907 17:17:54.885"></status>
+</kw>
+<status status="PASS" starttime="20200907 17:17:53.073" endtime="20200907 17:17:54.885"></status>
+</kw>
+<status status="PASS" starttime="20200907 17:17:53.073" endtime="20200907 17:17:54.885"></status>
+</kw>
+<kw name="Batteries Swap Logs Post Gds" library="LibBatteriesSwapLogs">
+<doc>Add swap-log with gds source</doc>
+<arguments>
+<arg>${swap_id}</arg>
+<arg>${Scooter.scooter_guid}</arg>
+<arg>${battery_guid0}</arg>
+<arg>${battery_guid1}</arg>
+</arguments>
+<msg timestamp="20200907 17:17:55.572" level="INFO">http://10.6.1.46:3032/app/cipher?env=pa&amp;app=pa&amp;resource=pa&amp;username=pa.gen_admin@gogoro.com&amp;password=123</msg>
+<msg timestamp="20200907 17:17:55.835" level="INFO">Response message: 200
+Body: {
+    "code": 0
+}
+CURL:
+   curl -i --request POST --url https://pa-goplatform.gogoro.com:443/go-platform/v1/batteries/swap-logs \
+   --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI0RF82RE04Nm9BQ2ZkNWwzLTMzVzU4LVVQTUZoQVEzV1FWbDVQSFVoTE5BIn0.eyJqdGkiOiJmNDM5NDNlYS0wN2E4LTQ0MzktOWIyZS1mMDM4MjE1YTY4YWYiLCJleHAiOjE1OTk0NzExNzYsIm5iZiI6MCwiaWF0IjoxNTk5NDcwMjc2LCJpc3MiOiJodHRwczovL3BhLWF1dGgta2V5Y2xvYWsuZ29nb3JvLmNvbS9hdXRoL3JlYWxtcy9nb2dvcm8iLCJhdWQiOiJwYSIsInN1YiI6IjIwMzUxNjllLTQ4NmQtNDM1YS1iMTZiLTgxMjdkYzM2MGFlZiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImF1dGgiLCJhdXRoX3RpbWUiOjAsInNlc3Npb25fc3RhdGUiOiJhZDJiMzcyMy0xNmI1LTQwZDItYTgwYS1kOWIwNDlkZGZlYmEiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImFwcF9wYSJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InBhIjp7InJvbGVzIjpbInBhX2FkbWluIl19fSwiYXV0aG9yaXphdGlvbiI6eyJwZXJtaXNzaW9ucyI6W3sic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6IjhiMzFiZDgxLTEzZmEtNDhjMC1hZGRlLWUyMDZlYzdlYjgzNyIsInJzbmFtZSI6ImdvZ29yb191c2VyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNDZhZmRhYzYtNzg3ZC00ZDdmLWJjMWMtMDM2M2QzNjlkNTI3IiwicnNuYW1lIjoic2Nvb3Rlcl9jb250cmFjdCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImU4YWJjMTA3LTM0ZTgtNDdhYS04NjY4LTg4ODMyNmUwMjczOCIsInJzbmFtZSI6ImdvX2NoYXJnZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3ODc1MWJmNi00ZjU0LTQ0OTUtYTQ4YS0xMDA3MWE4Y2U0YTkiLCJyc25hbWUiOiJlbXBsb3llZSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImY0ZTVkNTJlLTQwNGQtNGY4OC1iNmEwLWY3N2I1NjBjMzA1MSIsInJzbmFtZSI6ImVzX2NhdGVnb3J5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiYTMxMzNjOWEtYzZkMC00ZTA1LThmZDgtZDBiMWM4OTA1Yzk1IiwicnNuYW1lIjoidm0ifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI1YTg0MTYyZC04MzM4LTRjY2ItOTNjYS05NjY4MDQ1ZmU4NmIiLCJyc25hbWUiOiJzY29vdGVyX2RlbGl2ZXJ5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzViYTRhMjEtYmFhNS00MDYwLTljZTktNTM4YzAxODcxNDAzIiwicnNuYW1lIjoic3dhIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiODFkZTc4MzktNjM0ZC00Yzc3LWI0MjEtODI4NDdlNzllNmNhIiwicnNuYW1lIjoiYmF0dGVyeSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImQzODhjM2IzLTNjMzItNDE1OC04NTM4LTZhZmNiZGU5YmRhZiIsInJzbmFtZSI6ImVzX2JpbGxfd3JpdGVvZmYifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiIxN2NkOGY0OC0yODBjLTQ5ZDQtOWFlZS05YWFjNmY5MmFlZjEiLCJyc25hbWUiOiJzY29vdGVyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzYxMmEwYjQtZDMxYS00MDA5LWJkZjQtODAxMmRjMmE1N2M3IiwicnNuYW1lIjoiZXNfYmlsbCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6Ijg4MDM5NDlhLWJiMjctNDMzNS1iMGQ4LWNmMTc5NjQ3NjA5OSIsInJzbmFtZSI6ImNvbXBhbnkifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4Y2U1ZDY0Ny0yMzViLTQ4OTItYWU0OC05NmJlZmM5OWUyMDYiLCJyc25hbWUiOiJzYWxlc19vcmRlciJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImYxNTE0ZWVjLWJhN2EtNGU5Ny05ZWRhLThmZmMxNjAzYjg0ZSIsInJzbmFtZSI6ImNhcnJpZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4MmY3NTY1Yy04OTllLTRjOTItOWM2MC1hNWM3MDI5ZjZlYTAiLCJyc25hbWUiOiJyd19wYWQifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3OTczODk4NC1mYTA2LTQ0NDYtYWVlZS1iYjlhMjlhMzM4MjQiLCJyc25hbWUiOiJwcmljaW5nIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiMzZmZjhlMmMtMzgyMy00MGI4LTk5NjYtZjZmZGI2YjMxYzRiIiwicnNuYW1lIjoicGFydHMifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI5NmY1MWIxNy1kZjU3LTQ0YWQtYjllMS1jMDE5ZTMwMGFhNDkiLCJyc25hbWUiOiJzY29vdGVyX2NvbnRyYWN0X3VzZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiJkMDg5MGYwMy01YzBmLTQ4MTQtYjExZS1mN2NjNmVlNzIyNzUiLCJyc25hbWUiOiJiYW5rIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNjI4MTY4YzItNjkxYS00NzliLTljNmYtZTIzNDE5MjlmY2EyIiwicnNuYW1lIjoiZXNfY29udHJhY3QifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3YjBmZWY2Yi0yZjdhLTQ1MGItYmJjMC1jMTZjMjg3YzE0NWYiLCJyc25hbWUiOiJzZXJ2aWNlX29yZGVyIn1dfSwic2NvcGUiOiJlbXBsb3llZSBlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImNvbXBhbnlfaWQiOiJacExieE5RSyIsImRlcGFydG1lbnRfaWQiOiJhNm1uTU5vYiIsImVtcGxveWVlX2lkIjoieUptNHFPTGEiLCJuYW1lIjoicGEgZ2VuX2FkbWluIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20iLCJnaXZlbl9uYW1lIjoicGEiLCJmYW1pbHlfbmFtZSI6Imdlbl9hZG1pbiIsImVtYWlsIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20ifQ.PM1yoO1DPZX12S4cOqpT1ccl1VcC4U39_Fz2Exd3ylQ7XcWycG8SG65f5qmmZaPZN1RPoBO2oqWY-lJ1oPXqxVHBSklS2RgxOXeb9TxrJZSGemIi16_knSSm-oMYvMaH3pipUfIgw8ji-nJa_y7Uu8uVSlGLREDor4Ac8Q-rCdiK-9rCGbxgXeTjcbpn8RIO_7nY465ycXYix--UhLcfos1Whp10bZWcOi7j-aoQFGbYZgXaeMMGtetvSxrQsl20UqHtAzqOMgoeSO07rsRTLrrt1_AoIdwVlPpgvmnu4x7n9nCnYCipjHpMZyawVutFrnP387xrVg4uulBw8cjEaA' \
+   --header 'content-type: application/json' --header 'go-client: pa' \
+   --data '{
+    "op_code": "add",
+    "type": 2,
+    "add_data": [
+        {
+            "source": "gds",
+            "swap_logs": [
+                {
+                    "swap_id": "77848469",
+                    "scooter_guid": "f73f4eba-fd2e-4091-b434-59e526413b78",
+                    "other_id": "53435754-3032-3230-0000-000000000000",
+                    "swap_out": [
+                        {
+                            "battery_guid": "00f55d60-f307-4fdd-8881-5318b8e7fdaa",
+                            "capacity": 15,
+                            "health": 1,
+                            "recycle_count": 400,
+                            "consumption": 30,
+                            "slot_id": 1,
+                            "slot_serial_id": "00f55d60-f307-4fdd-8881-5318b8e7fdaa",
+                            "temp_cell": 31,
+                            "temp_mos": 32,
+                            "charging_rate": 0,
+                            "locked": true,
+                            "payload": "0x6464011E0000001E00000044C34610451046104410481046104810471043104310451043104810431004052310000000004B0B4B0B285A14004AEA110000000000000000000000000064131F00DE6F0200D7650200330600004B0B0000DE0A000000FFFF0000000000000000000000000000000000000000000000000080000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000FFFFFFFF00000000008000800000000000000000008000000000000000000000FF7F00000000000000000000000000000000000000000000000000000000000000000000FFFF00000000000000000000000000000000000000000000010414",
+                            "cell_type": 1,
+                            "case_type": 1,
+                            "ups": 0,
+                            "max_charging_rate": 0,
+                            "chargeable": true,
+                            "dischargeable": false
+                        },
+                        {
+                            "battery_guid": "e471c619-6958-4176-854b-1fca210364bc",
+                            "capacity": 16,
+                            "health": 1,
+                            "recycle_count": 400,
+                            "consumption": 32,
+                            "slot_id": 1,
+                            "slot_serial_id": "e471c619-6958-4176-854b-1fca210364bc",
+                            "temp_cell": 33,
+                            "temp_mos": 34,
+                            "charging_rate": 0,
+                            "locked": true,
+                            "payload": "0x6464011E0000001E00000044C34610451046104410481046104810471043104310451043104810431004052310000000004B0B4B0B285A14004AEA110000000000000000000000000064131F00DE6F0200D7650200330600004B0B0000DE0A000000FFFF0000000000000000000000000000000000000000000000000080000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000FFFFFFFF00000000008000800000000000000000008000000000000000000000FF7F00000000000000000000000000000000000000000000000000000000000000000000FFFF00000000000000000000000000000000000000000000010414",
+                            "cell_type": 1,
+                            "case_type": 1,
+                            "ups": 0,
+                            "max_charging_rate": 0,
+                            "chargeable": true,
+                            "dischargeable": false
+                        }
+                    ],
+                    "exchange_time": "2019-05-22T14:01:42.960000Z",
+                    "extra_exchange": 0,
+                    "rating": 9000,
+                    "rating_rule_id": "5EDBF33A-B7F7-64AB-8FB8-489D66395B7F",
+                    "action": 1,
+                    "rating_rule_type": 1,
+                    "eject_new_candidate": false,
+                    "base_price": 2.0,
+                    "pps_price": 124.0,
+                    "eula_state": 1,
+                    "real_time_scooter_info": 1,
+                    "eject_fail": 0
+                }
+            ]
+        }
+    ]
+}'</msg>
+<status status="PASS" starttime="20200907 17:17:54.885" endtime="20200907 17:17:55.835"></status>
+</kw>
+<kw name="Scooters Batteries Get" library="LibScootersBatteries">
+<doc>Get scooter batteries info</doc>
+<arguments>
+<arg>${scooter_Id}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200907 17:17:56.475" level="INFO">http://10.6.1.46:3032/app/cipher?env=pa&amp;app=pa&amp;resource=pa&amp;username=pa.gen_admin@gogoro.com&amp;password=123</msg>
+<msg timestamp="20200907 17:17:56.803" level="INFO">Response message: 200
+Body: {
+    "code": 0,
+    "total_count": 2,
+    "data": [
+        {
+            "id": "ZRVPwkEm",
+            "batteries": [
+                {
+                    "swap_source": 1,
+                    "id": "ZRVPwkEm",
+                    "battery_id": "4mk6xYNP",
+                    "battery_sn": "TWPASWHT1QVDX",
+                    "snap_time": 1558533702
+                },
+                {
+                    "swap_source": 1,
+                    "id": "ZRVPwkEm",
+                    "battery_id": "6mn7PwLo",
+                    "battery_sn": "TWPASWKQ78Z4B",
+                    "snap_time": 1558533702
+                }
+            ]
+        }
+    ]
+}
+CURL:
+   curl -i --request POST --url https://pa-goplatform.gogoro.com:443/go-platform/v1/scooters/batteries \
+   --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI0RF82RE04Nm9BQ2ZkNWwzLTMzVzU4LVVQTUZoQVEzV1FWbDVQSFVoTE5BIn0.eyJqdGkiOiI3YTdjYjcyOC02NTU4LTRlOTQtYmYyOC05NTM5NWNmNTJmN2YiLCJleHAiOjE1OTk0NzExNzcsIm5iZiI6MCwiaWF0IjoxNTk5NDcwMjc3LCJpc3MiOiJodHRwczovL3BhLWF1dGgta2V5Y2xvYWsuZ29nb3JvLmNvbS9hdXRoL3JlYWxtcy9nb2dvcm8iLCJhdWQiOiJwYSIsInN1YiI6IjIwMzUxNjllLTQ4NmQtNDM1YS1iMTZiLTgxMjdkYzM2MGFlZiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImF1dGgiLCJhdXRoX3RpbWUiOjAsInNlc3Npb25fc3RhdGUiOiI4YTY2MDZjZS1mOTRmLTQ1ZTMtODljOS0zOGU1YmEwZDdiNjUiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImFwcF9wYSJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InBhIjp7InJvbGVzIjpbInBhX2FkbWluIl19fSwiYXV0aG9yaXphdGlvbiI6eyJwZXJtaXNzaW9ucyI6W3sic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6IjhiMzFiZDgxLTEzZmEtNDhjMC1hZGRlLWUyMDZlYzdlYjgzNyIsInJzbmFtZSI6ImdvZ29yb191c2VyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNDZhZmRhYzYtNzg3ZC00ZDdmLWJjMWMtMDM2M2QzNjlkNTI3IiwicnNuYW1lIjoic2Nvb3Rlcl9jb250cmFjdCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImU4YWJjMTA3LTM0ZTgtNDdhYS04NjY4LTg4ODMyNmUwMjczOCIsInJzbmFtZSI6ImdvX2NoYXJnZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3ODc1MWJmNi00ZjU0LTQ0OTUtYTQ4YS0xMDA3MWE4Y2U0YTkiLCJyc25hbWUiOiJlbXBsb3llZSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImY0ZTVkNTJlLTQwNGQtNGY4OC1iNmEwLWY3N2I1NjBjMzA1MSIsInJzbmFtZSI6ImVzX2NhdGVnb3J5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiYTMxMzNjOWEtYzZkMC00ZTA1LThmZDgtZDBiMWM4OTA1Yzk1IiwicnNuYW1lIjoidm0ifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI1YTg0MTYyZC04MzM4LTRjY2ItOTNjYS05NjY4MDQ1ZmU4NmIiLCJyc25hbWUiOiJzY29vdGVyX2RlbGl2ZXJ5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzViYTRhMjEtYmFhNS00MDYwLTljZTktNTM4YzAxODcxNDAzIiwicnNuYW1lIjoic3dhIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiODFkZTc4MzktNjM0ZC00Yzc3LWI0MjEtODI4NDdlNzllNmNhIiwicnNuYW1lIjoiYmF0dGVyeSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImQzODhjM2IzLTNjMzItNDE1OC04NTM4LTZhZmNiZGU5YmRhZiIsInJzbmFtZSI6ImVzX2JpbGxfd3JpdGVvZmYifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiIxN2NkOGY0OC0yODBjLTQ5ZDQtOWFlZS05YWFjNmY5MmFlZjEiLCJyc25hbWUiOiJzY29vdGVyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzYxMmEwYjQtZDMxYS00MDA5LWJkZjQtODAxMmRjMmE1N2M3IiwicnNuYW1lIjoiZXNfYmlsbCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6Ijg4MDM5NDlhLWJiMjctNDMzNS1iMGQ4LWNmMTc5NjQ3NjA5OSIsInJzbmFtZSI6ImNvbXBhbnkifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4Y2U1ZDY0Ny0yMzViLTQ4OTItYWU0OC05NmJlZmM5OWUyMDYiLCJyc25hbWUiOiJzYWxlc19vcmRlciJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImYxNTE0ZWVjLWJhN2EtNGU5Ny05ZWRhLThmZmMxNjAzYjg0ZSIsInJzbmFtZSI6ImNhcnJpZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4MmY3NTY1Yy04OTllLTRjOTItOWM2MC1hNWM3MDI5ZjZlYTAiLCJyc25hbWUiOiJyd19wYWQifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3OTczODk4NC1mYTA2LTQ0NDYtYWVlZS1iYjlhMjlhMzM4MjQiLCJyc25hbWUiOiJwcmljaW5nIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiMzZmZjhlMmMtMzgyMy00MGI4LTk5NjYtZjZmZGI2YjMxYzRiIiwicnNuYW1lIjoicGFydHMifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI5NmY1MWIxNy1kZjU3LTQ0YWQtYjllMS1jMDE5ZTMwMGFhNDkiLCJyc25hbWUiOiJzY29vdGVyX2NvbnRyYWN0X3VzZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiJkMDg5MGYwMy01YzBmLTQ4MTQtYjExZS1mN2NjNmVlNzIyNzUiLCJyc25hbWUiOiJiYW5rIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNjI4MTY4YzItNjkxYS00NzliLTljNmYtZTIzNDE5MjlmY2EyIiwicnNuYW1lIjoiZXNfY29udHJhY3QifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3YjBmZWY2Yi0yZjdhLTQ1MGItYmJjMC1jMTZjMjg3YzE0NWYiLCJyc25hbWUiOiJzZXJ2aWNlX29yZGVyIn1dfSwic2NvcGUiOiJlbXBsb3llZSBlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImNvbXBhbnlfaWQiOiJacExieE5RSyIsImRlcGFydG1lbnRfaWQiOiJhNm1uTU5vYiIsImVtcGxveWVlX2lkIjoieUptNHFPTGEiLCJuYW1lIjoicGEgZ2VuX2FkbWluIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20iLCJnaXZlbl9uYW1lIjoicGEiLCJmYW1pbHlfbmFtZSI6Imdlbl9hZG1pbiIsImVtYWlsIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20ifQ.G73mKSuX9s6yRjChhfyZAFEuRYWV965OO58p8YCKfdk7lx2AtakvSTRXh2WZD4tiQrIgvMXKk8hS36E3uEPPQu2ojlHHB3tPxVZ6mkJlvWwkvKCtk-SClnFMY257QOt2epp-EpgkSPmLPKEiu53U23DwiQPrWozV8qqTpYZQMcrXB0cuuVBC9yF1ECqdS4s4HhQ29EehQhuep1hC22ftky2pZ6l5-dXtDyNce28NrD0zZTeKy6Q0Uso1rbpMiJ73MHMH3ox2ysEVJ8MRxNZ7PSM2aRS8-fLThuD7yXWPYBQ3t7CrbAJYKg4RGaHr5U6UoYIRwmNO836X04usenDxrA' \
+   --header 'content-type: application/json' --header 'go-client: pa' \
+   --data '{
+    "op_code": "get",
+    "get_data": {
+        "scooter_ids": [
+            "ZRVPwkEm"
+        ],
+        "snap_time_from": 0,
+        "snap_time_to": 0,
+        "current": 1,
+        "pagination_criteria": {
+            "offset": 0,
+            "limit": 2
+        }
+    }
+}'</msg>
+<msg timestamp="20200907 17:17:56.804" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200907 17:17:55.836" endtime="20200907 17:17:56.804"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>str('${battery_sn0}')[-6:]</arg>
+</arguments>
+<assign>
+<var>${last_six_sn}</var>
+</assign>
+<msg timestamp="20200907 17:17:56.806" level="INFO">${last_six_sn} = T1QVDX</msg>
+<status status="PASS" starttime="20200907 17:17:56.805" endtime="20200907 17:17:56.806"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${last_six_sn}</arg>
+</arguments>
+<msg timestamp="20200907 17:17:56.807" level="INFO">${last_six_sn} = T1QVDX</msg>
+<status status="PASS" starttime="20200907 17:17:56.806" endtime="20200907 17:17:56.807"></status>
+</kw>
+<kw name="Verify Response Contains Expected" library="keywords_common">
+<doc>Verify response message should be equals expected</doc>
+<arguments>
+<arg>${resp.json()['data'][0]['batteries'][0]['battery_sn']}</arg>
+<arg>${battery_sn0}</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="keywords_common">
+<doc>Build in compare two variables keyword with log</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+</arguments>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${key}'=='${EMPTY}'</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+<arg>ELSE</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: \nkey = ${key} Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<status status="PASS" starttime="20200907 17:17:56.809" endtime="20200907 17:17:56.810"></status>
+</kw>
+<status status="PASS" starttime="20200907 17:17:56.808" endtime="20200907 17:17:56.810"></status>
+</kw>
+<status status="PASS" starttime="20200907 17:17:56.808" endtime="20200907 17:17:56.810"></status>
+</kw>
+<status status="PASS" starttime="20200907 17:17:56.807" endtime="20200907 17:17:56.810"></status>
+</kw>
+<kw name="Verify Response Contains Expected" library="keywords_common">
+<doc>Verify response message should be equals expected</doc>
+<arguments>
+<arg>${resp.json()['data'][0]['batteries'][1]['battery_sn']}</arg>
+<arg>${battery_sn1}</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="keywords_common">
+<doc>Build in compare two variables keyword with log</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+</arguments>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${key}'=='${EMPTY}'</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+<arg>ELSE</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: \nkey = ${key} Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<status status="PASS" starttime="20200907 17:17:56.813" endtime="20200907 17:17:56.814"></status>
+</kw>
+<status status="PASS" starttime="20200907 17:17:56.812" endtime="20200907 17:17:56.815"></status>
+</kw>
+<status status="PASS" starttime="20200907 17:17:56.811" endtime="20200907 17:17:56.815"></status>
+</kw>
+<status status="PASS" starttime="20200907 17:17:56.810" endtime="20200907 17:17:56.815"></status>
+</kw>
+<status status="PASS" starttime="20200907 17:17:51.894" endtime="20200907 17:17:56.815"></status>
+</kw>
+<kw name="Mapping Scooter VIN And Batteries">
+<kw name="Generate Random String" library="String">
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<arguments>
+<arg>8</arg>
+<arg>[NUMBERS]</arg>
+</arguments>
+<assign>
+<var>${swap_id}</var>
+</assign>
+<msg timestamp="20200907 17:17:56.819" level="INFO">${swap_id} = 87799630</msg>
+<status status="PASS" starttime="20200907 17:17:56.819" endtime="20200907 17:17:56.820"></status>
+</kw>
+<kw name="Create Scooter">
+<kw name="Setup Scooter Variables">
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${Scooter}</arg>
+<arg>${Scooters('B22318608', 'BUS')}</arg>
+</arguments>
+<msg timestamp="20200907 17:17:56.826" level="INFO">${Scooter} = &lt;MyGogoroObject.Scooters object at 0x10386b590&gt;</msg>
+<status status="PASS" starttime="20200907 17:17:56.824" endtime="20200907 17:17:56.827"></status>
+</kw>
+<status status="PASS" starttime="20200907 17:17:56.820" endtime="20200907 17:17:56.827"></status>
+</kw>
+<kw name="Scooters Post" library="LibScooters">
+<doc>Create scooter</doc>
+<arguments>
+<arg>${Scooter.company_code}</arg>
+<arg>TW</arg>
+<arg>${Scooter.scooter_vin}\</arg>
+<arg>${Scooter.scooter_guid}</arg>
+<arg>${Scooter.matnr}</arg>
+<arg>${Scooter.atmel_key}</arg>
+<arg>${Scooter.state}</arg>
+<arg>${Scooter.es_state}\</arg>
+<arg>${Scooter.ecu_status}</arg>
+<arg>${Scooter.keyfobs_status}</arg>
+<arg>keyfobs_id=${Scooter.keyfobs_id}\</arg>
+<arg>motor_num=${Scooter.motor_num}</arg>
+<arg>atmel_sn=${Scooter.atmel_sn}</arg>
+<arg>ecu_mac=${Scooter.ecu_mac}\</arg>
+<arg>ecu_sn=${Scooter.ecu_sn}</arg>
+<arg>manufacture_date=${Scooter.manufacture_date}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200907 17:17:57.548" level="INFO">http://10.6.1.46:3032/app/cipher?env=pa&amp;app=pa&amp;resource=pa&amp;username=pa.gen_admin@gogoro.com&amp;password=123</msg>
+<msg timestamp="20200907 17:17:57.986" level="INFO">Response message: 200
+Body: {
+    "code": 0,
+    "total_count": 1,
+    "data": [
+        {
+            "scooter_id": "VLxob3om",
+            "scooter_guid": "e1d3aafb-aa9d-4f26-a512-fd634308434d",
+            "vin": "PASWT2LHC5256EGW2",
+            "brand_company_code": "GSS",
+            "material_num": "PIBUS-160-ORI",
+            "atmel_key": "YUGoYazt3N7ah0EdqQLLUaVVfwpf6e/adaUsuhGEgcDR4yD4hd5m+US/vQWTEHSDklMyLPNxVyVaPP2L/B38oFSut6eRtakZayMaX7N9dbOY3j5WibMbJC6tZf5J22xyHy4DkfR1XoVoZn3z5gw3kfGDPJtg9sEimcNFltRjjuY=",
+            "atmel_sn": "0123F61FCBFED2A0B1",
+            "state": 9,
+            "es_state": 13,
+            "manufacture_time": 1599436800,
+            "country_code": "TW",
+            "ecu_mac": "rpNx83uY",
+            "motor_num": "PIBUS-160-ORI"
+        }
+    ],
+    "error_list": []
+}
+CURL:
+   curl -i --request POST --url https://pa-goplatform.gogoro.com:443/go-platform/v1/scooters \
+   --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI0RF82RE04Nm9BQ2ZkNWwzLTMzVzU4LVVQTUZoQVEzV1FWbDVQSFVoTE5BIn0.eyJqdGkiOiI0YjY5Y2FmMy04OTIzLTRjYmYtOGI5NC0zMmZkYWFkNDE3NzAiLCJleHAiOjE1OTk0NzExNzgsIm5iZiI6MCwiaWF0IjoxNTk5NDcwMjc4LCJpc3MiOiJodHRwczovL3BhLWF1dGgta2V5Y2xvYWsuZ29nb3JvLmNvbS9hdXRoL3JlYWxtcy9nb2dvcm8iLCJhdWQiOiJwYSIsInN1YiI6IjIwMzUxNjllLTQ4NmQtNDM1YS1iMTZiLTgxMjdkYzM2MGFlZiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImF1dGgiLCJhdXRoX3RpbWUiOjAsInNlc3Npb25fc3RhdGUiOiJiMWMzZjVhNC0xN2VmLTQ2NDgtYjdkNC00ZGQ1ZjVlYWVkOTIiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImFwcF9wYSJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InBhIjp7InJvbGVzIjpbInBhX2FkbWluIl19fSwiYXV0aG9yaXphdGlvbiI6eyJwZXJtaXNzaW9ucyI6W3sic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6IjhiMzFiZDgxLTEzZmEtNDhjMC1hZGRlLWUyMDZlYzdlYjgzNyIsInJzbmFtZSI6ImdvZ29yb191c2VyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNDZhZmRhYzYtNzg3ZC00ZDdmLWJjMWMtMDM2M2QzNjlkNTI3IiwicnNuYW1lIjoic2Nvb3Rlcl9jb250cmFjdCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImU4YWJjMTA3LTM0ZTgtNDdhYS04NjY4LTg4ODMyNmUwMjczOCIsInJzbmFtZSI6ImdvX2NoYXJnZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3ODc1MWJmNi00ZjU0LTQ0OTUtYTQ4YS0xMDA3MWE4Y2U0YTkiLCJyc25hbWUiOiJlbXBsb3llZSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImY0ZTVkNTJlLTQwNGQtNGY4OC1iNmEwLWY3N2I1NjBjMzA1MSIsInJzbmFtZSI6ImVzX2NhdGVnb3J5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiYTMxMzNjOWEtYzZkMC00ZTA1LThmZDgtZDBiMWM4OTA1Yzk1IiwicnNuYW1lIjoidm0ifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI1YTg0MTYyZC04MzM4LTRjY2ItOTNjYS05NjY4MDQ1ZmU4NmIiLCJyc25hbWUiOiJzY29vdGVyX2RlbGl2ZXJ5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzViYTRhMjEtYmFhNS00MDYwLTljZTktNTM4YzAxODcxNDAzIiwicnNuYW1lIjoic3dhIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiODFkZTc4MzktNjM0ZC00Yzc3LWI0MjEtODI4NDdlNzllNmNhIiwicnNuYW1lIjoiYmF0dGVyeSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImQzODhjM2IzLTNjMzItNDE1OC04NTM4LTZhZmNiZGU5YmRhZiIsInJzbmFtZSI6ImVzX2JpbGxfd3JpdGVvZmYifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiIxN2NkOGY0OC0yODBjLTQ5ZDQtOWFlZS05YWFjNmY5MmFlZjEiLCJyc25hbWUiOiJzY29vdGVyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzYxMmEwYjQtZDMxYS00MDA5LWJkZjQtODAxMmRjMmE1N2M3IiwicnNuYW1lIjoiZXNfYmlsbCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6Ijg4MDM5NDlhLWJiMjctNDMzNS1iMGQ4LWNmMTc5NjQ3NjA5OSIsInJzbmFtZSI6ImNvbXBhbnkifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4Y2U1ZDY0Ny0yMzViLTQ4OTItYWU0OC05NmJlZmM5OWUyMDYiLCJyc25hbWUiOiJzYWxlc19vcmRlciJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImYxNTE0ZWVjLWJhN2EtNGU5Ny05ZWRhLThmZmMxNjAzYjg0ZSIsInJzbmFtZSI6ImNhcnJpZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4MmY3NTY1Yy04OTllLTRjOTItOWM2MC1hNWM3MDI5ZjZlYTAiLCJyc25hbWUiOiJyd19wYWQifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3OTczODk4NC1mYTA2LTQ0NDYtYWVlZS1iYjlhMjlhMzM4MjQiLCJyc25hbWUiOiJwcmljaW5nIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiMzZmZjhlMmMtMzgyMy00MGI4LTk5NjYtZjZmZGI2YjMxYzRiIiwicnNuYW1lIjoicGFydHMifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI5NmY1MWIxNy1kZjU3LTQ0YWQtYjllMS1jMDE5ZTMwMGFhNDkiLCJyc25hbWUiOiJzY29vdGVyX2NvbnRyYWN0X3VzZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiJkMDg5MGYwMy01YzBmLTQ4MTQtYjExZS1mN2NjNmVlNzIyNzUiLCJyc25hbWUiOiJiYW5rIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNjI4MTY4YzItNjkxYS00NzliLTljNmYtZTIzNDE5MjlmY2EyIiwicnNuYW1lIjoiZXNfY29udHJhY3QifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3YjBmZWY2Yi0yZjdhLTQ1MGItYmJjMC1jMTZjMjg3YzE0NWYiLCJyc25hbWUiOiJzZXJ2aWNlX29yZGVyIn1dfSwic2NvcGUiOiJlbXBsb3llZSBlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImNvbXBhbnlfaWQiOiJacExieE5RSyIsImRlcGFydG1lbnRfaWQiOiJhNm1uTU5vYiIsImVtcGxveWVlX2lkIjoieUptNHFPTGEiLCJuYW1lIjoicGEgZ2VuX2FkbWluIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20iLCJnaXZlbl9uYW1lIjoicGEiLCJmYW1pbHlfbmFtZSI6Imdlbl9hZG1pbiIsImVtYWlsIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20ifQ.LranizwMVyetXJEM1zNu5d8hxP2TGd-UfBRzJpXVC3GAem2jqfGlNpRtXPfXUh-GwfUDg_B1GsuMogYmW_ErJDFmBYQH_bM6MCSGRU-394FnYu2SVVhQi09SATR3z2HO3DjrvZ50ttkZ9BE58hDmoFcqtdSl1HZdnUn87zpLlZrOH94MyYJe-lfpsGnF0cvH2U9f5-ot9cXhvn9apldEbjSL_gfuyUkPGL0MpLJWDi3120Ea1buzio1HBZ2yJeD0aaLs-IfQyqw-plykaMjsyYCQJVKXgn3uVH4HIlPjopEoyUqc2fhzA90dxlcCXvZQjGWagXk-Ypaz3LMTPwBR-w' \
+   --header 'content-type: application/json' --header 'go-client: pa' \
+   --data '{
+    "op_code": "add",
+    "add_data": [
+        {
+            "deletion_flag": null,
+            "company_code": "B22318608",
+            "country_code": "TW",
+            "scooter_vin": "PASWT2LHC5256EGW2",
+            "scooter_guid": "e1d3aafb-aa9d-4f26-a512-fd634308434d",
+            "matnr": "PIBUS-160-ORI",
+            "motor_num": "PIBUS-160-ORI",
+            "atmel_key": "ED554638AD91C64694A39262CA1A3C14663B8ACBDF8E074E98BBD965EA1969C8",
+            "atmel_sn": "0123F61FCBFED2A0B1",
+            "battery_count": null,
+            "manufacture_date": "2020-09-07",
+            "color_code": null,
+            "state": "9",
+            "es_state": "13",
+            "ecu_mac": "rpNx83uY",
+            "ecu_sn": "MABBQUFCBBIwABYzRQBkEA==",
+            "ecu_status": "1",
+            "keyfobs": [
+                {
+                    "id": "119",
+                    "mac": null,
+                    "sn": null,
+                    "status": "1"
+                }
+            ]
+        }
+    ]
+}'</msg>
+<msg timestamp="20200907 17:17:57.987" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200907 17:17:56.828" endtime="20200907 17:17:57.987"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${scooter_Id}</arg>
+<arg>${resp.json()['data'][0]['scooter_id']}</arg>
+</arguments>
+<msg timestamp="20200907 17:17:57.988" level="INFO">${scooter_Id} = VLxob3om</msg>
+<status status="PASS" starttime="20200907 17:17:57.987" endtime="20200907 17:17:57.988"></status>
+</kw>
+<status status="PASS" starttime="20200907 17:17:56.820" endtime="20200907 17:17:57.988"></status>
+</kw>
+<kw name="Create Batteries">
+<kw name="${index} IN RANGE [ 2 ]" type="for">
+<kw name="${index} = 0" type="foritem">
+<kw name="Create Battery">
+<arguments>
+<arg>${index}</arg>
+</arguments>
+<kw name="Setup Battery Variables">
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${Battery}</arg>
+<arg>${Batteries()}</arg>
+</arguments>
+<msg timestamp="20200907 17:17:57.990" level="INFO">${Battery} = &lt;MyGogoroObject.Batteries object at 0x102fa6290&gt;</msg>
+<status status="PASS" starttime="20200907 17:17:57.989" endtime="20200907 17:17:57.990"></status>
+</kw>
+<status status="PASS" starttime="20200907 17:17:57.989" endtime="20200907 17:17:57.990"></status>
+</kw>
+<kw name="Batteries Post" library="LibBatteries">
+<doc>Create batteries</doc>
+<arguments>
+<arg>${Battery.battery_guid}</arg>
+<arg>${Battery.battery_sn}</arg>
+<arg>${Battery.charge_cycles}\</arg>
+<arg>${Battery.state}</arg>
+<arg>${Battery.manufacture_date}</arg>
+<arg>${Battery.pn}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200907 17:17:58.744" level="INFO">http://10.6.1.46:3032/app/cipher?env=pa&amp;app=pa&amp;resource=pa&amp;username=pa.gen_admin@gogoro.com&amp;password=123</msg>
+<msg timestamp="20200907 17:17:58.828" level="INFO">Response message: 200
+Body: {
+    "code": 0,
+    "total_count": 1,
+    "data": [
+        {
+            "battery_guid": "34a4300b-b00a-4651-9df3-a8c25bb6fdd2",
+            "battery_sn": "TWPASWE9D5FSU",
+            "supplier": "string",
+            "country_code": "TW",
+            "manufacture_date": 1599436800,
+            "version": "string",
+            "hw_revision": "AS",
+            "avail_status": 1
+        }
+    ]
+}
+CURL:
+   curl -i --request POST --url https://pa-goplatform.gogoro.com:443/go-platform/v1/batteries \
+   --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI0RF82RE04Nm9BQ2ZkNWwzLTMzVzU4LVVQTUZoQVEzV1FWbDVQSFVoTE5BIn0.eyJqdGkiOiJhMmMxYWMyZS02ZjliLTQ2MDYtYWRlMS02NmZjYjFmMzY1ZmQiLCJleHAiOjE1OTk0NzExNzksIm5iZiI6MCwiaWF0IjoxNTk5NDcwMjc5LCJpc3MiOiJodHRwczovL3BhLWF1dGgta2V5Y2xvYWsuZ29nb3JvLmNvbS9hdXRoL3JlYWxtcy9nb2dvcm8iLCJhdWQiOiJwYSIsInN1YiI6IjIwMzUxNjllLTQ4NmQtNDM1YS1iMTZiLTgxMjdkYzM2MGFlZiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImF1dGgiLCJhdXRoX3RpbWUiOjAsInNlc3Npb25fc3RhdGUiOiI2OWQ1MGJmNi1iMzlkLTQ5M2MtODU0ZS00YjNjMjljYmU5N2IiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImFwcF9wYSJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InBhIjp7InJvbGVzIjpbInBhX2FkbWluIl19fSwiYXV0aG9yaXphdGlvbiI6eyJwZXJtaXNzaW9ucyI6W3sic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6IjhiMzFiZDgxLTEzZmEtNDhjMC1hZGRlLWUyMDZlYzdlYjgzNyIsInJzbmFtZSI6ImdvZ29yb191c2VyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNDZhZmRhYzYtNzg3ZC00ZDdmLWJjMWMtMDM2M2QzNjlkNTI3IiwicnNuYW1lIjoic2Nvb3Rlcl9jb250cmFjdCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImU4YWJjMTA3LTM0ZTgtNDdhYS04NjY4LTg4ODMyNmUwMjczOCIsInJzbmFtZSI6ImdvX2NoYXJnZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3ODc1MWJmNi00ZjU0LTQ0OTUtYTQ4YS0xMDA3MWE4Y2U0YTkiLCJyc25hbWUiOiJlbXBsb3llZSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImY0ZTVkNTJlLTQwNGQtNGY4OC1iNmEwLWY3N2I1NjBjMzA1MSIsInJzbmFtZSI6ImVzX2NhdGVnb3J5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiYTMxMzNjOWEtYzZkMC00ZTA1LThmZDgtZDBiMWM4OTA1Yzk1IiwicnNuYW1lIjoidm0ifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI1YTg0MTYyZC04MzM4LTRjY2ItOTNjYS05NjY4MDQ1ZmU4NmIiLCJyc25hbWUiOiJzY29vdGVyX2RlbGl2ZXJ5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzViYTRhMjEtYmFhNS00MDYwLTljZTktNTM4YzAxODcxNDAzIiwicnNuYW1lIjoic3dhIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiODFkZTc4MzktNjM0ZC00Yzc3LWI0MjEtODI4NDdlNzllNmNhIiwicnNuYW1lIjoiYmF0dGVyeSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImQzODhjM2IzLTNjMzItNDE1OC04NTM4LTZhZmNiZGU5YmRhZiIsInJzbmFtZSI6ImVzX2JpbGxfd3JpdGVvZmYifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiIxN2NkOGY0OC0yODBjLTQ5ZDQtOWFlZS05YWFjNmY5MmFlZjEiLCJyc25hbWUiOiJzY29vdGVyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzYxMmEwYjQtZDMxYS00MDA5LWJkZjQtODAxMmRjMmE1N2M3IiwicnNuYW1lIjoiZXNfYmlsbCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6Ijg4MDM5NDlhLWJiMjctNDMzNS1iMGQ4LWNmMTc5NjQ3NjA5OSIsInJzbmFtZSI6ImNvbXBhbnkifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4Y2U1ZDY0Ny0yMzViLTQ4OTItYWU0OC05NmJlZmM5OWUyMDYiLCJyc25hbWUiOiJzYWxlc19vcmRlciJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImYxNTE0ZWVjLWJhN2EtNGU5Ny05ZWRhLThmZmMxNjAzYjg0ZSIsInJzbmFtZSI6ImNhcnJpZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4MmY3NTY1Yy04OTllLTRjOTItOWM2MC1hNWM3MDI5ZjZlYTAiLCJyc25hbWUiOiJyd19wYWQifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3OTczODk4NC1mYTA2LTQ0NDYtYWVlZS1iYjlhMjlhMzM4MjQiLCJyc25hbWUiOiJwcmljaW5nIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiMzZmZjhlMmMtMzgyMy00MGI4LTk5NjYtZjZmZGI2YjMxYzRiIiwicnNuYW1lIjoicGFydHMifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI5NmY1MWIxNy1kZjU3LTQ0YWQtYjllMS1jMDE5ZTMwMGFhNDkiLCJyc25hbWUiOiJzY29vdGVyX2NvbnRyYWN0X3VzZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiJkMDg5MGYwMy01YzBmLTQ4MTQtYjExZS1mN2NjNmVlNzIyNzUiLCJyc25hbWUiOiJiYW5rIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNjI4MTY4YzItNjkxYS00NzliLTljNmYtZTIzNDE5MjlmY2EyIiwicnNuYW1lIjoiZXNfY29udHJhY3QifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3YjBmZWY2Yi0yZjdhLTQ1MGItYmJjMC1jMTZjMjg3YzE0NWYiLCJyc25hbWUiOiJzZXJ2aWNlX29yZGVyIn1dfSwic2NvcGUiOiJlbXBsb3llZSBlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImNvbXBhbnlfaWQiOiJacExieE5RSyIsImRlcGFydG1lbnRfaWQiOiJhNm1uTU5vYiIsImVtcGxveWVlX2lkIjoieUptNHFPTGEiLCJuYW1lIjoicGEgZ2VuX2FkbWluIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20iLCJnaXZlbl9uYW1lIjoicGEiLCJmYW1pbHlfbmFtZSI6Imdlbl9hZG1pbiIsImVtYWlsIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20ifQ.jANJEoEfNy6c3_NmYqYhR2SZnLM7GlDRczYcm8K2SIYAFpX62rDYlJrHLICNDuVuCLn6a8fPEbUIfd5oVp60HfJE8nHWqZGIVLOOz2ExDApsnBuj_b5tUMV6RBtkYY6bO2nBxYm-qMTP57nMHvIfHc72WMfu8csbfCWmgrMu3zoe8denHrY7zvR4WXWlv4Q0bdMavdPmTfGvIyxLaduQZ8WML5gDWcqoeasZ5VDK4m0wUMlBhryfaBmbWtJ6ejsw1Ki2FTSCGKBOsmVuH5YgtVAaKMBwhl9byre0K31SvFLS2buvI6z1PJoEVLNGnb36FymwfDV37VRnQUbGtJazOQ' \
+   --header 'content-type: application/json' --header 'go-client: pa' \
+   --data '{
+    "op_code": "add",
+    "add_data": [
+        {
+            "battery_guid": "34a4300b-b00a-4651-9df3-a8c25bb6fdd2",
+            "battery_sn": "TWPASWE9D5FSU",
+            "company_code": "1300",
+            "charge_cycles": "0",
+            "asset_type": "string",
+            "asset_owner": "string",
+            "state": "1",
+            "version": "string",
+            "supplier": "string",
+            "country_code": "TW",
+            "manufacture_date": "2020-09-07",
+            "stock_in_date": "string",
+            "stock_out_date": "string",
+            "pn": "QA_TEST_90",
+            "model_no": "string",
+            "manufacture_sn": "string",
+            "mainboard_pn": "string",
+            "mainboard_sn": "string",
+            "bb1_pn": "string",
+            "bb1_sn": "string",
+            "bb2_pn": "string",
+            "bb2_sn": "string",
+            "bb3_pn": "string",
+            "bb3_sn": "string",
+            "fpc_pn": "string",
+            "fpc_sn": "string",
+            "weight": "string"
+        }
+    ]
+}'</msg>
+<msg timestamp="20200907 17:17:58.828" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200907 17:17:57.990" endtime="20200907 17:17:58.828"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${battery_guid${index}}</arg>
+<arg>${Battery.battery_guid}</arg>
+</arguments>
+<msg timestamp="20200907 17:17:58.829" level="INFO">${battery_guid0} = 34a4300b-b00a-4651-9df3-a8c25bb6fdd2</msg>
+<status status="PASS" starttime="20200907 17:17:58.829" endtime="20200907 17:17:58.829"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${battery_sn${index}}</arg>
+<arg>${Battery.battery_sn}</arg>
+</arguments>
+<msg timestamp="20200907 17:17:58.831" level="INFO">${battery_sn0} = TWPASWE9D5FSU</msg>
+<status status="PASS" starttime="20200907 17:17:58.830" endtime="20200907 17:17:58.831"></status>
+</kw>
+<status status="PASS" starttime="20200907 17:17:57.988" endtime="20200907 17:17:58.831"></status>
+</kw>
+<status status="PASS" starttime="20200907 17:17:57.988" endtime="20200907 17:17:58.831"></status>
+</kw>
+<kw name="${index} = 1" type="foritem">
+<kw name="Create Battery">
+<arguments>
+<arg>${index}</arg>
+</arguments>
+<kw name="Setup Battery Variables">
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${Battery}</arg>
+<arg>${Batteries()}</arg>
+</arguments>
+<msg timestamp="20200907 17:17:58.832" level="INFO">${Battery} = &lt;MyGogoroObject.Batteries object at 0x102fba810&gt;</msg>
+<status status="PASS" starttime="20200907 17:17:58.832" endtime="20200907 17:17:58.832"></status>
+</kw>
+<status status="PASS" starttime="20200907 17:17:58.831" endtime="20200907 17:17:58.832"></status>
+</kw>
+<kw name="Batteries Post" library="LibBatteries">
+<doc>Create batteries</doc>
+<arguments>
+<arg>${Battery.battery_guid}</arg>
+<arg>${Battery.battery_sn}</arg>
+<arg>${Battery.charge_cycles}\</arg>
+<arg>${Battery.state}</arg>
+<arg>${Battery.manufacture_date}</arg>
+<arg>${Battery.pn}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200907 17:17:59.545" level="INFO">http://10.6.1.46:3032/app/cipher?env=pa&amp;app=pa&amp;resource=pa&amp;username=pa.gen_admin@gogoro.com&amp;password=123</msg>
+<msg timestamp="20200907 17:17:59.634" level="INFO">Response message: 200
+Body: {
+    "code": 0,
+    "total_count": 1,
+    "data": [
+        {
+            "battery_guid": "39f9efe5-5c17-4209-be04-f0136190290f",
+            "battery_sn": "TWPASW7JCBZJD",
+            "supplier": "string",
+            "country_code": "TW",
+            "manufacture_date": 1599436800,
+            "version": "string",
+            "hw_revision": "AS",
+            "avail_status": 1
+        }
+    ]
+}
+CURL:
+   curl -i --request POST --url https://pa-goplatform.gogoro.com:443/go-platform/v1/batteries \
+   --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI0RF82RE04Nm9BQ2ZkNWwzLTMzVzU4LVVQTUZoQVEzV1FWbDVQSFVoTE5BIn0.eyJqdGkiOiJkYTE5ZWEwYi04ZTY4LTQ5NjctODU0OC1lOTkyZWNkYjg0OTEiLCJleHAiOjE1OTk0NzExODAsIm5iZiI6MCwiaWF0IjoxNTk5NDcwMjgwLCJpc3MiOiJodHRwczovL3BhLWF1dGgta2V5Y2xvYWsuZ29nb3JvLmNvbS9hdXRoL3JlYWxtcy9nb2dvcm8iLCJhdWQiOiJwYSIsInN1YiI6IjIwMzUxNjllLTQ4NmQtNDM1YS1iMTZiLTgxMjdkYzM2MGFlZiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImF1dGgiLCJhdXRoX3RpbWUiOjAsInNlc3Npb25fc3RhdGUiOiIxNmYyOWM5YS1lYTc0LTQxNTEtYjE3NS02MTc4MmEwYzI3ZjgiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImFwcF9wYSJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InBhIjp7InJvbGVzIjpbInBhX2FkbWluIl19fSwiYXV0aG9yaXphdGlvbiI6eyJwZXJtaXNzaW9ucyI6W3sic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6IjhiMzFiZDgxLTEzZmEtNDhjMC1hZGRlLWUyMDZlYzdlYjgzNyIsInJzbmFtZSI6ImdvZ29yb191c2VyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNDZhZmRhYzYtNzg3ZC00ZDdmLWJjMWMtMDM2M2QzNjlkNTI3IiwicnNuYW1lIjoic2Nvb3Rlcl9jb250cmFjdCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImU4YWJjMTA3LTM0ZTgtNDdhYS04NjY4LTg4ODMyNmUwMjczOCIsInJzbmFtZSI6ImdvX2NoYXJnZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3ODc1MWJmNi00ZjU0LTQ0OTUtYTQ4YS0xMDA3MWE4Y2U0YTkiLCJyc25hbWUiOiJlbXBsb3llZSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImY0ZTVkNTJlLTQwNGQtNGY4OC1iNmEwLWY3N2I1NjBjMzA1MSIsInJzbmFtZSI6ImVzX2NhdGVnb3J5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiYTMxMzNjOWEtYzZkMC00ZTA1LThmZDgtZDBiMWM4OTA1Yzk1IiwicnNuYW1lIjoidm0ifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI1YTg0MTYyZC04MzM4LTRjY2ItOTNjYS05NjY4MDQ1ZmU4NmIiLCJyc25hbWUiOiJzY29vdGVyX2RlbGl2ZXJ5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzViYTRhMjEtYmFhNS00MDYwLTljZTktNTM4YzAxODcxNDAzIiwicnNuYW1lIjoic3dhIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiODFkZTc4MzktNjM0ZC00Yzc3LWI0MjEtODI4NDdlNzllNmNhIiwicnNuYW1lIjoiYmF0dGVyeSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImQzODhjM2IzLTNjMzItNDE1OC04NTM4LTZhZmNiZGU5YmRhZiIsInJzbmFtZSI6ImVzX2JpbGxfd3JpdGVvZmYifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiIxN2NkOGY0OC0yODBjLTQ5ZDQtOWFlZS05YWFjNmY5MmFlZjEiLCJyc25hbWUiOiJzY29vdGVyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzYxMmEwYjQtZDMxYS00MDA5LWJkZjQtODAxMmRjMmE1N2M3IiwicnNuYW1lIjoiZXNfYmlsbCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6Ijg4MDM5NDlhLWJiMjctNDMzNS1iMGQ4LWNmMTc5NjQ3NjA5OSIsInJzbmFtZSI6ImNvbXBhbnkifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4Y2U1ZDY0Ny0yMzViLTQ4OTItYWU0OC05NmJlZmM5OWUyMDYiLCJyc25hbWUiOiJzYWxlc19vcmRlciJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImYxNTE0ZWVjLWJhN2EtNGU5Ny05ZWRhLThmZmMxNjAzYjg0ZSIsInJzbmFtZSI6ImNhcnJpZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4MmY3NTY1Yy04OTllLTRjOTItOWM2MC1hNWM3MDI5ZjZlYTAiLCJyc25hbWUiOiJyd19wYWQifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3OTczODk4NC1mYTA2LTQ0NDYtYWVlZS1iYjlhMjlhMzM4MjQiLCJyc25hbWUiOiJwcmljaW5nIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiMzZmZjhlMmMtMzgyMy00MGI4LTk5NjYtZjZmZGI2YjMxYzRiIiwicnNuYW1lIjoicGFydHMifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI5NmY1MWIxNy1kZjU3LTQ0YWQtYjllMS1jMDE5ZTMwMGFhNDkiLCJyc25hbWUiOiJzY29vdGVyX2NvbnRyYWN0X3VzZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiJkMDg5MGYwMy01YzBmLTQ4MTQtYjExZS1mN2NjNmVlNzIyNzUiLCJyc25hbWUiOiJiYW5rIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNjI4MTY4YzItNjkxYS00NzliLTljNmYtZTIzNDE5MjlmY2EyIiwicnNuYW1lIjoiZXNfY29udHJhY3QifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3YjBmZWY2Yi0yZjdhLTQ1MGItYmJjMC1jMTZjMjg3YzE0NWYiLCJyc25hbWUiOiJzZXJ2aWNlX29yZGVyIn1dfSwic2NvcGUiOiJlbXBsb3llZSBlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImNvbXBhbnlfaWQiOiJacExieE5RSyIsImRlcGFydG1lbnRfaWQiOiJhNm1uTU5vYiIsImVtcGxveWVlX2lkIjoieUptNHFPTGEiLCJuYW1lIjoicGEgZ2VuX2FkbWluIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20iLCJnaXZlbl9uYW1lIjoicGEiLCJmYW1pbHlfbmFtZSI6Imdlbl9hZG1pbiIsImVtYWlsIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20ifQ.VGFp7V6tYYoNnmQ2hNT-L2Ckm9bQ_Bjlcf7F_fKATeqNEx9pfUZJ7WsKPuNjWAWWaCdI7XD8rQ-jOXBJVm0yPz2rqMadM6gl7vicISzFazge_XLPnUGgcyXZDhyd6bqcYZlb2n9Xtj8bZWGNscaOOuspLZMy9qczz5ZLS0i6uuX1J2Ba1qg5GM3TLQfKVCFzcdHR0rAHDP5198F10xSyp1K1g0pV4UF1T364l65F0IztJ37u2uMMlc8y_Pd-dbmvMopz4vv9DUXxhATYS0vrpGlDYGI6uHsgm14SSw653-ggZlytE_tnx91dnCS33g_kSOoQEFKXLC2S4N59qh12bg' \
+   --header 'content-type: application/json' --header 'go-client: pa' \
+   --data '{
+    "op_code": "add",
+    "add_data": [
+        {
+            "battery_guid": "39f9efe5-5c17-4209-be04-f0136190290f",
+            "battery_sn": "TWPASW7JCBZJD",
+            "company_code": "1300",
+            "charge_cycles": "0",
+            "asset_type": "string",
+            "asset_owner": "string",
+            "state": "1",
+            "version": "string",
+            "supplier": "string",
+            "country_code": "TW",
+            "manufacture_date": "2020-09-07",
+            "stock_in_date": "string",
+            "stock_out_date": "string",
+            "pn": "QA_TEST_69",
+            "model_no": "string",
+            "manufacture_sn": "string",
+            "mainboard_pn": "string",
+            "mainboard_sn": "string",
+            "bb1_pn": "string",
+            "bb1_sn": "string",
+            "bb2_pn": "string",
+            "bb2_sn": "string",
+            "bb3_pn": "string",
+            "bb3_sn": "string",
+            "fpc_pn": "string",
+            "fpc_sn": "string",
+            "weight": "string"
+        }
+    ]
+}'</msg>
+<msg timestamp="20200907 17:17:59.634" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200907 17:17:58.833" endtime="20200907 17:17:59.634"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${battery_guid${index}}</arg>
+<arg>${Battery.battery_guid}</arg>
+</arguments>
+<msg timestamp="20200907 17:17:59.635" level="INFO">${battery_guid1} = 39f9efe5-5c17-4209-be04-f0136190290f</msg>
+<status status="PASS" starttime="20200907 17:17:59.635" endtime="20200907 17:17:59.635"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${battery_sn${index}}</arg>
+<arg>${Battery.battery_sn}</arg>
+</arguments>
+<msg timestamp="20200907 17:17:59.636" level="INFO">${battery_sn1} = TWPASW7JCBZJD</msg>
+<status status="PASS" starttime="20200907 17:17:59.636" endtime="20200907 17:17:59.636"></status>
+</kw>
+<status status="PASS" starttime="20200907 17:17:58.831" endtime="20200907 17:17:59.636"></status>
+</kw>
+<status status="PASS" starttime="20200907 17:17:58.831" endtime="20200907 17:17:59.636"></status>
+</kw>
+<status status="PASS" starttime="20200907 17:17:57.988" endtime="20200907 17:17:59.636"></status>
+</kw>
+<status status="PASS" starttime="20200907 17:17:57.988" endtime="20200907 17:17:59.636"></status>
+</kw>
+<kw name="Batteries Swap Logs Post Gds" library="LibBatteriesSwapLogs">
+<doc>Add swap-log with gds source</doc>
+<arguments>
+<arg>${swap_id}</arg>
+<arg>${Scooter.scooter_guid}</arg>
+<arg>${battery_guid0}</arg>
+<arg>${battery_guid1}</arg>
+</arguments>
+<msg timestamp="20200907 17:18:00.585" level="INFO">http://10.6.1.46:3032/app/cipher?env=pa&amp;app=pa&amp;resource=pa&amp;username=pa.gen_admin@gogoro.com&amp;password=123</msg>
+<msg timestamp="20200907 17:18:00.653" level="INFO">Response message: 200
+Body: {
+    "code": 0
+}
+CURL:
+   curl -i --request POST --url https://pa-goplatform.gogoro.com:443/go-platform/v1/batteries/swap-logs \
+   --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI0RF82RE04Nm9BQ2ZkNWwzLTMzVzU4LVVQTUZoQVEzV1FWbDVQSFVoTE5BIn0.eyJqdGkiOiIzZWRjYmE3OC1iNGFhLTQyYTItODQ5Zi1mMmZhY2U4YzA2ZjAiLCJleHAiOjE1OTk0NzExODEsIm5iZiI6MCwiaWF0IjoxNTk5NDcwMjgxLCJpc3MiOiJodHRwczovL3BhLWF1dGgta2V5Y2xvYWsuZ29nb3JvLmNvbS9hdXRoL3JlYWxtcy9nb2dvcm8iLCJhdWQiOiJwYSIsInN1YiI6IjIwMzUxNjllLTQ4NmQtNDM1YS1iMTZiLTgxMjdkYzM2MGFlZiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImF1dGgiLCJhdXRoX3RpbWUiOjAsInNlc3Npb25fc3RhdGUiOiIwYjJiYmY1My0wODNiLTQ3MmItYWQyYy1kN2U5OGQ0ZjhlYzAiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImFwcF9wYSJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InBhIjp7InJvbGVzIjpbInBhX2FkbWluIl19fSwiYXV0aG9yaXphdGlvbiI6eyJwZXJtaXNzaW9ucyI6W3sic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6IjhiMzFiZDgxLTEzZmEtNDhjMC1hZGRlLWUyMDZlYzdlYjgzNyIsInJzbmFtZSI6ImdvZ29yb191c2VyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNDZhZmRhYzYtNzg3ZC00ZDdmLWJjMWMtMDM2M2QzNjlkNTI3IiwicnNuYW1lIjoic2Nvb3Rlcl9jb250cmFjdCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImU4YWJjMTA3LTM0ZTgtNDdhYS04NjY4LTg4ODMyNmUwMjczOCIsInJzbmFtZSI6ImdvX2NoYXJnZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3ODc1MWJmNi00ZjU0LTQ0OTUtYTQ4YS0xMDA3MWE4Y2U0YTkiLCJyc25hbWUiOiJlbXBsb3llZSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImY0ZTVkNTJlLTQwNGQtNGY4OC1iNmEwLWY3N2I1NjBjMzA1MSIsInJzbmFtZSI6ImVzX2NhdGVnb3J5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiYTMxMzNjOWEtYzZkMC00ZTA1LThmZDgtZDBiMWM4OTA1Yzk1IiwicnNuYW1lIjoidm0ifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI1YTg0MTYyZC04MzM4LTRjY2ItOTNjYS05NjY4MDQ1ZmU4NmIiLCJyc25hbWUiOiJzY29vdGVyX2RlbGl2ZXJ5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzViYTRhMjEtYmFhNS00MDYwLTljZTktNTM4YzAxODcxNDAzIiwicnNuYW1lIjoic3dhIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiODFkZTc4MzktNjM0ZC00Yzc3LWI0MjEtODI4NDdlNzllNmNhIiwicnNuYW1lIjoiYmF0dGVyeSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImQzODhjM2IzLTNjMzItNDE1OC04NTM4LTZhZmNiZGU5YmRhZiIsInJzbmFtZSI6ImVzX2JpbGxfd3JpdGVvZmYifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiIxN2NkOGY0OC0yODBjLTQ5ZDQtOWFlZS05YWFjNmY5MmFlZjEiLCJyc25hbWUiOiJzY29vdGVyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzYxMmEwYjQtZDMxYS00MDA5LWJkZjQtODAxMmRjMmE1N2M3IiwicnNuYW1lIjoiZXNfYmlsbCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6Ijg4MDM5NDlhLWJiMjctNDMzNS1iMGQ4LWNmMTc5NjQ3NjA5OSIsInJzbmFtZSI6ImNvbXBhbnkifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4Y2U1ZDY0Ny0yMzViLTQ4OTItYWU0OC05NmJlZmM5OWUyMDYiLCJyc25hbWUiOiJzYWxlc19vcmRlciJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImYxNTE0ZWVjLWJhN2EtNGU5Ny05ZWRhLThmZmMxNjAzYjg0ZSIsInJzbmFtZSI6ImNhcnJpZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4MmY3NTY1Yy04OTllLTRjOTItOWM2MC1hNWM3MDI5ZjZlYTAiLCJyc25hbWUiOiJyd19wYWQifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3OTczODk4NC1mYTA2LTQ0NDYtYWVlZS1iYjlhMjlhMzM4MjQiLCJyc25hbWUiOiJwcmljaW5nIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiMzZmZjhlMmMtMzgyMy00MGI4LTk5NjYtZjZmZGI2YjMxYzRiIiwicnNuYW1lIjoicGFydHMifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI5NmY1MWIxNy1kZjU3LTQ0YWQtYjllMS1jMDE5ZTMwMGFhNDkiLCJyc25hbWUiOiJzY29vdGVyX2NvbnRyYWN0X3VzZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiJkMDg5MGYwMy01YzBmLTQ4MTQtYjExZS1mN2NjNmVlNzIyNzUiLCJyc25hbWUiOiJiYW5rIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNjI4MTY4YzItNjkxYS00NzliLTljNmYtZTIzNDE5MjlmY2EyIiwicnNuYW1lIjoiZXNfY29udHJhY3QifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3YjBmZWY2Yi0yZjdhLTQ1MGItYmJjMC1jMTZjMjg3YzE0NWYiLCJyc25hbWUiOiJzZXJ2aWNlX29yZGVyIn1dfSwic2NvcGUiOiJlbXBsb3llZSBlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImNvbXBhbnlfaWQiOiJacExieE5RSyIsImRlcGFydG1lbnRfaWQiOiJhNm1uTU5vYiIsImVtcGxveWVlX2lkIjoieUptNHFPTGEiLCJuYW1lIjoicGEgZ2VuX2FkbWluIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20iLCJnaXZlbl9uYW1lIjoicGEiLCJmYW1pbHlfbmFtZSI6Imdlbl9hZG1pbiIsImVtYWlsIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20ifQ.epI7Twn6h_wfwpJAmkBODc-EXEbCmPRx_2askWn21_oxjTc0DP2XEUpw7Le2aee7ubwZ9n0-KxItTEm5fqPujH12zVZz42qMkmzV4AvpZKPCLPA7AIVWh9gJcO5f0Vv-aZtv8tLOSDV7zQgw4FXPFxqrZY0M6xBUJmu6mSNdmGrtTPS_fS6NVr8skb2tQJQnTr6I2WlXe-W3J7kcYi0sjrNEa0zHa9Uamkzdh_JpNfpcG1oyobEcbB-C1_44FdGHcnOWfVGsYUdO7ubH6uM_yUPqLHk1lLUDfZn0R2gb6GEEg7apXSb5TQV77k5js2MJ6c_FVCkFlQWWuEeo-HG4qQ' \
+   --header 'content-type: application/json' --header 'go-client: pa' \
+   --data '{
+    "op_code": "add",
+    "type": 2,
+    "add_data": [
+        {
+            "source": "gds",
+            "swap_logs": [
+                {
+                    "swap_id": "87799630",
+                    "scooter_guid": "e1d3aafb-aa9d-4f26-a512-fd634308434d",
+                    "other_id": "53435754-3032-3230-0000-000000000000",
+                    "swap_out": [
+                        {
+                            "battery_guid": "34a4300b-b00a-4651-9df3-a8c25bb6fdd2",
+                            "capacity": 15,
+                            "health": 1,
+                            "recycle_count": 400,
+                            "consumption": 30,
+                            "slot_id": 1,
+                            "slot_serial_id": "34a4300b-b00a-4651-9df3-a8c25bb6fdd2",
+                            "temp_cell": 31,
+                            "temp_mos": 32,
+                            "charging_rate": 0,
+                            "locked": true,
+                            "payload": "0x6464011E0000001E00000044C34610451046104410481046104810471043104310451043104810431004052310000000004B0B4B0B285A14004AEA110000000000000000000000000064131F00DE6F0200D7650200330600004B0B0000DE0A000000FFFF0000000000000000000000000000000000000000000000000080000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000FFFFFFFF00000000008000800000000000000000008000000000000000000000FF7F00000000000000000000000000000000000000000000000000000000000000000000FFFF00000000000000000000000000000000000000000000010414",
+                            "cell_type": 1,
+                            "case_type": 1,
+                            "ups": 0,
+                            "max_charging_rate": 0,
+                            "chargeable": true,
+                            "dischargeable": false
+                        },
+                        {
+                            "battery_guid": "39f9efe5-5c17-4209-be04-f0136190290f",
+                            "capacity": 16,
+                            "health": 1,
+                            "recycle_count": 400,
+                            "consumption": 32,
+                            "slot_id": 1,
+                            "slot_serial_id": "39f9efe5-5c17-4209-be04-f0136190290f",
+                            "temp_cell": 33,
+                            "temp_mos": 34,
+                            "charging_rate": 0,
+                            "locked": true,
+                            "payload": "0x6464011E0000001E00000044C34610451046104410481046104810471043104310451043104810431004052310000000004B0B4B0B285A14004AEA110000000000000000000000000064131F00DE6F0200D7650200330600004B0B0000DE0A000000FFFF0000000000000000000000000000000000000000000000000080000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000FFFFFFFF00000000008000800000000000000000008000000000000000000000FF7F00000000000000000000000000000000000000000000000000000000000000000000FFFF00000000000000000000000000000000000000000000010414",
+                            "cell_type": 1,
+                            "case_type": 1,
+                            "ups": 0,
+                            "max_charging_rate": 0,
+                            "chargeable": true,
+                            "dischargeable": false
+                        }
+                    ],
+                    "exchange_time": "2019-05-22T14:01:42.960000Z",
+                    "extra_exchange": 0,
+                    "rating": 9000,
+                    "rating_rule_id": "5EDBF33A-B7F7-64AB-8FB8-489D66395B7F",
+                    "action": 1,
+                    "rating_rule_type": 1,
+                    "eject_new_candidate": false,
+                    "base_price": 2.0,
+                    "pps_price": 124.0,
+                    "eula_state": 1,
+                    "real_time_scooter_info": 1,
+                    "eject_fail": 0
+                }
+            ]
+        }
+    ]
+}'</msg>
+<status status="PASS" starttime="20200907 17:17:59.637" endtime="20200907 17:18:00.654"></status>
+</kw>
+<kw name="Scooters Batteries Get" library="LibScootersBatteries">
+<doc>Get scooter batteries info</doc>
+<arguments>
+<arg>${scooter_Id}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200907 17:18:01.313" level="INFO">http://10.6.1.46:3032/app/cipher?env=pa&amp;app=pa&amp;resource=pa&amp;username=pa.gen_admin@gogoro.com&amp;password=123</msg>
+<msg timestamp="20200907 17:18:01.406" level="INFO">Response message: 200
+Body: {
+    "code": 0,
+    "total_count": 2,
+    "data": [
+        {
+            "id": "VLxob3om",
+            "batteries": [
+                {
+                    "swap_source": 1,
+                    "id": "VLxob3om",
+                    "battery_id": "pLbj42LQ",
+                    "battery_sn": "TWPASWE9D5FSU",
+                    "snap_time": 1558533702
+                },
+                {
+                    "swap_source": 1,
+                    "id": "VLxob3om",
+                    "battery_id": "VNW7kKNZ",
+                    "battery_sn": "TWPASW7JCBZJD",
+                    "snap_time": 1558533702
+                }
+            ]
+        }
+    ]
+}
+CURL:
+   curl -i --request POST --url https://pa-goplatform.gogoro.com:443/go-platform/v1/scooters/batteries \
+   --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI0RF82RE04Nm9BQ2ZkNWwzLTMzVzU4LVVQTUZoQVEzV1FWbDVQSFVoTE5BIn0.eyJqdGkiOiJhYTYyMzZkZS0zMzcwLTQwNTQtOGE1Mi1hNDQwODBjN2RkMGEiLCJleHAiOjE1OTk0NzExODIsIm5iZiI6MCwiaWF0IjoxNTk5NDcwMjgyLCJpc3MiOiJodHRwczovL3BhLWF1dGgta2V5Y2xvYWsuZ29nb3JvLmNvbS9hdXRoL3JlYWxtcy9nb2dvcm8iLCJhdWQiOiJwYSIsInN1YiI6IjIwMzUxNjllLTQ4NmQtNDM1YS1iMTZiLTgxMjdkYzM2MGFlZiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImF1dGgiLCJhdXRoX3RpbWUiOjAsInNlc3Npb25fc3RhdGUiOiI0MGQxZDUzNy1iMDFmLTQ3NzUtYWIxYy0wOTk0MDYyMGE3ZTQiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImFwcF9wYSJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InBhIjp7InJvbGVzIjpbInBhX2FkbWluIl19fSwiYXV0aG9yaXphdGlvbiI6eyJwZXJtaXNzaW9ucyI6W3sic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6IjhiMzFiZDgxLTEzZmEtNDhjMC1hZGRlLWUyMDZlYzdlYjgzNyIsInJzbmFtZSI6ImdvZ29yb191c2VyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNDZhZmRhYzYtNzg3ZC00ZDdmLWJjMWMtMDM2M2QzNjlkNTI3IiwicnNuYW1lIjoic2Nvb3Rlcl9jb250cmFjdCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImU4YWJjMTA3LTM0ZTgtNDdhYS04NjY4LTg4ODMyNmUwMjczOCIsInJzbmFtZSI6ImdvX2NoYXJnZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3ODc1MWJmNi00ZjU0LTQ0OTUtYTQ4YS0xMDA3MWE4Y2U0YTkiLCJyc25hbWUiOiJlbXBsb3llZSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImY0ZTVkNTJlLTQwNGQtNGY4OC1iNmEwLWY3N2I1NjBjMzA1MSIsInJzbmFtZSI6ImVzX2NhdGVnb3J5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiYTMxMzNjOWEtYzZkMC00ZTA1LThmZDgtZDBiMWM4OTA1Yzk1IiwicnNuYW1lIjoidm0ifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI1YTg0MTYyZC04MzM4LTRjY2ItOTNjYS05NjY4MDQ1ZmU4NmIiLCJyc25hbWUiOiJzY29vdGVyX2RlbGl2ZXJ5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzViYTRhMjEtYmFhNS00MDYwLTljZTktNTM4YzAxODcxNDAzIiwicnNuYW1lIjoic3dhIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiODFkZTc4MzktNjM0ZC00Yzc3LWI0MjEtODI4NDdlNzllNmNhIiwicnNuYW1lIjoiYmF0dGVyeSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImQzODhjM2IzLTNjMzItNDE1OC04NTM4LTZhZmNiZGU5YmRhZiIsInJzbmFtZSI6ImVzX2JpbGxfd3JpdGVvZmYifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiIxN2NkOGY0OC0yODBjLTQ5ZDQtOWFlZS05YWFjNmY5MmFlZjEiLCJyc25hbWUiOiJzY29vdGVyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzYxMmEwYjQtZDMxYS00MDA5LWJkZjQtODAxMmRjMmE1N2M3IiwicnNuYW1lIjoiZXNfYmlsbCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6Ijg4MDM5NDlhLWJiMjctNDMzNS1iMGQ4LWNmMTc5NjQ3NjA5OSIsInJzbmFtZSI6ImNvbXBhbnkifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4Y2U1ZDY0Ny0yMzViLTQ4OTItYWU0OC05NmJlZmM5OWUyMDYiLCJyc25hbWUiOiJzYWxlc19vcmRlciJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImYxNTE0ZWVjLWJhN2EtNGU5Ny05ZWRhLThmZmMxNjAzYjg0ZSIsInJzbmFtZSI6ImNhcnJpZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4MmY3NTY1Yy04OTllLTRjOTItOWM2MC1hNWM3MDI5ZjZlYTAiLCJyc25hbWUiOiJyd19wYWQifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3OTczODk4NC1mYTA2LTQ0NDYtYWVlZS1iYjlhMjlhMzM4MjQiLCJyc25hbWUiOiJwcmljaW5nIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiMzZmZjhlMmMtMzgyMy00MGI4LTk5NjYtZjZmZGI2YjMxYzRiIiwicnNuYW1lIjoicGFydHMifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI5NmY1MWIxNy1kZjU3LTQ0YWQtYjllMS1jMDE5ZTMwMGFhNDkiLCJyc25hbWUiOiJzY29vdGVyX2NvbnRyYWN0X3VzZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiJkMDg5MGYwMy01YzBmLTQ4MTQtYjExZS1mN2NjNmVlNzIyNzUiLCJyc25hbWUiOiJiYW5rIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNjI4MTY4YzItNjkxYS00NzliLTljNmYtZTIzNDE5MjlmY2EyIiwicnNuYW1lIjoiZXNfY29udHJhY3QifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3YjBmZWY2Yi0yZjdhLTQ1MGItYmJjMC1jMTZjMjg3YzE0NWYiLCJyc25hbWUiOiJzZXJ2aWNlX29yZGVyIn1dfSwic2NvcGUiOiJlbXBsb3llZSBlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImNvbXBhbnlfaWQiOiJacExieE5RSyIsImRlcGFydG1lbnRfaWQiOiJhNm1uTU5vYiIsImVtcGxveWVlX2lkIjoieUptNHFPTGEiLCJuYW1lIjoicGEgZ2VuX2FkbWluIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20iLCJnaXZlbl9uYW1lIjoicGEiLCJmYW1pbHlfbmFtZSI6Imdlbl9hZG1pbiIsImVtYWlsIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20ifQ.JrZ3PKw1OSHkcEqYLoob6RqIAqg-tsiN4jFVCcffJ5Be9uI-GjAJ9MUzNTKcAZ00C6eiUxpszVlS-g9gFJrLgClzw2ieYXFV6G3lWd1qo4WKzWjgMw0BGCVRRUrKDYjsS-y10AlSKgNUgI5smpm6PPleulhhAirRXnJAep7ETb8yTtfD3gS7WP-T8RNC0zdNr-cXOMdVZL2ulSz6kuLW4UQ3141TbJFLjyxd3xkUkqT2_WhMkKjJ75CdAVhUScMy96dFsiMl5wkUsVvYnMy3eRWlYrnVnyyzph99D1Iv_QcM2mLNHlKVRHWhH-F_Fy5EbJSrzLxqFsQwW32f73xIfQ' \
+   --header 'content-type: application/json' --header 'go-client: pa' \
+   --data '{
+    "op_code": "get",
+    "get_data": {
+        "scooter_ids": [
+            "VLxob3om"
+        ],
+        "snap_time_from": 0,
+        "snap_time_to": 0,
+        "current": 1,
+        "pagination_criteria": {
+            "offset": 0,
+            "limit": 2
+        }
+    }
+}'</msg>
+<msg timestamp="20200907 17:18:01.406" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200907 17:18:00.654" endtime="20200907 17:18:01.406"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>str('${battery_sn0}')[-6:]</arg>
+</arguments>
+<assign>
+<var>${last_six_sn}</var>
+</assign>
+<msg timestamp="20200907 17:18:01.407" level="INFO">${last_six_sn} = 9D5FSU</msg>
+<status status="PASS" starttime="20200907 17:18:01.406" endtime="20200907 17:18:01.407"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${last_six_sn}</arg>
+</arguments>
+<msg timestamp="20200907 17:18:01.408" level="INFO">${last_six_sn} = 9D5FSU</msg>
+<status status="PASS" starttime="20200907 17:18:01.407" endtime="20200907 17:18:01.408"></status>
+</kw>
+<kw name="Verify Response Contains Expected" library="keywords_common">
+<doc>Verify response message should be equals expected</doc>
+<arguments>
+<arg>${resp.json()['data'][0]['batteries'][0]['battery_sn']}</arg>
+<arg>${battery_sn0}</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="keywords_common">
+<doc>Build in compare two variables keyword with log</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+</arguments>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${key}'=='${EMPTY}'</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+<arg>ELSE</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: \nkey = ${key} Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<status status="PASS" starttime="20200907 17:18:01.411" endtime="20200907 17:18:01.412"></status>
+</kw>
+<status status="PASS" starttime="20200907 17:18:01.410" endtime="20200907 17:18:01.412"></status>
+</kw>
+<status status="PASS" starttime="20200907 17:18:01.409" endtime="20200907 17:18:01.412"></status>
+</kw>
+<status status="PASS" starttime="20200907 17:18:01.408" endtime="20200907 17:18:01.412"></status>
+</kw>
+<kw name="Verify Response Contains Expected" library="keywords_common">
+<doc>Verify response message should be equals expected</doc>
+<arguments>
+<arg>${resp.json()['data'][0]['batteries'][1]['battery_sn']}</arg>
+<arg>${battery_sn1}</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="keywords_common">
+<doc>Build in compare two variables keyword with log</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+</arguments>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${key}'=='${EMPTY}'</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+<arg>ELSE</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: \nkey = ${key} Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<status status="PASS" starttime="20200907 17:18:01.415" endtime="20200907 17:18:01.416"></status>
+</kw>
+<status status="PASS" starttime="20200907 17:18:01.414" endtime="20200907 17:18:01.416"></status>
+</kw>
+<status status="PASS" starttime="20200907 17:18:01.413" endtime="20200907 17:18:01.416"></status>
+</kw>
+<status status="PASS" starttime="20200907 17:18:01.412" endtime="20200907 17:18:01.416"></status>
+</kw>
+<status status="PASS" starttime="20200907 17:17:56.816" endtime="20200907 17:18:01.416"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>$${battery_sn0}</arg>
+</arguments>
+<msg timestamp="20200907 17:18:01.417" level="INFO">$TWPASWE9D5FSU</msg>
+<status status="PASS" starttime="20200907 17:18:01.417" endtime="20200907 17:18:01.417"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>"Battery1-sn = "${battery_sn0}</arg>
+</arguments>
+<status status="PASS" starttime="20200907 17:18:01.418" endtime="20200907 17:18:01.419"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>"Battery2-sn = "${battery_sn1}</arg>
+</arguments>
+<status status="PASS" starttime="20200907 17:18:01.420" endtime="20200907 17:18:01.421"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${Scooter.scooter_vin}</arg>
+</arguments>
+<msg timestamp="20200907 17:18:01.423" level="INFO">PASWT2LHC5256EGW2</msg>
+<status status="PASS" starttime="20200907 17:18:01.422" endtime="20200907 17:18:01.423"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>"Scooter-vin = "${Scooter.scooter_vin}</arg>
+</arguments>
+<status status="PASS" starttime="20200907 17:18:01.424" endtime="20200907 17:18:01.424"></status>
+</kw>
+<tags>
+<tag>MyGogoroWeb</tag>
+<tag>New-Sub</tag>
+</tags>
+<timeout value="5 minutes"></timeout>
+<status status="PASS" starttime="20200907 17:17:51.886" endtime="20200907 17:18:01.425" critical="yes"></status>
+</test>
+<doc>Test suite for MyGogoro new subscription flow</doc>
+<status status="PASS" starttime="20200907 17:17:49.562" endtime="20200907 17:18:01.433"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0">Critical Tests</stat>
+<stat pass="1" fail="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0">MyGogoroWeb</stat>
+<stat pass="1" fail="0">New-Sub</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" id="s1" name="mggr-create-GDK-scooter">mggr-create-GDK-scooter</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

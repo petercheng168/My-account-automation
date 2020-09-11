@@ -1,0 +1,122 @@
+{
+    "saveScooterInformation": {
+        "type": "object",
+        "required": [
+            "vrc",
+            "subscriber"
+        ],
+        "properties": {
+            "vrc": {
+                "$id": "#/properties/vrc",
+                "type": "object",
+                "required": [
+                    "plate",
+                    "vin",
+                    "filename",
+                    "batterySn"
+                ],
+                "properties": {
+                    "plate": {
+                        "type": "string"
+                    },
+                    "vin": {
+                        "type": "string"
+                    },
+                    "filename": {
+                        "type": "string"
+                    },
+                    "batterySn": {
+                        "type": "string"
+                    }
+                }
+            },
+            "subscriber": {
+                "type": "object",
+                "required": [
+                    "id",
+                    "gender",
+                    "firstName",
+                    "lastName",
+                    "birthday",
+                    "idNumber",
+                    "email",
+                    "mobile",
+                    "contactAddress",
+                    "invoiceAddress"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "gender": {
+                        "type": "string"
+                    },
+                    "firstName": {
+                        "type": "string"
+                    },
+                    "lastName": {
+                        "type": "string"
+                    },
+                    "birthday": {
+                        "type": "string"
+                    },
+                    "idNumber": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "mobile": {
+                        "type": "string"
+                    },
+                    "contactAddress": {
+                        "type": "object",
+                        "required": [
+                            "city",
+                            "district",
+                            "zipCode",
+                            "address"
+                        ],
+                        "properties": {
+                            "city": {
+                                "type": "string"
+                            },
+                            "district": {
+                                "type": "string"
+                            },
+                            "zipCode": {
+                                "type": "string"
+                            },
+                            "address": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "invoiceAddress": {
+                        "type": "object",
+                        "required": [
+                            "city",
+                            "district",
+                            "zipCode",
+                            "address"
+                        ],
+                        "properties": {
+                            "city": {
+                                "type": "string"
+                            },
+                            "district": {
+                                "type": "string"
+                            },
+                            "zipCode": {
+                                "type": "string"
+                            },
+                            "address": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

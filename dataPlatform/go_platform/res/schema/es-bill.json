@@ -1,0 +1,312 @@
+{
+    "esBillWithScooter": {
+        "required": [
+            "code",
+            "total_count",
+            "data"
+        ],
+        "type": "object",
+        "properties": {
+            "code": {
+                "type": "integer"
+            },
+            "total_count": {
+                "type": "integer"
+            },
+            "data": {
+                "type": "array",
+                "items": [
+                    {
+                        "type": "object",
+                        "properties": {
+                            "es_bill_id": {
+                                "type": "string"
+                            },
+                            "user_id": {
+                                "type": "string"
+                            },
+                            "bill_period": {
+                                "type": "string"
+                            },
+                            "bill_type": {
+                                "type": "integer"
+                            },
+                            "bank_barcode1": {
+                                "type": "string"
+                            },
+                            "bank_barcode2": {
+                                "type": "string"
+                            },
+                            "store_barcode1": {
+                                "type": "string"
+                            },
+                            "store_barcode2": {
+                                "type": "string"
+                            },
+                            "store_barcode3": {
+                                "type": "string"
+                            },
+                            "payment_type": {
+                                "type": "integer"
+                            },
+                            "payment_status": {
+                                "type": "integer"
+                            },
+                            "bill_to_addr": {
+                                "type": "string"
+                            },
+                            "bill_to_zipcode": {
+                                "type": "string"
+                            },
+                            "bill_to_email": {
+                                "type": "string"
+                            },
+                            "due_date": {
+                                "type": "integer"
+                            },
+                            "amount": {
+                                "type": "number"
+                            },
+                            "paid_amount": {
+                                "type": "number"
+                            },
+                            "date_from": {
+                                "type": "integer"
+                            },
+                            "date_to": {
+                                "type": "integer"
+                            },
+                            "issue_date": {
+                                "type": "integer"
+                            },
+                            "settle_date": {
+                                "type": "integer"
+                            },
+                            "settle_days": {
+                                "type": "integer"
+                            },
+                            "tran_no": {
+                                "type": "string"
+                            },
+                            "bill_to_name": {
+                                "type": "string"
+                            },
+                            "base_price_amount": {
+                                "type": "number"
+                            },
+                            "over_unit_price_amount": {
+                                "type": "number"
+                            },
+                            "other_charge_amount": {
+                                "type": "number"
+                            },
+                            "addon_price_amount": {
+                                "type": "number"
+                            },
+                            "promotion_price_amount": {
+                                "type": "number"
+                            },
+                            "penalty_amount": {
+                                "type": "number"
+                            },
+                            "delivery_method": {
+                                "type": "integer"
+                            },
+                            "previous_balance": {
+                                "type": "number"
+                            },
+                            "previous_paid_amount": {
+                                "type": "number"
+                            },
+                            "former_should_pay": {
+                                "type": "number"
+                            },
+                            "former_paid": {
+                                "type": "number"
+                            },
+                            "tax_amount": {
+                                "type": "number"
+                            },
+                            "tax_rate": {
+                                "type": "number"
+                            },
+                            "adjustment_amount": {
+                                "type": "number"
+                            },
+                            "balance": {
+                                "type": "number"
+                            },
+                            "bill_status": {
+                                "type": "integer"
+                            },
+                            "accumulated": {
+                                "type": "integer"
+                            },
+                            "create_time": {
+                                "type": "integer"
+                            },
+                            "update_time": {
+                                "type": "integer"
+                            },
+                            "es_bill_scooters": {
+                                "type": "array",
+                                "items": [
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "es_bill_scooter_id": {
+                                                "type": "string"
+                                            },
+                                            "es_bill_id": {
+                                                "type": "string"
+                                            },
+                                            "es_contract_id": {
+                                                "type": "string"
+                                            },
+                                            "scooter_id": {
+                                                "type": "string"
+                                            },
+                                            "bill_period": {
+                                                "type": "string"
+                                            },
+                                            "date_from": {
+                                                "type": "integer"
+                                            },
+                                            "date_to": {
+                                                "type": "integer"
+                                            },
+                                            "suspend_days": {
+                                                "type": "integer"
+                                            },
+                                            "vin": {
+                                                "type": "string"
+                                            },
+                                            "plate": {
+                                                "type": "string"
+                                            },
+                                            "contract_owner_name": {
+                                                "type": "string"
+                                            },
+                                            "contract_owner_profile_id": {
+                                                "type": "string"
+                                            },
+                                            "es_contract_code": {
+                                                "type": "string"
+                                            },
+                                            "details": {
+                                                "type": "array",
+                                                "items": [
+                                                    {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "es_bill_scooter_detail_id": {
+                                                                "type": "string"
+                                                            },
+                                                            "es_bill_scooter_id": {
+                                                                "type": "string"
+                                                            },
+                                                            "resource_type": {
+                                                                "type": "integer"
+                                                            },
+                                                            "other_data": {
+                                                                "type": "string"
+                                                            },
+                                                            "amount": {
+                                                                "type": "number"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "es_bill_scooter_detail_id",
+                                                            "es_bill_scooter_id",
+                                                            "resource_type",
+                                                            "other_data",
+                                                            "amount"
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        "required": [
+                                            "es_bill_scooter_id",
+                                            "es_bill_id",
+                                            "es_contract_id",
+                                            "scooter_id",
+                                            "bill_period",
+                                            "date_from",
+                                            "date_to",
+                                            "suspend_days",
+                                            "vin",
+                                            "plate",
+                                            "contract_owner_name",
+                                            "contract_owner_profile_id",
+                                            "es_contract_code",
+                                            "details"
+                                        ]
+                                    }
+                                ]
+                            },
+                            "es_bill_scooter_count": {
+                                "type": "integer"
+                            },
+                            "es_bill_write_off_count": {
+                                "type": "integer"
+                            },
+                            "es_bill_write_off_detail_count": {
+                                "type": "integer"
+                            }
+                        },
+                        "required": [
+                            "es_bill_id",
+                            "user_id",
+                            "bill_period",
+                            "bill_type",
+                            "bank_barcode1",
+                            "bank_barcode2",
+                            "store_barcode1",
+                            "store_barcode2",
+                            "store_barcode3",
+                            "payment_type",
+                            "payment_status",
+                            "bill_to_addr",
+                            "bill_to_zipcode",
+                            "bill_to_email",
+                            "due_date",
+                            "amount",
+                            "paid_amount",
+                            "date_from",
+                            "date_to",
+                            "issue_date",
+                            "settle_date",
+                            "settle_days",
+                            "tran_no",
+                            "bill_to_name",
+                            "base_price_amount",
+                            "over_unit_price_amount",
+                            "other_charge_amount",
+                            "addon_price_amount",
+                            "promotion_price_amount",
+                            "penalty_amount",
+                            "delivery_method",
+                            "previous_balance",
+                            "previous_paid_amount",
+                            "former_should_pay",
+                            "former_paid",
+                            "tax_amount",
+                            "tax_rate",
+                            "adjustment_amount",
+                            "balance",
+                            "bill_status",
+                            "accumulated",
+                            "create_time",
+                            "update_time",
+                            "es_bill_scooters",
+                            "es_bill_scooter_count",
+                            "es_bill_write_off_count",
+                            "es_bill_write_off_detail_count"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

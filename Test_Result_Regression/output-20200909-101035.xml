@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.1 (Python 3.7.4 on darwin)" generated="20200909 10:10:35.777" rpa="false">
+<suite id="s1" name="Mggr-New Subscription" source="/Users/peter.yf.cheng/Gitlab/Automation-test/MyGogoro_web/integration/web/mggr-new_subscription.robot">
+<kw name="Suite Setup" type="setup">
+<kw name="Open Browser" library="keywords_common">
+<doc>Create a chrome browser without UI display</doc>
+<arguments>
+<arg>${MYGOGORO_GN_DOMAIN}</arg>
+<arg>${WINDOW_HEIGHT}</arg>
+<arg>${WINDOW_WEIGHT}</arg>
+</arguments>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys, selenium.webdriver</arg>
+</arguments>
+<assign>
+<var>${chrome_options}</var>
+</assign>
+<msg timestamp="20200909 10:10:36.504" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x1102405d0&gt;</msg>
+<status status="PASS" starttime="20200909 10:10:36.503" endtime="20200909 10:10:36.504"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-extensions</arg>
+</arguments>
+<status status="PASS" starttime="20200909 10:10:36.505" endtime="20200909 10:10:36.507"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--headless</arg>
+</arguments>
+<status status="PASS" starttime="20200909 10:10:36.508" endtime="20200909 10:10:36.509"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-gpu</arg>
+</arguments>
+<status status="PASS" starttime="20200909 10:10:36.509" endtime="20200909 10:10:36.510"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--no-sandbox</arg>
+</arguments>
+<status status="PASS" starttime="20200909 10:10:36.510" endtime="20200909 10:10:36.511"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-setuid-sandbox</arg>
+</arguments>
+<status status="PASS" starttime="20200909 10:10:36.512" endtime="20200909 10:10:36.513"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-dev-shm-usage</arg>
+</arguments>
+<status status="PASS" starttime="20200909 10:10:36.515" endtime="20200909 10:10:36.515"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--incognito</arg>
+</arguments>
+<status status="PASS" starttime="20200909 10:10:36.517" endtime="20200909 10:10:36.518"></status>
+</kw>
+<kw name="Create Webdriver" library="Selenium2Library">
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<arguments>
+<arg>Chrome</arg>
+<arg>chrome_options=${chrome_options}</arg>
+<arg>executable_path=${BROWSER_PATH}/${DRIVER_VERSION}</arg>
+</arguments>
+<msg timestamp="20200909 10:10:36.521" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" starttime="20200909 10:10:36.520" endtime="20200909 10:10:37.880"></status>
+</kw>
+<kw name="Set Window Size" library="Selenium2Library">
+<doc>Sets current windows size to given ``width`` and ``height``.</doc>
+<arguments>
+<arg>${height}</arg>
+<arg>${weight}</arg>
+</arguments>
+<status status="PASS" starttime="20200909 10:10:37.882" endtime="20200909 10:10:37.991"></status>
+</kw>
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${url}</arg>
+</arguments>
+<msg timestamp="20200909 10:10:37.993" level="INFO">Opening url 'https://pa-network-my.gogoro.com/login?lang=zh-TW'</msg>
+<status status="PASS" starttime="20200909 10:10:37.992" endtime="20200909 10:10:39.491"></status>
+</kw>
+<status status="PASS" starttime="20200909 10:10:36.502" endtime="20200909 10:10:39.491"></status>
+</kw>
+<kw name="Signup User">
+<kw name="Setup User Variables">
+<kw name="Encode Password Get" library="LibAppCipher">
+<doc>encode password</doc>
+<arguments>
+<arg>Gogoro123</arg>
+</arguments>
+<assign>
+<var>${password}</var>
+</assign>
+<msg timestamp="20200909 10:10:39.512" level="INFO">${password} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200909 10:10:39.494" endtime="20200909 10:10:39.512"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${User}</arg>
+<arg>${User('${password.text}')}</arg>
+</arguments>
+<msg timestamp="20200909 10:10:39.513" level="INFO">${User} = &lt;MyGogoroObject.User object at 0x1102bda50&gt;</msg>
+<status status="PASS" starttime="20200909 10:10:39.512" endtime="20200909 10:10:39.513"></status>
+</kw>
+<status status="PASS" starttime="20200909 10:10:39.492" endtime="20200909 10:10:39.513"></status>
+</kw>
+<kw name="Users Post" library="LibUsers">
+<doc>Create user</doc>
+<arguments>
+<arg>${User.company_code}</arg>
+<arg>${User.first_name}</arg>
+<arg>${User.gender}</arg>
+<arg>${User.email}</arg>
+<arg>${User.status}\</arg>
+<arg>${User.enable_e_carrier}</arg>
+<arg>${User.last_name}</arg>
+<arg>${User.display_name}</arg>
+<arg>${User.birthday}\</arg>
+<arg>${User.contact_address}</arg>
+<arg>${User.contact_district}</arg>
+<arg>${User.contact_city}</arg>
+<arg>${User.contact_zipcode}\</arg>
+<arg>${User.invoice_address}</arg>
+<arg>${User.invoice_district}</arg>
+<arg>${User.invoice_city}</arg>
+<arg>${User.invoice_zipcode}\</arg>
+<arg>${User.country_code}</arg>
+<arg>mobile_phone1=${User.mobile}</arg>
+<arg>profile_id=E123456789</arg>
+<arg>password=${User.encode_password}\</arg>
+<arg>login_phone=${User.phone}</arg>
+<arg>occupation=${User.occupation}</arg>
+<arg>gogoro_guid=${User.gogoro_guid}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200909 10:10:40.209" level="INFO">http://10.6.1.46:3032/app/cipher?env=pa&amp;app=pa&amp;resource=pa&amp;username=pa.gen_admin@gogoro.com&amp;password=123</msg>
+<msg timestamp="20200909 10:10:40.576" level="INFO">Response message: 200
+Body: {
+    "code": 0,
+    "msg": "success",
+    "data": [
+        {
+            "user_id": "bNy5M3Nv"
+        }
+    ]
+}
+CURL:
+   curl -i --request POST --url https://pa-goplatform.gogoro.com:443/go-platform/v1/users \
+   --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI0RF82RE04Nm9BQ2ZkNWwzLTMzVzU4LVVQTUZoQVEzV1FWbDVQSFVoTE5BIn0.eyJqdGkiOiIyZTZjNGUwMi1mYzRiLTRkODYtODdmNy1jZDIwOTUwY2Q2YmIiLCJleHAiOjE1OTk2MTgzNDEsIm5iZiI6MCwiaWF0IjoxNTk5NjE3NDQxLCJpc3MiOiJodHRwczovL3BhLWF1dGgta2V5Y2xvYWsuZ29nb3JvLmNvbS9hdXRoL3JlYWxtcy9nb2dvcm8iLCJhdWQiOiJwYSIsInN1YiI6IjIwMzUxNjllLTQ4NmQtNDM1YS1iMTZiLTgxMjdkYzM2MGFlZiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImF1dGgiLCJhdXRoX3RpbWUiOjAsInNlc3Npb25fc3RhdGUiOiI5NjNjMjg0MS1hMzlmLTRiN2ItOGVhNC1jZDUwMGIwNWIxZGIiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImFwcF9wYSJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InBhIjp7InJvbGVzIjpbInBhX2FkbWluIl19fSwiYXV0aG9yaXphdGlvbiI6eyJwZXJtaXNzaW9ucyI6W3sic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6IjhiMzFiZDgxLTEzZmEtNDhjMC1hZGRlLWUyMDZlYzdlYjgzNyIsInJzbmFtZSI6ImdvZ29yb191c2VyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNDZhZmRhYzYtNzg3ZC00ZDdmLWJjMWMtMDM2M2QzNjlkNTI3IiwicnNuYW1lIjoic2Nvb3Rlcl9jb250cmFjdCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImU4YWJjMTA3LTM0ZTgtNDdhYS04NjY4LTg4ODMyNmUwMjczOCIsInJzbmFtZSI6ImdvX2NoYXJnZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3ODc1MWJmNi00ZjU0LTQ0OTUtYTQ4YS0xMDA3MWE4Y2U0YTkiLCJyc25hbWUiOiJlbXBsb3llZSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImY0ZTVkNTJlLTQwNGQtNGY4OC1iNmEwLWY3N2I1NjBjMzA1MSIsInJzbmFtZSI6ImVzX2NhdGVnb3J5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiYTMxMzNjOWEtYzZkMC00ZTA1LThmZDgtZDBiMWM4OTA1Yzk1IiwicnNuYW1lIjoidm0ifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI1YTg0MTYyZC04MzM4LTRjY2ItOTNjYS05NjY4MDQ1ZmU4NmIiLCJyc25hbWUiOiJzY29vdGVyX2RlbGl2ZXJ5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzViYTRhMjEtYmFhNS00MDYwLTljZTktNTM4YzAxODcxNDAzIiwicnNuYW1lIjoic3dhIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiODFkZTc4MzktNjM0ZC00Yzc3LWI0MjEtODI4NDdlNzllNmNhIiwicnNuYW1lIjoiYmF0dGVyeSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImQzODhjM2IzLTNjMzItNDE1OC04NTM4LTZhZmNiZGU5YmRhZiIsInJzbmFtZSI6ImVzX2JpbGxfd3JpdGVvZmYifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiIxN2NkOGY0OC0yODBjLTQ5ZDQtOWFlZS05YWFjNmY5MmFlZjEiLCJyc25hbWUiOiJzY29vdGVyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzYxMmEwYjQtZDMxYS00MDA5LWJkZjQtODAxMmRjMmE1N2M3IiwicnNuYW1lIjoiZXNfYmlsbCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6Ijg4MDM5NDlhLWJiMjctNDMzNS1iMGQ4LWNmMTc5NjQ3NjA5OSIsInJzbmFtZSI6ImNvbXBhbnkifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4Y2U1ZDY0Ny0yMzViLTQ4OTItYWU0OC05NmJlZmM5OWUyMDYiLCJyc25hbWUiOiJzYWxlc19vcmRlciJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImYxNTE0ZWVjLWJhN2EtNGU5Ny05ZWRhLThmZmMxNjAzYjg0ZSIsInJzbmFtZSI6ImNhcnJpZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4MmY3NTY1Yy04OTllLTRjOTItOWM2MC1hNWM3MDI5ZjZlYTAiLCJyc25hbWUiOiJyd19wYWQifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3OTczODk4NC1mYTA2LTQ0NDYtYWVlZS1iYjlhMjlhMzM4MjQiLCJyc25hbWUiOiJwcmljaW5nIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiMzZmZjhlMmMtMzgyMy00MGI4LTk5NjYtZjZmZGI2YjMxYzRiIiwicnNuYW1lIjoicGFydHMifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI5NmY1MWIxNy1kZjU3LTQ0YWQtYjllMS1jMDE5ZTMwMGFhNDkiLCJyc25hbWUiOiJzY29vdGVyX2NvbnRyYWN0X3VzZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiJkMDg5MGYwMy01YzBmLTQ4MTQtYjExZS1mN2NjNmVlNzIyNzUiLCJyc25hbWUiOiJiYW5rIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNjI4MTY4YzItNjkxYS00NzliLTljNmYtZTIzNDE5MjlmY2EyIiwicnNuYW1lIjoiZXNfY29udHJhY3QifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3YjBmZWY2Yi0yZjdhLTQ1MGItYmJjMC1jMTZjMjg3YzE0NWYiLCJyc25hbWUiOiJzZXJ2aWNlX29yZGVyIn1dfSwic2NvcGUiOiJlbXBsb3llZSBlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImNvbXBhbnlfaWQiOiJacExieE5RSyIsImRlcGFydG1lbnRfaWQiOiJhNm1uTU5vYiIsImVtcGxveWVlX2lkIjoieUptNHFPTGEiLCJuYW1lIjoicGEgZ2VuX2FkbWluIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20iLCJnaXZlbl9uYW1lIjoicGEiLCJmYW1pbHlfbmFtZSI6Imdlbl9hZG1pbiIsImVtYWlsIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20ifQ.dF_JtshxshuDebqEDEpIhCWRDEsmMqcNw3Ef1V5-OE6seygEImQs7exHwqkY_-TiExFeHhsbyBP1oOvrgmvHdKcSZZHPzCpKPaBPPQ7sW0IZ5Zsqjl5WXmBCgsF5Nflj0PV1D09-h7uAneFirRO78U_Zayd3I9f6Ux60OlhmenVVLGHbxfQeMpRSLVQB32D-8Q62gBOEZveCmHfTWJyCl9PAD2qaM6DmrZdv2BHzUOM1Ii2iGLuzjuJeQvbj9OoCjylEZskILqFxymoMQn8PosLs12nOBvOjlAr3Wse65e0foO103Paunn2192QFzZtCZvBlma5E2lwoHA2qFQMY2w' \
+   --header 'content-type: application/json' --header 'go-client: pa' \
+   --data '{
+    "op_code": "add",
+    "add_data": [
+        {
+            "company_code": 1300,
+            "first_name": "WVJMG",
+            "last_name": "PASWYGAWI",
+            "nick_name": "PASWYGAWIWVJMG",
+            "gender": "M",
+            "birthday": "2000-02-27",
+            "email": "pasw.verify.1599617439@yopmail.com",
+            "contact_address": "\u9577\u5b89\u6771\u8def\u4e8c\u6bb5225\u865fC\u68df11\u6a13",
+            "contact_district": "\u677e\u5c71\u5340",
+            "contact_city": "\u81fa\u5317\u5e02",
+            "contact_zip": "10552",
+            "invoice_address": "\u9577\u5b89\u6771\u8def\u4e8c\u6bb5225\u865fC\u68df11\u6a13",
+            "invoice_district": "\u677e\u5c71\u5340",
+            "invoice_city": "\u81fa\u5317\u5e02",
+            "invoice_zip": "10552",
+            "country_code": "TW",
+            "mobile_phone1": "0997391198",
+            "mobile_phone2": null,
+            "home_phone1": null,
+            "home_phone2": null,
+            "profile_id": "E123456789",
+            "password": "c1SmbaR8oM1hzVW0AlwvKyO/drw8gIxePQLqQK2u1r/U5C/E9lYF4CthppfVPWA5PoLEHT1AczH6ztcoVAaWoQ==",
+            "status": "1",
+            "gogoro_guid": "651f0e74-f154-4ea0-a74e-677570eadb88",
+            "enable_e_carrier": 1,
+            "photo_url": null,
+            "occupation": "1",
+            "eula_status": null,
+            "unit": null
+        }
+    ]
+}'</msg>
+<msg timestamp="20200909 10:10:40.576" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200909 10:10:39.514" endtime="20200909 10:10:40.576"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${user_Id}</arg>
+<arg>${resp.json()['data'][0]['user_id']}</arg>
+</arguments>
+<msg timestamp="20200909 10:10:40.579" level="INFO">${user_Id} = bNy5M3Nv</msg>
+<status status="PASS" starttime="20200909 10:10:40.577" endtime="20200909 10:10:40.579"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>login_phone=${User.phone}</arg>
+</arguments>
+<status status="PASS" starttime="20200909 10:10:40.579" endtime="20200909 10:10:40.580"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp.text}</arg>
+</arguments>
+<msg timestamp="20200909 10:10:40.582" level="INFO">{"code":0,"msg":"success","data":[{"user_id":"bNy5M3Nv"}]}</msg>
+<status status="PASS" starttime="20200909 10:10:40.582" endtime="20200909 10:10:40.582"></status>
+</kw>
+<kw name="Users Update Email Verified" library="LibUsers">
+<doc>Update user email_verified</doc>
+<arguments>
+<arg>${user_Id}</arg>
+<arg>1</arg>
+</arguments>
+<msg timestamp="20200909 10:10:41.158" level="FAIL">Get cipher error: 
+status code: 500
+api request: http://10.6.1.46:3032/app/cipher?env=pa&amp;app=pa&amp;resource=pa&amp;username=pa.gen_admin@gogoro.com&amp;password=123
+</msg>
+<status status="FAIL" starttime="20200909 10:10:40.583" endtime="20200909 10:10:41.158"></status>
+</kw>
+<status status="FAIL" starttime="20200909 10:10:39.492" endtime="20200909 10:10:41.158"></status>
+</kw>
+<status status="FAIL" starttime="20200909 10:10:36.501" endtime="20200909 10:10:41.158"></status>
+</kw>
+<test id="s1-t1" name="Create new subscription with addon">
+<tags>
+<tag>MyGogoroWeb</tag>
+<tag>New-Sub</tag>
+</tags>
+<timeout value="5 minutes"></timeout>
+<status status="FAIL" starttime="20200909 10:10:41.158" endtime="20200909 10:10:41.159" critical="yes">Parent suite setup failed:
+Get cipher error: 
+status code: 500
+api request: http://10.6.1.46:3032/app/cipher?env=pa&amp;app=pa&amp;resource=pa&amp;username=pa.gen_admin@gogoro.com&amp;password=123
+</status>
+</test>
+<doc>Test suite for MyGogoro new subscription flow</doc>
+<status status="FAIL" starttime="20200909 10:10:35.778" endtime="20200909 10:10:41.161">Suite setup failed:
+Get cipher error: 
+status code: 500
+api request: http://10.6.1.46:3032/app/cipher?env=pa&amp;app=pa&amp;resource=pa&amp;username=pa.gen_admin@gogoro.com&amp;password=123
+</status>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1">Critical Tests</stat>
+<stat pass="0" fail="1">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1">MyGogoroWeb</stat>
+<stat pass="0" fail="1">New-Sub</stat>
+</tag>
+<suite>
+<stat pass="0" fail="1" id="s1" name="Mggr-New Subscription">Mggr-New Subscription</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -1,0 +1,69 @@
+{
+    "partsGet": {
+        "type": "object",
+        "title": "The Root Schema",
+        "required": [
+            "code",
+            "total_count",
+            "data"
+        ],
+        "properties": {
+            "code": {
+                "type": "integer"
+            },
+            "total_count": {
+                "type": "integer"
+            },
+            "data": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "required": [
+                        "part_id",
+                        "company_id",
+                        "part_code",
+                        "parts_category_id",
+                        "parts_category_type",
+                        "parts_category_sub_type",
+                        "parts_category_name",
+                        "sale_status",
+                        "parts_update_time",
+                        "parts_insert_time"
+                    ],
+                    "properties": {
+                        "part_id": {
+                            "type": "string"
+                        },
+                        "company_id": {
+                            "type": "string"
+                        },
+                        "part_code": {
+                            "type": "string"
+                        },
+                        "parts_category_id": {
+                            "type": "string"
+                        },
+                        "parts_category_type": {
+                            "type": "integer"
+                        },
+                        "parts_category_sub_type": {
+                            "type": "integer"
+                        },
+                        "parts_category_name": {
+                            "type": "string"
+                        },
+                        "sale_status": {
+                            "type": "integer"
+                        },
+                        "parts_update_time": {
+                            "type": "integer"
+                        },
+                        "parts_insert_time": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

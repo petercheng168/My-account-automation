@@ -1,0 +1,114 @@
+{
+  "esContractsHistories": {
+    "type": "object",
+    "required": ["code", "total_count", "data"],
+    "properties": {
+      "code": {
+        "type": "integer"
+      },
+      "total_count": {
+        "type": "integer"
+      },
+      "data": {
+        "type": "array",
+        "items": [
+          {
+            "type": "object",
+            "properties": {
+              "es_contract_id": {
+                "type": "string"
+              },
+              "es_contract_code": {
+                "type": "string"
+              },
+              "update_by_emp_id": {
+                "type": "string"
+              },
+              "update_by_emp_code": {
+                "type": "string"
+              },
+              "create_time": {
+                "type": "integer"
+              },
+              "bill_to_user_type": {
+                "type": "integer"
+              },
+              "bill_to_user_id": {
+                "type": "string"
+              },
+              "contract_owner_id": {
+                "type": "string"
+              },
+              "contract_type": {
+                "type": "integer"
+              },
+              "payment_type": {
+                "type": "integer"
+              },
+              "payment_freq": {
+                "type": "integer"
+              },
+              "cycle_end_day": {
+                "type": "integer"
+              },
+              "bill_delivery_method": {
+                "type": "integer"
+              },
+              "invoice_type": {
+                "type": "integer"
+              },
+              "print_odometer_on_bill": {
+                "type": "integer"
+              },
+              "invoice_title": {
+                "type": "string"
+              },
+              "vat_number": {
+                "type": "string"
+              },
+              "payment_terms": {
+                "type": "integer"
+              },
+              "status": {
+                "type": "integer"
+              },
+              "status_update_time": {
+                "type": "integer"
+              },
+              "print_vat_on_invoice": {
+                "type": "integer"
+              },
+              "flow_status": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "es_contract_id",
+              "es_contract_code",
+              "update_by_emp_id",
+              "update_by_emp_code",
+              "create_time",
+              "bill_to_user_type",
+              "bill_to_user_id",
+              "contract_owner_id",
+              "contract_type",
+              "payment_type",
+              "payment_freq",
+              "cycle_end_day",
+              "bill_delivery_method",
+              "invoice_type",
+              "print_odometer_on_bill",
+              "invoice_title",
+              "vat_number",
+              "payment_terms",
+              "status",
+              "status_update_time",
+              "print_vat_on_invoice",
+              "flow_status"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

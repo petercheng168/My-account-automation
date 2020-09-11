@@ -1,0 +1,66 @@
+{
+    "esContractsAddonsGet": {
+        "type": "object",
+        "required": [
+            "code",
+            "total_count",
+            "data"
+        ],
+        "properties": {
+            "code": {
+                "type": "integer"
+            },
+            "total_count": {
+                "type": "integer"
+            },
+            "data": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "required": [
+                        "es_contract_id",
+                        "es_addon_id",
+                        "addon_code",
+                        "start_date",
+                        "end_date",
+                        "effective_date",
+                        "addon_name",
+                        "price",
+                        "payment_frequency",
+                        "free_terms_type",
+                        "free_terms",
+                        "other_price_type",
+                        "other_price",
+                        "addon_type"
+                    ],
+                    "properties": {
+                        "es_contract_id": {
+                            "type": "string"
+                        },
+                        "es_addon_id": {
+                            "type": "string"
+                        },
+                        "addon_code": {
+                            "type": "string"
+                        },
+                        "start_date": {
+                            "type": "integer"
+                        },
+                        "end_date": {
+                            "type": "integer"
+                        },
+                        "effective_date": {
+                            "type": "integer"
+                        },
+                        "addon_name": {
+                            "type": "string"
+                        },
+                        "price": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

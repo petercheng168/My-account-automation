@@ -1,0 +1,17 @@
+{
+    "getWithoutPromotionSubscription": {
+        "type": "object",
+        "required": [
+            "total",
+            "items"
+        ],
+        "properties": {
+            "total": {
+                "type": "integer"
+            },
+            "items": {
+                "type": "array"
+            }
+        }
+    }
+}

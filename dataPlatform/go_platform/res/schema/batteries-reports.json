@@ -1,0 +1,64 @@
+{
+  "batteriesReportsGet": {
+    "type": "object",
+    "required": ["code", "total_count", "data"],
+    "properties": {
+      "code": {
+        "type": "integer"
+      },
+      "total_count": {
+        "type": "integer"
+      },
+      "data": {
+        "type": "array",
+        "items": [
+          {
+            "type": "object",
+            "properties": {
+              "time": {
+                "type": "integer"
+              },
+              "login_user": {
+                "type": "string"
+              },
+              "battery_sn": {
+                "type": "string"
+              },
+              "status_cmds": {
+                "type": "array",
+                "items": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "cmd_id": {
+                        "type": "integer"
+                      },
+                      "cmd_val": {
+                        "type": "string"
+                      }
+                    },
+                    "required": ["cmd_id", "cmd_val"]
+                  }
+                ]
+              },
+              "description": {
+                "type": "string"
+              },
+              "log_path": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "time",
+              "login_user",
+              "battery_sn",
+              "status_cmds",
+              "description",
+              "log_path"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

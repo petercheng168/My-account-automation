@@ -1,0 +1,175 @@
+{
+    "errorWithIncorrectScooter": {
+        "type": "object",
+        "required": [
+            "error"
+        ],
+        "properties": {
+            "error": {
+                "type": "object",
+                "required": [
+                    "status",
+                    "code",
+                    "message"
+                ],
+                "properties": {
+                    "status": {
+                        "type": "integer"
+                    },
+                    "code": {
+                        "type": "integer"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    },
+    "getEmptyBill": {
+        "type": "object",
+        "required": [
+            "total",
+            "items"
+        ],
+        "properties": {
+            "total": {
+                "type": "integer"
+            },
+            "items": {
+                "type": "array"
+            }
+        }
+    },
+    "getEsContractBill": {
+        "type": "object",
+        "required": [
+            "total",
+            "items"
+        ],
+        "properties": {
+            "total": {
+                "type": "integer"
+            },
+            "items": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "required": [
+                        "id",
+                        "tranNo",
+                        "period",
+                        "total",
+                        "paid",
+                        "isPaid",
+                        "barcode",
+                        "dueTime",
+                        "createTime",
+                        "plans",
+                        "invoice"
+                    ],
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "tranNo": {
+                            "type": "string"
+                        },
+                        "period": {
+                            "type": "string"
+                        },
+                        "total": {
+                            "type": "integer"
+                        },
+                        "paid": {
+                            "type": "integer"
+                        },
+                        "isPaid": {
+                            "type": "boolean"
+                        },
+                        "barcode": {
+                            "type": "object",
+                            "required": [
+                                "atm",
+                                "cStore"
+                            ],
+                            "properties": {
+                                "atm": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "cStore": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        },
+                        "dueTime": {
+                            "type": "integer"
+                        },
+                        "createTime": {
+                            "type": "integer"
+                        },
+                        "plans": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "required": [
+                                    "id",
+                                    "sku",
+                                    "lockedLength",
+                                    "chargeType",
+                                    "chargeBase",
+                                    "chargeUnit",
+                                    "goRewards",
+                                    "startTime",
+                                    "effectiveTime",
+                                    "endTime"
+                                ],
+                                "properties": {
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "sku": {
+                                        "type": "string"
+                                    },
+                                    "lockedLength": {
+                                        "type": "integer"
+                                    },
+                                    "chargeType": {
+                                        "type": "string"
+                                    },
+                                    "chargeBase": {
+                                        "type": "integer"
+                                    },
+                                    "chargeUnit": {
+                                        "type": "string"
+                                    },
+                                    "goRewards": {
+                                        "type": "integer"
+                                    },
+                                    "startTime": {
+                                        "type": "integer"
+                                    },
+                                    "effectiveTime": {
+                                        "type": "integer"
+                                    },
+                                    "endTime": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        },
+                        "invoice": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

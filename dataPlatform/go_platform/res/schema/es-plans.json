@@ -1,0 +1,113 @@
+{
+    "esPlansGet": {
+        "type": "object",
+        "required": [
+            "code",
+            "data"
+        ],
+        "properties": {
+            "code": {
+                "type": "integer"
+            },
+            "data": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "required": [
+                        "plan_id",
+                        "company_id",
+                        "plan_target",
+                        "plan_name",
+                        "country_code",
+                        "payment_freq",
+                        "plan_price",
+                        "unit_base",
+                        "unit_threshold",
+                        "over_unit_price",
+                        "unit_threshold_1",
+                        "over_unit_price_1",
+                        "create_by_emp_Id",
+                        "valid_from",
+                        "status",
+                        "published",
+                        "plan_price_reward",
+                        "update_time",
+                        "create_time",
+                        "plan_price_usage"
+                    ],
+                    "properties": {
+                        "plan_id": {
+                            "type": "string"
+                        },
+                        "company_id": {
+                            "type": "string"
+                        },
+                        "plan_target": {
+                            "type": "integer"
+                        },
+                        "plan_name": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "country_code": {
+                            "type": "string"
+                        },
+                        "payment_freq": {
+                            "type": "integer"
+                        },
+                        "plan_price": {
+                            "type": "integer"
+                        },
+                        "unit_base": {
+                            "type": "integer"
+                        },
+                        "unit_threshold": {
+                            "type": "integer"
+                        },
+                        "over_unit_price": {
+                            "type": "number"
+                        },
+                        "unit_threshold_1": {
+                            "type": "integer"
+                        },
+                        "over_unit_price_1": {
+                            "type": "number"
+                        },
+                        "create_by_emp_Id": {
+                            "type": "string"
+                        },
+                        "valid_from": {
+                            "type": "integer"
+                        },
+                        "valid_to": {
+                            "type": "integer"
+                        },
+                        "early_termination_penalty": {
+                            "type": "integer"
+                        },
+                        "status": {
+                            "type": "integer"
+                        },
+                        "published": {
+                            "type": "integer"
+                        },
+                        "plan_price_reward": {
+                            "type": "integer"
+                        },
+                        "update_time": {
+                            "type": "integer"
+                        },
+                        "create_time": {
+                            "type": "integer"
+                        },
+                        "plan_price_usage": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

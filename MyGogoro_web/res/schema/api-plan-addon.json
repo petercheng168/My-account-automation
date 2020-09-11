@@ -1,0 +1,36 @@
+{
+    "getPublicAddon": {
+        "type": "object",
+        "required": [
+            "total",
+            "items"
+        ],
+        "properties": {
+            "total": {
+                "type": "integer"
+            },
+            "items": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "required": [
+                        "id",
+                        "sku",
+                        "charge"
+                    ],
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "sku": {
+                            "type": "string"
+                        },
+                        "charge": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

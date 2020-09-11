@@ -1,0 +1,162 @@
+{
+    "achApply": {
+        "200": {
+            "type": "object",
+            "required": [
+                "Code",
+                "ResultCode",
+                "ResultMessage"
+            ],
+            "properties": {
+                "Code": {
+                    "type": "integer"
+                },
+                "ResultCode": {
+                    "type": "integer"
+                },
+                "ResultMessage": {
+                    "type": "string"
+                }
+            }
+        },
+        "400": {
+            "type": "object",
+            "required": [
+                "Code",
+                "ResultCode",
+                "ResultMessage"
+            ],
+            "properties": {
+                "Code": {
+                    "type": "integer"
+                },
+                "ResultCode": {
+                    "type": "integer"
+                },
+                "ResultMessage": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "achAuthResult": {
+        "200_code_0": {
+            "type": "object",
+            "required": [
+                "Code",
+                "ResultCode",
+                "ResultMessage"
+            ],
+            "properties": {
+                "Code": {
+                    "type": "integer"
+                },
+                "ResultCode": {
+                    "type": "integer"
+                },
+                "ResultMessage": {
+                    "type": "string"
+                }
+            }
+        },
+        "200_code_1": {
+            "type": "object",
+            "required": [
+                "Code",
+                "ResultCode",
+                "ResultData"
+            ],
+            "properties": {
+                "Code": {
+                    "type": "integer"
+                },
+                "ResultCode": {
+                    "type": "integer"
+                },
+                "ResultData": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "Code",
+                            "esContractId",
+                            "ResultCode"
+                        ],
+                        "properties": {
+                            "Code": {
+                                "type": "integer"
+                            },
+                            "esContractId": {
+                                "type": "string"
+                            },
+                            "ResultCode": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "achWriteOffApply": {
+        "200": {
+            "type": "object",
+            "required": [
+                "Code",
+                "ResultCode",
+                "ResultMessage"
+            ],
+            "properties": {
+                "Code": {
+                    "type": "integer"
+                },
+                "ResultCode": {
+                    "type": "integer"
+                },
+                "ResultMessage": {
+                    "type": "string"
+                }
+            }
+        },
+        "400": {
+            "type": "object",
+            "required": [
+                "Code",
+                "ResultCode",
+                "ResultMessage"
+            ],
+            "properties": {
+                "Code": {
+                    "type": "integer"
+                },
+                "ResultCode": {
+                    "type": "integer"
+                },
+                "ResultMessage": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "achWriteOff": {
+        "200": {
+            "type": "object",
+            "required": [
+                "Code",
+                "ResultCode",
+                "ResultMessage"
+            ],
+            "properties": {
+                "Code": {
+                    "type": "integer"
+                },
+                "ResultCode": {
+                    "type": "integer"
+                },
+                "ResultMessage": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,76 @@
+{
+    "getScooterSwapHistory": {
+        "type": "object",
+        "required": [
+            "total",
+            "items"
+        ],
+        "properties": {
+            "total": {
+                "type": "integer"
+            },
+            "items": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "required": [
+                        "id",
+                        "charge",
+                        "mileage",
+                        "powerConsumption",
+                        "createTime",
+                        "location"
+                    ],
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "charge": {
+                            "type": "integer"
+                        },
+                        "mileage": {
+                            "type": "integer"
+                        },
+                        "powerConsumption": {
+                            "type": "integer"
+                        },
+                        "createTime": {
+                            "type": "integer"
+                        },
+                        "location": {
+                            "type": "object",
+                            "required": [
+                                "vm"
+                            ],
+                            "properties": {
+                                "vm": {
+                                    "type": "object",
+                                    "required": [
+                                        "id",
+                                        "name",
+                                        "vm_latitude",
+                                        "vm_longitude"
+                                    ],
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "object"
+                                        },
+                                        "vm_latitude": {
+                                            "type": "number"
+                                        },
+                                        "vm_longitude": {
+                                            "type": "number"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

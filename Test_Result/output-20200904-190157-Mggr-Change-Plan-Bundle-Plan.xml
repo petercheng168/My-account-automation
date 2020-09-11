@@ -1,0 +1,1982 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.1 (Python 3.7.4 on darwin)" generated="20200904 19:01:58.020" rpa="false">
+<suite id="s1" name="Mggr-Change-Plan-Bundle-Plan" source="/Users/peter.yf.cheng/Gitlab/Automation-test/MyGogoro_web/integration/web/mggr-change-plan-bundle-plan.robot">
+<kw name="SuiteSetup" type="setup">
+<kw name="Signup User">
+<kw name="Set User Variables">
+<kw name="Encode Password Get" library="LibAppCipher">
+<doc>encode password</doc>
+<arguments>
+<arg>Gogoro123</arg>
+</arguments>
+<assign>
+<var>${password}</var>
+</assign>
+<msg timestamp="20200904 19:01:58.902" level="INFO">${password} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200904 19:01:58.884" endtime="20200904 19:01:58.902"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${User}</arg>
+<arg>${User('${password.text}')}</arg>
+</arguments>
+<msg timestamp="20200904 19:01:58.907" level="INFO">${User} = &lt;MyGogoroObject.User object at 0x106380dd0&gt;</msg>
+<status status="PASS" starttime="20200904 19:01:58.903" endtime="20200904 19:01:58.907"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:01:58.883" endtime="20200904 19:01:58.907"></status>
+</kw>
+<kw name="Users Post" library="LibUsers">
+<doc>Create user</doc>
+<arguments>
+<arg>${User.company_code}</arg>
+<arg>${User.first_name}</arg>
+<arg>${User.gender}</arg>
+<arg>${User.email}</arg>
+<arg>${User.status}\</arg>
+<arg>${User.enable_e_carrier}</arg>
+<arg>${User.last_name}</arg>
+<arg>${User.display_name}</arg>
+<arg>${User.birthday}\</arg>
+<arg>${User.contact_address}</arg>
+<arg>${User.contact_district}</arg>
+<arg>${User.contact_city}</arg>
+<arg>${User.contact_zipcode}\</arg>
+<arg>${User.invoice_address}</arg>
+<arg>${User.invoice_district}</arg>
+<arg>${User.invoice_city}</arg>
+<arg>${User.invoice_zipcode}\</arg>
+<arg>${User.country_code}</arg>
+<arg>mobile_phone1=${User.mobile}</arg>
+<arg>profile_id=E123456789</arg>
+<arg>password=${User.encode_password}\</arg>
+<arg>login_phone=${User.phone}</arg>
+<arg>occupation=${User.occupation}</arg>
+<arg>gogoro_guid=${User.gogoro_guid}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200904 19:01:59.633" level="INFO">http://10.6.1.46:3032/app/cipher?env=pa&amp;app=pa&amp;resource=pa&amp;username=pa.gen_admin@gogoro.com&amp;password=123</msg>
+<msg timestamp="20200904 19:02:00.019" level="INFO">Response message: 200
+Body: {
+    "code": 0,
+    "msg": "success",
+    "data": [
+        {
+            "user_id": "kL5xjymQ"
+        }
+    ]
+}
+CURL:
+   curl -i --request POST --url https://pa-goplatform.gogoro.com:443/go-platform/v1/users \
+   --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI0RF82RE04Nm9BQ2ZkNWwzLTMzVzU4LVVQTUZoQVEzV1FWbDVQSFVoTE5BIn0.eyJqdGkiOiI1ZmI0OWVjNC1mOGMwLTRiNDMtOGU4Yy1lMmFlNDgzOTgwMTkiLCJleHAiOjE1OTkyMTgyMTksIm5iZiI6MCwiaWF0IjoxNTk5MjE3MzE5LCJpc3MiOiJodHRwczovL3BhLWF1dGgta2V5Y2xvYWsuZ29nb3JvLmNvbS9hdXRoL3JlYWxtcy9nb2dvcm8iLCJhdWQiOiJwYSIsInN1YiI6IjIwMzUxNjllLTQ4NmQtNDM1YS1iMTZiLTgxMjdkYzM2MGFlZiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImF1dGgiLCJhdXRoX3RpbWUiOjAsInNlc3Npb25fc3RhdGUiOiJjMDYxMzU5Mi00ZTg4LTRkOTgtYmJkNS02Njc3ZjczNWNjMDgiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImFwcF9wYSJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InBhIjp7InJvbGVzIjpbInBhX2FkbWluIl19fSwiYXV0aG9yaXphdGlvbiI6eyJwZXJtaXNzaW9ucyI6W3sic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6IjhiMzFiZDgxLTEzZmEtNDhjMC1hZGRlLWUyMDZlYzdlYjgzNyIsInJzbmFtZSI6ImdvZ29yb191c2VyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNDZhZmRhYzYtNzg3ZC00ZDdmLWJjMWMtMDM2M2QzNjlkNTI3IiwicnNuYW1lIjoic2Nvb3Rlcl9jb250cmFjdCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImU4YWJjMTA3LTM0ZTgtNDdhYS04NjY4LTg4ODMyNmUwMjczOCIsInJzbmFtZSI6ImdvX2NoYXJnZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3ODc1MWJmNi00ZjU0LTQ0OTUtYTQ4YS0xMDA3MWE4Y2U0YTkiLCJyc25hbWUiOiJlbXBsb3llZSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImY0ZTVkNTJlLTQwNGQtNGY4OC1iNmEwLWY3N2I1NjBjMzA1MSIsInJzbmFtZSI6ImVzX2NhdGVnb3J5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiYTMxMzNjOWEtYzZkMC00ZTA1LThmZDgtZDBiMWM4OTA1Yzk1IiwicnNuYW1lIjoidm0ifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI1YTg0MTYyZC04MzM4LTRjY2ItOTNjYS05NjY4MDQ1ZmU4NmIiLCJyc25hbWUiOiJzY29vdGVyX2RlbGl2ZXJ5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzViYTRhMjEtYmFhNS00MDYwLTljZTktNTM4YzAxODcxNDAzIiwicnNuYW1lIjoic3dhIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiODFkZTc4MzktNjM0ZC00Yzc3LWI0MjEtODI4NDdlNzllNmNhIiwicnNuYW1lIjoiYmF0dGVyeSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImQzODhjM2IzLTNjMzItNDE1OC04NTM4LTZhZmNiZGU5YmRhZiIsInJzbmFtZSI6ImVzX2JpbGxfd3JpdGVvZmYifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiIxN2NkOGY0OC0yODBjLTQ5ZDQtOWFlZS05YWFjNmY5MmFlZjEiLCJyc25hbWUiOiJzY29vdGVyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzYxMmEwYjQtZDMxYS00MDA5LWJkZjQtODAxMmRjMmE1N2M3IiwicnNuYW1lIjoiZXNfYmlsbCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6Ijg4MDM5NDlhLWJiMjctNDMzNS1iMGQ4LWNmMTc5NjQ3NjA5OSIsInJzbmFtZSI6ImNvbXBhbnkifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4Y2U1ZDY0Ny0yMzViLTQ4OTItYWU0OC05NmJlZmM5OWUyMDYiLCJyc25hbWUiOiJzYWxlc19vcmRlciJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImYxNTE0ZWVjLWJhN2EtNGU5Ny05ZWRhLThmZmMxNjAzYjg0ZSIsInJzbmFtZSI6ImNhcnJpZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4MmY3NTY1Yy04OTllLTRjOTItOWM2MC1hNWM3MDI5ZjZlYTAiLCJyc25hbWUiOiJyd19wYWQifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3OTczODk4NC1mYTA2LTQ0NDYtYWVlZS1iYjlhMjlhMzM4MjQiLCJyc25hbWUiOiJwcmljaW5nIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiMzZmZjhlMmMtMzgyMy00MGI4LTk5NjYtZjZmZGI2YjMxYzRiIiwicnNuYW1lIjoicGFydHMifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI5NmY1MWIxNy1kZjU3LTQ0YWQtYjllMS1jMDE5ZTMwMGFhNDkiLCJyc25hbWUiOiJzY29vdGVyX2NvbnRyYWN0X3VzZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiJkMDg5MGYwMy01YzBmLTQ4MTQtYjExZS1mN2NjNmVlNzIyNzUiLCJyc25hbWUiOiJiYW5rIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNjI4MTY4YzItNjkxYS00NzliLTljNmYtZTIzNDE5MjlmY2EyIiwicnNuYW1lIjoiZXNfY29udHJhY3QifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3YjBmZWY2Yi0yZjdhLTQ1MGItYmJjMC1jMTZjMjg3YzE0NWYiLCJyc25hbWUiOiJzZXJ2aWNlX29yZGVyIn1dfSwic2NvcGUiOiJlbXBsb3llZSBlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImNvbXBhbnlfaWQiOiJacExieE5RSyIsImRlcGFydG1lbnRfaWQiOiJhNm1uTU5vYiIsImVtcGxveWVlX2lkIjoieUptNHFPTGEiLCJuYW1lIjoicGEgZ2VuX2FkbWluIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20iLCJnaXZlbl9uYW1lIjoicGEiLCJmYW1pbHlfbmFtZSI6Imdlbl9hZG1pbiIsImVtYWlsIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20ifQ.AfFMA-LNgoy6NDcNSKts028-3dfWfcT-4O4KBTcw0GrGMJZjPmjwBLk7F9XuXVZZUljholWrbMDDdeaOOcWXSPxUPDrpCL8Y25B6vdNiHZ2CJq8DhkoU4y28dsTr3hmzts1_A0A3beI-1tETqqiwGzx4Rv8Ua4v5CDEUpuzIiPN28-WrGoLcoBW9RMV3HH1_ftyYEIqzSwpbM9wa3ihKKl0M3Kqyl8cR09IPQ-Y_orLBAUDmn43jr1zpAWcdoGY1eftT-g1AU2eOeQkbq2_bVNoiJPkm2PEqNh1rpol2A_XlxdfK6JEjulnLUYk6qlVBt2ONUrun6D1kkoe3a4oMSQ' \
+   --header 'content-type: application/json' --header 'go-client: pa' \
+   --data '{
+    "op_code": "add",
+    "add_data": [
+        {
+            "company_code": 1300,
+            "first_name": "TGWVD",
+            "last_name": "PASWTZZCK",
+            "nick_name": "PASWTZZCKTGWVD",
+            "gender": "M",
+            "birthday": "2000-02-22",
+            "email": "pasw.verify.1599217318@yopmail.com",
+            "contact_address": "\u9577\u5b89\u6771\u8def\u4e8c\u6bb5225\u865fC\u68df11\u6a13",
+            "contact_district": "\u677e\u5c71\u5340",
+            "contact_city": "\u81fa\u5317\u5e02",
+            "contact_zip": "10552",
+            "invoice_address": "\u9577\u5b89\u6771\u8def\u4e8c\u6bb5225\u865fC\u68df11\u6a13",
+            "invoice_district": "\u677e\u5c71\u5340",
+            "invoice_city": "\u81fa\u5317\u5e02",
+            "invoice_zip": "10552",
+            "country_code": "TW",
+            "mobile_phone1": "0965069479",
+            "mobile_phone2": null,
+            "home_phone1": null,
+            "home_phone2": null,
+            "profile_id": "E123456789",
+            "password": "c1SmbaR8oM1hzVW0AlwvKyO/drw8gIxePQLqQK2u1r/U5C/E9lYF4CthppfVPWA5PoLEHT1AczH6ztcoVAaWoQ==",
+            "status": "1",
+            "gogoro_guid": "1c885e3c-5c9b-4877-a25b-b4720130f682",
+            "enable_e_carrier": 1,
+            "photo_url": null,
+            "occupation": "1",
+            "eula_status": null,
+            "unit": null
+        }
+    ]
+}'</msg>
+<msg timestamp="20200904 19:02:00.019" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200904 19:01:58.908" endtime="20200904 19:02:00.019"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${birth}</arg>
+<arg>${User.birthday}</arg>
+</arguments>
+<msg timestamp="20200904 19:02:00.022" level="INFO">${birth} = 2000-02-22</msg>
+<status status="PASS" starttime="20200904 19:02:00.020" endtime="20200904 19:02:00.022"></status>
+</kw>
+<kw name="Split String" library="String">
+<doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
+<arguments>
+<arg>${birth}</arg>
+<arg>-</arg>
+</arguments>
+<assign>
+<var>@{birthday}</var>
+</assign>
+<msg timestamp="20200904 19:02:00.023" level="INFO">@{birthday} = [ 2000 | 02 | 22 ]</msg>
+<status status="PASS" starttime="20200904 19:02:00.023" endtime="20200904 19:02:00.023"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>@{birthday}[0]</arg>
+</arguments>
+<assign>
+<var>${User.year}</var>
+</assign>
+<msg timestamp="20200904 19:02:00.024" level="INFO">${User.year} = 2000</msg>
+<status status="PASS" starttime="20200904 19:02:00.023" endtime="20200904 19:02:00.024"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>@{birthday}[1]</arg>
+</arguments>
+<assign>
+<var>${User.month}</var>
+</assign>
+<msg timestamp="20200904 19:02:00.024" level="INFO">${User.month} = 02</msg>
+<status status="PASS" starttime="20200904 19:02:00.024" endtime="20200904 19:02:00.024"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>@{birthday}[2]</arg>
+</arguments>
+<assign>
+<var>${User.date}</var>
+</assign>
+<msg timestamp="20200904 19:02:00.025" level="INFO">${User.date} = 22</msg>
+<status status="PASS" starttime="20200904 19:02:00.025" endtime="20200904 19:02:00.025"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${resp.json()['data'][0]['user_id']}</arg>
+</arguments>
+<assign>
+<var>${user_id}</var>
+</assign>
+<msg timestamp="20200904 19:02:00.026" level="INFO">${user_id} = kL5xjymQ</msg>
+<status status="PASS" starttime="20200904 19:02:00.025" endtime="20200904 19:02:00.026"></status>
+</kw>
+<kw name="Users Update Email Verified" library="LibUsers">
+<doc>Update user email_verified</doc>
+<arguments>
+<arg>${user_id}</arg>
+<arg>1</arg>
+</arguments>
+<msg timestamp="20200904 19:02:00.809" level="INFO">http://10.6.1.46:3032/app/cipher?env=pa&amp;app=pa&amp;resource=pa&amp;username=pa.gen_admin@gogoro.com&amp;password=123</msg>
+<msg timestamp="20200904 19:02:00.975" level="INFO">Response message: 200
+Body: {
+    "code": 0
+}
+CURL:
+   curl -i --request POST --url https://pa-goplatform.gogoro.com:443/go-platform/v1/users \
+   --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI0RF82RE04Nm9BQ2ZkNWwzLTMzVzU4LVVQTUZoQVEzV1FWbDVQSFVoTE5BIn0.eyJqdGkiOiIwNzIwNjQ1Yi05MmVlLTQ3NTUtOGUwNS0yNTQ3ZjFjZjMyMzYiLCJleHAiOjE1OTkyMTgyMjAsIm5iZiI6MCwiaWF0IjoxNTk5MjE3MzIwLCJpc3MiOiJodHRwczovL3BhLWF1dGgta2V5Y2xvYWsuZ29nb3JvLmNvbS9hdXRoL3JlYWxtcy9nb2dvcm8iLCJhdWQiOiJwYSIsInN1YiI6IjIwMzUxNjllLTQ4NmQtNDM1YS1iMTZiLTgxMjdkYzM2MGFlZiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImF1dGgiLCJhdXRoX3RpbWUiOjAsInNlc3Npb25fc3RhdGUiOiIwNGZiZWU4My1iODRhLTQ4NGQtODZkMy0yNWNiNWU5NzMwN2IiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImFwcF9wYSJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InBhIjp7InJvbGVzIjpbInBhX2FkbWluIl19fSwiYXV0aG9yaXphdGlvbiI6eyJwZXJtaXNzaW9ucyI6W3sic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6IjhiMzFiZDgxLTEzZmEtNDhjMC1hZGRlLWUyMDZlYzdlYjgzNyIsInJzbmFtZSI6ImdvZ29yb191c2VyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNDZhZmRhYzYtNzg3ZC00ZDdmLWJjMWMtMDM2M2QzNjlkNTI3IiwicnNuYW1lIjoic2Nvb3Rlcl9jb250cmFjdCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImU4YWJjMTA3LTM0ZTgtNDdhYS04NjY4LTg4ODMyNmUwMjczOCIsInJzbmFtZSI6ImdvX2NoYXJnZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3ODc1MWJmNi00ZjU0LTQ0OTUtYTQ4YS0xMDA3MWE4Y2U0YTkiLCJyc25hbWUiOiJlbXBsb3llZSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImY0ZTVkNTJlLTQwNGQtNGY4OC1iNmEwLWY3N2I1NjBjMzA1MSIsInJzbmFtZSI6ImVzX2NhdGVnb3J5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiYTMxMzNjOWEtYzZkMC00ZTA1LThmZDgtZDBiMWM4OTA1Yzk1IiwicnNuYW1lIjoidm0ifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI1YTg0MTYyZC04MzM4LTRjY2ItOTNjYS05NjY4MDQ1ZmU4NmIiLCJyc25hbWUiOiJzY29vdGVyX2RlbGl2ZXJ5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzViYTRhMjEtYmFhNS00MDYwLTljZTktNTM4YzAxODcxNDAzIiwicnNuYW1lIjoic3dhIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiODFkZTc4MzktNjM0ZC00Yzc3LWI0MjEtODI4NDdlNzllNmNhIiwicnNuYW1lIjoiYmF0dGVyeSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImQzODhjM2IzLTNjMzItNDE1OC04NTM4LTZhZmNiZGU5YmRhZiIsInJzbmFtZSI6ImVzX2JpbGxfd3JpdGVvZmYifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiIxN2NkOGY0OC0yODBjLTQ5ZDQtOWFlZS05YWFjNmY5MmFlZjEiLCJyc25hbWUiOiJzY29vdGVyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzYxMmEwYjQtZDMxYS00MDA5LWJkZjQtODAxMmRjMmE1N2M3IiwicnNuYW1lIjoiZXNfYmlsbCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6Ijg4MDM5NDlhLWJiMjctNDMzNS1iMGQ4LWNmMTc5NjQ3NjA5OSIsInJzbmFtZSI6ImNvbXBhbnkifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4Y2U1ZDY0Ny0yMzViLTQ4OTItYWU0OC05NmJlZmM5OWUyMDYiLCJyc25hbWUiOiJzYWxlc19vcmRlciJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImYxNTE0ZWVjLWJhN2EtNGU5Ny05ZWRhLThmZmMxNjAzYjg0ZSIsInJzbmFtZSI6ImNhcnJpZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4MmY3NTY1Yy04OTllLTRjOTItOWM2MC1hNWM3MDI5ZjZlYTAiLCJyc25hbWUiOiJyd19wYWQifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3OTczODk4NC1mYTA2LTQ0NDYtYWVlZS1iYjlhMjlhMzM4MjQiLCJyc25hbWUiOiJwcmljaW5nIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiMzZmZjhlMmMtMzgyMy00MGI4LTk5NjYtZjZmZGI2YjMxYzRiIiwicnNuYW1lIjoicGFydHMifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI5NmY1MWIxNy1kZjU3LTQ0YWQtYjllMS1jMDE5ZTMwMGFhNDkiLCJyc25hbWUiOiJzY29vdGVyX2NvbnRyYWN0X3VzZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiJkMDg5MGYwMy01YzBmLTQ4MTQtYjExZS1mN2NjNmVlNzIyNzUiLCJyc25hbWUiOiJiYW5rIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNjI4MTY4YzItNjkxYS00NzliLTljNmYtZTIzNDE5MjlmY2EyIiwicnNuYW1lIjoiZXNfY29udHJhY3QifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3YjBmZWY2Yi0yZjdhLTQ1MGItYmJjMC1jMTZjMjg3YzE0NWYiLCJyc25hbWUiOiJzZXJ2aWNlX29yZGVyIn1dfSwic2NvcGUiOiJlbXBsb3llZSBlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImNvbXBhbnlfaWQiOiJacExieE5RSyIsImRlcGFydG1lbnRfaWQiOiJhNm1uTU5vYiIsImVtcGxveWVlX2lkIjoieUptNHFPTGEiLCJuYW1lIjoicGEgZ2VuX2FkbWluIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20iLCJnaXZlbl9uYW1lIjoicGEiLCJmYW1pbHlfbmFtZSI6Imdlbl9hZG1pbiIsImVtYWlsIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20ifQ.DuFs4kupMxIR-ghefRcOtep7FD2f2bOF76WCjc2SaW1vXUeOJUsHajB684RGBEMxn03K3y0uUigCKSzrg-7zP2LQR5tPfjoYGl90KyXjmL5EWU4FAlGWTNY11b-Jhlxe8FOqSAnoClxWo2yzAV4wyY_XzGsz5h9fTRYrMOI8A6HhTIpGsXRziXB9CH_BpixgrnmKwD9xpb56XmPIkAXmr7rdbm372nBTPsz3CuhqG7nPom9JdSPpU9LxSh_aeXCXJWa1rCdw-2NL_ht81bxYlkCBrH2XKosL3sLT1xLrYz9VjF1TSbvI-9jINQVx-p_RQ2b38qd19tFYo3DNFMHH5A' \
+   --header 'content-type: application/json' --header 'go-client: pa' \
+   --data '{
+    "op_code": "update",
+    "update_data": [
+        {
+            "user_id": "kL5xjymQ",
+            "email_verified": "1"
+        }
+    ]
+}'</msg>
+<status status="PASS" starttime="20200904 19:02:00.026" endtime="20200904 19:02:00.975"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:01:58.882" endtime="20200904 19:02:00.976"></status>
+</kw>
+<kw name="Sign In MyGogoro Account To Return New Cookie" library="keywords_account_signin">
+<doc>Sign-in MyGogoro account and return new gogoro-sess cookie</doc>
+<arguments>
+<arg>${User.email}</arg>
+<arg>${User.encode_password}</arg>
+</arguments>
+<assign>
+<var>${gogoro-sess}</var>
+<var>${csrf_token}</var>
+</assign>
+<kw name="Account Signin Post" library="LibAccountSignin">
+<doc>Sign-in mygogoro account.
+If need to return new gogoro-sess token, please use auth variable</doc>
+<arguments>
+<arg>${email}</arg>
+<arg>${password}</arg>
+<arg>auth=return_gogoro_sess</arg>
+</arguments>
+<assign>
+<var>${gogoro_sess}</var>
+<var>${csrf_token}</var>
+</assign>
+<msg timestamp="20200904 19:02:02.159" level="INFO">Method: get, uri: https://pa-network-my.gogoro.com/login
+https://pa-network-my.gogoro.com
+
+                Response message: {"id":"kL5xjymQ","guid":"1c885e3c-5c9b-4877-a25b-b4720130f682","firstName":"TGWVD","lastName":"PASWTZZCK","displayName":"PASWTZZCKTGWVD","username":{"email":"pasw.verify.1599217318@yopmail.com","emailVerified":1,"mobileVerified":0},"gender":"male","isVerified":true,"isEulaAccepted":false,"returnTo":"/","csrfToken":"BJV2YTq9-dWzZarZvguFwXTtAZOxtFUivUik"}
+                CURL: 
+curl -i --request POST --url https://pa-network-my.gogoro.com/account/sign-in --data 'b'{"username": {"email": "pasw.verify.1599217318@yopmail.com"}, "password": "c1SmbaR8oM1hzVW0AlwvKyO/drw8gIxePQLqQK2u1r/U5C/E9lYF4CthppfVPWA5PoLEHT1AczH6ztcoVAaWoQ==", "emailLogin": true}'' --hearder {'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'content-type': 'application/json', 'cookie': 'pa_gogoro-sess=s%3ABUEMmso1Df85ZlWEEQotrAaOks-Z52i7.pYYBkTot4HUKwDM94baheU2kkjZLlmV6Q4fFf3Bl7XQ;', 'x-xsrf-token': 'Lc6Vj6ri-IP3jv-YaXcgNonU16d-xKciZMEM', 'Content-Length': '185'}</msg>
+<msg timestamp="20200904 19:02:02.159" level="INFO">${gogoro_sess} = pa_gogoro-sess=s%3AEnD9ioIrs6HxEScraN6CQZG1fCwgyVZG.WVzEjlFPmU5CK5wbCqdXKgZjPRezFlEC81lkLPE5hkk;</msg>
+<msg timestamp="20200904 19:02:02.159" level="INFO">${csrf_token} = BJV2YTq9-dWzZarZvguFwXTtAZOxtFUivUik</msg>
+<status status="PASS" starttime="20200904 19:02:00.980" endtime="20200904 19:02:02.159"></status>
+</kw>
+<msg timestamp="20200904 19:02:02.159" level="INFO">${gogoro-sess} = pa_gogoro-sess=s%3AEnD9ioIrs6HxEScraN6CQZG1fCwgyVZG.WVzEjlFPmU5CK5wbCqdXKgZjPRezFlEC81lkLPE5hkk;</msg>
+<msg timestamp="20200904 19:02:02.160" level="INFO">${csrf_token} = BJV2YTq9-dWzZarZvguFwXTtAZOxtFUivUik</msg>
+<status status="PASS" starttime="20200904 19:02:00.977" endtime="20200904 19:02:02.160"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${gogoro-sess}</arg>
+</arguments>
+<msg timestamp="20200904 19:02:02.160" level="INFO">${gogoro-sess} = pa_gogoro-sess=s%3AEnD9ioIrs6HxEScraN6CQZG1fCwgyVZG.WVzEjlFPmU5CK5wbCqdXKgZjPRezFlEC81lkLPE5hkk;</msg>
+<status status="PASS" starttime="20200904 19:02:02.160" endtime="20200904 19:02:02.160"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${csrf_token}</arg>
+</arguments>
+<msg timestamp="20200904 19:02:02.161" level="INFO">${csrf_token} = BJV2YTq9-dWzZarZvguFwXTtAZOxtFUivUik</msg>
+<status status="PASS" starttime="20200904 19:02:02.161" endtime="20200904 19:02:02.161"></status>
+</kw>
+<kw name="Activate Subscription">
+<kw name="Mapping Scooter VIN And Batteries">
+<kw name="Generate Random String" library="String">
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<arguments>
+<arg>5</arg>
+<arg>[NUMBERS]</arg>
+</arguments>
+<assign>
+<var>${swap_id}</var>
+</assign>
+<msg timestamp="20200904 19:02:02.162" level="INFO">${swap_id} = 98036</msg>
+<status status="PASS" starttime="20200904 19:02:02.162" endtime="20200904 19:02:02.162"></status>
+</kw>
+<kw name="Create Scooter">
+<kw name="Setup Scooter Variables">
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${Scooter}</arg>
+<arg>${Scooters('B22318608', 'BUS')}</arg>
+</arguments>
+<msg timestamp="20200904 19:02:02.165" level="INFO">${Scooter} = &lt;MyGogoroObject.Scooters object at 0x106c52e90&gt;</msg>
+<status status="PASS" starttime="20200904 19:02:02.163" endtime="20200904 19:02:02.165"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:02.162" endtime="20200904 19:02:02.165"></status>
+</kw>
+<kw name="Scooters Post" library="LibScooters">
+<doc>Create scooter</doc>
+<arguments>
+<arg>${Scooter.company_code}</arg>
+<arg>TW</arg>
+<arg>${Scooter.scooter_vin}\</arg>
+<arg>${Scooter.scooter_guid}</arg>
+<arg>${Scooter.matnr}</arg>
+<arg>${Scooter.atmel_key}</arg>
+<arg>${Scooter.state}</arg>
+<arg>${Scooter.es_state}\</arg>
+<arg>${Scooter.ecu_status}</arg>
+<arg>${Scooter.keyfobs_status}</arg>
+<arg>keyfobs_id=${Scooter.keyfobs_id}\</arg>
+<arg>motor_num=${Scooter.motor_num}</arg>
+<arg>atmel_sn=${Scooter.atmel_sn}</arg>
+<arg>ecu_mac=${Scooter.ecu_mac}\</arg>
+<arg>ecu_sn=${Scooter.ecu_sn}</arg>
+<arg>manufacture_date=${Scooter.manufacture_date}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200904 19:02:03.016" level="INFO">http://10.6.1.46:3032/app/cipher?env=pa&amp;app=pa&amp;resource=pa&amp;username=pa.gen_admin@gogoro.com&amp;password=123</msg>
+<msg timestamp="20200904 19:02:03.273" level="INFO">Response message: 200
+Body: {
+    "code": 0,
+    "total_count": 1,
+    "data": [
+        {
+            "scooter_id": "ZNeDwpMR",
+            "scooter_guid": "61327a64-ad63-455e-981c-10e7b53a6412",
+            "vin": "PASW03TAVDV2NZE1T",
+            "brand_company_code": "GSS",
+            "material_num": "PIBUS-160-ORI",
+            "atmel_key": "TP+B6QWXS4xwX4NwNZRu0RuKioKx5hDPphIjN0qCwXj186Js9am03zSY5Z5eG/dzgAryNqmSVjSStympzCy9Z/SNWVtg3uuVdNfyPPDht+4zQZY/25rHBvYl6c9berQXp1IYUqLyZ2X5D6NstnX0O4e9WuEMmBgLbjtTFgGI9Kk=",
+            "atmel_sn": "0123F61FCBFED2A0B1",
+            "state": 9,
+            "es_state": 13,
+            "manufacture_time": 1599177600,
+            "country_code": "TW",
+            "ecu_mac": "rpNx83uY",
+            "motor_num": "PIBUS-160-ORI"
+        }
+    ],
+    "error_list": []
+}
+CURL:
+   curl -i --request POST --url https://pa-goplatform.gogoro.com:443/go-platform/v1/scooters \
+   --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI0RF82RE04Nm9BQ2ZkNWwzLTMzVzU4LVVQTUZoQVEzV1FWbDVQSFVoTE5BIn0.eyJqdGkiOiI3OTk4ZjY3NC02ZTM0LTQzZTItOGI0Ni03NzY0NDlkZjAwYWIiLCJleHAiOjE1OTkyMTgyMjIsIm5iZiI6MCwiaWF0IjoxNTk5MjE3MzIyLCJpc3MiOiJodHRwczovL3BhLWF1dGgta2V5Y2xvYWsuZ29nb3JvLmNvbS9hdXRoL3JlYWxtcy9nb2dvcm8iLCJhdWQiOiJwYSIsInN1YiI6IjIwMzUxNjllLTQ4NmQtNDM1YS1iMTZiLTgxMjdkYzM2MGFlZiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImF1dGgiLCJhdXRoX3RpbWUiOjAsInNlc3Npb25fc3RhdGUiOiI2ZGEzNThhYi1kNDMwLTRlYmEtYTMwYy0wNzcyOWU1OWI5ZmEiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImFwcF9wYSJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InBhIjp7InJvbGVzIjpbInBhX2FkbWluIl19fSwiYXV0aG9yaXphdGlvbiI6eyJwZXJtaXNzaW9ucyI6W3sic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6IjhiMzFiZDgxLTEzZmEtNDhjMC1hZGRlLWUyMDZlYzdlYjgzNyIsInJzbmFtZSI6ImdvZ29yb191c2VyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNDZhZmRhYzYtNzg3ZC00ZDdmLWJjMWMtMDM2M2QzNjlkNTI3IiwicnNuYW1lIjoic2Nvb3Rlcl9jb250cmFjdCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImU4YWJjMTA3LTM0ZTgtNDdhYS04NjY4LTg4ODMyNmUwMjczOCIsInJzbmFtZSI6ImdvX2NoYXJnZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3ODc1MWJmNi00ZjU0LTQ0OTUtYTQ4YS0xMDA3MWE4Y2U0YTkiLCJyc25hbWUiOiJlbXBsb3llZSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImY0ZTVkNTJlLTQwNGQtNGY4OC1iNmEwLWY3N2I1NjBjMzA1MSIsInJzbmFtZSI6ImVzX2NhdGVnb3J5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiYTMxMzNjOWEtYzZkMC00ZTA1LThmZDgtZDBiMWM4OTA1Yzk1IiwicnNuYW1lIjoidm0ifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI1YTg0MTYyZC04MzM4LTRjY2ItOTNjYS05NjY4MDQ1ZmU4NmIiLCJyc25hbWUiOiJzY29vdGVyX2RlbGl2ZXJ5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzViYTRhMjEtYmFhNS00MDYwLTljZTktNTM4YzAxODcxNDAzIiwicnNuYW1lIjoic3dhIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiODFkZTc4MzktNjM0ZC00Yzc3LWI0MjEtODI4NDdlNzllNmNhIiwicnNuYW1lIjoiYmF0dGVyeSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImQzODhjM2IzLTNjMzItNDE1OC04NTM4LTZhZmNiZGU5YmRhZiIsInJzbmFtZSI6ImVzX2JpbGxfd3JpdGVvZmYifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiIxN2NkOGY0OC0yODBjLTQ5ZDQtOWFlZS05YWFjNmY5MmFlZjEiLCJyc25hbWUiOiJzY29vdGVyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzYxMmEwYjQtZDMxYS00MDA5LWJkZjQtODAxMmRjMmE1N2M3IiwicnNuYW1lIjoiZXNfYmlsbCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6Ijg4MDM5NDlhLWJiMjctNDMzNS1iMGQ4LWNmMTc5NjQ3NjA5OSIsInJzbmFtZSI6ImNvbXBhbnkifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4Y2U1ZDY0Ny0yMzViLTQ4OTItYWU0OC05NmJlZmM5OWUyMDYiLCJyc25hbWUiOiJzYWxlc19vcmRlciJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImYxNTE0ZWVjLWJhN2EtNGU5Ny05ZWRhLThmZmMxNjAzYjg0ZSIsInJzbmFtZSI6ImNhcnJpZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4MmY3NTY1Yy04OTllLTRjOTItOWM2MC1hNWM3MDI5ZjZlYTAiLCJyc25hbWUiOiJyd19wYWQifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3OTczODk4NC1mYTA2LTQ0NDYtYWVlZS1iYjlhMjlhMzM4MjQiLCJyc25hbWUiOiJwcmljaW5nIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiMzZmZjhlMmMtMzgyMy00MGI4LTk5NjYtZjZmZGI2YjMxYzRiIiwicnNuYW1lIjoicGFydHMifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI5NmY1MWIxNy1kZjU3LTQ0YWQtYjllMS1jMDE5ZTMwMGFhNDkiLCJyc25hbWUiOiJzY29vdGVyX2NvbnRyYWN0X3VzZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiJkMDg5MGYwMy01YzBmLTQ4MTQtYjExZS1mN2NjNmVlNzIyNzUiLCJyc25hbWUiOiJiYW5rIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNjI4MTY4YzItNjkxYS00NzliLTljNmYtZTIzNDE5MjlmY2EyIiwicnNuYW1lIjoiZXNfY29udHJhY3QifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3YjBmZWY2Yi0yZjdhLTQ1MGItYmJjMC1jMTZjMjg3YzE0NWYiLCJyc25hbWUiOiJzZXJ2aWNlX29yZGVyIn1dfSwic2NvcGUiOiJlbXBsb3llZSBlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImNvbXBhbnlfaWQiOiJacExieE5RSyIsImRlcGFydG1lbnRfaWQiOiJhNm1uTU5vYiIsImVtcGxveWVlX2lkIjoieUptNHFPTGEiLCJuYW1lIjoicGEgZ2VuX2FkbWluIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20iLCJnaXZlbl9uYW1lIjoicGEiLCJmYW1pbHlfbmFtZSI6Imdlbl9hZG1pbiIsImVtYWlsIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20ifQ.ShDSo8JlyiUiMO8dUk0D0Yuj5b7RnChAfmASW1pBk50Btf-35gUfFM4CZ_3SndyeoHp05OEbJ7nUErzmO079bQNlHC9KPcgYxZZ8Ip9QLFwYQz0-uRfTIuLoBPDwfxbTuPyeJEiX85Dd2dR3YhCVGkVvN7lPjuIB34mJlaFluJTy_juXvVuU0npqSjlTCsTxnHaoDZhwuMkZyMalQhohmsE1tKWOUjmLwbIXzPduZCutjxrTjCVDKMOsocQo9EjZFrquLA8mjKGLbBMBWXk8F-Zi_031VYeqMWyGFvP_g2DQaWsxni0BuxZExRfNjfw8aPMPw942EFDqP4QYSOX_JQ' \
+   --header 'content-type: application/json' --header 'go-client: pa' \
+   --data '{
+    "op_code": "add",
+    "add_data": [
+        {
+            "deletion_flag": null,
+            "company_code": "B22318608",
+            "country_code": "TW",
+            "scooter_vin": "PASW03TAVDV2NZE1T",
+            "scooter_guid": "61327a64-ad63-455e-981c-10e7b53a6412",
+            "matnr": "PIBUS-160-ORI",
+            "motor_num": "PIBUS-160-ORI",
+            "atmel_key": "ED554638AD91C64694A39262CA1A3C14663B8ACBDF8E074E98BBD965EA1969C8",
+            "atmel_sn": "0123F61FCBFED2A0B1",
+            "battery_count": null,
+            "manufacture_date": "2020-09-04",
+            "color_code": null,
+            "state": "9",
+            "es_state": "13",
+            "ecu_mac": "rpNx83uY",
+            "ecu_sn": "MABBQUFCBBIwABYzRQBkEA==",
+            "ecu_status": "1",
+            "keyfobs": [
+                {
+                    "id": "176",
+                    "mac": null,
+                    "sn": null,
+                    "status": "1"
+                }
+            ]
+        }
+    ]
+}'</msg>
+<msg timestamp="20200904 19:02:03.273" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200904 19:02:02.166" endtime="20200904 19:02:03.273"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${scooter_id}</arg>
+<arg>${resp.json()['data'][0]['scooter_id']}</arg>
+</arguments>
+<msg timestamp="20200904 19:02:03.276" level="INFO">${scooter_id} = ZNeDwpMR</msg>
+<status status="PASS" starttime="20200904 19:02:03.274" endtime="20200904 19:02:03.276"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:02.162" endtime="20200904 19:02:03.276"></status>
+</kw>
+<kw name="Create Batteries">
+<kw name="${index} IN RANGE [ 2 ]" type="for">
+<kw name="${index} = 0" type="foritem">
+<kw name="Create Battery">
+<arguments>
+<arg>${index}</arg>
+</arguments>
+<kw name="Setup Battery Variables">
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${Battery}</arg>
+<arg>${Batteries()}</arg>
+</arguments>
+<msg timestamp="20200904 19:02:03.279" level="INFO">${Battery} = &lt;MyGogoroObject.Batteries object at 0x106c6e5d0&gt;</msg>
+<status status="PASS" starttime="20200904 19:02:03.277" endtime="20200904 19:02:03.279"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:03.277" endtime="20200904 19:02:03.280"></status>
+</kw>
+<kw name="Batteries Post" library="LibBatteries">
+<doc>Create batteries</doc>
+<arguments>
+<arg>${Battery.battery_guid}</arg>
+<arg>${Battery.battery_sn}</arg>
+<arg>${Battery.charge_cycles}\</arg>
+<arg>${Battery.state}</arg>
+<arg>${Battery.manufacture_date}</arg>
+<arg>${Battery.pn}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200904 19:02:03.940" level="INFO">http://10.6.1.46:3032/app/cipher?env=pa&amp;app=pa&amp;resource=pa&amp;username=pa.gen_admin@gogoro.com&amp;password=123</msg>
+<msg timestamp="20200904 19:02:04.308" level="INFO">Response message: 200
+Body: {
+    "code": 0,
+    "total_count": 1
+}
+CURL:
+   curl -i --request POST --url https://pa-goplatform.gogoro.com:443/go-platform/v1/batteries \
+   --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI0RF82RE04Nm9BQ2ZkNWwzLTMzVzU4LVVQTUZoQVEzV1FWbDVQSFVoTE5BIn0.eyJqdGkiOiIxOTg4MzBhMC1jYTIyLTQyN2ItOGMzNC04OWMyNDFiNmNjMDEiLCJleHAiOjE1OTkyMTgyMjMsIm5iZiI6MCwiaWF0IjoxNTk5MjE3MzIzLCJpc3MiOiJodHRwczovL3BhLWF1dGgta2V5Y2xvYWsuZ29nb3JvLmNvbS9hdXRoL3JlYWxtcy9nb2dvcm8iLCJhdWQiOiJwYSIsInN1YiI6IjIwMzUxNjllLTQ4NmQtNDM1YS1iMTZiLTgxMjdkYzM2MGFlZiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImF1dGgiLCJhdXRoX3RpbWUiOjAsInNlc3Npb25fc3RhdGUiOiI5NzNkMDY1Zi01NjBkLTQ4ZGUtYjczZi1lMjU1YzJmNDI4ZjUiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImFwcF9wYSJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InBhIjp7InJvbGVzIjpbInBhX2FkbWluIl19fSwiYXV0aG9yaXphdGlvbiI6eyJwZXJtaXNzaW9ucyI6W3sic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6IjhiMzFiZDgxLTEzZmEtNDhjMC1hZGRlLWUyMDZlYzdlYjgzNyIsInJzbmFtZSI6ImdvZ29yb191c2VyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNDZhZmRhYzYtNzg3ZC00ZDdmLWJjMWMtMDM2M2QzNjlkNTI3IiwicnNuYW1lIjoic2Nvb3Rlcl9jb250cmFjdCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImU4YWJjMTA3LTM0ZTgtNDdhYS04NjY4LTg4ODMyNmUwMjczOCIsInJzbmFtZSI6ImdvX2NoYXJnZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3ODc1MWJmNi00ZjU0LTQ0OTUtYTQ4YS0xMDA3MWE4Y2U0YTkiLCJyc25hbWUiOiJlbXBsb3llZSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImY0ZTVkNTJlLTQwNGQtNGY4OC1iNmEwLWY3N2I1NjBjMzA1MSIsInJzbmFtZSI6ImVzX2NhdGVnb3J5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiYTMxMzNjOWEtYzZkMC00ZTA1LThmZDgtZDBiMWM4OTA1Yzk1IiwicnNuYW1lIjoidm0ifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI1YTg0MTYyZC04MzM4LTRjY2ItOTNjYS05NjY4MDQ1ZmU4NmIiLCJyc25hbWUiOiJzY29vdGVyX2RlbGl2ZXJ5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzViYTRhMjEtYmFhNS00MDYwLTljZTktNTM4YzAxODcxNDAzIiwicnNuYW1lIjoic3dhIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiODFkZTc4MzktNjM0ZC00Yzc3LWI0MjEtODI4NDdlNzllNmNhIiwicnNuYW1lIjoiYmF0dGVyeSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImQzODhjM2IzLTNjMzItNDE1OC04NTM4LTZhZmNiZGU5YmRhZiIsInJzbmFtZSI6ImVzX2JpbGxfd3JpdGVvZmYifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiIxN2NkOGY0OC0yODBjLTQ5ZDQtOWFlZS05YWFjNmY5MmFlZjEiLCJyc25hbWUiOiJzY29vdGVyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzYxMmEwYjQtZDMxYS00MDA5LWJkZjQtODAxMmRjMmE1N2M3IiwicnNuYW1lIjoiZXNfYmlsbCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6Ijg4MDM5NDlhLWJiMjctNDMzNS1iMGQ4LWNmMTc5NjQ3NjA5OSIsInJzbmFtZSI6ImNvbXBhbnkifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4Y2U1ZDY0Ny0yMzViLTQ4OTItYWU0OC05NmJlZmM5OWUyMDYiLCJyc25hbWUiOiJzYWxlc19vcmRlciJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImYxNTE0ZWVjLWJhN2EtNGU5Ny05ZWRhLThmZmMxNjAzYjg0ZSIsInJzbmFtZSI6ImNhcnJpZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4MmY3NTY1Yy04OTllLTRjOTItOWM2MC1hNWM3MDI5ZjZlYTAiLCJyc25hbWUiOiJyd19wYWQifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3OTczODk4NC1mYTA2LTQ0NDYtYWVlZS1iYjlhMjlhMzM4MjQiLCJyc25hbWUiOiJwcmljaW5nIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiMzZmZjhlMmMtMzgyMy00MGI4LTk5NjYtZjZmZGI2YjMxYzRiIiwicnNuYW1lIjoicGFydHMifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI5NmY1MWIxNy1kZjU3LTQ0YWQtYjllMS1jMDE5ZTMwMGFhNDkiLCJyc25hbWUiOiJzY29vdGVyX2NvbnRyYWN0X3VzZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiJkMDg5MGYwMy01YzBmLTQ4MTQtYjExZS1mN2NjNmVlNzIyNzUiLCJyc25hbWUiOiJiYW5rIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNjI4MTY4YzItNjkxYS00NzliLTljNmYtZTIzNDE5MjlmY2EyIiwicnNuYW1lIjoiZXNfY29udHJhY3QifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3YjBmZWY2Yi0yZjdhLTQ1MGItYmJjMC1jMTZjMjg3YzE0NWYiLCJyc25hbWUiOiJzZXJ2aWNlX29yZGVyIn1dfSwic2NvcGUiOiJlbXBsb3llZSBlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImNvbXBhbnlfaWQiOiJacExieE5RSyIsImRlcGFydG1lbnRfaWQiOiJhNm1uTU5vYiIsImVtcGxveWVlX2lkIjoieUptNHFPTGEiLCJuYW1lIjoicGEgZ2VuX2FkbWluIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20iLCJnaXZlbl9uYW1lIjoicGEiLCJmYW1pbHlfbmFtZSI6Imdlbl9hZG1pbiIsImVtYWlsIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20ifQ.LJd_1jzSCmVbz9XbErEgq3Ir0NAdWcO5fziaOxHMpmxaB142mVL0_UjaTqsD4invlPzvgV-_t3sVPjXJQpX-lovqnPYqyShDyCEqKWLh7BJXOXXxSDIRtjMW8MdRY06cSxSkhpQMJleNEQPi4jAI5QKmj0G-S9cptiTB9rOVbg51giLN6_HPrWCGtnCG2KgiR-Vn9dG4iz8NtobKKgJhaVSmeb41eq5kNcr9gAmgOieJEEHGHH37LqyNPP2f-hQzKUGLmBnMEyi4ZKurm3UP0EfPA8ZQTLhToVhinbehHAX3DJKyJ34xP5Q0yfsKdKOErJzLHTgENRJZk8O6K5fj0A' \
+   --header 'content-type: application/json' --header 'go-client: pa' \
+   --data '{
+    "op_code": "add",
+    "add_data": [
+        {
+            "battery_guid": "6cd85ca4-937b-43f9-a195-f0f81562ab9a",
+            "battery_sn": "TWPASWJO3NR6C",
+            "company_code": "1300",
+            "charge_cycles": "0",
+            "asset_type": "string",
+            "asset_owner": "string",
+            "state": "1",
+            "version": "string",
+            "supplier": "string",
+            "country_code": "TW",
+            "manufacture_date": "2020-09-04",
+            "stock_in_date": "string",
+            "stock_out_date": "string",
+            "pn": "QA_TEST_08",
+            "model_no": "string",
+            "manufacture_sn": "string",
+            "mainboard_pn": "string",
+            "mainboard_sn": "string",
+            "bb1_pn": "string",
+            "bb1_sn": "string",
+            "bb2_pn": "string",
+            "bb2_sn": "string",
+            "bb3_pn": "string",
+            "bb3_sn": "string",
+            "fpc_pn": "string",
+            "fpc_sn": "string",
+            "weight": "string"
+        }
+    ]
+}'</msg>
+<msg timestamp="20200904 19:02:04.308" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200904 19:02:03.280" endtime="20200904 19:02:04.308"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${battery_guid${index}}</arg>
+<arg>${Battery.battery_guid}</arg>
+</arguments>
+<msg timestamp="20200904 19:02:04.314" level="INFO">${battery_guid0} = 6cd85ca4-937b-43f9-a195-f0f81562ab9a</msg>
+<status status="PASS" starttime="20200904 19:02:04.309" endtime="20200904 19:02:04.314"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${battery_sn${index}}</arg>
+<arg>${Battery.battery_sn}</arg>
+</arguments>
+<msg timestamp="20200904 19:02:04.319" level="INFO">${battery_sn0} = TWPASWJO3NR6C</msg>
+<status status="PASS" starttime="20200904 19:02:04.315" endtime="20200904 19:02:04.319"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:03.277" endtime="20200904 19:02:04.319"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:03.277" endtime="20200904 19:02:04.319"></status>
+</kw>
+<kw name="${index} = 1" type="foritem">
+<kw name="Create Battery">
+<arguments>
+<arg>${index}</arg>
+</arguments>
+<kw name="Setup Battery Variables">
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${Battery}</arg>
+<arg>${Batteries()}</arg>
+</arguments>
+<msg timestamp="20200904 19:02:04.322" level="INFO">${Battery} = &lt;MyGogoroObject.Batteries object at 0x106c68dd0&gt;</msg>
+<status status="PASS" starttime="20200904 19:02:04.321" endtime="20200904 19:02:04.322"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:04.320" endtime="20200904 19:02:04.322"></status>
+</kw>
+<kw name="Batteries Post" library="LibBatteries">
+<doc>Create batteries</doc>
+<arguments>
+<arg>${Battery.battery_guid}</arg>
+<arg>${Battery.battery_sn}</arg>
+<arg>${Battery.charge_cycles}\</arg>
+<arg>${Battery.state}</arg>
+<arg>${Battery.manufacture_date}</arg>
+<arg>${Battery.pn}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200904 19:02:04.992" level="INFO">http://10.6.1.46:3032/app/cipher?env=pa&amp;app=pa&amp;resource=pa&amp;username=pa.gen_admin@gogoro.com&amp;password=123</msg>
+<msg timestamp="20200904 19:02:05.136" level="INFO">Response message: 200
+Body: {
+    "code": 0,
+    "total_count": 1
+}
+CURL:
+   curl -i --request POST --url https://pa-goplatform.gogoro.com:443/go-platform/v1/batteries \
+   --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI0RF82RE04Nm9BQ2ZkNWwzLTMzVzU4LVVQTUZoQVEzV1FWbDVQSFVoTE5BIn0.eyJqdGkiOiIwOTU0MDZmNy1lZDAyLTQ1ZDEtYTNjNS1iNGFjN2JkNGVkMjkiLCJleHAiOjE1OTkyMTgyMjQsIm5iZiI6MCwiaWF0IjoxNTk5MjE3MzI0LCJpc3MiOiJodHRwczovL3BhLWF1dGgta2V5Y2xvYWsuZ29nb3JvLmNvbS9hdXRoL3JlYWxtcy9nb2dvcm8iLCJhdWQiOiJwYSIsInN1YiI6IjIwMzUxNjllLTQ4NmQtNDM1YS1iMTZiLTgxMjdkYzM2MGFlZiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImF1dGgiLCJhdXRoX3RpbWUiOjAsInNlc3Npb25fc3RhdGUiOiI5ZjA1Y2JmYi04MGU2LTRiOWMtYTE1Zi1mYzZhYzVhMGRkMzciLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImFwcF9wYSJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InBhIjp7InJvbGVzIjpbInBhX2FkbWluIl19fSwiYXV0aG9yaXphdGlvbiI6eyJwZXJtaXNzaW9ucyI6W3sic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6IjhiMzFiZDgxLTEzZmEtNDhjMC1hZGRlLWUyMDZlYzdlYjgzNyIsInJzbmFtZSI6ImdvZ29yb191c2VyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNDZhZmRhYzYtNzg3ZC00ZDdmLWJjMWMtMDM2M2QzNjlkNTI3IiwicnNuYW1lIjoic2Nvb3Rlcl9jb250cmFjdCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImU4YWJjMTA3LTM0ZTgtNDdhYS04NjY4LTg4ODMyNmUwMjczOCIsInJzbmFtZSI6ImdvX2NoYXJnZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3ODc1MWJmNi00ZjU0LTQ0OTUtYTQ4YS0xMDA3MWE4Y2U0YTkiLCJyc25hbWUiOiJlbXBsb3llZSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImY0ZTVkNTJlLTQwNGQtNGY4OC1iNmEwLWY3N2I1NjBjMzA1MSIsInJzbmFtZSI6ImVzX2NhdGVnb3J5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiYTMxMzNjOWEtYzZkMC00ZTA1LThmZDgtZDBiMWM4OTA1Yzk1IiwicnNuYW1lIjoidm0ifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI1YTg0MTYyZC04MzM4LTRjY2ItOTNjYS05NjY4MDQ1ZmU4NmIiLCJyc25hbWUiOiJzY29vdGVyX2RlbGl2ZXJ5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzViYTRhMjEtYmFhNS00MDYwLTljZTktNTM4YzAxODcxNDAzIiwicnNuYW1lIjoic3dhIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiODFkZTc4MzktNjM0ZC00Yzc3LWI0MjEtODI4NDdlNzllNmNhIiwicnNuYW1lIjoiYmF0dGVyeSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImQzODhjM2IzLTNjMzItNDE1OC04NTM4LTZhZmNiZGU5YmRhZiIsInJzbmFtZSI6ImVzX2JpbGxfd3JpdGVvZmYifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiIxN2NkOGY0OC0yODBjLTQ5ZDQtOWFlZS05YWFjNmY5MmFlZjEiLCJyc25hbWUiOiJzY29vdGVyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzYxMmEwYjQtZDMxYS00MDA5LWJkZjQtODAxMmRjMmE1N2M3IiwicnNuYW1lIjoiZXNfYmlsbCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6Ijg4MDM5NDlhLWJiMjctNDMzNS1iMGQ4LWNmMTc5NjQ3NjA5OSIsInJzbmFtZSI6ImNvbXBhbnkifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4Y2U1ZDY0Ny0yMzViLTQ4OTItYWU0OC05NmJlZmM5OWUyMDYiLCJyc25hbWUiOiJzYWxlc19vcmRlciJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImYxNTE0ZWVjLWJhN2EtNGU5Ny05ZWRhLThmZmMxNjAzYjg0ZSIsInJzbmFtZSI6ImNhcnJpZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4MmY3NTY1Yy04OTllLTRjOTItOWM2MC1hNWM3MDI5ZjZlYTAiLCJyc25hbWUiOiJyd19wYWQifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3OTczODk4NC1mYTA2LTQ0NDYtYWVlZS1iYjlhMjlhMzM4MjQiLCJyc25hbWUiOiJwcmljaW5nIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiMzZmZjhlMmMtMzgyMy00MGI4LTk5NjYtZjZmZGI2YjMxYzRiIiwicnNuYW1lIjoicGFydHMifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI5NmY1MWIxNy1kZjU3LTQ0YWQtYjllMS1jMDE5ZTMwMGFhNDkiLCJyc25hbWUiOiJzY29vdGVyX2NvbnRyYWN0X3VzZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiJkMDg5MGYwMy01YzBmLTQ4MTQtYjExZS1mN2NjNmVlNzIyNzUiLCJyc25hbWUiOiJiYW5rIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNjI4MTY4YzItNjkxYS00NzliLTljNmYtZTIzNDE5MjlmY2EyIiwicnNuYW1lIjoiZXNfY29udHJhY3QifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3YjBmZWY2Yi0yZjdhLTQ1MGItYmJjMC1jMTZjMjg3YzE0NWYiLCJyc25hbWUiOiJzZXJ2aWNlX29yZGVyIn1dfSwic2NvcGUiOiJlbXBsb3llZSBlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImNvbXBhbnlfaWQiOiJacExieE5RSyIsImRlcGFydG1lbnRfaWQiOiJhNm1uTU5vYiIsImVtcGxveWVlX2lkIjoieUptNHFPTGEiLCJuYW1lIjoicGEgZ2VuX2FkbWluIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20iLCJnaXZlbl9uYW1lIjoicGEiLCJmYW1pbHlfbmFtZSI6Imdlbl9hZG1pbiIsImVtYWlsIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20ifQ.UcuP52DtXXTI7TUQwlPozdlbR5HbMntdmvGpe8qlmJBeRc-YWZRMjTiFsajad2YefEeyBygjmISDpZjnZSMgIU39rnkHeKLO9BgrsXlD7-BBkRd6vTTe00fNTt9uw8ALR761zFkRwWUWIztqc0vggKb6pjyZawylsq104qk4MT5dR9_p55Z4hehIesv2WEXG-Bk2j2usmlpnWmryoGirpy0ThpyYmAXyirNAnJnD8Ob0Qt13YccSgIntM79FmYvJb3yr2-3Sv6t6kPAUklrsXyuXNWoP4_w5AypGtwtOWBkp3UH84Is0Li6ACwjiEDG2lOz8PF-sRbKswLekKIz13Q' \
+   --header 'content-type: application/json' --header 'go-client: pa' \
+   --data '{
+    "op_code": "add",
+    "add_data": [
+        {
+            "battery_guid": "814a3f41-1721-4922-a75b-26568c7d8066",
+            "battery_sn": "TWPASWIHHOS3K",
+            "company_code": "1300",
+            "charge_cycles": "0",
+            "asset_type": "string",
+            "asset_owner": "string",
+            "state": "1",
+            "version": "string",
+            "supplier": "string",
+            "country_code": "TW",
+            "manufacture_date": "2020-09-04",
+            "stock_in_date": "string",
+            "stock_out_date": "string",
+            "pn": "QA_TEST_08",
+            "model_no": "string",
+            "manufacture_sn": "string",
+            "mainboard_pn": "string",
+            "mainboard_sn": "string",
+            "bb1_pn": "string",
+            "bb1_sn": "string",
+            "bb2_pn": "string",
+            "bb2_sn": "string",
+            "bb3_pn": "string",
+            "bb3_sn": "string",
+            "fpc_pn": "string",
+            "fpc_sn": "string",
+            "weight": "string"
+        }
+    ]
+}'</msg>
+<msg timestamp="20200904 19:02:05.137" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200904 19:02:04.323" endtime="20200904 19:02:05.137"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${battery_guid${index}}</arg>
+<arg>${Battery.battery_guid}</arg>
+</arguments>
+<msg timestamp="20200904 19:02:05.143" level="INFO">${battery_guid1} = 814a3f41-1721-4922-a75b-26568c7d8066</msg>
+<status status="PASS" starttime="20200904 19:02:05.138" endtime="20200904 19:02:05.143"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${battery_sn${index}}</arg>
+<arg>${Battery.battery_sn}</arg>
+</arguments>
+<msg timestamp="20200904 19:02:05.148" level="INFO">${battery_sn1} = TWPASWIHHOS3K</msg>
+<status status="PASS" starttime="20200904 19:02:05.144" endtime="20200904 19:02:05.148"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:04.319" endtime="20200904 19:02:05.149"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:04.319" endtime="20200904 19:02:05.149"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:03.276" endtime="20200904 19:02:05.149"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:03.276" endtime="20200904 19:02:05.149"></status>
+</kw>
+<kw name="Batteries Swap Logs Post Gds" library="LibBatteriesSwapLogs">
+<doc>Add swap-log with gds source</doc>
+<arguments>
+<arg>${swap_id}</arg>
+<arg>${Scooter.scooter_guid}</arg>
+<arg>${battery_guid0}</arg>
+<arg>${battery_guid1}</arg>
+</arguments>
+<msg timestamp="20200904 19:02:05.846" level="INFO">http://10.6.1.46:3032/app/cipher?env=pa&amp;app=pa&amp;resource=pa&amp;username=pa.gen_admin@gogoro.com&amp;password=123</msg>
+<msg timestamp="20200904 19:02:06.145" level="INFO">Response message: 200
+Body: {
+    "code": 0
+}
+CURL:
+   curl -i --request POST --url https://pa-goplatform.gogoro.com:443/go-platform/v1/batteries/swap-logs \
+   --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI0RF82RE04Nm9BQ2ZkNWwzLTMzVzU4LVVQTUZoQVEzV1FWbDVQSFVoTE5BIn0.eyJqdGkiOiI3Njk0MmUwZi1iYTk1LTRhYjQtYmY3Mi03NTI2MDFiYTcxMjEiLCJleHAiOjE1OTkyMTgyMjUsIm5iZiI6MCwiaWF0IjoxNTk5MjE3MzI1LCJpc3MiOiJodHRwczovL3BhLWF1dGgta2V5Y2xvYWsuZ29nb3JvLmNvbS9hdXRoL3JlYWxtcy9nb2dvcm8iLCJhdWQiOiJwYSIsInN1YiI6IjIwMzUxNjllLTQ4NmQtNDM1YS1iMTZiLTgxMjdkYzM2MGFlZiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImF1dGgiLCJhdXRoX3RpbWUiOjAsInNlc3Npb25fc3RhdGUiOiJmNzYxMWU2OS1hOTZjLTRkYjItYTcyNC1mYzU3NGM1NTY2NWQiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImFwcF9wYSJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InBhIjp7InJvbGVzIjpbInBhX2FkbWluIl19fSwiYXV0aG9yaXphdGlvbiI6eyJwZXJtaXNzaW9ucyI6W3sic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6IjhiMzFiZDgxLTEzZmEtNDhjMC1hZGRlLWUyMDZlYzdlYjgzNyIsInJzbmFtZSI6ImdvZ29yb191c2VyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNDZhZmRhYzYtNzg3ZC00ZDdmLWJjMWMtMDM2M2QzNjlkNTI3IiwicnNuYW1lIjoic2Nvb3Rlcl9jb250cmFjdCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImU4YWJjMTA3LTM0ZTgtNDdhYS04NjY4LTg4ODMyNmUwMjczOCIsInJzbmFtZSI6ImdvX2NoYXJnZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3ODc1MWJmNi00ZjU0LTQ0OTUtYTQ4YS0xMDA3MWE4Y2U0YTkiLCJyc25hbWUiOiJlbXBsb3llZSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImY0ZTVkNTJlLTQwNGQtNGY4OC1iNmEwLWY3N2I1NjBjMzA1MSIsInJzbmFtZSI6ImVzX2NhdGVnb3J5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiYTMxMzNjOWEtYzZkMC00ZTA1LThmZDgtZDBiMWM4OTA1Yzk1IiwicnNuYW1lIjoidm0ifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI1YTg0MTYyZC04MzM4LTRjY2ItOTNjYS05NjY4MDQ1ZmU4NmIiLCJyc25hbWUiOiJzY29vdGVyX2RlbGl2ZXJ5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzViYTRhMjEtYmFhNS00MDYwLTljZTktNTM4YzAxODcxNDAzIiwicnNuYW1lIjoic3dhIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiODFkZTc4MzktNjM0ZC00Yzc3LWI0MjEtODI4NDdlNzllNmNhIiwicnNuYW1lIjoiYmF0dGVyeSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImQzODhjM2IzLTNjMzItNDE1OC04NTM4LTZhZmNiZGU5YmRhZiIsInJzbmFtZSI6ImVzX2JpbGxfd3JpdGVvZmYifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiIxN2NkOGY0OC0yODBjLTQ5ZDQtOWFlZS05YWFjNmY5MmFlZjEiLCJyc25hbWUiOiJzY29vdGVyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzYxMmEwYjQtZDMxYS00MDA5LWJkZjQtODAxMmRjMmE1N2M3IiwicnNuYW1lIjoiZXNfYmlsbCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6Ijg4MDM5NDlhLWJiMjctNDMzNS1iMGQ4LWNmMTc5NjQ3NjA5OSIsInJzbmFtZSI6ImNvbXBhbnkifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4Y2U1ZDY0Ny0yMzViLTQ4OTItYWU0OC05NmJlZmM5OWUyMDYiLCJyc25hbWUiOiJzYWxlc19vcmRlciJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImYxNTE0ZWVjLWJhN2EtNGU5Ny05ZWRhLThmZmMxNjAzYjg0ZSIsInJzbmFtZSI6ImNhcnJpZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4MmY3NTY1Yy04OTllLTRjOTItOWM2MC1hNWM3MDI5ZjZlYTAiLCJyc25hbWUiOiJyd19wYWQifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3OTczODk4NC1mYTA2LTQ0NDYtYWVlZS1iYjlhMjlhMzM4MjQiLCJyc25hbWUiOiJwcmljaW5nIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiMzZmZjhlMmMtMzgyMy00MGI4LTk5NjYtZjZmZGI2YjMxYzRiIiwicnNuYW1lIjoicGFydHMifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI5NmY1MWIxNy1kZjU3LTQ0YWQtYjllMS1jMDE5ZTMwMGFhNDkiLCJyc25hbWUiOiJzY29vdGVyX2NvbnRyYWN0X3VzZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiJkMDg5MGYwMy01YzBmLTQ4MTQtYjExZS1mN2NjNmVlNzIyNzUiLCJyc25hbWUiOiJiYW5rIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNjI4MTY4YzItNjkxYS00NzliLTljNmYtZTIzNDE5MjlmY2EyIiwicnNuYW1lIjoiZXNfY29udHJhY3QifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3YjBmZWY2Yi0yZjdhLTQ1MGItYmJjMC1jMTZjMjg3YzE0NWYiLCJyc25hbWUiOiJzZXJ2aWNlX29yZGVyIn1dfSwic2NvcGUiOiJlbXBsb3llZSBlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImNvbXBhbnlfaWQiOiJacExieE5RSyIsImRlcGFydG1lbnRfaWQiOiJhNm1uTU5vYiIsImVtcGxveWVlX2lkIjoieUptNHFPTGEiLCJuYW1lIjoicGEgZ2VuX2FkbWluIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20iLCJnaXZlbl9uYW1lIjoicGEiLCJmYW1pbHlfbmFtZSI6Imdlbl9hZG1pbiIsImVtYWlsIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20ifQ.OmawTbCYWjbt14ILBCl6yNsqj9Qo5brcqsx6eBDZycQCp8s1n88FpyFpqpq5-FoOh-o4jY19VN9P1xjdvAfd0I55UlhpmlkRt1ZnkJdlSMGB5YMle7OWzgpkk6sE7myLeuDOI28JVRlVd7vtoExFbCcnyXUQqBQak1e8ndGc-eVwj0il-IrBib_b-DnKPMyleb96srxG6BwcC_ej6YKVPu54v3P-iciQ-wrhC7HhdmLeJP1urBjHOA7_RUzzvlTBK7eUtsO4RFQPPxDEnNI2O7_npYd5zvca84yKFfgTWwPNtFLIZXftv0gW3Jw80QFEzL1EfL0Hmw2efnOJ9NxFQg' \
+   --header 'content-type: application/json' --header 'go-client: pa' \
+   --data '{
+    "op_code": "add",
+    "type": 2,
+    "add_data": [
+        {
+            "source": "gds",
+            "swap_logs": [
+                {
+                    "swap_id": "98036",
+                    "scooter_guid": "61327a64-ad63-455e-981c-10e7b53a6412",
+                    "other_id": "53435754-3032-3230-0000-000000000000",
+                    "swap_out": [
+                        {
+                            "battery_guid": "6cd85ca4-937b-43f9-a195-f0f81562ab9a",
+                            "capacity": 15,
+                            "health": 1,
+                            "recycle_count": 400,
+                            "consumption": 30,
+                            "slot_id": 1,
+                            "slot_serial_id": "6cd85ca4-937b-43f9-a195-f0f81562ab9a",
+                            "temp_cell": 31,
+                            "temp_mos": 32,
+                            "charging_rate": 0,
+                            "locked": true,
+                            "payload": "0x6464011E0000001E00000044C34610451046104410481046104810471043104310451043104810431004052310000000004B0B4B0B285A14004AEA110000000000000000000000000064131F00DE6F0200D7650200330600004B0B0000DE0A000000FFFF0000000000000000000000000000000000000000000000000080000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000FFFFFFFF00000000008000800000000000000000008000000000000000000000FF7F00000000000000000000000000000000000000000000000000000000000000000000FFFF00000000000000000000000000000000000000000000010414",
+                            "cell_type": 1,
+                            "case_type": 1,
+                            "ups": 0,
+                            "max_charging_rate": 0,
+                            "chargeable": true,
+                            "dischargeable": false
+                        },
+                        {
+                            "battery_guid": "814a3f41-1721-4922-a75b-26568c7d8066",
+                            "capacity": 16,
+                            "health": 1,
+                            "recycle_count": 400,
+                            "consumption": 32,
+                            "slot_id": 1,
+                            "slot_serial_id": "814a3f41-1721-4922-a75b-26568c7d8066",
+                            "temp_cell": 33,
+                            "temp_mos": 34,
+                            "charging_rate": 0,
+                            "locked": true,
+                            "payload": "0x6464011E0000001E00000044C34610451046104410481046104810471043104310451043104810431004052310000000004B0B4B0B285A14004AEA110000000000000000000000000064131F00DE6F0200D7650200330600004B0B0000DE0A000000FFFF0000000000000000000000000000000000000000000000000080000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000FFFFFFFF00000000008000800000000000000000008000000000000000000000FF7F00000000000000000000000000000000000000000000000000000000000000000000FFFF00000000000000000000000000000000000000000000010414",
+                            "cell_type": 1,
+                            "case_type": 1,
+                            "ups": 0,
+                            "max_charging_rate": 0,
+                            "chargeable": true,
+                            "dischargeable": false
+                        }
+                    ],
+                    "exchange_time": "2019-05-22T14:01:42.960000Z",
+                    "extra_exchange": 0,
+                    "rating": 9000,
+                    "rating_rule_id": "5EDBF33A-B7F7-64AB-8FB8-489D66395B7F",
+                    "action": 1,
+                    "rating_rule_type": 1,
+                    "eject_new_candidate": false,
+                    "base_price": 2.0,
+                    "pps_price": 124.0,
+                    "eula_state": 1,
+                    "real_time_scooter_info": 1,
+                    "eject_fail": 0
+                }
+            ]
+        }
+    ]
+}'</msg>
+<status status="PASS" starttime="20200904 19:02:05.150" endtime="20200904 19:02:06.145"></status>
+</kw>
+<kw name="Scooters Batteries Get" library="LibScootersBatteries">
+<doc>Get scooter batteries info</doc>
+<arguments>
+<arg>${scooter_id}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200904 19:02:06.889" level="INFO">http://10.6.1.46:3032/app/cipher?env=pa&amp;app=pa&amp;resource=pa&amp;username=pa.gen_admin@gogoro.com&amp;password=123</msg>
+<msg timestamp="20200904 19:02:07.146" level="INFO">Response message: 200
+Body: {
+    "code": 0,
+    "total_count": 2,
+    "data": [
+        {
+            "id": "ZNeDwpMR",
+            "batteries": [
+                {
+                    "swap_source": 1,
+                    "id": "ZNeDwpMR",
+                    "battery_id": "rm2QKKNZ",
+                    "battery_sn": "TWPASWJO3NR6C",
+                    "snap_time": 1558533702
+                },
+                {
+                    "swap_source": 1,
+                    "id": "ZNeDwpMR",
+                    "battery_id": "KLrVw9L4",
+                    "battery_sn": "TWPASWIHHOS3K",
+                    "snap_time": 1558533702
+                }
+            ]
+        }
+    ]
+}
+CURL:
+   curl -i --request POST --url https://pa-goplatform.gogoro.com:443/go-platform/v1/scooters/batteries \
+   --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI0RF82RE04Nm9BQ2ZkNWwzLTMzVzU4LVVQTUZoQVEzV1FWbDVQSFVoTE5BIn0.eyJqdGkiOiIwYzE2ZDA4Yi03OWVhLTQ4OWYtOGEzMy05ZWFlYWNmOGNjZTgiLCJleHAiOjE1OTkyMTgyMjYsIm5iZiI6MCwiaWF0IjoxNTk5MjE3MzI2LCJpc3MiOiJodHRwczovL3BhLWF1dGgta2V5Y2xvYWsuZ29nb3JvLmNvbS9hdXRoL3JlYWxtcy9nb2dvcm8iLCJhdWQiOiJwYSIsInN1YiI6IjIwMzUxNjllLTQ4NmQtNDM1YS1iMTZiLTgxMjdkYzM2MGFlZiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImF1dGgiLCJhdXRoX3RpbWUiOjAsInNlc3Npb25fc3RhdGUiOiJlNWMyY2M3Ny0xM2JkLTQ3ODQtYWNlMi05MjRlYWM4ZDNkNjAiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImFwcF9wYSJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InBhIjp7InJvbGVzIjpbInBhX2FkbWluIl19fSwiYXV0aG9yaXphdGlvbiI6eyJwZXJtaXNzaW9ucyI6W3sic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6IjhiMzFiZDgxLTEzZmEtNDhjMC1hZGRlLWUyMDZlYzdlYjgzNyIsInJzbmFtZSI6ImdvZ29yb191c2VyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNDZhZmRhYzYtNzg3ZC00ZDdmLWJjMWMtMDM2M2QzNjlkNTI3IiwicnNuYW1lIjoic2Nvb3Rlcl9jb250cmFjdCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImU4YWJjMTA3LTM0ZTgtNDdhYS04NjY4LTg4ODMyNmUwMjczOCIsInJzbmFtZSI6ImdvX2NoYXJnZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3ODc1MWJmNi00ZjU0LTQ0OTUtYTQ4YS0xMDA3MWE4Y2U0YTkiLCJyc25hbWUiOiJlbXBsb3llZSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImY0ZTVkNTJlLTQwNGQtNGY4OC1iNmEwLWY3N2I1NjBjMzA1MSIsInJzbmFtZSI6ImVzX2NhdGVnb3J5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiYTMxMzNjOWEtYzZkMC00ZTA1LThmZDgtZDBiMWM4OTA1Yzk1IiwicnNuYW1lIjoidm0ifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI1YTg0MTYyZC04MzM4LTRjY2ItOTNjYS05NjY4MDQ1ZmU4NmIiLCJyc25hbWUiOiJzY29vdGVyX2RlbGl2ZXJ5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzViYTRhMjEtYmFhNS00MDYwLTljZTktNTM4YzAxODcxNDAzIiwicnNuYW1lIjoic3dhIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiODFkZTc4MzktNjM0ZC00Yzc3LWI0MjEtODI4NDdlNzllNmNhIiwicnNuYW1lIjoiYmF0dGVyeSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImQzODhjM2IzLTNjMzItNDE1OC04NTM4LTZhZmNiZGU5YmRhZiIsInJzbmFtZSI6ImVzX2JpbGxfd3JpdGVvZmYifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiIxN2NkOGY0OC0yODBjLTQ5ZDQtOWFlZS05YWFjNmY5MmFlZjEiLCJyc25hbWUiOiJzY29vdGVyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzYxMmEwYjQtZDMxYS00MDA5LWJkZjQtODAxMmRjMmE1N2M3IiwicnNuYW1lIjoiZXNfYmlsbCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6Ijg4MDM5NDlhLWJiMjctNDMzNS1iMGQ4LWNmMTc5NjQ3NjA5OSIsInJzbmFtZSI6ImNvbXBhbnkifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4Y2U1ZDY0Ny0yMzViLTQ4OTItYWU0OC05NmJlZmM5OWUyMDYiLCJyc25hbWUiOiJzYWxlc19vcmRlciJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImYxNTE0ZWVjLWJhN2EtNGU5Ny05ZWRhLThmZmMxNjAzYjg0ZSIsInJzbmFtZSI6ImNhcnJpZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4MmY3NTY1Yy04OTllLTRjOTItOWM2MC1hNWM3MDI5ZjZlYTAiLCJyc25hbWUiOiJyd19wYWQifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3OTczODk4NC1mYTA2LTQ0NDYtYWVlZS1iYjlhMjlhMzM4MjQiLCJyc25hbWUiOiJwcmljaW5nIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiMzZmZjhlMmMtMzgyMy00MGI4LTk5NjYtZjZmZGI2YjMxYzRiIiwicnNuYW1lIjoicGFydHMifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI5NmY1MWIxNy1kZjU3LTQ0YWQtYjllMS1jMDE5ZTMwMGFhNDkiLCJyc25hbWUiOiJzY29vdGVyX2NvbnRyYWN0X3VzZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiJkMDg5MGYwMy01YzBmLTQ4MTQtYjExZS1mN2NjNmVlNzIyNzUiLCJyc25hbWUiOiJiYW5rIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNjI4MTY4YzItNjkxYS00NzliLTljNmYtZTIzNDE5MjlmY2EyIiwicnNuYW1lIjoiZXNfY29udHJhY3QifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3YjBmZWY2Yi0yZjdhLTQ1MGItYmJjMC1jMTZjMjg3YzE0NWYiLCJyc25hbWUiOiJzZXJ2aWNlX29yZGVyIn1dfSwic2NvcGUiOiJlbXBsb3llZSBlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImNvbXBhbnlfaWQiOiJacExieE5RSyIsImRlcGFydG1lbnRfaWQiOiJhNm1uTU5vYiIsImVtcGxveWVlX2lkIjoieUptNHFPTGEiLCJuYW1lIjoicGEgZ2VuX2FkbWluIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20iLCJnaXZlbl9uYW1lIjoicGEiLCJmYW1pbHlfbmFtZSI6Imdlbl9hZG1pbiIsImVtYWlsIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20ifQ.gHY1dh2UXoHErzYQZ2pDe6WvnAA7LF5Lgo_jKqvu_A15B-mr9P07-JaaUgH3TO5L6YWT32Mt_raTkCQXGQw85uYn68_cftRXtXAvSOErdfFYbRTf_4p5FQsnVoEUNtTOND-Ec1VoP_WH74Ncnq1nesUI8MbDFbym_vTeJlASLXbxVjatUipE3zx1PK60HrQRwqdXm0g9Z3F2nQxE4tYMDGh3S3rxDkeKAH0QDL3-TbCbBLQpqSJJEDLn5axyucvFBXT5d6Rr-WzVlLX3FE1QbxS29yZvVmIn_kECXYp6Uh1v1feNuWmEG72BYiKFrolf936o6DB1hrohudwo2wGkeg' \
+   --header 'content-type: application/json' --header 'go-client: pa' \
+   --data '{
+    "op_code": "get",
+    "get_data": {
+        "scooter_ids": [
+            "ZNeDwpMR"
+        ],
+        "snap_time_from": 0,
+        "snap_time_to": 0,
+        "current": 1,
+        "pagination_criteria": {
+            "offset": 0,
+            "limit": 2
+        }
+    }
+}'</msg>
+<msg timestamp="20200904 19:02:07.146" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200904 19:02:06.147" endtime="20200904 19:02:07.146"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>str('${battery_sn0}')[-6:]</arg>
+</arguments>
+<assign>
+<var>${last_six_sn}</var>
+</assign>
+<msg timestamp="20200904 19:02:07.147" level="INFO">${last_six_sn} = O3NR6C</msg>
+<status status="PASS" starttime="20200904 19:02:07.147" endtime="20200904 19:02:07.147"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${last_six_sn}</arg>
+</arguments>
+<msg timestamp="20200904 19:02:07.149" level="INFO">${last_six_sn} = O3NR6C</msg>
+<status status="PASS" starttime="20200904 19:02:07.148" endtime="20200904 19:02:07.149"></status>
+</kw>
+<kw name="Verify Response Contains Expected" library="keywords_common">
+<doc>Verify response message should be equals expected</doc>
+<arguments>
+<arg>${resp.json()['data'][0]['batteries'][0]['battery_sn']}</arg>
+<arg>${battery_sn0}</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="keywords_common">
+<doc>Build in compare two variables keyword with log</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+</arguments>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${key}'=='${EMPTY}'</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+<arg>ELSE</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: \nkey = ${key} Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<status status="PASS" starttime="20200904 19:02:07.152" endtime="20200904 19:02:07.152"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:07.151" endtime="20200904 19:02:07.152"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:07.149" endtime="20200904 19:02:07.153"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:07.149" endtime="20200904 19:02:07.153"></status>
+</kw>
+<kw name="Verify Response Contains Expected" library="keywords_common">
+<doc>Verify response message should be equals expected</doc>
+<arguments>
+<arg>${resp.json()['data'][0]['batteries'][1]['battery_sn']}</arg>
+<arg>${battery_sn1}</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="keywords_common">
+<doc>Build in compare two variables keyword with log</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+</arguments>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${key}'=='${EMPTY}'</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+<arg>ELSE</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: \nkey = ${key} Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<status status="PASS" starttime="20200904 19:02:07.155" endtime="20200904 19:02:07.155"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:07.154" endtime="20200904 19:02:07.155"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:07.153" endtime="20200904 19:02:07.155"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:07.153" endtime="20200904 19:02:07.155"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:02.161" endtime="20200904 19:02:07.155"></status>
+</kw>
+<kw name="Save User Detail As Subscriber" library="keywords_api_my_subscription_draft_subscriber">
+<doc>Save user detail as subscriber</doc>
+<arguments>
+<arg>male</arg>
+<arg>${User.first_name}\</arg>
+<arg>${User.last_name}</arg>
+<arg>${User.birthday}</arg>
+<arg>E123456789</arg>
+<arg>${User.mobile}</arg>
+<arg>${User.invoice_city}\</arg>
+<arg>${User.invoice_district}</arg>
+<arg>${User.invoice_zipcode}</arg>
+<arg>${User.invoice_address}\</arg>
+<arg>${User.contact_city}</arg>
+<arg>${User.contact_district}</arg>
+<arg>${User.contact_zipcode}\</arg>
+<arg>${User.contact_address}</arg>
+<arg>${gogoro-sess}</arg>
+<arg>${csrf_token}</arg>
+</arguments>
+<kw name="Api My Subscription Draft Subscriber Put" library="LibApiMySubscriptionDraftSubscriber">
+<doc>Subscription draft with subscriber</doc>
+<arguments>
+<arg>${gender}</arg>
+<arg>${first_name}\</arg>
+<arg>${last_name}</arg>
+<arg>${birthday}</arg>
+<arg>${id_number}</arg>
+<arg>${mobile}</arg>
+<arg>${invoice_city}\</arg>
+<arg>${invoice_district}</arg>
+<arg>${invoice_zipcode}</arg>
+<arg>${invoice_address}\</arg>
+<arg>${contact_city}</arg>
+<arg>${contact_district}</arg>
+<arg>${contact_zipcode}\</arg>
+<arg>${contact_address}</arg>
+<arg>${gogoro-sess}</arg>
+<arg>${csrf_token}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200904 19:02:07.372" level="INFO">https://pa-network-my.gogoro.com
+
+                Response message: {"gender":"male","firstName":"TGWVD","lastName":"PASWTZZCK","birthday":"2000-02-22","idNumber":"E123456789","mobile":"0965069479","invoiceAddress":{"city":"臺北市","district":"松山區","zipCode":"10552","address":"長安東路二段225號C棟11樓"},"contactAddress":{"city":"臺北市","district":"松山區","zipCode":"10552","address":"長安東路二段225號C棟11樓"}}
+                CURL: 
+curl -i --request PUT --url https://pa-network-my.gogoro.com/api/my/subscription/draft/subscriber --data 'b'{"gender": "male", "firstName": "TGWVD", "lastName": "PASWTZZCK", "birthday": "2000-02-22", "idNumber": "E123456789", "mobile": "0965069479", "invoiceAddress": {"city": "\\u81fa\\u5317\\u5e02", "district": "\\u677e\\u5c71\\u5340", "zipCode": "10552", "address": "\\u9577\\u5b89\\u6771\\u8def\\u4e8c\\u6bb5225\\u865fC\\u68df11\\u6a13"}, "contactAddress": {"city": "\\u81fa\\u5317\\u5e02", "district": "\\u677e\\u5c71\\u5340", "zipCode": "10552", "address": "\\u9577\\u5b89\\u6771\\u8def\\u4e8c\\u6bb5225\\u865fC\\u68df11\\u6a13"}}'' --hearder {'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'content-type': 'application/json', 'cookie': 'pa_gogoro-sess=s%3AEnD9ioIrs6HxEScraN6CQZG1fCwgyVZG.WVzEjlFPmU5CK5wbCqdXKgZjPRezFlEC81lkLPE5hkk;', 'x-xsrf-token': 'BJV2YTq9-dWzZarZvguFwXTtAZOxtFUivUik', 'Content-Length': '499'}</msg>
+<msg timestamp="20200904 19:02:07.372" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20200904 19:02:07.159" endtime="20200904 19:02:07.373"></status>
+</kw>
+<kw name="Verify Status Code As Expected" library="keywords_common">
+<doc>Verify Status Code As Expected</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>201</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="keywords_common">
+<doc>Build in compare two variables keyword with log</doc>
+<arguments>
+<arg>${resp.status_code}</arg>
+<arg>${code}</arg>
+</arguments>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${key}'=='${EMPTY}'</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+<arg>ELSE</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: \nkey = ${key} Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<msg timestamp="20200904 19:02:07.375" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20200904 19:02:07.375" endtime="20200904 19:02:07.375"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:07.374" endtime="20200904 19:02:07.375"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:07.373" endtime="20200904 19:02:07.375"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:07.373" endtime="20200904 19:02:07.376"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:07.156" endtime="20200904 19:02:07.376"></status>
+</kw>
+<kw name="Get Public Plan Detail" library="keywords_api_my_plan">
+<doc>Get public plan detail via plan_code</doc>
+<arguments>
+<arg>SUBFEE-00036</arg>
+<arg>${gogoro-sess}</arg>
+<arg>${csrf_token}</arg>
+</arguments>
+<assign>
+<var>${plan}</var>
+</assign>
+<kw name="Api My Plan Get" library="LibApiMyPlan">
+<doc>List all public plans</doc>
+<arguments>
+<arg>${plan_code}</arg>
+<arg>${gogoro-sess}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+<var>${plan}</var>
+</assign>
+<msg timestamp="20200904 19:02:07.661" level="INFO">https://pa-network-my.gogoro.com
+
+                Response message: {"total":7,"items":[{"id":"9wmPgNyB","name":"綁定 3 年 $899 方案","sku":"SUBFEE-40036","lockedLength":36,"chargeType":"monthly","chargeBase":1199,"chargeUnit":"km","goRewards":0,"isIncludesFreeMaintenance":false},{"id":"k2NZkemd","name":"預選里程630","sku":"SUBFEE-00042","lockedLength":1,"chargeType":"monthly","chargeBase":799,"chargeUnit":"km","goRewards":0,"isIncludesFreeMaintenance":false,"chargeLevels":[{"threshold":630,"base":1.5}]},{"id":"ZKL96Rye","name":"1199 騎到飽","sku":"SUBFEE-00036","lockedLength":1,"chargeType":"monthly","chargeBase":1199,"chargeUnit":"km","goRewards":0,"isIncludesFreeMaintenance":false},{"id":"p7m7ERM4","name":"Gogoro 商用資費","sku":"SUBFEE-00037","lockedLength":1,"chargeType":"monthly","chargeBase":799,"chargeUnit":"km","goRewards":0,"isIncludesFreeMaintenance":false,"chargeLevels":[{"threshold":600,"base":1.5},{"threshold":1600,"base":2}]},{"id":"dOmM8N4P","name":"綁定 2 年 $999 方案","sku":"SUBFEE-30036","lockedLength":24,"chargeType":"monthly","chargeBase":1199,"chargeUnit":"km","goRewards":0,"isIncludesFreeMaintenance":false},{"id":"rXmlZxR4","name":"預選里程315","sku":"SUBFEE-00041","lockedLength":1,"chargeType":"monthly","chargeBase":499,"chargeUnit":"km","goRewards":0,"isIncludesFreeMaintenance":false,"chargeLevels":[{"threshold":315,"base":2.5}]},{"id":"wEmDx9mZ","name":"$299 自由省方案","sku":"SUBFEE-00049","lockedLength":1,"chargeType":"monthly","chargeBase":299,"chargeUnit":"ah","goRewards":200,"isIncludesFreeMaintenance":false}]}
+                CURL: 
+curl -i --request GET --url https://pa-network-my.gogoro.com/api/my/plan --hearder {'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'content-type': 'application/json', 'cookie': 'pa_gogoro-sess=s%3AEnD9ioIrs6HxEScraN6CQZG1fCwgyVZG.WVzEjlFPmU5CK5wbCqdXKgZjPRezFlEC81lkLPE5hkk;'}</msg>
+<msg timestamp="20200904 19:02:07.662" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<msg timestamp="20200904 19:02:07.662" level="INFO">${plan} = {'id': 'ZKL96Rye', 'name': '1199 騎到飽', 'sku': 'SUBFEE-00036', 'lockedLength': 1, 'chargeType': 'monthly', 'chargeBase': 1199, 'chargeUnit': 'km', 'goRewards': 0, 'isIncludesFreeMaintenance': False}</msg>
+<status status="PASS" starttime="20200904 19:02:07.377" endtime="20200904 19:02:07.662"></status>
+</kw>
+<kw name="Verify Status Code As Expected" library="keywords_common">
+<doc>Verify Status Code As Expected</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>200</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="keywords_common">
+<doc>Build in compare two variables keyword with log</doc>
+<arguments>
+<arg>${resp.status_code}</arg>
+<arg>${code}</arg>
+</arguments>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${key}'=='${EMPTY}'</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+<arg>ELSE</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: \nkey = ${key} Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<msg timestamp="20200904 19:02:07.664" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20200904 19:02:07.664" endtime="20200904 19:02:07.664"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:07.663" endtime="20200904 19:02:07.664"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:07.662" endtime="20200904 19:02:07.664"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:07.662" endtime="20200904 19:02:07.664"></status>
+</kw>
+<msg timestamp="20200904 19:02:07.665" level="INFO">${plan} = {'id': 'ZKL96Rye', 'name': '1199 騎到飽', 'sku': 'SUBFEE-00036', 'lockedLength': 1, 'chargeType': 'monthly', 'chargeBase': 1199, 'chargeUnit': 'km', 'goRewards': 0, 'isIncludesFreeMaintenance': False}</msg>
+<status status="PASS" starttime="20200904 19:02:07.376" endtime="20200904 19:02:07.665"></status>
+</kw>
+<kw name="Save Plan To Subscription" library="keywords_api_my_subscription_draft_plan">
+<doc>Save plan to subscription</doc>
+<arguments>
+<arg>${plan['id']}</arg>
+<arg>${plan['sku']}</arg>
+<arg>${plan['lockedLength']}\</arg>
+<arg>${plan['chargeType']}</arg>
+<arg>${plan['chargeBase']}</arg>
+<arg>${plan['chargeUnit']}\</arg>
+<arg>${plan['goRewards']}</arg>
+<arg>${gogoro-sess}</arg>
+<arg>${csrf_token}</arg>
+</arguments>
+<kw name="Api My Subscription Draft Plan Put" library="LibApiMySubscriptionDraftPlan">
+<doc>Subscription draft with plan</doc>
+<arguments>
+<arg>${plan_Id}\</arg>
+<arg>${sku}</arg>
+<arg>${locked_length}</arg>
+<arg>${charge_type}</arg>
+<arg>${charge_base}\</arg>
+<arg>${charge_unit}</arg>
+<arg>${go_rewards}</arg>
+<arg>gogoro_sess=${gogoro-sess}</arg>
+<arg>csrf_token=${csrf_token}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200904 19:02:07.868" level="INFO">https://pa-network-my.gogoro.com
+
+                Response message: {"id":"ZKL96Rye","sku":"SUBFEE-00036","lockedLength":"1","chargeType":"monthly","chargeBase":"1199","chargeUnit":"km","goRewards":0}
+                CURL: 
+curl -i --request PUT --url https://pa-network-my.gogoro.com/api/my/subscription/draft/plan --data 'b'{"id": "ZKL96Rye", "sku": "SUBFEE-00036", "lockedLength": "1", "chargeType": "monthly", "chargeBase": "1199", "chargeUnit": "km", "goRewards": 0}'' --hearder {'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'content-type': 'application/json', 'cookie': 'pa_gogoro-sess=s%3AEnD9ioIrs6HxEScraN6CQZG1fCwgyVZG.WVzEjlFPmU5CK5wbCqdXKgZjPRezFlEC81lkLPE5hkk;', 'x-xsrf-token': 'BJV2YTq9-dWzZarZvguFwXTtAZOxtFUivUik', 'Content-Length': '145'}</msg>
+<msg timestamp="20200904 19:02:07.868" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20200904 19:02:07.666" endtime="20200904 19:02:07.868"></status>
+</kw>
+<kw name="Verify Status Code As Expected" library="keywords_common">
+<doc>Verify Status Code As Expected</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>201</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="keywords_common">
+<doc>Build in compare two variables keyword with log</doc>
+<arguments>
+<arg>${resp.status_code}</arg>
+<arg>${code}</arg>
+</arguments>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${key}'=='${EMPTY}'</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+<arg>ELSE</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: \nkey = ${key} Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<msg timestamp="20200904 19:02:07.870" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20200904 19:02:07.870" endtime="20200904 19:02:07.870"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:07.869" endtime="20200904 19:02:07.870"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:07.869" endtime="20200904 19:02:07.871"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:07.868" endtime="20200904 19:02:07.871"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:07.665" endtime="20200904 19:02:07.871"></status>
+</kw>
+<kw name="Set Bill Config" library="keywords_api_my_subscription_draft_bill_config">
+<doc>Set bill config</doc>
+<arguments>
+<arg>0</arg>
+<arg>e-carrier</arg>
+<arg>false</arg>
+<arg>${gogoro-sess}</arg>
+<arg>${csrf_token}</arg>
+</arguments>
+<kw name="Api My Subscription Draft Bill Config Put" library="LibApiMySubscriptionDraftBillConfig">
+<doc>Subscription draft with bill config</doc>
+<arguments>
+<arg>${isConsolidated}</arg>
+<arg>${bill_format}</arg>
+<arg>${includeRidingDetails}</arg>
+<arg>${gogoro-sess}</arg>
+<arg>${csrf_token}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200904 19:02:08.073" level="INFO">https://pa-network-my.gogoro.com
+
+                Response message: {"isConsolidated":"0","format":"e-carrier","includeRidingDetails":"false"}
+                CURL: 
+curl -i --request PUT --url https://pa-network-my.gogoro.com/api/my/subscription/draft/bill-config --data 'b'{"isConsolidated": "0", "format": "e-carrier", "includeRidingDetails": "false"}'' --hearder {'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'content-type': 'application/json', 'cookie': 'pa_gogoro-sess=s%3AEnD9ioIrs6HxEScraN6CQZG1fCwgyVZG.WVzEjlFPmU5CK5wbCqdXKgZjPRezFlEC81lkLPE5hkk;', 'x-xsrf-token': 'BJV2YTq9-dWzZarZvguFwXTtAZOxtFUivUik', 'Content-Length': '79'}</msg>
+<msg timestamp="20200904 19:02:08.073" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20200904 19:02:07.872" endtime="20200904 19:02:08.073"></status>
+</kw>
+<kw name="Verify Status Code As Expected" library="keywords_common">
+<doc>Verify Status Code As Expected</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>201</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="keywords_common">
+<doc>Build in compare two variables keyword with log</doc>
+<arguments>
+<arg>${resp.status_code}</arg>
+<arg>${code}</arg>
+</arguments>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${key}'=='${EMPTY}'</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+<arg>ELSE</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: \nkey = ${key} Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<msg timestamp="20200904 19:02:08.076" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20200904 19:02:08.076" endtime="20200904 19:02:08.076"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:08.075" endtime="20200904 19:02:08.076"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:08.074" endtime="20200904 19:02:08.076"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:08.073" endtime="20200904 19:02:08.076"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:07.871" endtime="20200904 19:02:08.077"></status>
+</kw>
+<kw name="Save Draft Subscription" library="keywords_api_my_subscription_draft">
+<doc>Save draft subscription</doc>
+<arguments>
+<arg>${gogoro-sess}</arg>
+<arg>${csrf_token}</arg>
+</arguments>
+<assign>
+<var>${contract}</var>
+</assign>
+<kw name="Api My Subscription Draft Post" library="LibApiMySubscriptionDraft">
+<doc>Subscription draft</doc>
+<arguments>
+<arg>${gogoro-sess}</arg>
+<arg>${csrf_token}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200904 19:02:08.920" level="INFO">https://pa-network-my.gogoro.com
+
+                Response message: {"id":"KL64XeN6","subscriber":{"gender":"male","firstName":"TGWVD","lastName":"PASWTZZCK","birthday":"2000-02-22","idNumber":"E123456789","mobile":"0965069479","invoiceAddress":{"city":"臺北市","district":"松山區","zipCode":"10552","address":"長安東路二段225號C棟11樓"},"contactAddress":{"city":"臺北市","district":"松山區","zipCode":"10552","address":"長安東路二段225號C棟11樓"},"id":"7m77YwmM","email":"pasw.verify.1599217318@yopmail.com"},"plan":{"id":"ZKL96Rye","sku":"SUBFEE-00036","lockedLength":"1","chargeType":"monthly","chargeBase":"1199","chargeUnit":"km","goRewards":0},"addOns":[{"id":"a6mnJGmo","sku":"SUBFEE-00003","charge":350,"isBundled":true,"startTime":1599217328,"type":2}],"billConfig":{"isConsolidated":"0","format":"e-carrier","includeRidingDetails":"false"}}
+                CURL: 
+curl -i --request POST --url https://pa-network-my.gogoro.com/api/my/subscription/draft --data 'None' --hearder {'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'content-type': 'application/json', 'cookie': 'pa_gogoro-sess=s%3AEnD9ioIrs6HxEScraN6CQZG1fCwgyVZG.WVzEjlFPmU5CK5wbCqdXKgZjPRezFlEC81lkLPE5hkk;', 'x-xsrf-token': 'BJV2YTq9-dWzZarZvguFwXTtAZOxtFUivUik', 'Content-Length': '0'}</msg>
+<msg timestamp="20200904 19:02:08.920" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20200904 19:02:08.077" endtime="20200904 19:02:08.920"></status>
+</kw>
+<kw name="Verify Status Code As Expected" library="keywords_common">
+<doc>Verify Status Code As Expected</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>201</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="keywords_common">
+<doc>Build in compare two variables keyword with log</doc>
+<arguments>
+<arg>${resp.status_code}</arg>
+<arg>${code}</arg>
+</arguments>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${key}'=='${EMPTY}'</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+<arg>ELSE</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: \nkey = ${key} Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<msg timestamp="20200904 19:02:08.922" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20200904 19:02:08.922" endtime="20200904 19:02:08.922"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:08.921" endtime="20200904 19:02:08.922"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:08.920" endtime="20200904 19:02:08.923"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:08.920" endtime="20200904 19:02:08.923"></status>
+</kw>
+<msg timestamp="20200904 19:02:08.923" level="INFO">${contract} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20200904 19:02:08.077" endtime="20200904 19:02:08.923"></status>
+</kw>
+<kw name="Save Scooter Information For Inactive" library="keywords_api_my_subscription_inactive_vrc">
+<doc>Save scooter information for inactive</doc>
+<arguments>
+<arg>${Scooter.plate}</arg>
+<arg>${Scooter.scooter_vin}</arg>
+<arg>${Scooter.file_name}\</arg>
+<arg>${User.display_name}</arg>
+<arg>${last_six_sn}</arg>
+<arg>${gogoro-sess}</arg>
+<arg>${csrf_token}</arg>
+</arguments>
+<kw name="Api My Subscription Inactive Vrc Put" library="LibApiMySubscriptionInactiveVrc">
+<doc>Save scooter information for inactive subscription</doc>
+<arguments>
+<arg>${plate}</arg>
+<arg>${scooter_vin}</arg>
+<arg>${file_name}\</arg>
+<arg>${display_name}</arg>
+<arg>${last_six_sn}</arg>
+<arg>${gogoro-sess}</arg>
+<arg>${csrf_token}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200904 19:02:10.177" level="INFO">https://pa-network-my.gogoro.com
+
+                Response message: {"vrc":{"plate":"EPI-6859","vin":"PASW03TAVDV2NZE1T","filename":"xUY0MkFT","batterySn":"O3NR6C"},"subscriber":{"id":"7m77YwmM","gender":"male","firstName":"TGWVD","lastName":"PASWTZZCK","birthday":"2000-02-22","idNumber":"E123456789","email":"pasw.verify.1599217318@yopmail.com","mobile":"0965069479","contactAddress":{"city":"臺北市","district":"松山區","zipCode":"10552","address":"長安東路二段225號C棟11樓"},"invoiceAddress":{"city":"臺北市","district":"松山區","zipCode":"10552","address":"長安東路二段225號C棟11樓"}}}
+                CURL: 
+curl -i --request PUT --url https://pa-network-my.gogoro.com/api/my/subscription/inactive/vrc --data 'b'{"plate": "EPI-6859", "vin": "PASW03TAVDV2NZE1T", "filename": "xUY0MkFT", "ownerName": "PASWTZZCKTGWVD", "batterySn": "O3NR6C"}'' --hearder {'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'content-type': 'application/json', 'cookie': 'pa_gogoro-sess=s%3AEnD9ioIrs6HxEScraN6CQZG1fCwgyVZG.WVzEjlFPmU5CK5wbCqdXKgZjPRezFlEC81lkLPE5hkk;', 'x-xsrf-token': 'BJV2YTq9-dWzZarZvguFwXTtAZOxtFUivUik', 'Content-Length': '127'}</msg>
+<msg timestamp="20200904 19:02:10.177" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200904 19:02:08.924" endtime="20200904 19:02:10.177"></status>
+</kw>
+<kw name="Verify Status Code As Expected" library="keywords_common">
+<doc>Verify Status Code As Expected</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>200</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="keywords_common">
+<doc>Build in compare two variables keyword with log</doc>
+<arguments>
+<arg>${resp.status_code}</arg>
+<arg>${code}</arg>
+</arguments>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${key}'=='${EMPTY}'</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+<arg>ELSE</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: \nkey = ${key} Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<msg timestamp="20200904 19:02:10.182" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20200904 19:02:10.181" endtime="20200904 19:02:10.182"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:10.180" endtime="20200904 19:02:10.182"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:10.178" endtime="20200904 19:02:10.183"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:10.177" endtime="20200904 19:02:10.183"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:08.923" endtime="20200904 19:02:10.183"></status>
+</kw>
+<kw name="Activate Es Contract" library="keywords_api_my_subscription_inactive">
+<doc>Activate Es-Contract</doc>
+<arguments>
+<arg>${gogoro-sess}</arg>
+<arg>${csrf_token}</arg>
+</arguments>
+<kw name="Api My Subscription Inactive Post" library="LibApiMySubscriptionInactive">
+<doc>Activate the inactive subscription</doc>
+<arguments>
+<arg>${gogoro-sess}</arg>
+<arg>${csrf_token}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200904 19:02:12.514" level="INFO">https://pa-network-my.gogoro.com
+
+                Response message: Created
+                CURL: 
+curl -i --request POST --url https://pa-network-my.gogoro.com/api/my/subscription/inactive --data 'None' --hearder {'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'content-type': 'application/json', 'cookie': 'pa_gogoro-sess=s%3AEnD9ioIrs6HxEScraN6CQZG1fCwgyVZG.WVzEjlFPmU5CK5wbCqdXKgZjPRezFlEC81lkLPE5hkk;', 'x-xsrf-token': 'BJV2YTq9-dWzZarZvguFwXTtAZOxtFUivUik', 'Content-Length': '0'}</msg>
+<msg timestamp="20200904 19:02:12.514" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20200904 19:02:10.185" endtime="20200904 19:02:12.514"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:10.184" endtime="20200904 19:02:12.515"></status>
+</kw>
+<kw name="Save Scooter Detail To Redis With Getting All Scooter" library="keywords_api_my_scooter">
+<doc>Get all scooter and save the scooter information to redis for other APIs be able to get scooter detail</doc>
+<arguments>
+<arg>${gogoro-sess}</arg>
+<arg>${csrf_token}</arg>
+</arguments>
+<kw name="Api My Scooter Get" library="LibApiMyScooter">
+<doc>Get cookie user's scooter</doc>
+<arguments>
+<arg>${gogoro-sess}</arg>
+<arg>${csrf_token}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200904 19:02:12.844" level="INFO">https://pa-network-my.gogoro.com
+
+                Response message: {"total":1,"items":[{"id":"ZNeDwpMR","guid":"61327a64-ad63-455e-981c-10e7b53a6412","plate":"EPI-6859","vin":"PASW03TAVDV2NZE1T","paymentStatus":"normal","batteryCount":2}]}
+                CURL: 
+curl -i --request GET --url https://pa-network-my.gogoro.com/api/my/scooter --hearder {'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'content-type': 'application/json', 'cookie': 'pa_gogoro-sess=s%3AEnD9ioIrs6HxEScraN6CQZG1fCwgyVZG.WVzEjlFPmU5CK5wbCqdXKgZjPRezFlEC81lkLPE5hkk;', 'x-xsrf-token': 'BJV2YTq9-dWzZarZvguFwXTtAZOxtFUivUik'}</msg>
+<msg timestamp="20200904 19:02:12.844" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200904 19:02:12.517" endtime="20200904 19:02:12.844"></status>
+</kw>
+<kw name="Verify Status Code As Expected" library="keywords_common">
+<doc>Verify Status Code As Expected</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>200</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="keywords_common">
+<doc>Build in compare two variables keyword with log</doc>
+<arguments>
+<arg>${resp.status_code}</arg>
+<arg>${code}</arg>
+</arguments>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${key}'=='${EMPTY}'</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+<arg>ELSE</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: \nkey = ${key} Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<msg timestamp="20200904 19:02:12.848" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20200904 19:02:12.848" endtime="20200904 19:02:12.850"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:12.847" endtime="20200904 19:02:12.850"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:12.846" endtime="20200904 19:02:12.850"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:12.845" endtime="20200904 19:02:12.850"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:12.515" endtime="20200904 19:02:12.850"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${plan_id}</arg>
+<arg>${plan['id']}</arg>
+</arguments>
+<msg timestamp="20200904 19:02:12.855" level="INFO">${plan_id} = ZKL96Rye</msg>
+<status status="PASS" starttime="20200904 19:02:12.851" endtime="20200904 19:02:12.855"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${sku}</arg>
+<arg>${plan['sku']}</arg>
+</arguments>
+<msg timestamp="20200904 19:02:12.860" level="INFO">${sku} = SUBFEE-00036</msg>
+<status status="PASS" starttime="20200904 19:02:12.856" endtime="20200904 19:02:12.861"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${locked_length}</arg>
+<arg>${plan['lockedLength']}</arg>
+</arguments>
+<msg timestamp="20200904 19:02:12.865" level="INFO">${locked_length} = 1</msg>
+<status status="PASS" starttime="20200904 19:02:12.862" endtime="20200904 19:02:12.865"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${charge_base}</arg>
+<arg>${plan['chargeBase']}</arg>
+</arguments>
+<msg timestamp="20200904 19:02:12.869" level="INFO">${charge_base} = 1199</msg>
+<status status="PASS" starttime="20200904 19:02:12.866" endtime="20200904 19:02:12.869"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${charge_type}</arg>
+<arg>${plan['chargeType']}</arg>
+</arguments>
+<msg timestamp="20200904 19:02:12.874" level="INFO">${charge_type} = monthly</msg>
+<status status="PASS" starttime="20200904 19:02:12.870" endtime="20200904 19:02:12.874"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${charge_unit}</arg>
+<arg>${plan['chargeUnit']}</arg>
+</arguments>
+<msg timestamp="20200904 19:02:12.880" level="INFO">${charge_unit} = km</msg>
+<status status="PASS" starttime="20200904 19:02:12.875" endtime="20200904 19:02:12.880"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${go_rewards}</arg>
+<arg>${plan['goRewards']}</arg>
+</arguments>
+<msg timestamp="20200904 19:02:12.887" level="INFO">${go_rewards} = 0</msg>
+<status status="PASS" starttime="20200904 19:02:12.881" endtime="20200904 19:02:12.887"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${es_contract_id}</arg>
+<arg>${contract.json()['id']}</arg>
+</arguments>
+<msg timestamp="20200904 19:02:12.944" level="INFO">${es_contract_id} = KL64XeN6</msg>
+<status status="PASS" starttime="20200904 19:02:12.891" endtime="20200904 19:02:12.944"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${es_contract_id}</arg>
+</arguments>
+<status status="PASS" starttime="20200904 19:02:12.945" endtime="20200904 19:02:12.947"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:02.161" endtime="20200904 19:02:12.948"></status>
+</kw>
+<kw name="Open Browser" library="keywords_common">
+<doc>Create a chrome browser without UI display</doc>
+<arguments>
+<arg>${MYGOGORO_GN_DOMAIN}</arg>
+<arg>${WINDOW_HEIGHT}</arg>
+<arg>${WINDOW_WEIGHT}</arg>
+</arguments>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys, selenium.webdriver</arg>
+</arguments>
+<assign>
+<var>${chrome_options}</var>
+</assign>
+<msg timestamp="20200904 19:02:12.955" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x106c59150&gt;</msg>
+<status status="PASS" starttime="20200904 19:02:12.950" endtime="20200904 19:02:12.955"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-extensions</arg>
+</arguments>
+<status status="PASS" starttime="20200904 19:02:12.956" endtime="20200904 19:02:12.957"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-gpu</arg>
+</arguments>
+<status status="PASS" starttime="20200904 19:02:12.957" endtime="20200904 19:02:12.957"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--no-sandbox</arg>
+</arguments>
+<status status="PASS" starttime="20200904 19:02:12.958" endtime="20200904 19:02:12.958"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-setuid-sandbox</arg>
+</arguments>
+<status status="PASS" starttime="20200904 19:02:12.958" endtime="20200904 19:02:12.959"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-dev-shm-usage</arg>
+</arguments>
+<status status="PASS" starttime="20200904 19:02:12.959" endtime="20200904 19:02:12.959"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--incognito</arg>
+</arguments>
+<status status="PASS" starttime="20200904 19:02:12.960" endtime="20200904 19:02:12.960"></status>
+</kw>
+<kw name="Create Webdriver" library="Selenium2Library">
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<arguments>
+<arg>Chrome</arg>
+<arg>chrome_options=${chrome_options}</arg>
+<arg>executable_path=${BROWSER_PATH}/${DRIVER_VERSION}</arg>
+</arguments>
+<msg timestamp="20200904 19:02:13.028" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" starttime="20200904 19:02:13.027" endtime="20200904 19:02:16.122"></status>
+</kw>
+<kw name="Set Window Size" library="Selenium2Library">
+<doc>Sets current windows size to given ``width`` and ``height``.</doc>
+<arguments>
+<arg>${height}</arg>
+<arg>${weight}</arg>
+</arguments>
+<status status="PASS" starttime="20200904 19:02:16.124" endtime="20200904 19:02:16.442"></status>
+</kw>
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${url}</arg>
+</arguments>
+<msg timestamp="20200904 19:02:16.443" level="INFO">Opening url 'https://pa-network-my.gogoro.com/login?lang=zh-TW'</msg>
+<status status="PASS" starttime="20200904 19:02:16.443" endtime="20200904 19:02:19.838"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:12.949" endtime="20200904 19:02:19.838"></status>
+</kw>
+<kw name="Login With Email And Password For MyPlan" library="keyword_mggr_login">
+<doc>Login My Account domain with user email and password</doc>
+<arguments>
+<arg>${User.email}</arg>
+<arg>Gogoro123</arg>
+</arguments>
+<kw name="Input User Mail" library="keyword_mggr_login">
+<doc>Input user email at login page</doc>
+<arguments>
+<arg>${email}</arg>
+</arguments>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//input[@type="text"][@name="email"]</arg>
+</arguments>
+<status status="PASS" starttime="20200904 19:02:19.841" endtime="20200904 19:02:19.877"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>//input[@type="text"][@name="email"]</arg>
+<arg>${email}</arg>
+</arguments>
+<msg timestamp="20200904 19:02:19.879" level="INFO">Typing text 'pasw.verify.1599217318@yopmail.com' into text field '//input[@type="text"][@name="email"]'.</msg>
+<status status="PASS" starttime="20200904 19:02:19.878" endtime="20200904 19:02:20.980"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:19.840" endtime="20200904 19:02:20.980"></status>
+</kw>
+<kw name="Input User Passwords" library="keyword_mggr_login">
+<doc>Input user password at login page</doc>
+<arguments>
+<arg>${password}</arg>
+</arguments>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//input[@type="password"][@name="password"]</arg>
+</arguments>
+<status status="PASS" starttime="20200904 19:02:20.982" endtime="20200904 19:02:21.010"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>//input[@type="password"][@name="password"]</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20200904 19:02:21.011" level="INFO">Typing text 'Gogoro123' into text field '//input[@type="password"][@name="password"]'.</msg>
+<status status="PASS" starttime="20200904 19:02:21.011" endtime="20200904 19:02:21.422"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:20.981" endtime="20200904 19:02:21.423"></status>
+</kw>
+<kw name="Click Rounded Button" library="keywords_common">
+<doc>Click rounded button</doc>
+<arguments>
+<arg>登入</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>0.5s</arg>
+</arguments>
+<msg timestamp="20200904 19:02:21.927" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20200904 19:02:21.426" endtime="20200904 19:02:21.927"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//*[contains(@class,'RoundedButton__ThemedButton-iaiki0-0')][contains(.,"${text}")]</arg>
+</arguments>
+<status status="PASS" starttime="20200904 19:02:21.929" endtime="20200904 19:02:21.976"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//*[contains(@class,'RoundedButton__ThemedButton-iaiki0-0')][contains(.,"${text}")]</arg>
+</arguments>
+<msg timestamp="20200904 19:02:21.977" level="INFO">Clicking element '//*[contains(@class,'RoundedButton__ThemedButton-iaiki0-0')][contains(.,"登入")]'.</msg>
+<status status="PASS" starttime="20200904 19:02:21.977" endtime="20200904 19:02:22.060"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:21.424" endtime="20200904 19:02:22.060"></status>
+</kw>
+<kw name="Wait Until Location Is" library="Selenium2Library">
+<doc>Waits until the current URL is ``expected``.</doc>
+<arguments>
+<arg>https://${MYGOGORO_GN_HOST}/dashboard</arg>
+<arg>30s</arg>
+</arguments>
+<status status="PASS" starttime="20200904 19:02:22.062" endtime="20200904 19:02:24.055"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:19.839" endtime="20200904 19:02:24.056"></status>
+</kw>
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>https://pa-network-my.gogoro.com/my-plan</arg>
+</arguments>
+<msg timestamp="20200904 19:02:24.057" level="INFO">Opening url 'https://pa-network-my.gogoro.com/my-plan'</msg>
+<status status="PASS" starttime="20200904 19:02:24.057" endtime="20200904 19:02:25.759"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:01:58.882" endtime="20200904 19:02:25.759"></status>
+</kw>
+<test id="s1-t1" name="Bundle plan cannot be changed">
+<kw name="Test Setup For New Plan" type="setup">
+<arguments>
+<arg>$299 自由省方案</arg>
+</arguments>
+<kw name="Get Es Plan Code Via Es Plan Name" library="keywords_es_plans">
+<doc>Get the specific es plan code via plan name</doc>
+<arguments>
+<arg>${next_plan_name}</arg>
+</arguments>
+<assign>
+<var>${next_plan_code}</var>
+</assign>
+<kw name="Es Plans Get Via Plan Name" library="LibEsPlans">
+<doc>Get specific es plan via es plan name
+Examples:
+| ${resp} = | Es Plans Get Via Plan Name | data |</doc>
+<arguments>
+<arg>${plan_name}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200904 19:02:26.484" level="INFO">http://10.6.1.46:3032/app/cipher?env=pa&amp;app=pa&amp;resource=pa&amp;username=pa.gen_admin@gogoro.com&amp;password=123</msg>
+<msg timestamp="20200904 19:02:26.727" level="INFO">Response message: 200
+Body: {
+    "code": 0,
+    "data": [
+        {
+            "plan_id": "wEmDx9mZ",
+            "company_id": "ZpLbxNQK",
+            "plan_target": 1,
+            "plan_name": "$299 \u81ea\u7531\u7701\u65b9\u6848",
+            "country_code": "TW",
+            "currency_code": "TWD",
+            "legacy_plan_code": "SUBFEE-00049",
+            "payment_freq": 1,
+            "plan_price": 299.0,
+            "plan_terms": 1,
+            "unit_base": 2,
+            "unit_threshold": 0,
+            "over_unit_price": 2.3,
+            "unit_threshold_1": 0,
+            "over_unit_price_1": 0.0,
+            "create_by_emp_Id": "a6mnMNob",
+            "valid_from": 1569859200,
+            "early_termination_penalty": 0.0,
+            "status": 1,
+            "published": 1,
+            "plan_price_reward": 200,
+            "update_time": 1582555871,
+            "create_time": 1565097335,
+            "plan_price_usage": 0.0,
+            "include_free_regular_maintenance": 0,
+            "carrier_type": 2
+        }
+    ]
+}
+CURL:
+   curl -i --request POST --url https://pa-goplatform.gogoro.com:443/go-platform/v1/es-plans \
+   --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI0RF82RE04Nm9BQ2ZkNWwzLTMzVzU4LVVQTUZoQVEzV1FWbDVQSFVoTE5BIn0.eyJqdGkiOiIxNTkwYTNlYy0xOTcxLTQ4YWYtOTM0ZS05ZmViMjdmMjdkZWMiLCJleHAiOjE1OTkyMTgyNDYsIm5iZiI6MCwiaWF0IjoxNTk5MjE3MzQ2LCJpc3MiOiJodHRwczovL3BhLWF1dGgta2V5Y2xvYWsuZ29nb3JvLmNvbS9hdXRoL3JlYWxtcy9nb2dvcm8iLCJhdWQiOiJwYSIsInN1YiI6IjIwMzUxNjllLTQ4NmQtNDM1YS1iMTZiLTgxMjdkYzM2MGFlZiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImF1dGgiLCJhdXRoX3RpbWUiOjAsInNlc3Npb25fc3RhdGUiOiIxN2EyMzJmOC0xMGVlLTQyNDctOTc2Mi03M2M1NTE4ZTc1NTkiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImFwcF9wYSJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InBhIjp7InJvbGVzIjpbInBhX2FkbWluIl19fSwiYXV0aG9yaXphdGlvbiI6eyJwZXJtaXNzaW9ucyI6W3sic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6IjhiMzFiZDgxLTEzZmEtNDhjMC1hZGRlLWUyMDZlYzdlYjgzNyIsInJzbmFtZSI6ImdvZ29yb191c2VyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNDZhZmRhYzYtNzg3ZC00ZDdmLWJjMWMtMDM2M2QzNjlkNTI3IiwicnNuYW1lIjoic2Nvb3Rlcl9jb250cmFjdCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImU4YWJjMTA3LTM0ZTgtNDdhYS04NjY4LTg4ODMyNmUwMjczOCIsInJzbmFtZSI6ImdvX2NoYXJnZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3ODc1MWJmNi00ZjU0LTQ0OTUtYTQ4YS0xMDA3MWE4Y2U0YTkiLCJyc25hbWUiOiJlbXBsb3llZSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImY0ZTVkNTJlLTQwNGQtNGY4OC1iNmEwLWY3N2I1NjBjMzA1MSIsInJzbmFtZSI6ImVzX2NhdGVnb3J5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiYTMxMzNjOWEtYzZkMC00ZTA1LThmZDgtZDBiMWM4OTA1Yzk1IiwicnNuYW1lIjoidm0ifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI1YTg0MTYyZC04MzM4LTRjY2ItOTNjYS05NjY4MDQ1ZmU4NmIiLCJyc25hbWUiOiJzY29vdGVyX2RlbGl2ZXJ5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzViYTRhMjEtYmFhNS00MDYwLTljZTktNTM4YzAxODcxNDAzIiwicnNuYW1lIjoic3dhIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiODFkZTc4MzktNjM0ZC00Yzc3LWI0MjEtODI4NDdlNzllNmNhIiwicnNuYW1lIjoiYmF0dGVyeSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImQzODhjM2IzLTNjMzItNDE1OC04NTM4LTZhZmNiZGU5YmRhZiIsInJzbmFtZSI6ImVzX2JpbGxfd3JpdGVvZmYifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiIxN2NkOGY0OC0yODBjLTQ5ZDQtOWFlZS05YWFjNmY5MmFlZjEiLCJyc25hbWUiOiJzY29vdGVyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzYxMmEwYjQtZDMxYS00MDA5LWJkZjQtODAxMmRjMmE1N2M3IiwicnNuYW1lIjoiZXNfYmlsbCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6Ijg4MDM5NDlhLWJiMjctNDMzNS1iMGQ4LWNmMTc5NjQ3NjA5OSIsInJzbmFtZSI6ImNvbXBhbnkifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4Y2U1ZDY0Ny0yMzViLTQ4OTItYWU0OC05NmJlZmM5OWUyMDYiLCJyc25hbWUiOiJzYWxlc19vcmRlciJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImYxNTE0ZWVjLWJhN2EtNGU5Ny05ZWRhLThmZmMxNjAzYjg0ZSIsInJzbmFtZSI6ImNhcnJpZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4MmY3NTY1Yy04OTllLTRjOTItOWM2MC1hNWM3MDI5ZjZlYTAiLCJyc25hbWUiOiJyd19wYWQifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3OTczODk4NC1mYTA2LTQ0NDYtYWVlZS1iYjlhMjlhMzM4MjQiLCJyc25hbWUiOiJwcmljaW5nIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiMzZmZjhlMmMtMzgyMy00MGI4LTk5NjYtZjZmZGI2YjMxYzRiIiwicnNuYW1lIjoicGFydHMifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI5NmY1MWIxNy1kZjU3LTQ0YWQtYjllMS1jMDE5ZTMwMGFhNDkiLCJyc25hbWUiOiJzY29vdGVyX2NvbnRyYWN0X3VzZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiJkMDg5MGYwMy01YzBmLTQ4MTQtYjExZS1mN2NjNmVlNzIyNzUiLCJyc25hbWUiOiJiYW5rIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNjI4MTY4YzItNjkxYS00NzliLTljNmYtZTIzNDE5MjlmY2EyIiwicnNuYW1lIjoiZXNfY29udHJhY3QifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3YjBmZWY2Yi0yZjdhLTQ1MGItYmJjMC1jMTZjMjg3YzE0NWYiLCJyc25hbWUiOiJzZXJ2aWNlX29yZGVyIn1dfSwic2NvcGUiOiJlbXBsb3llZSBlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImNvbXBhbnlfaWQiOiJacExieE5RSyIsImRlcGFydG1lbnRfaWQiOiJhNm1uTU5vYiIsImVtcGxveWVlX2lkIjoieUptNHFPTGEiLCJuYW1lIjoicGEgZ2VuX2FkbWluIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20iLCJnaXZlbl9uYW1lIjoicGEiLCJmYW1pbHlfbmFtZSI6Imdlbl9hZG1pbiIsImVtYWlsIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20ifQ.Jah9HXzg1nrDQJO2hsxa6M26x-TDuBCojTCpIQDMgCyWWdEggPbdpxm06FCBFDc4JOBiXTyNSbtYHDHFAHA-VhNgDolCUm5D4MeFAUBu9bpOsrvBODLOR2nYQ4MeIQXGhX7r95DARdtwSSlFg46y7OiLpZOsxFcCBo-YiQC-3zJjBya7kRpo6RLqfI5Q1_fGRyGoqrvomDeNtdo18W1ZPQ17rVWsgECz7KCcaIfm32vaeMwLiwd85fpdT3-LfPqkdi3gpJhWMv77VuhqVInAgFuLcTeEWHlm0rN4FQY2tIRs18jtrJzVTOgu3IwdXi4-fOX3MBXF1YJIvBas_0CjRQ' \
+   --header 'content-type: application/json' --header 'go-client: pa' \
+   --data '{
+    "op_code": "get",
+    "get_data": {
+        "plan_name": "$299 \u81ea\u7531\u7701\u65b9\u6848",
+        "published": 1
+    }
+}'</msg>
+<msg timestamp="20200904 19:02:26.728" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200904 19:02:25.767" endtime="20200904 19:02:26.728"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${plan_name}</arg>
+</arguments>
+<msg timestamp="20200904 19:02:26.730" level="INFO">$299 自由省方案</msg>
+<status status="PASS" starttime="20200904 19:02:26.729" endtime="20200904 19:02:26.730"></status>
+</kw>
+<msg timestamp="20200904 19:02:26.731" level="INFO">${next_plan_code} = SUBFEE-00049</msg>
+<status status="PASS" starttime="20200904 19:02:25.765" endtime="20200904 19:02:26.731"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${next_plan_code}</arg>
+</arguments>
+<msg timestamp="20200904 19:02:26.733" level="INFO">${next_plan_code} = SUBFEE-00049</msg>
+<status status="PASS" starttime="20200904 19:02:26.732" endtime="20200904 19:02:26.733"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:25.763" endtime="20200904 19:02:26.733"></status>
+</kw>
+<kw name="Click Rounded Button" library="keywords_common">
+<doc>Click rounded button</doc>
+<arguments>
+<arg>變更資費</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>0.5s</arg>
+</arguments>
+<msg timestamp="20200904 19:02:27.238" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20200904 19:02:26.735" endtime="20200904 19:02:27.238"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//*[contains(@class,'RoundedButton__ThemedButton-iaiki0-0')][contains(.,"${text}")]</arg>
+</arguments>
+<status status="PASS" starttime="20200904 19:02:27.239" endtime="20200904 19:02:27.322"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//*[contains(@class,'RoundedButton__ThemedButton-iaiki0-0')][contains(.,"${text}")]</arg>
+</arguments>
+<msg timestamp="20200904 19:02:27.324" level="INFO">Clicking element '//*[contains(@class,'RoundedButton__ThemedButton-iaiki0-0')][contains(.,"變更資費")]'.</msg>
+<status status="PASS" starttime="20200904 19:02:27.323" endtime="20200904 19:02:27.537"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:26.734" endtime="20200904 19:02:27.538"></status>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>10s</arg>
+<arg>2s</arg>
+<arg>Verify The Bundle Plan Cannot Be Change Message</arg>
+<arg>很抱歉，由於您的合約無法手動變更資費，如需變更資費請至 Gogoro Network™ 官網的『聯絡我們』頁面留言，將由專人盡快為您服務。</arg>
+</arguments>
+<kw name="Verify The Bundle Plan Cannot Be Change Message" library="keyword_mggr_myplan">
+<doc>Check the message correct after click change plan</doc>
+<arguments>
+<arg>很抱歉，由於您的合約無法手動變更資費，如需變更資費請至 Gogoro Network™ 官網的『聯絡我們』頁面留言，將由專人盡快為您服務。</arg>
+</arguments>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//*[@id="app"]/div[2]/div/p</arg>
+</arguments>
+<assign>
+<var>${BundlePlan_cannot_be_changed_message}</var>
+</assign>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20200904 19:02:28.319" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-73.png"&gt;&lt;img src="selenium-screenshot-73.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20200904 19:02:27.593" endtime="20200904 19:02:28.320"></status>
+</kw>
+<msg timestamp="20200904 19:02:28.327" level="FAIL">Element with locator '//*[@id="app"]/div[2]/div/p' not found.</msg>
+<status status="FAIL" starttime="20200904 19:02:27.543" endtime="20200904 19:02:28.327"></status>
+</kw>
+<status status="FAIL" starttime="20200904 19:02:27.542" endtime="20200904 19:02:28.327"></status>
+</kw>
+<kw name="Verify The Bundle Plan Cannot Be Change Message" library="keyword_mggr_myplan">
+<doc>Check the message correct after click change plan</doc>
+<arguments>
+<arg>很抱歉，由於您的合約無法手動變更資費，如需變更資費請至 Gogoro Network™ 官網的『聯絡我們』頁面留言，將由專人盡快為您服務。</arg>
+</arguments>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//*[@id="app"]/div[2]/div/p</arg>
+</arguments>
+<assign>
+<var>${BundlePlan_cannot_be_changed_message}</var>
+</assign>
+<msg timestamp="20200904 19:02:30.348" level="INFO">${BundlePlan_cannot_be_changed_message} = 很抱歉，由於您的合約無法手動變更資費，如需變更資費請至 Gogoro Network™ 官網的『聯絡我們』頁面留言，將由專人盡快為您服務。</msg>
+<status status="PASS" starttime="20200904 19:02:30.329" endtime="20200904 19:02:30.348"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="keywords_common">
+<doc>Build in compare two variables keyword with log</doc>
+<arguments>
+<arg>${BundlePlan_cannot_be_changed_message}</arg>
+<arg>${expected}</arg>
+</arguments>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${key}'=='${EMPTY}'</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+<arg>ELSE</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: \nkey = ${key} Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<status status="PASS" starttime="20200904 19:02:30.350" endtime="20200904 19:02:30.352"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:30.349" endtime="20200904 19:02:30.352"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:30.348" endtime="20200904 19:02:30.352"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:30.328" endtime="20200904 19:02:30.353"></status>
+</kw>
+<status status="PASS" starttime="20200904 19:02:27.539" endtime="20200904 19:02:30.353"></status>
+</kw>
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>https://pa-network-my.gogoro.com/my-plan/change-plan</arg>
+</arguments>
+<msg timestamp="20200904 19:02:30.355" level="INFO">Opening url 'https://pa-network-my.gogoro.com/my-plan/change-plan'</msg>
+<status status="PASS" starttime="20200904 19:02:30.355" endtime="20200904 19:02:30.811"></status>
+</kw>
+<kw name="Wait Until Location Is" library="Selenium2Library">
+<doc>Waits until the current URL is ``expected``.</doc>
+<arguments>
+<arg>https://${MYGOGORO_GN_HOST}/my-plan/change-plan</arg>
+<arg>30s</arg>
+</arguments>
+<status status="PASS" starttime="20200904 19:02:30.812" endtime="20200904 19:02:30.989"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>//*[@id="app"]/div[2]/div/div[2]/div/div</arg>
+</arguments>
+<status status="PASS" starttime="20200904 19:02:30.990" endtime="20200904 19:02:31.883"></status>
+</kw>
+<tags>
+<tag>Change-Plan</tag>
+<tag>MyGogoroWeb</tag>
+</tags>
+<timeout value="5 minutes"></timeout>
+<status status="PASS" starttime="20200904 19:02:25.759" endtime="20200904 19:02:31.884" critical="yes"></status>
+</test>
+<doc>Test suite for MyGogoro Change-plan page</doc>
+<status status="PASS" starttime="20200904 19:01:58.021" endtime="20200904 19:02:31.890"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0">Critical Tests</stat>
+<stat pass="1" fail="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0">Change-Plan</stat>
+<stat pass="1" fail="0">MyGogoroWeb</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" id="s1" name="Mggr-Change-Plan-Bundle-Plan">Mggr-Change-Plan-Bundle-Plan</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

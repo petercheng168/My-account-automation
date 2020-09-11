@@ -1,0 +1,1593 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.1 (Python 3.7.4 on darwin)" generated="20200827 17:53:29.759" rpa="false">
+<suite id="s1" name="Fn-Register" source="/Users/peter.yf.cheng/Gitlab/Automation-test/MyGogoro_web/integration/web/fn-register.robot">
+<kw name="Open Browser" library="keywords_common" type="setup">
+<doc>Create a chrome browser without UI display</doc>
+<arguments>
+<arg>${MY_ACCOUNT_URL}</arg>
+<arg>${MY_ACCOUNT_WINDOW_HEIGHT}</arg>
+<arg>${MY_ACCOUNT_WINDOW_WEIGHT}</arg>
+</arguments>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys, selenium.webdriver</arg>
+</arguments>
+<assign>
+<var>${chrome_options}</var>
+</assign>
+<msg timestamp="20200827 17:53:30.850" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x105352150&gt;</msg>
+<status status="PASS" starttime="20200827 17:53:30.850" endtime="20200827 17:53:30.850"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-extensions</arg>
+</arguments>
+<status status="PASS" starttime="20200827 17:53:30.851" endtime="20200827 17:53:30.851"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-gpu</arg>
+</arguments>
+<status status="PASS" starttime="20200827 17:53:30.856" endtime="20200827 17:53:30.857"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--no-sandbox</arg>
+</arguments>
+<status status="PASS" starttime="20200827 17:53:30.857" endtime="20200827 17:53:30.858"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-setuid-sandbox</arg>
+</arguments>
+<status status="PASS" starttime="20200827 17:53:30.859" endtime="20200827 17:53:30.859"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-dev-shm-usage</arg>
+</arguments>
+<status status="PASS" starttime="20200827 17:53:30.860" endtime="20200827 17:53:30.860"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--incognito</arg>
+</arguments>
+<status status="PASS" starttime="20200827 17:53:30.861" endtime="20200827 17:53:30.861"></status>
+</kw>
+<kw name="Create Webdriver" library="Selenium2Library">
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<arguments>
+<arg>Chrome</arg>
+<arg>chrome_options=${chrome_options}</arg>
+<arg>executable_path=${BROWSER_PATH}/${DRIVER_VERSION}</arg>
+</arguments>
+<msg timestamp="20200827 17:53:30.863" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" starttime="20200827 17:53:30.862" endtime="20200827 17:53:34.052"></status>
+</kw>
+<kw name="Set Window Size" library="Selenium2Library">
+<doc>Sets current windows size to given ``width`` and ``height``.</doc>
+<arguments>
+<arg>${height}</arg>
+<arg>${weight}</arg>
+</arguments>
+<status status="PASS" starttime="20200827 17:53:34.054" endtime="20200827 17:53:34.195"></status>
+</kw>
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${url}</arg>
+</arguments>
+<msg timestamp="20200827 17:53:34.197" level="INFO">Opening url 'https://pa-network-my.gogoro.com'</msg>
+<status status="PASS" starttime="20200827 17:53:34.196" endtime="20200827 17:53:36.604"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:30.848" endtime="20200827 17:53:36.605"></status>
+</kw>
+<test id="s1-t1" name="Register Negative test- Disagree EULA">
+<kw name="Click Register Button" library="keyword_mggr_register">
+<kw name="Assign Id To Element" library="Selenium2Library">
+<doc>Assigns a temporary ``id`` to the element specified by ``locator``.</doc>
+<arguments>
+<arg>//*[@id="app"]/div/footer/a[2]</arg>
+<arg>Register_btn</arg>
+</arguments>
+<msg timestamp="20200827 17:53:36.611" level="INFO">Assigning temporary id 'Register_btn' to element '//*[@id="app"]/div/footer/a[2]'.</msg>
+<status status="PASS" starttime="20200827 17:53:36.610" endtime="20200827 17:53:36.963"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>Register_btn</arg>
+</arguments>
+<msg timestamp="20200827 17:53:36.965" level="INFO">Clicking element 'Register_btn'.</msg>
+<status status="PASS" starttime="20200827 17:53:36.964" endtime="20200827 17:53:37.925"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:36.608" endtime="20200827 17:53:37.925"></status>
+</kw>
+<kw name="Click EULA Cancel Button" library="keyword_mggr_register">
+<kw name="Click Rounded Button" library="keywords_common">
+<doc>Click rounded button</doc>
+<arguments>
+<arg>取消</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>0.5s</arg>
+</arguments>
+<msg timestamp="20200827 17:53:38.429" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20200827 17:53:37.928" endtime="20200827 17:53:38.429"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//*[contains(@class,'RoundedButton__ThemedButton-iaiki0-0')][contains(.,"${text}")]</arg>
+</arguments>
+<status status="PASS" starttime="20200827 17:53:38.431" endtime="20200827 17:53:39.808"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//*[contains(@class,'RoundedButton__ThemedButton-iaiki0-0')][contains(.,"${text}")]</arg>
+</arguments>
+<msg timestamp="20200827 17:53:39.809" level="INFO">Clicking element '//*[contains(@class,'RoundedButton__ThemedButton-iaiki0-0')][contains(.,"取消")]'.</msg>
+<status status="PASS" starttime="20200827 17:53:39.809" endtime="20200827 17:53:40.075"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:37.926" endtime="20200827 17:53:40.075"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:37.925" endtime="20200827 17:53:40.075"></status>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>10s</arg>
+<arg>2s</arg>
+<arg>Verify Page URL</arg>
+<arg>https://${MYGOGORO_GN_HOST}/login</arg>
+</arguments>
+<kw name="Verify Page URL" library="keywords_common">
+<doc>Check the URL of pages</doc>
+<arguments>
+<arg>https://${MYGOGORO_GN_HOST}/login</arg>
+</arguments>
+<kw name="Get Location" library="Selenium2Library">
+<doc>Returns the current browser window URL.</doc>
+<assign>
+<var>${currentURL}</var>
+</assign>
+<msg timestamp="20200827 17:53:40.087" level="INFO">${currentURL} = https://pa-network-my.gogoro.com/login</msg>
+<status status="PASS" starttime="20200827 17:53:40.079" endtime="20200827 17:53:40.087"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="keywords_common">
+<doc>Build in compare two variables keyword with log</doc>
+<arguments>
+<arg>${currentURL}</arg>
+<arg>${expected}</arg>
+</arguments>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${key}'=='${EMPTY}'</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+<arg>ELSE</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: \nkey = ${key} Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<status status="PASS" starttime="20200827 17:53:40.090" endtime="20200827 17:53:40.091"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:40.089" endtime="20200827 17:53:40.091"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:40.088" endtime="20200827 17:53:40.091"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:40.078" endtime="20200827 17:53:40.092"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:40.077" endtime="20200827 17:53:40.092"></status>
+</kw>
+<kw name="Test Teardown" type="teardown">
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>https://pa-network-my.gogoro.com/login</arg>
+</arguments>
+<msg timestamp="20200827 17:53:40.093" level="INFO">Opening url 'https://pa-network-my.gogoro.com/login'</msg>
+<status status="PASS" starttime="20200827 17:53:40.093" endtime="20200827 17:53:41.539"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20200827 17:53:46.541" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20200827 17:53:41.540" endtime="20200827 17:53:46.541"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:40.092" endtime="20200827 17:53:46.541"></status>
+</kw>
+<tags>
+<tag>MyGogoroWeb Register</tag>
+</tags>
+<timeout value="5 minutes"></timeout>
+<status status="PASS" starttime="20200827 17:53:36.605" endtime="20200827 17:53:46.542" critical="yes"></status>
+</test>
+<test id="s1-t2" name="Register Negative test- Invalid data">
+<kw name="Click Register Button" library="keyword_mggr_register">
+<kw name="Assign Id To Element" library="Selenium2Library">
+<doc>Assigns a temporary ``id`` to the element specified by ``locator``.</doc>
+<arguments>
+<arg>//*[@id="app"]/div/footer/a[2]</arg>
+<arg>Register_btn</arg>
+</arguments>
+<msg timestamp="20200827 17:53:46.548" level="INFO">Assigning temporary id 'Register_btn' to element '//*[@id="app"]/div/footer/a[2]'.</msg>
+<status status="PASS" starttime="20200827 17:53:46.547" endtime="20200827 17:53:46.567"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>Register_btn</arg>
+</arguments>
+<msg timestamp="20200827 17:53:46.569" level="INFO">Clicking element 'Register_btn'.</msg>
+<status status="PASS" starttime="20200827 17:53:46.568" endtime="20200827 17:53:47.105"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:46.545" endtime="20200827 17:53:47.105"></status>
+</kw>
+<kw name="Click EULA Agree Button" library="keyword_mggr_register">
+<kw name="Click Rounded Button" library="keywords_common">
+<doc>Click rounded button</doc>
+<arguments>
+<arg>同意</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>0.5s</arg>
+</arguments>
+<msg timestamp="20200827 17:53:47.609" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20200827 17:53:47.108" endtime="20200827 17:53:47.609"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//*[contains(@class,'RoundedButton__ThemedButton-iaiki0-0')][contains(.,"${text}")]</arg>
+</arguments>
+<status status="PASS" starttime="20200827 17:53:47.610" endtime="20200827 17:53:48.285"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//*[contains(@class,'RoundedButton__ThemedButton-iaiki0-0')][contains(.,"${text}")]</arg>
+</arguments>
+<msg timestamp="20200827 17:53:48.287" level="INFO">Clicking element '//*[contains(@class,'RoundedButton__ThemedButton-iaiki0-0')][contains(.,"同意")]'.</msg>
+<status status="PASS" starttime="20200827 17:53:48.286" endtime="20200827 17:53:48.442"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:47.107" endtime="20200827 17:53:48.442"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:47.106" endtime="20200827 17:53:48.442"></status>
+</kw>
+<kw name="Fill In Invalid Data Into Email Of The New Account" library="keyword_mggr_register">
+<doc>Fill in invalid new account firstname</doc>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//input[@type="text"][@name="username.email"]</arg>
+</arguments>
+<status status="PASS" starttime="20200827 17:53:48.444" endtime="20200827 17:53:48.493"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>6</arg>
+</arguments>
+<assign>
+<var>${num}</var>
+</assign>
+<msg timestamp="20200827 17:53:48.495" level="INFO">${num} = 6</msg>
+<status status="PASS" starttime="20200827 17:53:48.494" endtime="20200827 17:53:48.495"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>"".join(random.sample(string.digits,int(${num})))</arg>
+<arg>random,string</arg>
+</arguments>
+<assign>
+<var>${number}</var>
+</assign>
+<msg timestamp="20200827 17:53:48.497" level="INFO">${number} = 651209</msg>
+<status status="PASS" starttime="20200827 17:53:48.496" endtime="20200827 17:53:48.497"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>//input[@type="text"][@name="username.email"]</arg>
+<arg>gogopasw001+${number}</arg>
+</arguments>
+<msg timestamp="20200827 17:53:48.499" level="INFO">Typing text 'gogopasw001+651209' into text field '//input[@type="text"][@name="username.email"]'.</msg>
+<status status="PASS" starttime="20200827 17:53:48.498" endtime="20200827 17:53:49.863"></status>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>10s</arg>
+<arg>2s</arg>
+<arg>Verfiy Invalid Email Register Msg</arg>
+<arg>請檢查您的電子信箱格式</arg>
+</arguments>
+<kw name="Verfiy Invalid Email Register Msg" library="keyword_mggr_register">
+<doc>Check the email not register</doc>
+<arguments>
+<arg>請檢查您的電子信箱格式</arg>
+</arguments>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//*[@id="app"]/div/div/div/form/div[1]/span</arg>
+</arguments>
+<assign>
+<var>${email_invalid_register_msg}</var>
+</assign>
+<msg timestamp="20200827 17:53:49.977" level="INFO">${email_invalid_register_msg} = 請檢查您的電子信箱格式</msg>
+<status status="PASS" starttime="20200827 17:53:49.869" endtime="20200827 17:53:49.977"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="keywords_common">
+<doc>Build in compare two variables keyword with log</doc>
+<arguments>
+<arg>${email_invalid_register_msg}</arg>
+<arg>${expected}</arg>
+</arguments>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${key}'=='${EMPTY}'</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+<arg>ELSE</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: \nkey = ${key} Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<status status="PASS" starttime="20200827 17:53:49.981" endtime="20200827 17:53:49.982"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:49.979" endtime="20200827 17:53:49.982"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:49.977" endtime="20200827 17:53:49.982"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:49.866" endtime="20200827 17:53:49.982"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:49.865" endtime="20200827 17:53:49.983"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:48.443" endtime="20200827 17:53:49.983"></status>
+</kw>
+<kw name="Fill In Invalid Format Into Password Of The New Account" library="keyword_mggr_register">
+<doc>Fill in invalid new account mobile</doc>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//input[@type="password"][@name="password"]</arg>
+</arguments>
+<status status="PASS" starttime="20200827 17:53:49.985" endtime="20200827 17:53:50.033"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>//input[@type="password"][@name="password"]</arg>
+<arg>gogoro123</arg>
+</arguments>
+<msg timestamp="20200827 17:53:50.034" level="INFO">Typing text 'gogoro123' into text field '//input[@type="password"][@name="password"]'.</msg>
+<status status="PASS" starttime="20200827 17:53:50.034" endtime="20200827 17:53:50.504"></status>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>10s</arg>
+<arg>2s</arg>
+<arg>Verfiy Invalid Password Register Msg</arg>
+<arg>密碼必需要有最少一個大寫英文和小寫英文和數字</arg>
+</arguments>
+<kw name="Verfiy Invalid Password Register Msg" library="keyword_mggr_register">
+<doc>Check the email not register</doc>
+<arguments>
+<arg>密碼必需要有最少一個大寫英文和小寫英文和數字</arg>
+</arguments>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//*[@id="app"]/div/div/div/form/div[2]/span</arg>
+</arguments>
+<assign>
+<var>${password_invalid_register_msg}</var>
+</assign>
+<msg timestamp="20200827 17:53:50.629" level="INFO">${password_invalid_register_msg} = 密碼必需要有最少一個大寫英文和小寫英文和數字</msg>
+<status status="PASS" starttime="20200827 17:53:50.509" endtime="20200827 17:53:50.629"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="keywords_common">
+<doc>Build in compare two variables keyword with log</doc>
+<arguments>
+<arg>${password_invalid_register_msg}</arg>
+<arg>${expected}</arg>
+</arguments>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${key}'=='${EMPTY}'</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+<arg>ELSE</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: \nkey = ${key} Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<status status="PASS" starttime="20200827 17:53:50.635" endtime="20200827 17:53:50.635"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:50.633" endtime="20200827 17:53:50.636"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:50.630" endtime="20200827 17:53:50.636"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:50.507" endtime="20200827 17:53:50.636"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:50.506" endtime="20200827 17:53:50.636"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:49.983" endtime="20200827 17:53:50.637"></status>
+</kw>
+<kw name="Fill In Invalid Length Into Password Of The New Account" library="keyword_mggr_register">
+<doc>Fill in invalid new account mobile</doc>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//input[@type="password"][@name="passwordConfirm"]</arg>
+</arguments>
+<status status="PASS" starttime="20200827 17:53:50.644" endtime="20200827 17:53:50.684"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>//input[@type="password"][@name="passwordConfirm"]</arg>
+<arg>go123</arg>
+</arguments>
+<msg timestamp="20200827 17:53:50.685" level="INFO">Typing text 'go123' into text field '//input[@type="password"][@name="passwordConfirm"]'.</msg>
+<status status="PASS" starttime="20200827 17:53:50.685" endtime="20200827 17:53:51.261"></status>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>10s</arg>
+<arg>2s</arg>
+<arg>Verfiy Invalid PasswordConfirm Register Msg</arg>
+<arg>密碼需一致</arg>
+</arguments>
+<kw name="Verfiy Invalid PasswordConfirm Register Msg" library="keyword_mggr_register">
+<doc>Check the email not register</doc>
+<arguments>
+<arg>密碼需一致</arg>
+</arguments>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//*[@id="app"]/div/div/div/form/div[3]/span</arg>
+</arguments>
+<assign>
+<var>${passwordConfirm_invalid_register_msg}</var>
+</assign>
+<msg timestamp="20200827 17:53:51.295" level="INFO">${passwordConfirm_invalid_register_msg} = 密碼需一致</msg>
+<status status="PASS" starttime="20200827 17:53:51.264" endtime="20200827 17:53:51.295"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="keywords_common">
+<doc>Build in compare two variables keyword with log</doc>
+<arguments>
+<arg>${passwordConfirm_invalid_register_msg}</arg>
+<arg>${expected}</arg>
+</arguments>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${key}'=='${EMPTY}'</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+<arg>ELSE</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: \nkey = ${key} Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<status status="PASS" starttime="20200827 17:53:51.299" endtime="20200827 17:53:51.300"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:51.298" endtime="20200827 17:53:51.300"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:51.296" endtime="20200827 17:53:51.300"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:51.263" endtime="20200827 17:53:51.300"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:51.262" endtime="20200827 17:53:51.301"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:50.637" endtime="20200827 17:53:51.301"></status>
+</kw>
+<kw name="Fill In Invalid Data Into Last Name Of The New Account" library="keyword_mggr_register">
+<doc>Fill in invalid new account lastname</doc>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//input[@type="text"][@name="lastName"]</arg>
+</arguments>
+<status status="PASS" starttime="20200827 17:53:51.302" endtime="20200827 17:53:51.329"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>6</arg>
+</arguments>
+<assign>
+<var>${num}</var>
+</assign>
+<msg timestamp="20200827 17:53:51.331" level="INFO">${num} = 6</msg>
+<status status="PASS" starttime="20200827 17:53:51.330" endtime="20200827 17:53:51.331"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>"".join(random.sample(string.ascii_letters+string.digits,int(${num})))</arg>
+<arg>random,string</arg>
+</arguments>
+<assign>
+<var>${letter}</var>
+</assign>
+<msg timestamp="20200827 17:53:51.332" level="INFO">${letter} = oRcZdn</msg>
+<status status="PASS" starttime="20200827 17:53:51.332" endtime="20200827 17:53:51.332"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>//input[@type="text"][@name="lastName"]</arg>
+<arg>@${letter}</arg>
+</arguments>
+<msg timestamp="20200827 17:53:51.333" level="INFO">Typing text '@oRcZdn' into text field '//input[@type="text"][@name="lastName"]'.</msg>
+<status status="PASS" starttime="20200827 17:53:51.333" endtime="20200827 17:53:51.759"></status>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>10s</arg>
+<arg>2s</arg>
+<arg>Verfiy Invalid Lastname Register Msg</arg>
+<arg>只允許輸入中英文字元</arg>
+</arguments>
+<kw name="Verfiy Invalid Lastname Register Msg" library="keyword_mggr_register">
+<doc>Check the Lastname not register</doc>
+<arguments>
+<arg>只允許輸入中英文字元</arg>
+</arguments>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//*[@id="app"]/div/div/div/form/div[4]/span</arg>
+</arguments>
+<assign>
+<var>${lastname_not_register_msg}</var>
+</assign>
+<msg timestamp="20200827 17:53:51.876" level="INFO">${lastname_not_register_msg} = 只允許輸入中英文字元</msg>
+<status status="PASS" starttime="20200827 17:53:51.762" endtime="20200827 17:53:51.876"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="keywords_common">
+<doc>Build in compare two variables keyword with log</doc>
+<arguments>
+<arg>${lastname_not_register_msg}</arg>
+<arg>${expected}</arg>
+</arguments>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${key}'=='${EMPTY}'</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+<arg>ELSE</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: \nkey = ${key} Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<status status="PASS" starttime="20200827 17:53:51.880" endtime="20200827 17:53:51.881"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:51.879" endtime="20200827 17:53:51.882"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:51.878" endtime="20200827 17:53:51.882"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:51.761" endtime="20200827 17:53:51.882"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:51.760" endtime="20200827 17:53:51.882"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:51.301" endtime="20200827 17:53:51.882"></status>
+</kw>
+<kw name="Fill In Invalid Data Into First Name Of The New Account" library="keyword_mggr_register">
+<doc>Fill in invalid new account firstname</doc>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//input[@type="text"][@name="firstName"]</arg>
+</arguments>
+<status status="PASS" starttime="20200827 17:53:51.884" endtime="20200827 17:53:51.916"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>6</arg>
+</arguments>
+<assign>
+<var>${num}</var>
+</assign>
+<msg timestamp="20200827 17:53:51.919" level="INFO">${num} = 6</msg>
+<status status="PASS" starttime="20200827 17:53:51.918" endtime="20200827 17:53:51.919"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>"".join(random.sample(string.ascii_letters+string.digits,int(${num})))</arg>
+<arg>random,string</arg>
+</arguments>
+<assign>
+<var>${letter}</var>
+</assign>
+<msg timestamp="20200827 17:53:51.921" level="INFO">${letter} = wukMmc</msg>
+<status status="PASS" starttime="20200827 17:53:51.920" endtime="20200827 17:53:51.921"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>//input[@type="text"][@name="firstName"]</arg>
+<arg>@${letter}</arg>
+</arguments>
+<msg timestamp="20200827 17:53:51.923" level="INFO">Typing text '@wukMmc' into text field '//input[@type="text"][@name="firstName"]'.</msg>
+<status status="PASS" starttime="20200827 17:53:51.922" endtime="20200827 17:53:52.627"></status>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>10s</arg>
+<arg>2s</arg>
+<arg>Verfiy Invalid Firstname Register Msg</arg>
+<arg>只允許輸入中英文字元</arg>
+</arguments>
+<kw name="Verfiy Invalid Firstname Register Msg" library="keyword_mggr_register">
+<doc>Check the Firstname not register</doc>
+<arguments>
+<arg>只允許輸入中英文字元</arg>
+</arguments>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//*[@id="app"]/div/div/div/form/div[5]/span</arg>
+</arguments>
+<assign>
+<var>${firstname_not_register_msg}</var>
+</assign>
+<msg timestamp="20200827 17:53:52.710" level="INFO">${firstname_not_register_msg} = 只允許輸入中英文字元</msg>
+<status status="PASS" starttime="20200827 17:53:52.631" endtime="20200827 17:53:52.710"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="keywords_common">
+<doc>Build in compare two variables keyword with log</doc>
+<arguments>
+<arg>${firstname_not_register_msg}</arg>
+<arg>${expected}</arg>
+</arguments>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${key}'=='${EMPTY}'</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+<arg>ELSE</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: \nkey = ${key} Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<status status="PASS" starttime="20200827 17:53:52.715" endtime="20200827 17:53:52.716"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:52.714" endtime="20200827 17:53:52.716"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:52.711" endtime="20200827 17:53:52.716"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:52.629" endtime="20200827 17:53:52.716"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:52.628" endtime="20200827 17:53:52.717"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:51.883" endtime="20200827 17:53:52.717"></status>
+</kw>
+<kw name="Click Gender Raido Button- Male Radio Button" library="keyword_mggr_register">
+<kw name="Assign Id To Element" library="Selenium2Library">
+<doc>Assigns a temporary ``id`` to the element specified by ``locator``.</doc>
+<arguments>
+<arg>//*[@id="app"]/div/div/div/form/div[7]/label[2]/label</arg>
+<arg>Ｍale_raidobtn</arg>
+</arguments>
+<msg timestamp="20200827 17:53:52.722" level="INFO">Assigning temporary id 'Ｍale_raidobtn' to element '//*[@id="app"]/div/div/div/form/div[7]/label[2]/label'.</msg>
+<status status="PASS" starttime="20200827 17:53:52.719" endtime="20200827 17:53:52.793"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>Ｍale_raidobtn</arg>
+</arguments>
+<msg timestamp="20200827 17:53:52.794" level="INFO">Clicking element 'Ｍale_raidobtn'.</msg>
+<status status="PASS" starttime="20200827 17:53:52.793" endtime="20200827 17:53:52.895"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:52.717" endtime="20200827 17:53:52.896"></status>
+</kw>
+<kw name="Click Registered Button" library="keyword_mggr_register">
+<kw name="Click Rounded Button" library="keywords_common">
+<doc>Click rounded button</doc>
+<arguments>
+<arg>註冊</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>0.5s</arg>
+</arguments>
+<msg timestamp="20200827 17:53:53.400" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20200827 17:53:52.899" endtime="20200827 17:53:53.400"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//*[contains(@class,'RoundedButton__ThemedButton-iaiki0-0')][contains(.,"${text}")]</arg>
+</arguments>
+<status status="PASS" starttime="20200827 17:53:53.402" endtime="20200827 17:53:53.443"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//*[contains(@class,'RoundedButton__ThemedButton-iaiki0-0')][contains(.,"${text}")]</arg>
+</arguments>
+<msg timestamp="20200827 17:53:53.444" level="INFO">Clicking element '//*[contains(@class,'RoundedButton__ThemedButton-iaiki0-0')][contains(.,"註冊")]'.</msg>
+<status status="PASS" starttime="20200827 17:53:53.444" endtime="20200827 17:53:53.502"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:52.897" endtime="20200827 17:53:53.503"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:52.896" endtime="20200827 17:53:53.503"></status>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>10s</arg>
+<arg>2s</arg>
+<arg>Verify Page URL</arg>
+<arg>https://${MYGOGORO_GN_HOST}/register</arg>
+</arguments>
+<kw name="Verify Page URL" library="keywords_common">
+<doc>Check the URL of pages</doc>
+<arguments>
+<arg>https://${MYGOGORO_GN_HOST}/register</arg>
+</arguments>
+<kw name="Get Location" library="Selenium2Library">
+<doc>Returns the current browser window URL.</doc>
+<assign>
+<var>${currentURL}</var>
+</assign>
+<msg timestamp="20200827 17:53:53.514" level="INFO">${currentURL} = https://pa-network-my.gogoro.com/register</msg>
+<status status="PASS" starttime="20200827 17:53:53.507" endtime="20200827 17:53:53.514"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="keywords_common">
+<doc>Build in compare two variables keyword with log</doc>
+<arguments>
+<arg>${currentURL}</arg>
+<arg>${expected}</arg>
+</arguments>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${key}'=='${EMPTY}'</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+<arg>ELSE</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: \nkey = ${key} Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<status status="PASS" starttime="20200827 17:53:53.520" endtime="20200827 17:53:53.524"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:53.515" endtime="20200827 17:53:53.524"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:53.514" endtime="20200827 17:53:53.525"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:53.505" endtime="20200827 17:53:53.525"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:53.504" endtime="20200827 17:53:53.525"></status>
+</kw>
+<kw name="Test Teardown" type="teardown">
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>https://pa-network-my.gogoro.com/login</arg>
+</arguments>
+<msg timestamp="20200827 17:53:53.527" level="INFO">Opening url 'https://pa-network-my.gogoro.com/login'</msg>
+<status status="PASS" starttime="20200827 17:53:53.527" endtime="20200827 17:53:54.537"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20200827 17:53:59.542" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20200827 17:53:54.540" endtime="20200827 17:53:59.542"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:53.526" endtime="20200827 17:53:59.542"></status>
+</kw>
+<tags>
+<tag>MyGogoroWeb Register</tag>
+</tags>
+<timeout value="5 minutes"></timeout>
+<status status="PASS" starttime="20200827 17:53:46.544" endtime="20200827 17:53:59.542" critical="yes"></status>
+</test>
+<test id="s1-t3" name="Register Negative test- Field is empty">
+<kw name="Click Register Button" library="keyword_mggr_register">
+<kw name="Assign Id To Element" library="Selenium2Library">
+<doc>Assigns a temporary ``id`` to the element specified by ``locator``.</doc>
+<arguments>
+<arg>//*[@id="app"]/div/footer/a[2]</arg>
+<arg>Register_btn</arg>
+</arguments>
+<msg timestamp="20200827 17:53:59.547" level="INFO">Assigning temporary id 'Register_btn' to element '//*[@id="app"]/div/footer/a[2]'.</msg>
+<status status="PASS" starttime="20200827 17:53:59.547" endtime="20200827 17:53:59.584"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>Register_btn</arg>
+</arguments>
+<msg timestamp="20200827 17:53:59.586" level="INFO">Clicking element 'Register_btn'.</msg>
+<status status="PASS" starttime="20200827 17:53:59.585" endtime="20200827 17:54:00.156"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:53:59.545" endtime="20200827 17:54:00.156"></status>
+</kw>
+<kw name="Click EULA Agree Button" library="keyword_mggr_register">
+<kw name="Click Rounded Button" library="keywords_common">
+<doc>Click rounded button</doc>
+<arguments>
+<arg>同意</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>0.5s</arg>
+</arguments>
+<msg timestamp="20200827 17:54:00.660" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20200827 17:54:00.159" endtime="20200827 17:54:00.660"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//*[contains(@class,'RoundedButton__ThemedButton-iaiki0-0')][contains(.,"${text}")]</arg>
+</arguments>
+<status status="PASS" starttime="20200827 17:54:00.661" endtime="20200827 17:54:01.704"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//*[contains(@class,'RoundedButton__ThemedButton-iaiki0-0')][contains(.,"${text}")]</arg>
+</arguments>
+<msg timestamp="20200827 17:54:01.705" level="INFO">Clicking element '//*[contains(@class,'RoundedButton__ThemedButton-iaiki0-0')][contains(.,"同意")]'.</msg>
+<status status="PASS" starttime="20200827 17:54:01.705" endtime="20200827 17:54:01.781"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:54:00.157" endtime="20200827 17:54:01.781"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:54:00.157" endtime="20200827 17:54:01.781"></status>
+</kw>
+<kw name="Click Registered Button" library="keyword_mggr_register">
+<kw name="Click Rounded Button" library="keywords_common">
+<doc>Click rounded button</doc>
+<arguments>
+<arg>註冊</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>0.5s</arg>
+</arguments>
+<msg timestamp="20200827 17:54:02.287" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20200827 17:54:01.784" endtime="20200827 17:54:02.287"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//*[contains(@class,'RoundedButton__ThemedButton-iaiki0-0')][contains(.,"${text}")]</arg>
+</arguments>
+<status status="PASS" starttime="20200827 17:54:02.290" endtime="20200827 17:54:02.317"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//*[contains(@class,'RoundedButton__ThemedButton-iaiki0-0')][contains(.,"${text}")]</arg>
+</arguments>
+<msg timestamp="20200827 17:54:02.318" level="INFO">Clicking element '//*[contains(@class,'RoundedButton__ThemedButton-iaiki0-0')][contains(.,"註冊")]'.</msg>
+<status status="PASS" starttime="20200827 17:54:02.318" endtime="20200827 17:54:02.405"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:54:01.783" endtime="20200827 17:54:02.405"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:54:01.782" endtime="20200827 17:54:02.405"></status>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>10s</arg>
+<arg>2s</arg>
+<arg>Verify Page URL</arg>
+<arg>https://${MYGOGORO_GN_HOST}/register</arg>
+</arguments>
+<kw name="Verify Page URL" library="keywords_common">
+<doc>Check the URL of pages</doc>
+<arguments>
+<arg>https://${MYGOGORO_GN_HOST}/register</arg>
+</arguments>
+<kw name="Get Location" library="Selenium2Library">
+<doc>Returns the current browser window URL.</doc>
+<assign>
+<var>${currentURL}</var>
+</assign>
+<msg timestamp="20200827 17:54:02.417" level="INFO">${currentURL} = https://pa-network-my.gogoro.com/register</msg>
+<status status="PASS" starttime="20200827 17:54:02.408" endtime="20200827 17:54:02.417"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="keywords_common">
+<doc>Build in compare two variables keyword with log</doc>
+<arguments>
+<arg>${currentURL}</arg>
+<arg>${expected}</arg>
+</arguments>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${key}'=='${EMPTY}'</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+<arg>ELSE</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: \nkey = ${key} Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<status status="PASS" starttime="20200827 17:54:02.420" endtime="20200827 17:54:02.421"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:54:02.419" endtime="20200827 17:54:02.421"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:54:02.417" endtime="20200827 17:54:02.421"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:54:02.407" endtime="20200827 17:54:02.422"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:54:02.407" endtime="20200827 17:54:02.422"></status>
+</kw>
+<kw name="Test Teardown" type="teardown">
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>https://pa-network-my.gogoro.com/login</arg>
+</arguments>
+<msg timestamp="20200827 17:54:02.425" level="INFO">Opening url 'https://pa-network-my.gogoro.com/login'</msg>
+<status status="PASS" starttime="20200827 17:54:02.423" endtime="20200827 17:54:03.458"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20200827 17:54:08.461" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20200827 17:54:03.459" endtime="20200827 17:54:08.461"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:54:02.422" endtime="20200827 17:54:08.461"></status>
+</kw>
+<tags>
+<tag>MyGogoroWeb Register</tag>
+</tags>
+<timeout value="5 minutes"></timeout>
+<status status="PASS" starttime="20200827 17:53:59.543" endtime="20200827 17:54:08.461" critical="yes"></status>
+</test>
+<test id="s1-t4" name="Register Negative test- registered and verified">
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>10s</arg>
+<arg>2s</arg>
+<arg>Verify Page URL</arg>
+<arg>https://${MYGOGORO_GN_HOST}/login</arg>
+</arguments>
+<kw name="Verify Page URL" library="keywords_common">
+<doc>Check the URL of pages</doc>
+<arguments>
+<arg>https://${MYGOGORO_GN_HOST}/login</arg>
+</arguments>
+<kw name="Get Location" library="Selenium2Library">
+<doc>Returns the current browser window URL.</doc>
+<assign>
+<var>${currentURL}</var>
+</assign>
+<msg timestamp="20200827 17:54:08.523" level="INFO">${currentURL} = https://pa-network-my.gogoro.com/login</msg>
+<status status="PASS" starttime="20200827 17:54:08.467" endtime="20200827 17:54:08.523"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="keywords_common">
+<doc>Build in compare two variables keyword with log</doc>
+<arguments>
+<arg>${currentURL}</arg>
+<arg>${expected}</arg>
+</arguments>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${key}'=='${EMPTY}'</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+<arg>ELSE</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: \nkey = ${key} Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<status status="PASS" starttime="20200827 17:54:08.529" endtime="20200827 17:54:08.530"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:54:08.527" endtime="20200827 17:54:08.530"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:54:08.524" endtime="20200827 17:54:08.531"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:54:08.465" endtime="20200827 17:54:08.531"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:54:08.464" endtime="20200827 17:54:08.531"></status>
+</kw>
+<kw name="Test Teardown" type="teardown">
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>https://pa-network-my.gogoro.com/login</arg>
+</arguments>
+<msg timestamp="20200827 17:54:08.533" level="INFO">Opening url 'https://pa-network-my.gogoro.com/login'</msg>
+<status status="PASS" starttime="20200827 17:54:08.532" endtime="20200827 17:54:10.958"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20200827 17:54:15.963" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20200827 17:54:10.960" endtime="20200827 17:54:15.963"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:54:08.531" endtime="20200827 17:54:15.963"></status>
+</kw>
+<tags>
+<tag>MyGogoroWeb Register</tag>
+</tags>
+<timeout value="5 minutes"></timeout>
+<status status="PASS" starttime="20200827 17:54:08.462" endtime="20200827 17:54:15.963" critical="yes"></status>
+</test>
+<test id="s1-t5" name="Register Negative test- registered and not veriftered">
+<kw name="Signup User">
+<arguments>
+<arg>email_verified=0</arg>
+</arguments>
+<kw name="Set User Variables">
+<kw name="Encode Password Get" library="LibAppCipher">
+<doc>encode password</doc>
+<arguments>
+<arg>Gogoro123</arg>
+</arguments>
+<assign>
+<var>${password}</var>
+</assign>
+<msg timestamp="20200827 17:54:15.996" level="INFO">${password} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200827 17:54:15.968" endtime="20200827 17:54:15.996"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${User('${password.text}')}</arg>
+</arguments>
+<assign>
+<var>${User}</var>
+</assign>
+<msg timestamp="20200827 17:54:15.998" level="INFO">${User} = &lt;MyGogoroObject.User object at 0x1053cf950&gt;</msg>
+<status status="PASS" starttime="20200827 17:54:15.998" endtime="20200827 17:54:15.998"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${User}</arg>
+</arguments>
+<msg timestamp="20200827 17:54:15.999" level="INFO">${User} = &lt;MyGogoroObject.User object at 0x1053cf950&gt;</msg>
+<status status="PASS" starttime="20200827 17:54:15.999" endtime="20200827 17:54:15.999"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:54:15.967" endtime="20200827 17:54:15.999"></status>
+</kw>
+<kw name="Users Post" library="LibUsers">
+<doc>Create user</doc>
+<arguments>
+<arg>${User.company_code}</arg>
+<arg>${User.first_name}</arg>
+<arg>${User.gender}</arg>
+<arg>${User.email}</arg>
+<arg>${User.status}\</arg>
+<arg>${User.enable_e_carrier}</arg>
+<arg>${User.last_name}</arg>
+<arg>${User.display_name}</arg>
+<arg>${User.birthday}\</arg>
+<arg>${User.contact_address}</arg>
+<arg>${User.contact_district}</arg>
+<arg>${User.contact_city}</arg>
+<arg>${User.contact_zipcode}\</arg>
+<arg>${User.invoice_address}</arg>
+<arg>${User.invoice_district}</arg>
+<arg>${User.invoice_city}</arg>
+<arg>${User.invoice_zipcode}\</arg>
+<arg>${User.country_code}</arg>
+<arg>mobile_phone1=${User.mobile}</arg>
+<arg>password=${User.encode_password}\</arg>
+<arg>login_phone=${User.phone}</arg>
+<arg>occupation=${User.occupation}</arg>
+<arg>gogoro_guid=${User.gogoro_guid}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200827 17:54:16.737" level="INFO">http://10.6.1.46:3032/app/cipher?env=pa&amp;app=pa&amp;resource=pa&amp;username=pa.gen_admin@gogoro.com&amp;password=123</msg>
+<msg timestamp="20200827 17:54:17.168" level="INFO">Response message: 200
+Body: {
+    "code": 0,
+    "msg": "success",
+    "data": [
+        {
+            "user_id": "KL9J1aRy"
+        }
+    ]
+}
+CURL:
+   curl -i --request POST --url https://pa-goplatform.gogoro.com:443/go-platform/v1/users \
+   --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI0RF82RE04Nm9BQ2ZkNWwzLTMzVzU4LVVQTUZoQVEzV1FWbDVQSFVoTE5BIn0.eyJqdGkiOiI1MjEyNGQ4Yi1hMjFlLTRlMWEtODliNy1kZWIyZWYyYWJhZDEiLCJleHAiOjE1OTg1MjI5NTYsIm5iZiI6MCwiaWF0IjoxNTk4NTIyMDU2LCJpc3MiOiJodHRwczovL3BhLWF1dGgta2V5Y2xvYWsuZ29nb3JvLmNvbS9hdXRoL3JlYWxtcy9nb2dvcm8iLCJhdWQiOiJwYSIsInN1YiI6IjIwMzUxNjllLTQ4NmQtNDM1YS1iMTZiLTgxMjdkYzM2MGFlZiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImF1dGgiLCJhdXRoX3RpbWUiOjAsInNlc3Npb25fc3RhdGUiOiI3OTQ2Nzc4Yy1iYWUxLTRiNTYtODEyYS1lNjIyYWU1OGRjMTYiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImFwcF9wYSJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InBhIjp7InJvbGVzIjpbInBhX2FkbWluIl19fSwiYXV0aG9yaXphdGlvbiI6eyJwZXJtaXNzaW9ucyI6W3sic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6IjhiMzFiZDgxLTEzZmEtNDhjMC1hZGRlLWUyMDZlYzdlYjgzNyIsInJzbmFtZSI6ImdvZ29yb191c2VyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNDZhZmRhYzYtNzg3ZC00ZDdmLWJjMWMtMDM2M2QzNjlkNTI3IiwicnNuYW1lIjoic2Nvb3Rlcl9jb250cmFjdCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImU4YWJjMTA3LTM0ZTgtNDdhYS04NjY4LTg4ODMyNmUwMjczOCIsInJzbmFtZSI6ImdvX2NoYXJnZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3ODc1MWJmNi00ZjU0LTQ0OTUtYTQ4YS0xMDA3MWE4Y2U0YTkiLCJyc25hbWUiOiJlbXBsb3llZSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImY0ZTVkNTJlLTQwNGQtNGY4OC1iNmEwLWY3N2I1NjBjMzA1MSIsInJzbmFtZSI6ImVzX2NhdGVnb3J5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiYTMxMzNjOWEtYzZkMC00ZTA1LThmZDgtZDBiMWM4OTA1Yzk1IiwicnNuYW1lIjoidm0ifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI1YTg0MTYyZC04MzM4LTRjY2ItOTNjYS05NjY4MDQ1ZmU4NmIiLCJyc25hbWUiOiJzY29vdGVyX2RlbGl2ZXJ5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzViYTRhMjEtYmFhNS00MDYwLTljZTktNTM4YzAxODcxNDAzIiwicnNuYW1lIjoic3dhIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiODFkZTc4MzktNjM0ZC00Yzc3LWI0MjEtODI4NDdlNzllNmNhIiwicnNuYW1lIjoiYmF0dGVyeSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImQzODhjM2IzLTNjMzItNDE1OC04NTM4LTZhZmNiZGU5YmRhZiIsInJzbmFtZSI6ImVzX2JpbGxfd3JpdGVvZmYifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiIxN2NkOGY0OC0yODBjLTQ5ZDQtOWFlZS05YWFjNmY5MmFlZjEiLCJyc25hbWUiOiJzY29vdGVyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzYxMmEwYjQtZDMxYS00MDA5LWJkZjQtODAxMmRjMmE1N2M3IiwicnNuYW1lIjoiZXNfYmlsbCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6Ijg4MDM5NDlhLWJiMjctNDMzNS1iMGQ4LWNmMTc5NjQ3NjA5OSIsInJzbmFtZSI6ImNvbXBhbnkifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4Y2U1ZDY0Ny0yMzViLTQ4OTItYWU0OC05NmJlZmM5OWUyMDYiLCJyc25hbWUiOiJzYWxlc19vcmRlciJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImYxNTE0ZWVjLWJhN2EtNGU5Ny05ZWRhLThmZmMxNjAzYjg0ZSIsInJzbmFtZSI6ImNhcnJpZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4MmY3NTY1Yy04OTllLTRjOTItOWM2MC1hNWM3MDI5ZjZlYTAiLCJyc25hbWUiOiJyd19wYWQifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3OTczODk4NC1mYTA2LTQ0NDYtYWVlZS1iYjlhMjlhMzM4MjQiLCJyc25hbWUiOiJwcmljaW5nIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiMzZmZjhlMmMtMzgyMy00MGI4LTk5NjYtZjZmZGI2YjMxYzRiIiwicnNuYW1lIjoicGFydHMifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI5NmY1MWIxNy1kZjU3LTQ0YWQtYjllMS1jMDE5ZTMwMGFhNDkiLCJyc25hbWUiOiJzY29vdGVyX2NvbnRyYWN0X3VzZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiJkMDg5MGYwMy01YzBmLTQ4MTQtYjExZS1mN2NjNmVlNzIyNzUiLCJyc25hbWUiOiJiYW5rIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNjI4MTY4YzItNjkxYS00NzliLTljNmYtZTIzNDE5MjlmY2EyIiwicnNuYW1lIjoiZXNfY29udHJhY3QifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3YjBmZWY2Yi0yZjdhLTQ1MGItYmJjMC1jMTZjMjg3YzE0NWYiLCJyc25hbWUiOiJzZXJ2aWNlX29yZGVyIn1dfSwic2NvcGUiOiJlbXBsb3llZSBlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImNvbXBhbnlfaWQiOiJacExieE5RSyIsImRlcGFydG1lbnRfaWQiOiJhNm1uTU5vYiIsImVtcGxveWVlX2lkIjoieUptNHFPTGEiLCJuYW1lIjoicGEgZ2VuX2FkbWluIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20iLCJnaXZlbl9uYW1lIjoicGEiLCJmYW1pbHlfbmFtZSI6Imdlbl9hZG1pbiIsImVtYWlsIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20ifQ.IiENtxMIDA3-PDtCfN9Vux64fbXYaqNjLVgBi1sxdwsFh_6UEL5gxO0Pp4iLU1mhVQvnhlZgNUPTn0hhY6x4urNZIQC_qVepSjyb7FTrQty5b0yXyIQsfIYhtYiKqB7z3Hb8GdbnxdJcSpT1mBrOHvYYRd_bYntP8zO8CwfTWXXdwOkbTmFx308D0ky138qDaMFpS6mjJ_R9kvlVW5snx7YjDRIBGA7efjpkxwXDo5i2JcvtPagS3RHKrK7i6PL7TQUwEHq7CtibTjdTCRFMTQ8sVfojtLgD7bY2VqT1SPizltJvhenpQyhhVUXh64NAtHdZ87D3NJsaEVCMuAzq6Q' \
+   --header 'content-type: application/json' --header 'go-client: pa' \
+   --data '{
+    "op_code": "add",
+    "add_data": [
+        {
+            "company_code": 1300,
+            "first_name": "IPYUK",
+            "last_name": "PASWSMUKE",
+            "nick_name": "PASWSMUKEIPYUK",
+            "gender": "M",
+            "birthday": "2000-02-14",
+            "email": "pasw.verify+1598522055@gogoro.com",
+            "contact_address": "\u9577\u5b89\u6771\u8def\u4e8c\u6bb5225\u865fC\u68df11\u6a13",
+            "contact_district": "\u677e\u5c71\u5340",
+            "contact_city": "\u81fa\u5317\u5e02",
+            "contact_zip": "10552",
+            "invoice_address": "\u9577\u5b89\u6771\u8def\u4e8c\u6bb5225\u865fC\u68df11\u6a13",
+            "invoice_district": "\u677e\u5c71\u5340",
+            "invoice_city": "\u81fa\u5317\u5e02",
+            "invoice_zip": "10552",
+            "country_code": "TW",
+            "mobile_phone1": "0926450367",
+            "mobile_phone2": null,
+            "home_phone1": null,
+            "home_phone2": null,
+            "profile_id": null,
+            "password": "c1SmbaR8oM1hzVW0AlwvKyO/drw8gIxePQLqQK2u1r/U5C/E9lYF4CthppfVPWA5PoLEHT1AczH6ztcoVAaWoQ==",
+            "status": "1",
+            "gogoro_guid": "db6f1993-f459-477a-b953-4fed7ad28062",
+            "enable_e_carrier": 1,
+            "photo_url": null,
+            "occupation": "1",
+            "eula_status": null,
+            "unit": null
+        }
+    ]
+}'</msg>
+<msg timestamp="20200827 17:54:17.171" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200827 17:54:16.000" endtime="20200827 17:54:17.172"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${user_Id}</arg>
+<arg>${resp.json()['data'][0]['user_id']}</arg>
+</arguments>
+<msg timestamp="20200827 17:54:17.176" level="INFO">${user_Id} = KL9J1aRy</msg>
+<status status="PASS" starttime="20200827 17:54:17.172" endtime="20200827 17:54:17.176"></status>
+</kw>
+<kw name="Users Update Email Verified" library="LibUsers">
+<doc>Update user email_verified</doc>
+<arguments>
+<arg>${user_Id}</arg>
+<arg>${email_verified}</arg>
+</arguments>
+<msg timestamp="20200827 17:54:17.878" level="INFO">http://10.6.1.46:3032/app/cipher?env=pa&amp;app=pa&amp;resource=pa&amp;username=pa.gen_admin@gogoro.com&amp;password=123</msg>
+<msg timestamp="20200827 17:54:18.811" level="INFO">Response message: 200
+Body: {
+    "code": 0
+}
+CURL:
+   curl -i --request POST --url https://pa-goplatform.gogoro.com:443/go-platform/v1/users \
+   --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI0RF82RE04Nm9BQ2ZkNWwzLTMzVzU4LVVQTUZoQVEzV1FWbDVQSFVoTE5BIn0.eyJqdGkiOiIzY2EwZjAzYy0xOTNhLTRkZDgtYTAzOC0wMmI1MjQ2MzQyNTMiLCJleHAiOjE1OTg1MjI5NTcsIm5iZiI6MCwiaWF0IjoxNTk4NTIyMDU3LCJpc3MiOiJodHRwczovL3BhLWF1dGgta2V5Y2xvYWsuZ29nb3JvLmNvbS9hdXRoL3JlYWxtcy9nb2dvcm8iLCJhdWQiOiJwYSIsInN1YiI6IjIwMzUxNjllLTQ4NmQtNDM1YS1iMTZiLTgxMjdkYzM2MGFlZiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImF1dGgiLCJhdXRoX3RpbWUiOjAsInNlc3Npb25fc3RhdGUiOiIwYTI4MDVhYi1mMjI2LTQyMDktODJkMC1jNTY3ZjM0MTBhMDAiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImFwcF9wYSJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InBhIjp7InJvbGVzIjpbInBhX2FkbWluIl19fSwiYXV0aG9yaXphdGlvbiI6eyJwZXJtaXNzaW9ucyI6W3sic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6IjhiMzFiZDgxLTEzZmEtNDhjMC1hZGRlLWUyMDZlYzdlYjgzNyIsInJzbmFtZSI6ImdvZ29yb191c2VyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNDZhZmRhYzYtNzg3ZC00ZDdmLWJjMWMtMDM2M2QzNjlkNTI3IiwicnNuYW1lIjoic2Nvb3Rlcl9jb250cmFjdCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImU4YWJjMTA3LTM0ZTgtNDdhYS04NjY4LTg4ODMyNmUwMjczOCIsInJzbmFtZSI6ImdvX2NoYXJnZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3ODc1MWJmNi00ZjU0LTQ0OTUtYTQ4YS0xMDA3MWE4Y2U0YTkiLCJyc25hbWUiOiJlbXBsb3llZSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImY0ZTVkNTJlLTQwNGQtNGY4OC1iNmEwLWY3N2I1NjBjMzA1MSIsInJzbmFtZSI6ImVzX2NhdGVnb3J5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiYTMxMzNjOWEtYzZkMC00ZTA1LThmZDgtZDBiMWM4OTA1Yzk1IiwicnNuYW1lIjoidm0ifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI1YTg0MTYyZC04MzM4LTRjY2ItOTNjYS05NjY4MDQ1ZmU4NmIiLCJyc25hbWUiOiJzY29vdGVyX2RlbGl2ZXJ5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzViYTRhMjEtYmFhNS00MDYwLTljZTktNTM4YzAxODcxNDAzIiwicnNuYW1lIjoic3dhIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiODFkZTc4MzktNjM0ZC00Yzc3LWI0MjEtODI4NDdlNzllNmNhIiwicnNuYW1lIjoiYmF0dGVyeSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImQzODhjM2IzLTNjMzItNDE1OC04NTM4LTZhZmNiZGU5YmRhZiIsInJzbmFtZSI6ImVzX2JpbGxfd3JpdGVvZmYifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiIxN2NkOGY0OC0yODBjLTQ5ZDQtOWFlZS05YWFjNmY5MmFlZjEiLCJyc25hbWUiOiJzY29vdGVyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzYxMmEwYjQtZDMxYS00MDA5LWJkZjQtODAxMmRjMmE1N2M3IiwicnNuYW1lIjoiZXNfYmlsbCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6Ijg4MDM5NDlhLWJiMjctNDMzNS1iMGQ4LWNmMTc5NjQ3NjA5OSIsInJzbmFtZSI6ImNvbXBhbnkifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4Y2U1ZDY0Ny0yMzViLTQ4OTItYWU0OC05NmJlZmM5OWUyMDYiLCJyc25hbWUiOiJzYWxlc19vcmRlciJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImYxNTE0ZWVjLWJhN2EtNGU5Ny05ZWRhLThmZmMxNjAzYjg0ZSIsInJzbmFtZSI6ImNhcnJpZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4MmY3NTY1Yy04OTllLTRjOTItOWM2MC1hNWM3MDI5ZjZlYTAiLCJyc25hbWUiOiJyd19wYWQifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3OTczODk4NC1mYTA2LTQ0NDYtYWVlZS1iYjlhMjlhMzM4MjQiLCJyc25hbWUiOiJwcmljaW5nIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiMzZmZjhlMmMtMzgyMy00MGI4LTk5NjYtZjZmZGI2YjMxYzRiIiwicnNuYW1lIjoicGFydHMifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI5NmY1MWIxNy1kZjU3LTQ0YWQtYjllMS1jMDE5ZTMwMGFhNDkiLCJyc25hbWUiOiJzY29vdGVyX2NvbnRyYWN0X3VzZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiJkMDg5MGYwMy01YzBmLTQ4MTQtYjExZS1mN2NjNmVlNzIyNzUiLCJyc25hbWUiOiJiYW5rIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNjI4MTY4YzItNjkxYS00NzliLTljNmYtZTIzNDE5MjlmY2EyIiwicnNuYW1lIjoiZXNfY29udHJhY3QifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3YjBmZWY2Yi0yZjdhLTQ1MGItYmJjMC1jMTZjMjg3YzE0NWYiLCJyc25hbWUiOiJzZXJ2aWNlX29yZGVyIn1dfSwic2NvcGUiOiJlbXBsb3llZSBlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImNvbXBhbnlfaWQiOiJacExieE5RSyIsImRlcGFydG1lbnRfaWQiOiJhNm1uTU5vYiIsImVtcGxveWVlX2lkIjoieUptNHFPTGEiLCJuYW1lIjoicGEgZ2VuX2FkbWluIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20iLCJnaXZlbl9uYW1lIjoicGEiLCJmYW1pbHlfbmFtZSI6Imdlbl9hZG1pbiIsImVtYWlsIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20ifQ.ciMXaBk6n2gHaumW3jol3AKj5uEwZSTOvDtn56hP8CnKpzcKbIFsQkRMEKcv8A-I6SGQWYJ1G59K3oyZYyIUlZ4HF7NJM2VJ6lle_ECippxEfeulzkAhfuR0LxnxH5sf8axczL74FI0UqTAPXJsRt5x-lIrSiJRIRvM5HYPdH98NHfawquvAv7JpRIgfwwE58dDeYboyzVjtS8B2RF0LxMmbP5KSLtA5sitTBjii8MsWvns45BGovAWVCATmov8OP2BI82Hr-mc1Yga548OsvrZlzmXrJNjEmoLGQE64EFO20dDMRUk333RI-koARNShDzwnUNPG8sIesz5l0M-W8Q' \
+   --header 'content-type: application/json' --header 'go-client: pa' \
+   --data '{
+    "op_code": "update",
+    "update_data": [
+        {
+            "user_id": "KL9J1aRy",
+            "email_verified": "0"
+        }
+    ]
+}'</msg>
+<status status="PASS" starttime="20200827 17:54:17.177" endtime="20200827 17:54:18.812"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:54:15.967" endtime="20200827 17:54:18.812"></status>
+</kw>
+<kw name="Login With Email And Password Unverified">
+<doc>Login My Account domain with user email and password</doc>
+<arguments>
+<arg>${User.email}</arg>
+<arg>Gogoro123</arg>
+</arguments>
+<kw name="Input User Mail">
+<doc>Input user email at login page</doc>
+<arguments>
+<arg>${email}</arg>
+</arguments>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//input[@type="text"][@name="email"]</arg>
+</arguments>
+<status status="PASS" starttime="20200827 17:54:18.815" endtime="20200827 17:54:18.993"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>//input[@type="text"][@name="email"]</arg>
+<arg>${email}</arg>
+</arguments>
+<msg timestamp="20200827 17:54:18.994" level="INFO">Typing text 'pasw.verify+1598522055@gogoro.com' into text field '//input[@type="text"][@name="email"]'.</msg>
+<status status="PASS" starttime="20200827 17:54:18.993" endtime="20200827 17:54:21.118"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:54:18.813" endtime="20200827 17:54:21.119"></status>
+</kw>
+<kw name="Input User Passwords">
+<doc>Input user password at login page</doc>
+<arguments>
+<arg>${password}</arg>
+</arguments>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//input[@type="password"][@name="password"]</arg>
+</arguments>
+<status status="PASS" starttime="20200827 17:54:21.120" endtime="20200827 17:54:21.163"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>//input[@type="password"][@name="password"]</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20200827 17:54:21.164" level="INFO">Typing text 'Gogoro123' into text field '//input[@type="password"][@name="password"]'.</msg>
+<status status="PASS" starttime="20200827 17:54:21.164" endtime="20200827 17:54:21.931"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:54:21.119" endtime="20200827 17:54:21.931"></status>
+</kw>
+<kw name="Click Rounded Button" library="keywords_common">
+<doc>Click rounded button</doc>
+<arguments>
+<arg>登入</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>0.5s</arg>
+</arguments>
+<msg timestamp="20200827 17:54:22.435" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20200827 17:54:21.933" endtime="20200827 17:54:22.435"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//*[contains(@class,'RoundedButton__ThemedButton-iaiki0-0')][contains(.,"${text}")]</arg>
+</arguments>
+<status status="PASS" starttime="20200827 17:54:22.436" endtime="20200827 17:54:22.503"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//*[contains(@class,'RoundedButton__ThemedButton-iaiki0-0')][contains(.,"${text}")]</arg>
+</arguments>
+<msg timestamp="20200827 17:54:22.505" level="INFO">Clicking element '//*[contains(@class,'RoundedButton__ThemedButton-iaiki0-0')][contains(.,"登入")]'.</msg>
+<status status="PASS" starttime="20200827 17:54:22.504" endtime="20200827 17:54:22.743"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:54:21.931" endtime="20200827 17:54:22.743"></status>
+</kw>
+<kw name="Wait Until Location Is" library="Selenium2Library">
+<doc>Waits until the current URL is ``expected``.</doc>
+<arguments>
+<arg>https://${MYGOGORO_GN_HOST}/login</arg>
+<arg>30s</arg>
+</arguments>
+<status status="PASS" starttime="20200827 17:54:22.744" endtime="20200827 17:54:22.773"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:54:18.812" endtime="20200827 17:54:22.773"></status>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>10s</arg>
+<arg>2s</arg>
+<arg>Verify Page URL</arg>
+<arg>https://${MYGOGORO_GN_HOST}/verify</arg>
+</arguments>
+<kw name="Verify Page URL" library="keywords_common">
+<doc>Check the URL of pages</doc>
+<arguments>
+<arg>https://${MYGOGORO_GN_HOST}/verify</arg>
+</arguments>
+<kw name="Get Location" library="Selenium2Library">
+<doc>Returns the current browser window URL.</doc>
+<assign>
+<var>${currentURL}</var>
+</assign>
+<msg timestamp="20200827 17:54:22.799" level="INFO">${currentURL} = https://pa-network-my.gogoro.com/login</msg>
+<status status="PASS" starttime="20200827 17:54:22.778" endtime="20200827 17:54:22.800"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="keywords_common">
+<doc>Build in compare two variables keyword with log</doc>
+<arguments>
+<arg>${currentURL}</arg>
+<arg>${expected}</arg>
+</arguments>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${key}'=='${EMPTY}'</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+<arg>ELSE</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: \nkey = ${key} Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<msg timestamp="20200827 17:54:22.805" level="FAIL">Response: Actual result: https://pa-network-my.gogoro.com/login != Expected result: https://pa-network-my.gogoro.com/verify</msg>
+<status status="FAIL" starttime="20200827 17:54:22.803" endtime="20200827 17:54:22.805"></status>
+</kw>
+<status status="FAIL" starttime="20200827 17:54:22.801" endtime="20200827 17:54:22.805"></status>
+</kw>
+<status status="FAIL" starttime="20200827 17:54:22.800" endtime="20200827 17:54:22.805"></status>
+</kw>
+<status status="FAIL" starttime="20200827 17:54:22.777" endtime="20200827 17:54:22.806"></status>
+</kw>
+<kw name="Verify Page URL" library="keywords_common">
+<doc>Check the URL of pages</doc>
+<arguments>
+<arg>https://${MYGOGORO_GN_HOST}/verify</arg>
+</arguments>
+<kw name="Get Location" library="Selenium2Library">
+<doc>Returns the current browser window URL.</doc>
+<assign>
+<var>${currentURL}</var>
+</assign>
+<msg timestamp="20200827 17:54:25.159" level="INFO">${currentURL} = https://pa-network-my.gogoro.com/verify</msg>
+<status status="PASS" starttime="20200827 17:54:24.808" endtime="20200827 17:54:25.159"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="keywords_common">
+<doc>Build in compare two variables keyword with log</doc>
+<arguments>
+<arg>${currentURL}</arg>
+<arg>${expected}</arg>
+</arguments>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${key}'=='${EMPTY}'</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+<arg>ELSE</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: \nkey = ${key} Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<status status="PASS" starttime="20200827 17:54:25.161" endtime="20200827 17:54:25.162"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:54:25.160" endtime="20200827 17:54:25.162"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:54:25.159" endtime="20200827 17:54:25.162"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:54:24.807" endtime="20200827 17:54:25.162"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:54:22.776" endtime="20200827 17:54:25.162"></status>
+</kw>
+<kw name="Test Teardown" type="teardown">
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>https://pa-network-my.gogoro.com/login</arg>
+</arguments>
+<msg timestamp="20200827 17:54:25.165" level="INFO">Opening url 'https://pa-network-my.gogoro.com/login'</msg>
+<status status="PASS" starttime="20200827 17:54:25.164" endtime="20200827 17:54:26.759"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20200827 17:54:31.760" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20200827 17:54:26.760" endtime="20200827 17:54:31.761"></status>
+</kw>
+<status status="PASS" starttime="20200827 17:54:25.163" endtime="20200827 17:54:31.761"></status>
+</kw>
+<tags>
+<tag>MyGogoroWeb Register</tag>
+</tags>
+<timeout value="5 minutes"></timeout>
+<status status="PASS" starttime="20200827 17:54:15.965" endtime="20200827 17:54:31.761" critical="yes"></status>
+</test>
+<doc>Test suite for MyGogoro</doc>
+<status status="PASS" starttime="20200827 17:53:29.760" endtime="20200827 17:54:31.768"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="5" fail="0">Critical Tests</stat>
+<stat pass="5" fail="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="5" fail="0">MyGogoroWeb Register</stat>
+</tag>
+<suite>
+<stat pass="5" fail="0" id="s1" name="Fn-Register">Fn-Register</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

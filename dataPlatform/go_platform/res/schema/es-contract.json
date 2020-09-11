@@ -1,0 +1,124 @@
+{
+    "esContractsSearch": {
+        "type": "object",
+        "required": [
+            "code",
+            "total_count",
+            "data"
+        ],
+        "properties": {
+            "code": {
+                "type": "integer"
+            },
+            "total_count": {
+                "type": "integer"
+            },
+            "data": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "required": [
+                        "es_contract_id",
+                        "es_contract_code",
+                        "scooter_contract_id",
+                        "sold_by_company_id",
+                        "department_id",
+                        "by_emp_id",
+                        "update_time",
+                        "user_id",
+                        "contract_owner_id",
+                        "account_type",
+                        "plan_start",
+                        "plan_end",
+                        "plan_effective_date",
+                        "contract_type",
+                        "default_plan_id",
+                        "contract_date",
+                        "contract_end",
+                        "bill_delivery_method",
+                        "status",
+                        "plan_id",
+                        "plan_code",
+                        "plan_name",
+                        "contract_owner_firstname",
+                        "email"
+                    ],
+                    "properties": {
+                        "es_contract_id": {
+                            "type": "string"
+                        },
+                        "es_contract_code": {
+                            "type": "string"
+                        },
+                        "scooter_contract_id": {
+                            "type": "string"
+                        },
+                        "sold_by_company_id": {
+                            "type": "string"
+                        },
+                        "department_id": {
+                            "type": "string"
+                        },
+                        "by_emp_id": {
+                            "type": "string"
+                        },
+                        "update_time": {
+                            "type": "integer"
+                        },
+                        "user_id": {
+                            "type": "string"
+                        },
+                        "contract_owner_id": {
+                            "type": "string"
+                        },
+                        "account_type": {
+                            "type": "integer"
+                        },
+                        "plan_start": {
+                            "type": "integer"
+                        },
+                        "plan_end": {
+                            "type": "integer"
+                        },
+                        "plan_effective_date": {
+                            "type": "integer"
+                        },
+                        "contract_type": {
+                            "type": "integer"
+                        },
+                        "default_plan_id": {
+                            "type": "string"
+                        },
+                        "contract_date": {
+                            "type": "integer"
+                        },
+                        "contract_end": {
+                            "type": "integer"
+                        },
+                        "bill_delivery_method": {
+                            "type": "integer"
+                        },
+                        "status": {
+                            "type": "integer"
+                        },
+                        "plan_id": {
+                            "type": "string"
+                        },
+                        "plan_code": {
+                            "type": "string"
+                        },
+                        "plan_name": {
+                            "type": "string"
+                        },
+                        "contract_owner_firstname": {
+                            "type": "string"
+                        },
+                        "email": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

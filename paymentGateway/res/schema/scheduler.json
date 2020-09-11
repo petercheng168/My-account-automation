@@ -1,0 +1,164 @@
+{
+    "achApply": {
+        "200": {
+            "type": "object",
+            "required": [
+                "code",
+                "message"
+            ],
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "resultMessage": {
+                    "type": "string"
+                }
+            }
+        },
+        "400": {
+            "type": "object",
+            "required": [
+                "error"
+            ],
+            "properties": {
+                "error": {
+                    "type": "object",
+                    "required": [
+                        "status",
+                        "code",
+                        "message"
+                    ],
+                    "properties": {
+                        "status": {
+                            "type": "integer"
+                        },
+                        "code": {
+                            "type": "integer"
+                        },
+                        "message": {
+                             "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "401": {
+            "type": "object",
+            "required": [
+                "error"
+            ],
+            "properties": {
+                "error": {
+                    "type": "object",
+                    "required": [
+                        "status",
+                        "code",
+                        "message"
+                    ],
+                    "properties": {
+                        "status": {
+                            "type": "integer"
+                        },
+                        "code": {
+                            "type": "integer"
+                        },
+                        "message": {
+                             "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "getACHApplyResult": {
+        "200": {
+            "type": "object",
+            "required": [
+                "code",
+                "message"
+            ],
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "resultMessage": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "applyACHWriteOff": {
+        "200": {
+            "type": "object",
+            "required": [
+                "code",
+                "message"
+            ],
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "resultMessage": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "getACHWriteOffResult": {
+        "200": {
+            "type": "object",
+            "required": [
+                "code",
+                "message",
+                "resultData"
+            ],
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "resultData": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "code",
+                            "filename",
+                            "message"
+                        ],
+                        "properties": {
+                            "code": {
+                                "type": "integer"
+                            },
+                            "filename": {
+                                "type": "string"
+                            },
+                            "message": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "autoPayCreditCard": {
+        "200": {
+            "type": "object",
+            "required": [
+                "code",
+                "message"
+            ],
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,40 @@
+{
+    "getUserScooter": {
+        "type": "object",
+        "required": [
+            "total",
+            "items"
+        ],
+        "properties": {
+            "total": {
+                "type": "integer"
+            },
+            "items": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "required": [
+                        "id",
+                        "guid",
+                        "plate",
+                        "vin"
+                    ],
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "guid": {
+                            "type": "string"
+                        },
+                        "plate": {
+                            "type": "string"
+                        },
+                        "vin": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

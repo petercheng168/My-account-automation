@@ -1,0 +1,170 @@
+{
+    "asyncTransactionBinds": {
+        "200": {
+            "type": "object",
+            "required": [
+                "code",
+                "resultCode",
+                "resultMessage"
+            ],
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "resultCode": {
+                    "type": "integer"
+                },
+                "resultMessage": {
+                    "type": "string"
+                }
+            }
+        },
+        "400": {
+            "type": "object",
+            "required": [
+                "code",
+                "resultCode",
+                "resultMessage"
+            ],
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "resultCode": {
+                    "type": "integer"
+                },
+                "resultMessage": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "syncTransactionBinds": {
+         "200": {
+            "type": "object",
+            "required": [
+                "code",
+                "resultCode",
+                "resultMessage"
+            ],
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "resultCode": {
+                    "type": "integer"
+                },
+                "resultMessage": {
+                    "type": "string"
+                }
+            }
+        },
+        "400": {
+            "type": "object",
+            "required": [
+                "code",
+                "resultCode",
+                "resultMessage"
+            ],
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "resultCode": {
+                    "type": "integer"
+                },
+                "resultMessage": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "syncTransactionCharges": {
+        "200-internal": {
+            "type": "object",
+            "required": [
+                "code",
+                "resultCode",
+                "resultMessage"
+            ],
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "resultCode": {
+                    "type": "integer"
+                },
+                "resultMessage": {
+                    "type": "string"
+                }
+            }
+        },
+        "200-external": {
+            "type": "object",
+            "required": [
+                "additionalCode",
+                "additionalMessage"
+            ],
+            "properties": {
+                "resultCode": {
+                    "type": "string"
+                },
+                "resultMessage": {
+                    "type": "string"
+                }
+            }
+        },
+        "400": {
+            "type": "object",
+            "required": [
+                "code",
+                "resultCode",
+                "resultMessage"
+            ],
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "resultCode": {
+                    "type": "integer"
+                },
+                "resultMessage": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "asyncTransactionCharges": {
+        "200": {
+            "type": "object",
+            "required": [
+                "code",
+                "resultCode",
+                "resultMessage",
+                "resultData"
+            ],
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "resultCode": {
+                    "type": "integer"
+                },
+                "resultMessage": {
+                    "type": "string"
+                },
+                "resultData": {
+                    "type": "object",
+                     "required": [
+                        "prepayId"
+                    ],
+                    "properties": {
+                        "prepayId": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "vaWriteOff": {
+        "200": {
+            "type": "object",
+            "required": [
+                "Result",
+                "Message",
+                "StatusCode"
+            ],
+            "properties": {
+                "Result": {
+                    "type": "string"
+                },
+                "Message": {
+                    "type": "string"
+                },
+                "StatusCode": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.1 (Python 3.7.4 on darwin)" generated="20200909 10:11:19.938" rpa="false">
+<suite id="s1" name="Mggr-New Subscription" source="/Users/peter.yf.cheng/Gitlab/Automation-test/MyGogoro_web/integration/web/mggr-new_subscription.robot">
+<kw name="Suite Setup" type="setup">
+<kw name="Open Browser" library="keywords_common">
+<doc>Create a chrome browser without UI display</doc>
+<arguments>
+<arg>${MYGOGORO_GN_DOMAIN}</arg>
+<arg>${WINDOW_HEIGHT}</arg>
+<arg>${WINDOW_WEIGHT}</arg>
+</arguments>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys, selenium.webdriver</arg>
+</arguments>
+<assign>
+<var>${chrome_options}</var>
+</assign>
+<msg timestamp="20200909 10:11:21.573" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x10257f350&gt;</msg>
+<status status="PASS" starttime="20200909 10:11:21.572" endtime="20200909 10:11:21.573"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-extensions</arg>
+</arguments>
+<status status="PASS" starttime="20200909 10:11:21.586" endtime="20200909 10:11:21.588"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--headless</arg>
+</arguments>
+<status status="PASS" starttime="20200909 10:11:21.591" endtime="20200909 10:11:21.591"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-gpu</arg>
+</arguments>
+<status status="PASS" starttime="20200909 10:11:21.592" endtime="20200909 10:11:21.593"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--no-sandbox</arg>
+</arguments>
+<status status="PASS" starttime="20200909 10:11:21.594" endtime="20200909 10:11:21.594"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-setuid-sandbox</arg>
+</arguments>
+<status status="PASS" starttime="20200909 10:11:21.595" endtime="20200909 10:11:21.595"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-dev-shm-usage</arg>
+</arguments>
+<status status="PASS" starttime="20200909 10:11:21.595" endtime="20200909 10:11:21.597"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--incognito</arg>
+</arguments>
+<status status="PASS" starttime="20200909 10:11:21.597" endtime="20200909 10:11:21.598"></status>
+</kw>
+<kw name="Create Webdriver" library="Selenium2Library">
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<arguments>
+<arg>Chrome</arg>
+<arg>chrome_options=${chrome_options}</arg>
+<arg>executable_path=${BROWSER_PATH}/${DRIVER_VERSION}</arg>
+</arguments>
+<msg timestamp="20200909 10:11:21.599" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" starttime="20200909 10:11:21.599" endtime="20200909 10:11:23.305"></status>
+</kw>
+<kw name="Set Window Size" library="Selenium2Library">
+<doc>Sets current windows size to given ``width`` and ``height``.</doc>
+<arguments>
+<arg>${height}</arg>
+<arg>${weight}</arg>
+</arguments>
+<status status="PASS" starttime="20200909 10:11:23.307" endtime="20200909 10:11:23.417"></status>
+</kw>
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${url}</arg>
+</arguments>
+<msg timestamp="20200909 10:11:23.419" level="INFO">Opening url 'https://pa-network-my.gogoro.com/login?lang=zh-TW'</msg>
+<status status="PASS" starttime="20200909 10:11:23.419" endtime="20200909 10:11:25.281"></status>
+</kw>
+<status status="PASS" starttime="20200909 10:11:21.556" endtime="20200909 10:11:25.281"></status>
+</kw>
+<kw name="Signup User">
+<kw name="Setup User Variables">
+<kw name="Encode Password Get" library="LibAppCipher">
+<doc>encode password</doc>
+<arguments>
+<arg>Gogoro123</arg>
+</arguments>
+<assign>
+<var>${password}</var>
+</assign>
+<msg timestamp="20200909 10:11:25.296" level="INFO">${password} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200909 10:11:25.283" endtime="20200909 10:11:25.296"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${User}</arg>
+<arg>${User('${password.text}')}</arg>
+</arguments>
+<msg timestamp="20200909 10:11:25.299" level="INFO">${User} = &lt;MyGogoroObject.User object at 0x102601950&gt;</msg>
+<status status="PASS" starttime="20200909 10:11:25.297" endtime="20200909 10:11:25.299"></status>
+</kw>
+<status status="PASS" starttime="20200909 10:11:25.282" endtime="20200909 10:11:25.299"></status>
+</kw>
+<kw name="Users Post" library="LibUsers">
+<doc>Create user</doc>
+<arguments>
+<arg>${User.company_code}</arg>
+<arg>${User.first_name}</arg>
+<arg>${User.gender}</arg>
+<arg>${User.email}</arg>
+<arg>${User.status}\</arg>
+<arg>${User.enable_e_carrier}</arg>
+<arg>${User.last_name}</arg>
+<arg>${User.display_name}</arg>
+<arg>${User.birthday}\</arg>
+<arg>${User.contact_address}</arg>
+<arg>${User.contact_district}</arg>
+<arg>${User.contact_city}</arg>
+<arg>${User.contact_zipcode}\</arg>
+<arg>${User.invoice_address}</arg>
+<arg>${User.invoice_district}</arg>
+<arg>${User.invoice_city}</arg>
+<arg>${User.invoice_zipcode}\</arg>
+<arg>${User.country_code}</arg>
+<arg>mobile_phone1=${User.mobile}</arg>
+<arg>profile_id=E123456789</arg>
+<arg>password=${User.encode_password}\</arg>
+<arg>login_phone=${User.phone}</arg>
+<arg>occupation=${User.occupation}</arg>
+<arg>gogoro_guid=${User.gogoro_guid}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200909 10:11:26.063" level="FAIL">Get cipher error: 
+status code: 500
+api request: http://10.6.1.46:3032/app/cipher?env=pa&amp;app=pa&amp;resource=pa&amp;username=pa.gen_admin@gogoro.com&amp;password=123
+</msg>
+<status status="FAIL" starttime="20200909 10:11:25.300" endtime="20200909 10:11:26.064"></status>
+</kw>
+<status status="FAIL" starttime="20200909 10:11:25.281" endtime="20200909 10:11:26.064"></status>
+</kw>
+<status status="FAIL" starttime="20200909 10:11:21.556" endtime="20200909 10:11:26.064"></status>
+</kw>
+<test id="s1-t1" name="Create new subscription with addon">
+<tags>
+<tag>MyGogoroWeb</tag>
+<tag>New-Sub</tag>
+</tags>
+<timeout value="5 minutes"></timeout>
+<status status="FAIL" starttime="20200909 10:11:26.064" endtime="20200909 10:11:26.065" critical="yes">Parent suite setup failed:
+Get cipher error: 
+status code: 500
+api request: http://10.6.1.46:3032/app/cipher?env=pa&amp;app=pa&amp;resource=pa&amp;username=pa.gen_admin@gogoro.com&amp;password=123
+</status>
+</test>
+<doc>Test suite for MyGogoro new subscription flow</doc>
+<status status="FAIL" starttime="20200909 10:11:19.939" endtime="20200909 10:11:26.066">Suite setup failed:
+Get cipher error: 
+status code: 500
+api request: http://10.6.1.46:3032/app/cipher?env=pa&amp;app=pa&amp;resource=pa&amp;username=pa.gen_admin@gogoro.com&amp;password=123
+</status>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1">Critical Tests</stat>
+<stat pass="0" fail="1">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1">MyGogoroWeb</stat>
+<stat pass="0" fail="1">New-Sub</stat>
+</tag>
+<suite>
+<stat pass="0" fail="1" id="s1" name="Mggr-New Subscription">Mggr-New Subscription</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

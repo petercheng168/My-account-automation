@@ -1,0 +1,96 @@
+{
+    "scooterEsContractsGetGeneral": {
+        "type": "object",
+        "required": [
+            "code",
+            "data"
+        ],
+        "properties": {
+            "code": {
+                "type": "integer"
+            },
+            "data": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "required": [
+                        "scooter_active_status",
+                        "es_contract_id",
+                        "scooter_id",
+                        "plan_type",
+                        "pay_per_swap"
+                    ],
+                    "properties": {
+                        "scooter_active_status": {
+                            "type": "integer"
+                        },
+                        "es_contract_id": {
+                            "type": "string"
+                        },
+                        "scooter_id": {
+                            "type": "string"
+                        },
+                        "plan_type": {
+                            "type": "integer"
+                        },
+                        "pay_per_swap": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "scooterEsContractsGetDetail": {
+        "type": "object",
+        "required": [
+            "code",
+            "data"
+        ],
+        "properties": {
+            "code": {
+                "type": "integer"
+            },
+            "data": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "scooter_active_status": {
+                            "type": "integer"
+                        },
+                        "es_contract_id": {
+                            "type": "string"
+                        },
+                        "plan_name": {
+                            "type": "string"
+                        },
+                        "status": {
+                            "type": "integer"
+                        },
+                        "contract_date": {
+                            "type": "integer"
+                        },
+                        "contract_end": {
+                            "type": "integer"
+                        },
+                        "latest_bill_calc_end_date": {
+                            "type": "integer"
+                        },
+                        "driver_name": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "scooter_active_status",
+                        "es_contract_id",
+                        "plan_name",
+                        "status",
+                        "contract_date",
+                        "driver_name"
+                    ]
+                }
+            }
+        }
+    }
+}

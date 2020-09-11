@@ -1,0 +1,33 @@
+{
+    "userCreate": {
+        "type": "object",
+        "required": [
+            "username",
+            "firstName",
+            "lastName",
+            "displayName"
+        ],
+        "properties": {
+            "username": {
+                "type": "object",
+                "required": [
+                    "email"
+                ],
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    }
+                }
+            },
+            "firstName": {
+                "type": "string"
+            },
+            "lastName": {
+                "type": "string"
+            },
+            "displayName": {
+                "type": "string"
+            }
+        }
+    }
+}

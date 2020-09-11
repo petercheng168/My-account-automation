@@ -1,0 +1,282 @@
+{
+    "GetAllScooterPairingResult": {
+        "type": "object",
+        "properties": {
+            "Result": {
+                "type": "integer"
+            },
+            "Message": {
+                "type": "null"
+            },
+            "MessageCode": {
+                "type": "null"
+            },
+            "Data": {
+                "type": "object",
+                "properties": {
+                    "TotalCount": {
+                        "type": "integer"
+                    },
+                    "List": {
+                        "type": "array",
+                        "items": [
+                            {
+                                "type": "object",
+                                "properties": {
+                                    "Id": {
+                                        "type": "string"
+                                    },
+                                    "CreateTime": {
+                                        "type": "string"
+                                    },
+                                    "CompanyId": {
+                                        "type": "string"
+                                    },
+                                    "CompanyCode": {
+                                        "type": "string"
+                                    },
+                                    "CompanyName": {
+                                        "type": "string"
+                                    },
+                                    "DateStartLimit": {
+                                        "anyOf": [
+                                            {
+                                                "type": "number"
+                                            },
+                                            {
+                                                "type": "null"
+                                            }
+                                        ]
+                                    },
+                                    "DateEndLimit": {
+                                        "anyOf": [
+                                            {
+                                                "type": "number"
+                                            },
+                                            {
+                                                "type": "null"
+                                            }
+                                        ]
+                                    },
+                                    "TotalCount": {
+                                        "type": "integer"
+                                    },
+                                    "NonPairCount": {
+                                        "type": "integer"
+                                    },
+                                    "NonActionCount": {
+                                        "type": "integer"
+                                    },
+                                    "Unspecified": {
+                                        "type": "integer"
+                                    },
+                                    "InsufficientCredit": {
+                                        "type": "integer"
+                                    },
+                                    "InsufficientInventory": {
+                                        "type": "integer"
+                                    },
+                                    "ManuallyAllocate": {
+                                        "type": "integer"
+                                    },
+                                    "InsufficientInventoryInThePreferedWarehouse": {
+                                        "type": "integer"
+                                    },
+                                    "SuspendedDueToPolicyDecision": {
+                                        "type": "integer"
+                                    },
+                                    "DeallocationCount": {
+                                        "type": "integer"
+                                    },
+                                    "DeallocationAmount": {
+                                        "type": "null"
+                                    }
+                                },
+                                "required": [
+                                    "Id",
+                                    "CreateTime",
+                                    "CompanyId",
+                                    "CompanyCode",
+                                    "CompanyName",
+                                    "DateStartLimit",
+                                    "DateEndLimit",
+                                    "TotalCount",
+                                    "NonPairCount",
+                                    "NonActionCount",
+                                    "Unspecified",
+                                    "InsufficientCredit",
+                                    "InsufficientInventory",
+                                    "ManuallyAllocate",
+                                    "InsufficientInventoryInThePreferedWarehouse",
+                                    "SuspendedDueToPolicyDecision",
+                                    "DeallocationCount",
+                                    "DeallocationAmount"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "required": [
+                    "TotalCount",
+                    "List"
+                ]
+            }
+        },
+        "required": [
+            "Result",
+            "Message",
+            "MessageCode",
+            "Data"
+        ]
+    },
+    "GetScooterPairingResultByCompanyId": {
+        "type": "object",
+        "properties": {
+            "Result": {
+                "type": "integer"
+            },
+            "Message": {
+                "type": "null"
+            },
+            "MessageCode": {
+                "type": "null"
+            },
+            "Data": {
+                "type": "object",
+                "properties": {
+                    "TotalCount": {
+                        "type": "integer"
+                    },
+                    "List": {
+                        "type": "array",
+                        "items": [
+                            {
+                                "type": "object",
+                                "properties": {
+                                    "ScooterPairResultMasterId": {
+                                        "type": "string"
+                                    },
+                                    "OrderNo": {
+                                        "type": "string"
+                                    },
+                                    "CompanyId": {
+                                        "type": "string"
+                                    },
+                                    "CompanyCode": {
+                                        "type": "string"
+                                    },
+                                    "CompanyName": {
+                                        "type": "string"
+                                    },
+                                    "DepartmentId": {
+                                        "type": "string"
+                                    },
+                                    "DepartmentCode": {
+                                        "type": "string"
+                                    },
+                                    "DepartmentName": {
+                                        "type": "string"
+                                    },
+                                    "SKU": {
+                                        "type": "string"
+                                    },
+                                    "ModelName": {
+                                        "type": "string"
+                                    },
+                                    "ColorName": {
+                                        "type": "string"
+                                    },
+                                    "VIN": {
+                                        "anyOf": [
+                                            {
+                                                "type": "string"
+                                            },
+                                            {
+                                                "type": "null"
+                                            }
+                                        ]
+                                    },
+                                    "Action": {
+                                        "type": "string"
+                                    },
+                                    "ScooterChannelPrice": {
+                                        "type": "number"
+                                    },
+                                    "PartChannelPrice": {
+                                        "type": "number"
+                                    },
+                                    "TotalChannelPrice": {
+                                        "type": "number"
+                                    },
+                                    "FirstPaymentDate": {
+                                        "type": "string"
+                                    },
+                                    "AllocationFailureReason": {
+                                        "anyOf": [
+                                            {
+                                                "type": "integer"
+                                            },
+                                            {
+                                                "type": "null"
+                                            }
+                                        ]
+                                    },
+                                    "AllocationFailureReasonName": {
+                                        "type": "string"
+                                    },
+                                    "ExceptionMessage": {
+                                        "anyOf": [
+                                            {
+                                                "type": "string"
+                                            },
+                                            {
+                                                "type": "null"
+                                            }
+                                        ]
+                                    },
+                                    "ResultMessage": {
+                                        "anyOf": [
+                                            {
+                                                "type": "string"
+                                            },
+                                            {
+                                                "type": "null"
+                                            }
+                                        ]
+                                    },
+                                    "CreateTime": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "ScooterPairResultMasterId",
+                                    "OrderNo",
+                                    "CompanyId",
+                                    "CompanyCode",
+                                    "CompanyName",
+                                    "DepartmentId",
+                                    "DepartmentCode",
+                                    "DepartmentName",
+                                    "SKU",
+                                    "ModelName",
+                                    "ColorName",
+                                    "VIN",
+                                    "Action",
+                                    "ScooterChannelPrice",
+                                    "PartChannelPrice",
+                                    "TotalChannelPrice",
+                                    "FirstPaymentDate",
+                                    "AllocationFailureReason",
+                                    "AllocationFailureReasonName",
+                                    "ExceptionMessage",
+                                    "ResultMessage",
+                                    "CreateTime"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}

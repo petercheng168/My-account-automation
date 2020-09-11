@@ -1,0 +1,16 @@
+pg_correct_info:
+  card_auth_url: null
+  3d_verification_url: null
+pg_incorrect_info:
+  card_auth_url: null
+pg_es_bill_info:
+  user_email: null
+  user_id: null
+  user_password: null
+  es_bill_id: null
+  es_contract_id: null
+  bank_barcode1: null
+  bank_barcode2: null
+  store_barcode1: null
+  store_barcode2: null
+  store_barcode3: null

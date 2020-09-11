@@ -1,0 +1,61 @@
+{
+    "getConvenientStoreWriteoff": {
+        "200_code_0": {
+            "type": "object",
+            "required": [
+                "Code",
+                "ResultCode",
+                "ResultMessage"
+            ],
+            "properties": {
+                "Code": {
+                    "type": "integer"
+                },
+                "ResultCode": {
+                    "type": "integer"
+                },
+                "ResultMessage": {
+                    "type": "string"
+                }
+            }
+        },
+        "200_code_1": {
+            "type": "object",
+            "required": [
+                "Code",
+                "ResultCode",
+                "ResultData"
+            ],
+            "properties": {
+                "Code": {
+                    "type": "integer"
+                },
+                "ResultCode": {
+                    "type": "integer"
+                },
+                "ResultData": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "Code",
+                            "ResultCode",
+                            "ResultMessage"
+                        ],
+                        "properties": {
+                            "Code": {
+                                "type": "integer"
+                            },
+                            "ResultCode": {
+                                "type": "integer"
+                            },
+                            "ResultMessage": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

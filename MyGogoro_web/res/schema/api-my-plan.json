@@ -1,0 +1,52 @@
+{
+    "getPublicPlan": {
+        "type": "object",
+        "required": [
+            "total",
+            "items"
+        ],
+        "properties": {
+            "total": {
+                "type": "integer"
+            },
+            "items": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "required": [
+                        "id",
+                        "sku",
+                        "lockedLength",
+                        "chargeType",
+                        "chargeBase",
+                        "chargeUnit",
+                        "goRewards"
+                    ],
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "sku": {
+                            "type": "string"
+                        },
+                        "lockedLength": {
+                            "type": "integer"
+                        },
+                        "chargeType": {
+                            "type": "string"
+                        },
+                        "chargeBase": {
+                            "type": "integer"
+                        },
+                        "chargeUnit": {
+                            "type": "string"
+                        },
+                        "goRewards": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

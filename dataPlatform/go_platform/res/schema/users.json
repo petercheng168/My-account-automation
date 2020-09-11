@@ -1,0 +1,502 @@
+{
+    "mygogoroUserGet": {
+        "type": "object",
+        "required": [
+            "total_count",
+            "code",
+            "data"
+        ],
+        "properties": {
+            "total_count": {
+                "type": "integer"
+            },
+            "code": {
+                "type": "integer"
+            },
+            "data": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "required": [
+                        "user_id",
+                        "company_id",
+                        "first_name",
+                        "last_name",
+                        "nick_name",
+                        "gender",
+                        "birthday",
+                        "email",
+                        "email_verified",
+                        "contact_address",
+                        "contact_district",
+                        "contact_city",
+                        "contact_zip",
+                        "invoice_address",
+                        "invoice_district",
+                        "invoice_city",
+                        "invoice_zip",
+                        "country_code",
+                        "mobile_phone1",
+                        "merge_bill",
+                        "home_phone1",
+                        "status",
+                        "occupation",
+                        "gogoro_guid",
+                        "create_time",
+                        "update_time",
+                        "enable_e_carrier",
+                        "login_phone_verified",
+                        "print_vat_on_invoice",
+                        "print_invoice",
+                        "company_carrier_list",
+                        "eula_status",
+                        "eula_status_update_time"
+                    ],
+                    "properties": {
+                        "user_id": {
+                            "type": "string"
+                        },
+                        "company_id": {
+                            "type": "string"
+                        },
+                        "first_name": {
+                            "type": "string"
+                        },
+                        "last_name": {
+                            "type": "string"
+                        },
+                        "nick_name": {
+                            "type": "string"
+                        },
+                        "gender": {
+                            "type": "string"
+                        },
+                        "birthday": {
+                            "type": "string"
+                        },
+                        "email": {
+                            "type": "string"
+                        },
+                        "email_verified": {
+                            "type": "integer"
+                        },
+                        "contact_address": {
+                            "type": "string"
+                        },
+                        "contact_district": {
+                            "type": "string"
+                        },
+                        "contact_city": {
+                            "type": "string"
+                        },
+                        "contact_zip": {
+                            "type": "string"
+                        },
+                        "invoice_address": {
+                            "type": "string"
+                        },
+                        "invoice_district": {
+                            "type": "string"
+                        },
+                        "invoice_city": {
+                            "type": "string"
+                        },
+                        "invoice_zip": {
+                            "type": "string"
+                        },
+                        "country_code": {
+                            "type": "string"
+                        },
+                        "mobile_phone1": {
+                            "type": "string"
+                        },
+                        "merge_bill": {
+                            "type": "integer"
+                        },
+                        "home_phone1": {
+                            "type": "string"
+                        },
+                        "status": {
+                            "type": "integer"
+                        },
+                        "occupation": {
+                            "type": "string"
+                        },
+                        "gogoro_guid": {
+                            "type": "string"
+                        },
+                        "create_time": {
+                            "type": "integer"
+                        },
+                        "update_time": {
+                            "type": "integer"
+                        },
+                        "enable_e_carrier": {
+                            "type": "integer"
+                        },
+                        "login_phone_verified": {
+                            "type": "integer"
+                        },
+                        "print_vat_on_invoice": {
+                            "type": "boolean"
+                        },
+                        "print_invoice": {
+                            "type": "boolean"
+                        },
+                        "company_carrier_list": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "required": [
+                                    "company_id",
+                                    "company_carrier_number",
+                                    "user_carrier_number",
+                                    "aggregated"
+                                ],
+                                "properties": {
+                                    "company_id": {
+                                        "type": "string"
+                                    },
+                                    "company_carrier_number": {
+                                        "type": "string"
+                                    },
+                                    "user_carrier_number": {
+                                        "type": "string"
+                                    },
+                                    "aggregated": {
+                                        "type": "boolean"
+                                    }
+                                }
+                            }
+                        },
+                        "eula_status": {
+                            "type": "integer"
+                        },
+                        "eula_status_update_time": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "userCreate": {
+        "type": "object",
+        "required": [
+            "code",
+            "msg",
+            "data"
+        ],
+        "properties": {
+            "code": {
+                "type": "integer"
+            },
+            "msg": {
+                "type": "string"
+            },
+            "data": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "required": [
+                        "user_id"
+                    ],
+                    "properties": {
+                        "user_id": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "userGetDetail": {
+        "type": "object",
+        "required": [
+            "code",
+            "data"
+        ],
+        "properties": {
+            "code": {
+                "type": "integer"
+            },
+            "data": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "required": [
+                        "user_id",
+                        "company_id",
+                        "first_name",
+                        "gender",
+                        "email",
+                        "email_verified",
+                        "merge_bill",
+                        "status",
+                        "gogoro_guid",
+                        "create_time",
+                        "update_time",
+                        "enable_e_carrier",
+                        "login_phone_verified",
+                        "print_vat_on_invoice",
+                        "print_invoice",
+                        "company_carrier_list"
+                    ],
+                    "properties": {
+                        "user_id": {
+                            "type": "string"
+                        },
+                        "company_id": {
+                            "type": "string"
+                        },
+                        "first_name": {
+                            "type": "string"
+                        },
+                        "last_name": {
+                            "type": "string"
+                        },
+                        "nick_name": {
+                            "type": "string"
+                        },
+                        "gender": {
+                            "type": "string"
+                        },
+                        "birthday": {
+                            "type": "string"
+                        },
+                        "email": {
+                            "type": "string"
+                        },
+                        "email_verified": {
+                            "type": "integer"
+                        },
+                        "contact_address": {
+                            "type": "string"
+                        },
+                        "contact_district": {
+                            "type": "string"
+                        },
+                        "contact_city": {
+                            "type": "string"
+                        },
+                        "contact_zip": {
+                            "type": "string"
+                        },
+                        "invoice_address": {
+                            "type": "string"
+                        },
+                        "invoice_district": {
+                            "type": "string"
+                        },
+                        "invoice_city": {
+                            "type": "string"
+                        },
+                        "invoice_zip": {
+                            "type": "string"
+                        },
+                        "country_code": {
+                            "type": "string"
+                        },
+                        "mobile_phone1": {
+                            "type": "string"
+                        },
+                        "merge_bill": {
+                            "type": "integer"
+                        },
+                        "home_phone1": {
+                            "type": "string"
+                        },
+                        "profile_id": {
+                            "type": "string"
+                        },
+                        "status": {
+                            "type": "integer"
+                        },
+                        "occupation": {
+                            "type": "string"
+                        },
+                        "gogoro_guid": {
+                            "type": "string"
+                        },
+                        "create_time": {
+                            "type": "integer"
+                        },
+                        "update_time": {
+                            "type": "integer"
+                        },
+                        "enable_e_carrier": {
+                            "type": "integer"
+                        },
+                        "photo_url": {
+                            "type": "string"
+                        },
+                        "login_phone": {
+                            "type": "string"
+                        },
+                        "login_phone_verified": {
+                            "type": "integer"
+                        },
+                        "invoice_type": {
+                            "type": "integer"
+                        },
+                        "invoice_donate_to": {
+                            "type": "string"
+                        },
+                        "vat_number": {
+                            "type": "string"
+                        },
+                        "invoice_title": {
+                            "type": "string"
+                        },
+                        "print_vat_on_invoice": {
+                            "type": "boolean"
+                        },
+                        "print_invoice": {
+                            "type": "boolean"
+                        },
+                        "company_carrier_list": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "required": [
+                                    "company_id",
+                                    "company_carrier_number",
+                                    "user_carrier_number",
+                                    "aggregated"
+                                ],
+                                "properties": {
+                                    "company_id": {
+                                        "type": "string"
+                                    },
+                                    "company_carrier_number": {
+                                        "type": "string"
+                                    },
+                                    "user_carrier_number": {
+                                        "type": "string"
+                                    },
+                                    "aggregated": {
+                                        "type": "boolean"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "userGetPII": {
+        "type": "object",
+        "required": [
+            "code",
+            "data"
+        ],
+        "properties": {
+            "code": {
+                "type": "integer"
+            },
+            "data": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "required": [
+                        "user_id",
+                        "company_id",
+                        "first_name",
+                        "gender",
+                        "email",
+                        "email_verified",
+                        "merge_bill",
+                        "status",
+                        "gogoro_guid",
+                        "create_time",
+                        "update_time",
+                        "login_phone_verified",
+                        "print_vat_on_invoice",
+                        "print_invoice"
+                    ],
+                    "properties": {
+                        "user_id": {
+                            "type": "string"
+                        },
+                        "company_id": {
+                            "type": "string"
+                        },
+                        "first_name": {
+                            "type": "string"
+                        },
+                        "last_name": {
+                            "type": "string"
+                        },
+                        "nick_name": {
+                            "type": "string"
+                        },
+                        "gender": {
+                            "type": "string"
+                        },
+                        "email": {
+                            "type": "string"
+                        },
+                        "email_verified": {
+                            "type": "integer"
+                        },
+                        "contact_address": {
+                            "type": "string"
+                        },
+                        "contact_district": {
+                            "type": "string"
+                        },
+                        "contact_city": {
+                            "type": "string"
+                        },
+                        "contact_zip": {
+                            "type": "string"
+                        },
+                        "country_code": {
+                            "type": "string"
+                        },
+                        "mobile_phone1": {
+                            "type": "string"
+                        },
+                        "merge_bill": {
+                            "type": "integer"
+                        },
+                        "home_phone1": {
+                            "type": "string"
+                        },
+                        "status": {
+                            "type": "integer"
+                        },
+                        "occupation": {
+                            "type": "string"
+                        },
+                        "gogoro_guid": {
+                            "type": "string"
+                        },
+                        "create_time": {
+                            "type": "integer"
+                        },
+                        "update_time": {
+                            "type": "integer"
+                        },
+                        "photo_url": {
+                            "type": "string"
+                        },
+                        "login_phone": {
+                            "type": "string"
+                        },
+                        "login_phone_verified": {
+                            "type": "integer"
+                        },
+                        "print_vat_on_invoice": {
+                            "type": "boolean"
+                        },
+                        "print_invoice": {
+                            "type": "boolean"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

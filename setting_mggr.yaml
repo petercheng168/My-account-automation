@@ -1,0 +1,19 @@
+dev:
+    MYGOGORO_GN_HOST: dev-network-my.gogoro.com
+    MYGOGORO_GSS_HOST: dev-my.gogoro.com
+    MYGOGORO_ACCOUNT: sw.verify+mygogorodev@gogoro.com
+    MYGOGORO_GN_DOMAIN: https://dev-network-my.gogoro.com/login?lang=zh-TW
+    MYGOGORO_GSS_DOMAIN: https://dev-my.gogoro.com/login?lang=zh-TW
+
+pa:
+    MYGOGORO_GN_HOST: pa-uat-network-my.gogoro.com
+    MYGOGORO_GSS_HOST: pa-my.gogoro.com
+    MYGOGORO_ACCOUNT: sw.verify+mygogoropa@gogoro.com
+    MYGOGORO_GN_DOMAIN: https://pa-network-my.gogoro.com/login?lang=zh-TW
+    MYGOGORO_GSS_DOMAIN: https://pa-my.gogoro.com/login?lang=zh-TW
+
+prod:
+    MYGOGORO_GN_HOST: network-my.gogoro.com
+    MYGOGORO_ACCOUNT:
+    MYGOGORO_PASSWORD:
+    MYGOGORO_GN_DOMAIN: https://network-my.gogoro.com/login?lang=zh-TW

@@ -1,0 +1,233 @@
+common:
+  # cipher variables
+  CIPHER_PASSWORD: 123
+  CIPHER_HOST: 10.6.1.46
+
+  # api url
+  GO_AUTH_BASEPATH: /go-auth/v1
+  GO_BANK_BASEPATH: /go-bank/v1
+  GO_PLATFORM_BASEPATH: /go-platform/v1
+  GO_GLOBAL_BASEPATH: /go-platform-global-service/v1
+  GO_PARTNER_BASEPATH: /go-partner/v1
+  PLATFORM_API_TIMEOUT: 20
+
+  API_TIMEOUT: 20
+
+  GO_CLIENT_HEADER_CS_PORTAL: cs_portal
+  GO_CLIENT_HEADER_PARTNER_PORTAL: partner_portal
+
+  QA_USER_EMAIL: sw.verify+platformqa+000001@gogoro.com
+  QA_USER_GUID: aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa
+  QA_USER_LOGIN_PHONE: 0999999999
+  HASH_PASSWD_Gogoro123: "c1SmbaR8oM1hzVW0AlwvKyO/drw8gIxePQLqQK2u1r/U5C/E9lYF4CthppfVPWA5PoLEHT1AczH6ztcoVAaWoQ=="
+  HASH_PASSWD_Gogoro456: "hJuebza8jBYVU4fasja3io07K71Anz5gzmXTGev4eDAlV40jqRT8oyCJcPr33Fze+iBpve8uhy+HDnydHw2/EQ=="
+  FUNC_PASSWD_Gogoro123: "0x9c3bc2436e0df74a66e982006edd6bbeae37c873d2f3f8c03ee2da83bc3909e8f10ae04d4535e524c05ad3b075f6f9e590a6c4e6e104abd447a0dbb15c1b1bb3"
+  FUNC_PASSWD_Gogoro456: "0x34a0ce965363ff506a5e94f40c31f59cc4d8738e32d38e7a8ca968c2a3fde77ff916d9ab2db5363cd3781c33167feea096be797ce85538fd4b5b3ea8c84c1b1c"
+
+  COMPANY_GROUP_ID_GEN: a6mnMNob
+
+  COMPANY_CODE_AEON: "B80621419"
+  COMPANY_CODE_GEN: "1300"
+  COMPANY_CODE_GSS: "1500"
+  COMPANY_CODE_GTW: "1100"
+  COMPANY_CODE_PGO: "B97166694"
+  COMPANY_CODE_YAMAHA: "B22318608"
+  COMPANY_ID_AEON: "B80621419"
+  COMPANY_ID_PGO: "B97166694"
+
+dev:
+  # cipher gen
+  CIPHER_SUPER_ACCOUNT: dev.gen_super_admin@gogoro.com
+  CIPHER_GROUP_ACCOUNT: dev.gen_company_group_admin@gogoro.com
+
+  CIPHER_GEN_ACCOUNT: dev.gen_admin@gogoro.com
+  CIPHER_GEN_MANAGER_ACCOUNT: dev.gen_manager@gogoro.com
+  CIPHER_GEN_USER_ACCOUNT: dev.gen_user@gogoro.com
+
+  # cipher gss
+  CIPHER_GSS_ACCOUNT: dev.gss_admin@gogoro.com
+  CIPHER_GSS_MANAGER_ACCOUNT: dev.gss_manager@gogoro.com
+  CIPHER_GSS_OWNER_ACCOUNT: dev.gss_owner@gogoro.com
+  CIPHER_GSS_USER_ACCOUNT: dev.gss_user@gogoro.com
+  CIPHER_GSS_GROUP_ACCOUNT: dev.gss_company_group_admin@gogoro.com
+
+  # cipher gtw
+  CIPHER_GTW_GROUP_ACCOUNT: dev.gtw_company_group_admin@gogoro.com
+  CIPHER_GTW_ACCOUNT: dev.gtw_admin@gogoro.com
+
+  # cipher others
+  CIPHER_CS_PORTAL_ACCOUNT: dev.cs_portal_admin@gogoro.com
+  CIPHER_PARTNER_PORTAL_ACCOUNT: dev.partner_portal_admin@gogoro.com
+
+  CIPHER_PORT: 3031
+  CIPHER_DEV: dev
+  CIPHER_APP: dev
+  CIPHER_RESOURCE: dev
+  GO_CLIENT_HEADER: dev
+
+  # api host
+  DATAPLATFORM_HOST: 10.6.1.57
+  DATAPLATFORM_PORT: 8080
+  GO_BANK_HOST: 10.6.1.43
+  GO_BANK_PORT: 8080
+  PROTOCOL: http
+
+  COMPANY_ID_GTW: OVNW9LZK
+  COMPANY_ID_GEN: ZpLbxNQK
+  COMPANY_ID_GSS: qlLdDqLA
+  COMPANY_ID_YAMAHA: OVNW7zNZ
+  COMPANY_ID_PGO: A4RKWnR1
+  COMPANY_ID_AEON: v1LpZPNj
+
+  ES_BASEPRICE_ID_TW: ZpLbxNQK
+  CREATED_BY_EMP_ID_TW: qlLdqRAY
+
+  # Company Emp Code
+  EMP_CODE_GEN_ADMIN: DEV99001
+  EMP_CODE_GEN_MANAGER: DEV99002
+  EMP_CODE_GEN_USER: DEV99003
+  EMP_CODE_GSS_ADMIN: DEV97001
+  EMP_CODE_GSS_MANAGER: DEV97002
+  EMP_CODE_GSS_USER: DEV97003
+  EMP_CODE_GEN_COMPANY_GROUP_ADMIN: DEV99004
+  EMP_CODE_GEN_SUPER_ADMIN: DEV99005
+  EMP_CODE_GSS_COMPANY_GROUP_ADMIN: DEV97004
+  EMP_CODE_GSS_SUPER_ADMIN: DEV97005
+  EMP_CODE_CS_PORTAL_ADMIN: DEV84003
+
+  # Department
+  DEPARTMENT_CODE_GEN: DEP1300
+  DEPARTMENT_ID_GEN: jrLOPvRO
+
+  # Hub
+  QA_HUB_CODE: PINE000218
+  QA_HUB_ID: wEmDnRZo
+
+  QA_HUB_CODE_2: BBB_8
+  QA_HUB_ID_2: OVNW9LZK
+
+  # Vm
+  QA_VM_GUID: 4e613a44-9ee9-4905-b96c-c8440adf5d98
+
+pa:
+  # cipher variables
+  CIPHER_GEN_ACCOUNT: pa.gen_admin@gogoro.com
+  CIPHER_GEN_USER_ACCOUNT: pa.gen_user@gogoro.com
+  CIPHER_SUPER_ACCOUNT: pa.gen_super_admin@gogoro.com
+
+  CIPHER_GEN_MANAGER_ACCOUNT: pa.gen_manager@gogoro.com
+
+  # cipher gss
+  CIPHER_GSS_ACCOUNT: pa.gss_admin@gogoro.com
+  CIPHER_GSS_MANAGER_ACCOUNT: pa.gss_manager@gogoro.com
+  CIPHER_GSS_OWNER_ACCOUNT: pa.gss_owner@gogoro.com
+  CIPHER_GSS_USER_ACCOUNT: pa.gss_user@gogoro.com
+
+   # cipher gtw
+  CIPHER_GTW_ACCOUNT: gtw_admin@gogoro.com
+
+  CIPHER_PORT: 3032
+  CIPHER_DEV: pa
+  CIPHER_APP: pa
+  CIPHER_RESOURCE: pa
+  GO_CLIENT_HEADER: pa
+
+  # api host
+  DATAPLATFORM_HOST: pa-goplatform.gogoro.com
+  DATAPLATFORM_PORT: 443
+  GO_BANK_HOST: pa-gowallet.gogoro.com
+  GO_BANK_PORT: 443
+  PROTOCOL: https
+
+  COMPANY_ID_GTW: a6mnMNob
+  COMPANY_ID_GEN: ZpLbxNQK
+  COMPANY_ID_GSS: OVNW9LZK
+  COMPANY_ID_YAMAHA: A4RK8WN1
+  COMPANY_ID_PGO: qlLdDqLA
+  COMPANY_ID_AEON: wEmDlnmZ
+
+  #Company Emp Code
+  EMP_CODE_GEN_ADMIN: PA99001
+  EMP_CODE_GEN_MANAGER: PA99002
+  EMP_CODE_GEN_USER: PA99003
+  EMP_CODE_GSS_ADMIN: PA97001
+  EMP_CODE_GSS_MANAGER: PA97002
+  EMP_CODE_GSS_USER: PA97003
+  EMP_CODE_CS_PORTAL_ADMIN: PA84003
+
+  # Vm
+  QA_VM_GUID: 8E3CEE90-8E87-4681-B519-015151219605
+
+swqa:
+  # cipher gen
+  CIPHER_SUPER_ACCOUNT: dev.gen_super_admin@gogoro.com
+  CIPHER_GROUP_ACCOUNT: dev.gen_company_group_admin@gogoro.com
+
+  CIPHER_GEN_ACCOUNT: dev.gen_admin@gogoro.com
+  CIPHER_GEN_MANAGER_ACCOUNT: dev.gen_manager@gogoro.com
+  CIPHER_GEN_USER_ACCOUNT: dev.gen_user@gogoro.com
+
+  # cipher gss
+  CIPHER_GSS_ACCOUNT: dev.gss_admin@gogoro.com
+  CIPHER_GSS_MANAGER_ACCOUNT: dev.gss_manager@gogoro.com
+  CIPHER_GSS_OWNER_ACCOUNT: dev.gss_owner@gogoro.com
+  CIPHER_GSS_USER_ACCOUNT: dev.gss_user@gogoro.com
+  CIPHER_GSS_GROUP_ACCOUNT: dev.gss_company_group_admin@gogoro.com
+
+  # cipher gtw
+  CIPHER_GTW_ACCOUNT: dev.gtw_admin@gogoro.com
+  CIPHER_GTW_GROUP_ACCOUNT: dev.gtw_company_group_admin@gogoro.com
+
+  # cipher others
+  CIPHER_CS_PORTAL_ACCOUNT: dev.cs_portal_admin@gogoro.com
+  CIPHER_PARTNER_PORTAL_ACCOUNT: dev.partner_portal_admin@gogoro.com
+
+  CIPHER_PORT: 3035
+  CIPHER_DEV: swqa
+  CIPHER_APP: swqa
+  CIPHER_RESOURCE: swqa
+  GO_CLIENT_HEADER: swqa
+
+  # api host
+  DATAPLATFORM_HOST: 10.6.1.204
+  DATAPLATFORM_PORT: 8080
+  GO_BANK_HOST: 10.6.210.73
+  GO_BANK_PORT: 8080
+  PROTOCOL: http
+
+  ES_BASEPRICE_ID_TW: a6mnMNob
+  CREATED_BY_EMP_ID_TW: qlLdqRAY
+
+  COMPANY_ID_GTW: a6mnMNob
+  COMPANY_ID_GEN: ZpLbxNQK
+  COMPANY_ID_GSS: OVNW9LZK
+  COMPANY_ID_YAMAHA: qlLdqRAY
+  COMPANY_ID_PGO: q6mQWRYD
+  COMPANY_ID_AEON: GVNY3L8B
+
+  # Company Emp Code
+  EMP_CODE_GEN_SUPER_ADMIN: GEN_SUPERADMIN
+  EMP_CODE_GEN_COMPANY_GROUP_ADMIN: GEN_GROUPADMIN
+  EMP_CODE_GEN_ADMIN: GEN_ADMIN
+  EMP_CODE_GEN_MANAGER: GEN_MANAGER
+  EMP_CODE_GEN_USER: GEN_USER
+  EMP_CODE_GSS_SUPER_ADMIN: GSS_SUPERADMIN
+  EMP_CODE_GSS_COMPANY_GROUP_ADMIN: GSS_GROUPADMIN
+  EMP_CODE_GSS_ADMIN: GSS_ADMIN
+  EMP_CODE_GSS_MANAGER: GSS_MANAGER
+  EMP_CODE_GSS_USER: GSS_USER
+  EMP_CODE_CS_PORTAL_ADMIN:
+
+  # Department
+  DEPARTMENT_CODE_GEN: DEP1300
+  DEPARTMENT_ID_GEN: ZpLbxNQK
+
+  # Hub
+  QA_HUB_CODE: PINE000218
+  QA_HUB_ID: a6mnMNob
+
+  QA_HUB_CODE_2: BBB_8
+  QA_HUB_ID_2: ZpLbxNQK
+
+  # Vm
+  QA_VM_GUID: 4e613a44-9ee9-4905-b96c-c8440adf5d98

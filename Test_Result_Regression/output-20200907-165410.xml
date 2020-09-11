@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.1 (Python 3.7.4 on darwin)" generated="20200907 16:54:10.875" rpa="false">
+<suite id="s1" name="mggr-create-GDK-scooter" source="/Users/peter.yf.cheng/Gitlab/Automation-test/MyGogoro_web/integration/web/mggr-create-GDK-scooter.robot">
+<kw name="Suite Setup" type="setup">
+<msg timestamp="20200907 16:54:11.658" level="FAIL">No keyword with name 'Suite Setup' found.</msg>
+<status status="FAIL" starttime="20200907 16:54:11.658" endtime="20200907 16:54:11.658"></status>
+</kw>
+<test id="s1-t1" name="Create new subscription with addon">
+<tags>
+<tag>MyGogoroWeb</tag>
+<tag>New-Sub</tag>
+</tags>
+<timeout value="5 minutes"></timeout>
+<status status="FAIL" starttime="20200907 16:54:11.658" endtime="20200907 16:54:11.659" critical="yes">Parent suite setup failed:
+No keyword with name 'Suite Setup' found.</status>
+</test>
+<doc>Test suite for MyGogoro new subscription flow</doc>
+<status status="FAIL" starttime="20200907 16:54:10.877" endtime="20200907 16:54:11.660">Suite setup failed:
+No keyword with name 'Suite Setup' found.</status>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1">Critical Tests</stat>
+<stat pass="0" fail="1">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1">MyGogoroWeb</stat>
+<stat pass="0" fail="1">New-Sub</stat>
+</tag>
+<suite>
+<stat pass="0" fail="1" id="s1" name="mggr-create-GDK-scooter">mggr-create-GDK-scooter</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

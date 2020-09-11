@@ -1,0 +1,201 @@
+{
+    "esBillScootersEsBillsGet": {
+        "type": "object",
+        "required": [
+            "code",
+            "total_count",
+            "data"
+        ],
+        "properties": {
+            "code": {
+                "type": "integer"
+            },
+            "total_count": {
+                "type": "integer"
+            },
+            "data": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "required": [
+                        "es_bill_id",
+                        "user_id",
+                        "bill_period",
+                        "bill_type",
+                        "bank_barcode1",
+                        "payment_type",
+                        "payment_status",
+                        "due_date",
+                        "amount",
+                        "paid_amount",
+                        "date_from",
+                        "date_to",
+                        "settle_date",
+                        "settle_days",
+                        "tran_no",
+                        "bill_to_name",
+                        "base_price_amount",
+                        "over_unit_price_amount",
+                        "other_charge_amount",
+                        "addon_price_amount",
+                        "promotion_price_amount",
+                        "penalty_amount",
+                        "delivery_method",
+                        "previous_balance",
+                        "previous_paid_amount",
+                        "former_should_pay",
+                        "former_paid",
+                        "tax_amount",
+                        "tax_rate",
+                        "adjustment_amount",
+                        "balance",
+                        "bill_status",
+                        "issue_date",
+                        "accumulated",
+                        "writeoff_count",
+                        "writeoff_detail_count",
+                        "update_time",
+                        "create_time"
+                    ],
+                    "properties": {
+                        "es_bill_id": {
+                            "type": "string"
+                        },
+                        "user_id": {
+                            "type": "string"
+                        },
+                        "bill_period": {
+                            "type": "string"
+                        },
+                        "bill_type": {
+                            "type": "integer"
+                        },
+                        "bank_barcode1": {
+                            "type": "string"
+                        },
+                        "bank_barcode2": {
+                            "type": "string"
+                        },
+                        "store_barcode1": {
+                            "type": "string"
+                        },
+                        "store_barcode2": {
+                            "type": "string"
+                        },
+                        "store_barcode3": {
+                            "type": "string"
+                        },
+                        "payment_type": {
+                            "type": "integer"
+                        },
+                        "payment_status": {
+                            "type": "integer"
+                        },
+                        "bill_to_addr": {
+                            "type": "string"
+                        },
+                        "bill_to_zipcode": {
+                            "type": "string"
+                        },
+                        "bill_to_email": {
+                            "type": "string"
+                        },
+                        "due_date": {
+                            "type": "integer"
+                        },
+                        "amount": {
+                            "type": "integer"
+                        },
+                        "paid_amount": {
+                            "type": "number"
+                        },
+                        "date_from": {
+                            "type": "integer"
+                        },
+                        "date_to": {
+                            "type": "integer"
+                        },
+                        "settle_date": {
+                            "type": "integer"
+                        },
+                        "settle_days": {
+                            "type": "integer"
+                        },
+                        "tran_no": {
+                            "type": "string"
+                        },
+                        "bill_to_name": {
+                            "type": "string"
+                        },
+                        "base_price_amount": {
+                            "type": "integer"
+                        },
+                        "over_unit_price_amount": {
+                            "type": "integer"
+                        },
+                        "other_charge_amount": {
+                            "type": "integer"
+                        },
+                        "addon_price_amount": {
+                            "type": "integer"
+                        },
+                        "promotion_price_amount": {
+                            "type": "integer"
+                        },
+                        "penalty_amount": {
+                            "type": "integer"
+                        },
+                        "delivery_method": {
+                            "type": "integer"
+                        },
+                        "previous_balance": {
+                            "type": "integer"
+                        },
+                        "previous_paid_amount": {
+                            "type": "integer"
+                        },
+                        "former_should_pay": {
+                            "type": "integer"
+                        },
+                        "former_paid": {
+                            "type": "integer"
+                        },
+                        "tax_amount": {
+                            "type": "integer"
+                        },
+                        "tax_rate": {
+                            "type": "integer"
+                        },
+                        "adjustment_amount": {
+                            "type": "integer"
+                        },
+                        "balance": {
+                            "type": "integer"
+                        },
+                        "bill_status": {
+                            "type": "integer"
+                        },
+                        "issue_date": {
+                            "type": "integer"
+                        },
+                        "accumulated": {
+                            "type": "integer"
+                        },
+                        "writeoff_count": {
+                            "type": "integer"
+                        },
+                        "writeoff_detail_count": {
+                            "type": "integer"
+                        },
+                        "update_time": {
+                            "type": "integer"
+                        },
+                        "create_time": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,55 @@
+{
+    "getSubscriptionAddon": {
+        "type": "object",
+        "required": [
+            "total",
+            "items"
+        ],
+        "properties": {
+            "total": {
+                "type": "integer"
+            },
+            "items": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "required": [
+                        "id",
+                        "sku",
+                        "charge",
+                        "startTime"
+                    ],
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "sku": {
+                            "type": "string"
+                        },
+                        "charge": {
+                            "type": "integer"
+                        },
+                        "startTime": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "getWithoutAddonSubscription": {
+        "type": "object",
+        "required": [
+            "total",
+            "items"
+        ],
+        "properties": {
+            "total": {
+                "type": "integer"
+            },
+            "items": {
+                "type": "array"
+            }
+        }
+    }
+}

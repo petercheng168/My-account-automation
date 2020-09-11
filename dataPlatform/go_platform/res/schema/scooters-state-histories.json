@@ -1,0 +1,110 @@
+{
+    "scootersStateHistoriesGetPaymentState": {
+        "type": "object",
+        "properties": {
+            "code": {
+                "type": "integer"
+            },
+            "data": {
+                "type": "array",
+                "items": [
+                    {
+                        "type": "object",
+                        "properties": {
+                            "scooter_id": {
+                                "type": "string"
+                            },
+                            "payment_state": {
+                                "type": "integer"
+                            },
+                            "payment_state_update_time": {
+                                "type": "integer"
+                            }
+                        },
+                        "required": [
+                            "scooter_id",
+                            "payment_state",
+                            "payment_state_update_time"
+                        ]
+                    }
+                ]
+            }
+        },
+        "required": [
+            "code",
+            "data"
+        ]
+    },
+    "scootersStateHistoriesGetPlate": {
+        "type": "object",
+        "properties": {
+            "code": {
+                "type": "integer"
+            },
+            "data": {
+                "type": "array",
+                "items": [
+                    {
+                        "type": "object",
+                        "properties": {
+                            "scooter_id": {
+                                "type": "string"
+                            },
+                            "plate": {
+                                "type": "string"
+                            },
+                            "plate_update_time": {
+                                "type": "integer"
+                            }
+                        },
+                        "required": [
+                            "scooter_id",
+                            "plate",
+                            "plate_update_time"
+                        ]
+                    }
+                ]
+            }
+        },
+        "required": [
+            "code",
+            "data"
+        ]
+    },
+    "scootersStateHistoriesGetState": {
+        "type": "object",
+        "properties": {
+            "code": {
+                "type": "integer"
+            },
+            "data": {
+                "type": "array",
+                "items": [
+                    {
+                        "type": "object",
+                        "properties": {
+                            "scooter_id": {
+                                "type": "string"
+                            },
+                            "state": {
+                                "type": "integer"
+                            },
+                            "state_update_time": {
+                                "type": "integer"
+                            }
+                        },
+                        "required": [
+                            "scooter_id",
+                            "state",
+                            "state_update_time"
+                        ]
+                    }
+                ]
+            }
+        },
+        "required": [
+            "code",
+            "data"
+        ]
+    }
+}

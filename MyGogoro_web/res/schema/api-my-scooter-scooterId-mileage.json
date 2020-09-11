@@ -1,0 +1,25 @@
+{
+    "getScooterMileage": {
+        "type": "object",
+        "required": [
+            "total",
+            "startTime",
+            "endTime",
+            "cycle"
+        ],
+        "properties": {
+            "total": {
+                "type": "string"
+            },
+            "startTime": {
+                "type": "integer"
+            },
+            "endTime": {
+                "type": "integer"
+            },
+            "cycle": {
+                "type": "integer"
+            }
+        }
+    }
+}

@@ -1,0 +1,48 @@
+{
+    "UsersAuthGet": {
+        "type": "object",
+        "properties": {
+            "code": {
+                "type": "integer"
+            },
+            "total_count": {
+                "type": "integer"
+            },
+            "data": {
+                "type": "array",
+                "items": [{
+                    "type": "object",
+                    "properties": {
+                        "user_id": {
+                            "type": "string"
+                        },
+                        "gogoro_guid": {
+                            "type": "string"
+                        },
+                        "email_verified": {
+                            "type": "integer"
+                        },
+                        "login_phone_verified": {
+                            "type": "integer"
+                        },
+                        "country_code": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "user_id",
+                        "gogoro_guid",
+                        "email_verified",
+                        "login_phone_verified",
+                        "country_code"
+                    ]
+                }]
+            }
+        },
+        "required": [
+            "code",
+            "total_count",
+            "data"
+        ]
+    }
+}

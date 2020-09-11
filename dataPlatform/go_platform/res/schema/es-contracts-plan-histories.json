@@ -1,0 +1,112 @@
+{
+    "esContractsPlanHistories": {
+        "type": "object",
+        "properties": {
+            "code": {
+                "type": "integer"
+            },
+            "data": {
+                "type": "array",
+                "items": [
+                    {
+                        "type": "object",
+                        "properties": {
+                            "es_contract_id": {
+                                "type": "string"
+                            },
+                            "plan_id": {
+                                "type": "string"
+                            },
+                            "plan_type": {
+                                "type": "integer"
+                            },
+                            "payment_responsibility": {
+                                "type": "integer"
+                            },
+                            "payment_freq": {
+                                "type": "integer"
+                            },
+                            "plan_name": {
+                                "type": "string"
+                            },
+                            "plan_price": {
+                                "type": "number"
+                            },
+                            "plan_price_usage": {
+                                "type": "number"
+                            },
+                            "plan_price_reward": {
+                                "type": "integer"
+                            },
+                            "plan_terms": {
+                                "type": "integer"
+                            },
+                            "unit_base": {
+                                "type": "integer"
+                            },
+                            "unit_threshold": {
+                                "type": "integer"
+                            },
+                            "over_unit_price": {
+                                "type": "number"
+                            },
+                            "unit_threshold1": {
+                                "type": "integer"
+                            },
+                            "over_unit_price1": {
+                                "type": "number"
+                            },
+                            "early_termination_penalty": {
+                                "type": "number"
+                            },
+                            "termination_penalty": {
+                                "type": "number"
+                            },
+                            "waive_termination_penalty": {
+                                "type": "integer"
+                            },
+                            "waive_by_emp_id": {
+                                "type": "string"
+                            },
+                            "legacy_plan_code": {
+                                "type": "string"
+                            },
+                            "create_time": {
+                                "type": "integer"
+                            },
+                            "include_free_regular_maintenance": {
+                                "type": "integer"
+                            }
+                        },
+                        "required": [
+                            "es_contract_id",
+                            "plan_id",
+                            "plan_type",
+                            "payment_responsibility",
+                            "payment_freq",
+                            "plan_name",
+                            "plan_price",
+                            "plan_price_usage",
+                            "plan_price_reward",
+                            "plan_terms",
+                            "unit_base",
+                            "unit_threshold",
+                            "over_unit_price",
+                            "unit_threshold1",
+                            "over_unit_price1",
+                            "termination_penalty",
+                            "waive_termination_penalty",
+                            "legacy_plan_code",
+                            "create_time",
+                            "include_free_regular_maintenance"
+                        ]
+                    }
+                ]
+            }
+        },
+        "required": [
+            "code",
+            "data"
+        ]
+    }
+}

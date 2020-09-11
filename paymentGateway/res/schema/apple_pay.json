@@ -1,0 +1,40 @@
+{
+	"getApplePay": {
+		"200": {
+			"type": "object",
+			"required": [
+				"Code",
+				"ResultCode",
+				"ResultMessage"
+			],
+			"properties": {
+				"Code": {
+					"type": "integer"
+				},
+				"ResultCode": {
+					"type": "integer"
+				},
+				"ResultMessage": {
+					"type": "string"
+				}
+			}
+		}
+	},
+    "getApplePayRefund": {
+        "200": {
+            "type": "object",
+            "required": [
+                "ResultCode",
+                "ResultMessage"
+            ],
+            "properties": {
+                "ResultCode": {
+                    "type": "integer"
+                },
+                "ResultMessage": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

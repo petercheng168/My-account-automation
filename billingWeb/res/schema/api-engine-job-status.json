@@ -1,0 +1,33 @@
+{
+    "GetJobStatus":{
+        "type": "object",
+        "required": [
+          "jobType",
+          "status",
+          "successCount",
+          "failedCount",
+          "totalCount",
+          "remainingTime"
+        ],
+        "properties": {
+          "jobType": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "successCount": {
+            "type": "integer"
+          },
+          "failedCount": {
+            "type": "integer"
+          },
+          "totalCount": {
+            "type": "integer"
+          },
+          "remainingTime": {
+            "type": "integer"
+          }
+        }
+      }
+}

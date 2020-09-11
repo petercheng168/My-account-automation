@@ -1,0 +1,63 @@
+{
+    "esContractsPromotionsGet": {
+        "type": "object",
+        "required": [
+            "code",
+            "data"
+        ],
+        "properties": {
+            "code": {
+                "type": "integer"
+            },
+            "data": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "required": [
+                        "promotion_id",
+                        "name",
+                        "start_date",
+                        "end_date",
+                        "effective_date",
+                        "create_time",
+                        "promotion_type",
+                        "units",
+                        "carry_over"
+                    ],
+                    "properties": {
+                        "promotion_id": {
+                            "type": "string"
+                        },
+                        "promotion_code": {
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "start_date": {
+                            "type": "integer"
+                        },
+                        "end_date": {
+                            "type": "integer"
+                        },
+                        "effective_date": {
+                            "type": "integer"
+                        },
+                        "create_time": {
+                            "type": "integer"
+                        },
+                        "promotion_type": {
+                            "type": "integer"
+                        },
+                        "units": {
+                            "type": "number"
+                        },
+                        "carry_over": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

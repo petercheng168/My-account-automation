@@ -1,0 +1,69 @@
+{
+    "userScootersGet": {
+        "type": "object",
+        "required": [
+            "code",
+            "data"
+        ],
+        "properties": {
+            "code": {
+                "type": "integer"
+            },
+            "data": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "required": [
+                        "scooter_id",
+                        "scooter_guid",
+                        "battery_count",
+                        "feature_purchased",
+                        "brand_company_id",
+                        "brand_company_code",
+                        "scooter_model_guid",
+                        "model_code",
+                        "ecu_mac"
+                    ],
+                    "properties": {
+                        "scooter_id": {
+                            "type": "string"
+                        },
+                        "scooter_guid": {
+                            "type": "string"
+                        },
+                        "battery_count": {
+                            "type": "integer"
+                        },
+                        "feature_purchased": {
+                            "type": "string"
+                        },
+                        "brand_company_id": {
+                            "type": "string"
+                        },
+                        "brand_company_code": {
+                            "type": "string"
+                        },
+                        "scooter_model_guid": {
+                            "type": "string"
+                        },
+                        "model_code": {
+                            "type": "string"
+                        },
+                        "ecu_mac": {
+                            "type": "string"
+                        },
+                        "manufacture_time": {
+                            "type": "integer"
+                        },
+                        "vin": {
+                            "type": "string"
+                        },
+                        "plate_date": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

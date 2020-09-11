@@ -1,0 +1,238 @@
+{
+    "getCardPage": {
+        "200": {
+            "type": "object",
+            "required": [
+                "Code",
+                "ResultCode",
+                "ResultMessage"
+            ],
+            "properties": {
+                "Code": {
+                    "type": "integer"
+                },
+                "ResultCode": {
+                    "type": "integer"
+                },
+                "ResultMessage": {
+                    "type": "string"
+                }
+            }
+        },
+        "400": {
+            "type": "object",
+            "required": [
+                "Code",
+                "ResultMessage"
+            ],
+            "properties": {
+                "Code": {
+                    "type": "integer"
+                },
+                "ResultMessage": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "updateResult": {
+        "200": {
+            "type": "object",
+            "required": [
+                "OrderNo",
+                "IsSuccess",
+                "TimeStamp",
+                "Random",
+                "CheckSum"
+            ],
+            "properties": {
+                "OrderNo": {
+                    "type": "string"
+                },
+                "IsSuccess": {
+                    "type": "boolean"
+                },
+                "TimeStamp": {
+                    "type": "string"
+                },
+                "Random": {
+                    "type": "string"
+                },
+                "CheckSum": {
+                    "type": "string"
+                }
+            }
+        },
+        "400": {
+            "type": "object",
+            "required": [
+                "OrderNo",
+                "IsSuccess"
+            ],
+            "properties": {
+                "OrderNo": {
+                    "type": "string"
+                },
+                "IsSuccess": {
+                    "type": "boolean"
+                }
+            }
+        }
+    },
+    "creditCardList": {
+        "200": {
+            "type": "object",
+            "required": [
+                "Code",
+                "ResultCode",
+                "ResultMessage"
+            ],
+            "properties": {
+                "Code": {
+                    "type": "integer"
+                },
+                "ResultCode": {
+                    "type": "integer"
+                },
+                "ResultMessage": {
+                    "type": "string"
+                }
+            }
+        },
+        "400": {
+            "type": "object",
+            "required": [
+                "Code",
+                "ResultMessage"
+            ],
+            "properties": {
+                "Code": {
+                    "type": "integer"
+                },
+                "ResultMessage": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "deleteCreditCard": {
+        "200": {
+            "type": "object",
+            "required": [
+                "Code",
+                "ResultCode",
+                "ResultMessage"
+            ],
+            "properties": {
+                "Code": {
+                    "type": "integer"
+                },
+                "ResultCode": {
+                    "type": "integer"
+                },
+                "ResultMessage": {
+                    "type": "string"
+                }
+            }
+        },
+        "400": {
+            "type": "object",
+            "required": [
+                "Code",
+                "ResultMessage"
+            ],
+            "properties": {
+                "Code": {
+                    "type": "integer"
+                },
+                "ResultMessage": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "auth": {
+        "200": {
+            "type": "object",
+            "required": [
+                "Code",
+                "ResultCode",
+                "ResultMessage"
+            ],
+            "properties": {
+                "Code": {
+                    "type": "integer"
+                },
+                "ResultCode": {
+                    "type": "integer"
+                },
+                "ResultMessage": {
+                    "type": "string"
+                }
+            }
+        },
+        "400": {
+            "type": "object",
+            "required": [
+                "Code",
+                "ResultMessage"
+            ],
+            "properties": {
+                "Code": {
+                    "type": "integer"
+                },
+                "ResultMessage": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "get3DVerificationPage": {
+        "200_code_0": {
+            "type": "object",
+            "required": [
+                "Code",
+                "ResultCode",
+                "ResultMessage"
+            ],
+            "properties": {
+                "Code": {
+                    "type": "integer"
+                },
+                "ResultCode": {
+                    "type": "integer"
+                },
+                "ResultMessage": {
+                    "type": "string"
+                }
+            }
+        },
+        "200_code_1": {
+            "type": "object",
+            "required": [
+                "Code",
+                "ResultCode",
+                "ResultData"
+            ],
+            "properties": {
+                "Code": {
+                    "type": "integer"
+                },
+                "ResultCode": {
+                    "type": "integer"
+                },
+                "ResultData": {
+                    "type": "object",
+                    "required": [
+                        "taishin_url"
+                    ],
+                    "properties": {
+                        "taishin_url": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

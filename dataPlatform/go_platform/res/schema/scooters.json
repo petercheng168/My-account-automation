@@ -1,0 +1,222 @@
+{
+    "scooterGetGeneral": {
+        "type": "object",
+        "required": [
+            "code",
+            "total_count",
+            "data"
+        ],
+        "properties": {
+            "code": {
+                "type": "integer",
+                "enum": [
+                    0
+                ]
+            },
+            "total_count": {
+                "type": "integer"
+            },
+            "data": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "required": [
+                        "scooter_id",
+                        "scooter_guid",
+                        "vin",
+                        "brand_company_id",
+                        "battery_count",
+                        "state",
+                        "country_code",
+                        "payment_state",
+                        "payment_state_update_time",
+                        "current_odometer",
+                        "model_name",
+                        "scooter_model_guid",
+                        "model_code"
+                    ],
+                    "properties": {
+                        "scooter_id": {
+                            "type": "string"
+                        },
+                        "scooter_guid": {
+                            "type": "string"
+                        },
+                        "vin": {
+                            "type": "string"
+                        },
+                        "plate": {
+                            "type": "string"
+                        },
+                        "brand_company_id": {
+                            "type": "string"
+                        },
+                        "battery_count": {
+                            "type": "integer"
+                        },
+                        "state": {
+                            "type": "integer"
+                        },
+                        "color_code": {
+                            "type": "string"
+                        },
+                        "country_code": {
+                            "type": "string"
+                        },
+                        "payment_state": {
+                            "type": "integer"
+                        },
+                        "payment_state_update_time": {
+                            "type": "integer"
+                        },
+                        "current_odometer": {
+                            "type": "integer"
+                        },
+                        "model_name": {
+                            "type": "string"
+                        },
+                        "scooter_model_guid": {
+                            "type": "string"
+                        },
+                        "model_code": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "scooterGetDefault": {
+        "type": "object",
+        "required": [
+            "code",
+            "total_count",
+            "data"
+        ],
+        "properties": {
+            "code": {
+                "type": "integer",
+                "enum": [
+                    0
+                ]
+            },
+            "total_count": {
+                "type": "integer"
+            },
+            "data": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "required": [
+                        "scooter_id",
+                        "scooter_guid",
+                        "vin",
+                        "brand_company_id",
+                        "battery_count",
+                        "state",
+                        "update_time",
+                        "country_code",
+                        "payment_state",
+                        "payment_state_update_time",
+                        "current_odometer",
+                        "model_name",
+                        "scooter_model_guid",
+                        "model_code"
+                    ],
+                    "properties": {
+                        "scooter_id": {
+                            "type": "string"
+                        },
+                        "scooter_guid": {
+                            "type": "string"
+                        },
+                        "vin": {
+                            "type": "string"
+                        },
+                        "plate": {
+                            "type": "string"
+                        },
+                        "brand_company_id": {
+                            "type": "string"
+                        },
+                        "plan_type": {
+                            "type": "integer"
+                        },
+                        "material_num": {
+                            "type": "string"
+                        },
+                        "model_id": {
+                            "type": "string"
+                        },
+                        "atmel_key": {
+                            "type": "string"
+                        },
+                        "atmel_sn": {
+                            "type": "string"
+                        },
+                        "battery_count": {
+                            "type": "integer"
+                        },
+                        "feature_purchased": {
+                            "type": "string"
+                        },
+                        "feature_purchased_time": {
+                            "type": "integer"
+                        },
+                        "state": {
+                            "type": "integer"
+                        },
+                        "state_update_time": {
+                            "type": "integer"
+                        },
+                        "es_state": {
+                            "type": "integer"
+                        },
+                        "es_state_update_time": {
+                            "type": "integer"
+                        },
+                        "update_time": {
+                            "type": "integer"
+                        },
+                        "manufacture_time": {
+                            "type": "integer"
+                        },
+                        "shipping_time": {
+                            "type": "integer"
+                        },
+                        "color_code": {
+                            "type": "string"
+                        },
+                        "sing_date": {
+                            "type": "string"
+                        },
+                        "country_code": {
+                            "type": "string"
+                        },
+                        "payment_state": {
+                            "type": "integer"
+                        },
+                        "payment_state_update_time": {
+                            "type": "integer"
+                        },
+                        "current_odometer": {
+                            "type": "integer"
+                        },
+                        "battery_sprint": {
+                            "type": "integer"
+                        },
+                        "model_name": {
+                            "type": "string"
+                        },
+                        "scooter_model_guid": {
+                            "type": "string"
+                        },
+                        "model_code": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,2036 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.1 (Python 3.7.4 on darwin)" generated="20200827 11:53:30.043" rpa="false">
+<suite id="s1" name="Mggr-New Subscription" source="/Users/peter.yf.cheng/Gitlab/Automation-test/MyGogoro_web/integration/web/mggr-new_subscription.robot">
+<kw name="Suite Setup" type="setup">
+<kw name="Open Browser" library="keywords_common">
+<doc>Create a chrome browser without UI display</doc>
+<arguments>
+<arg>${MYGOGORO_GN_DOMAIN}</arg>
+<arg>${WINDOW_HEIGHT}</arg>
+<arg>${WINDOW_WEIGHT}</arg>
+</arguments>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys, selenium.webdriver</arg>
+</arguments>
+<assign>
+<var>${chrome_options}</var>
+</assign>
+<msg timestamp="20200827 11:53:30.810" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x10d82e050&gt;</msg>
+<status status="PASS" starttime="20200827 11:53:30.809" endtime="20200827 11:53:30.810"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-extensions</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:53:30.812" endtime="20200827 11:53:30.812"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-gpu</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:53:30.814" endtime="20200827 11:53:30.814"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--no-sandbox</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:53:30.816" endtime="20200827 11:53:30.817"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-setuid-sandbox</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:53:30.818" endtime="20200827 11:53:30.818"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-dev-shm-usage</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:53:30.819" endtime="20200827 11:53:30.819"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--incognito</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:53:30.820" endtime="20200827 11:53:30.820"></status>
+</kw>
+<kw name="Create Webdriver" library="Selenium2Library">
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<arguments>
+<arg>Chrome</arg>
+<arg>chrome_options=${chrome_options}</arg>
+<arg>executable_path=${BROWSER_PATH}/${DRIVER_VERSION}</arg>
+</arguments>
+<msg timestamp="20200827 11:53:30.821" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" starttime="20200827 11:53:30.821" endtime="20200827 11:53:34.086"></status>
+</kw>
+<kw name="Set Window Size" library="Selenium2Library">
+<doc>Sets current windows size to given ``width`` and ``height``.</doc>
+<arguments>
+<arg>${height}</arg>
+<arg>${weight}</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:53:34.088" endtime="20200827 11:53:34.430"></status>
+</kw>
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${url}</arg>
+</arguments>
+<msg timestamp="20200827 11:53:34.432" level="INFO">Opening url 'https://pa-network-my.gogoro.com/login?lang=zh-TW'</msg>
+<status status="PASS" starttime="20200827 11:53:34.431" endtime="20200827 11:53:37.178"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:30.808" endtime="20200827 11:53:37.179"></status>
+</kw>
+<kw name="Signup User">
+<kw name="Setup User Variables">
+<kw name="Encode Password Get" library="LibAppCipher">
+<doc>encode password</doc>
+<arguments>
+<arg>Gogoro123</arg>
+</arguments>
+<assign>
+<var>${password}</var>
+</assign>
+<msg timestamp="20200827 11:53:37.229" level="INFO">${password} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200827 11:53:37.181" endtime="20200827 11:53:37.229"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${User}</arg>
+<arg>${User('${password.text}')}</arg>
+</arguments>
+<msg timestamp="20200827 11:53:37.233" level="INFO">${User} = &lt;MyGogoroObject.User object at 0x10d82ee10&gt;</msg>
+<status status="PASS" starttime="20200827 11:53:37.231" endtime="20200827 11:53:37.233"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:37.180" endtime="20200827 11:53:37.233"></status>
+</kw>
+<kw name="Users Post" library="LibUsers">
+<doc>Create user</doc>
+<arguments>
+<arg>${User.company_code}</arg>
+<arg>${User.first_name}</arg>
+<arg>${User.gender}</arg>
+<arg>${User.email}</arg>
+<arg>${User.status}\</arg>
+<arg>${User.enable_e_carrier}</arg>
+<arg>${User.last_name}</arg>
+<arg>${User.display_name}</arg>
+<arg>${User.birthday}\</arg>
+<arg>${User.contact_address}</arg>
+<arg>${User.contact_district}</arg>
+<arg>${User.contact_city}</arg>
+<arg>${User.contact_zipcode}\</arg>
+<arg>${User.invoice_address}</arg>
+<arg>${User.invoice_district}</arg>
+<arg>${User.invoice_city}</arg>
+<arg>${User.invoice_zipcode}\</arg>
+<arg>${User.country_code}</arg>
+<arg>mobile_phone1=${User.mobile}</arg>
+<arg>profile_id=E123456789</arg>
+<arg>password=${User.encode_password}\</arg>
+<arg>login_phone=${User.phone}</arg>
+<arg>occupation=${User.occupation}</arg>
+<arg>gogoro_guid=${User.gogoro_guid}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200827 11:53:37.976" level="INFO">http://10.6.1.46:3032/app/cipher?env=pa&amp;app=pa&amp;resource=pa&amp;username=pa.gen_admin@gogoro.com&amp;password=123</msg>
+<msg timestamp="20200827 11:53:38.369" level="INFO">Response message: 200
+Body: {
+    "code": 0,
+    "msg": "success",
+    "data": [
+        {
+            "user_id": "rLOqOkNO"
+        }
+    ]
+}
+CURL:
+   curl -i --request POST --url https://pa-goplatform.gogoro.com:443/go-platform/v1/users \
+   --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI0RF82RE04Nm9BQ2ZkNWwzLTMzVzU4LVVQTUZoQVEzV1FWbDVQSFVoTE5BIn0.eyJqdGkiOiJlYTE5Zjk4Yi0xYTkwLTQzN2ItOWE4MS1hYWFhMDg5YWZhNWUiLCJleHAiOjE1OTg1MDEzMTcsIm5iZiI6MCwiaWF0IjoxNTk4NTAwNDE3LCJpc3MiOiJodHRwczovL3BhLWF1dGgta2V5Y2xvYWsuZ29nb3JvLmNvbS9hdXRoL3JlYWxtcy9nb2dvcm8iLCJhdWQiOiJwYSIsInN1YiI6IjIwMzUxNjllLTQ4NmQtNDM1YS1iMTZiLTgxMjdkYzM2MGFlZiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImF1dGgiLCJhdXRoX3RpbWUiOjAsInNlc3Npb25fc3RhdGUiOiJkMjRkMjI4My05ZTRjLTQwZTgtYmM5Zi0yNzgwM2U2NDZkYTMiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImFwcF9wYSJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InBhIjp7InJvbGVzIjpbInBhX2FkbWluIl19fSwiYXV0aG9yaXphdGlvbiI6eyJwZXJtaXNzaW9ucyI6W3sic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6IjhiMzFiZDgxLTEzZmEtNDhjMC1hZGRlLWUyMDZlYzdlYjgzNyIsInJzbmFtZSI6ImdvZ29yb191c2VyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNDZhZmRhYzYtNzg3ZC00ZDdmLWJjMWMtMDM2M2QzNjlkNTI3IiwicnNuYW1lIjoic2Nvb3Rlcl9jb250cmFjdCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImU4YWJjMTA3LTM0ZTgtNDdhYS04NjY4LTg4ODMyNmUwMjczOCIsInJzbmFtZSI6ImdvX2NoYXJnZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3ODc1MWJmNi00ZjU0LTQ0OTUtYTQ4YS0xMDA3MWE4Y2U0YTkiLCJyc25hbWUiOiJlbXBsb3llZSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImY0ZTVkNTJlLTQwNGQtNGY4OC1iNmEwLWY3N2I1NjBjMzA1MSIsInJzbmFtZSI6ImVzX2NhdGVnb3J5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiYTMxMzNjOWEtYzZkMC00ZTA1LThmZDgtZDBiMWM4OTA1Yzk1IiwicnNuYW1lIjoidm0ifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI1YTg0MTYyZC04MzM4LTRjY2ItOTNjYS05NjY4MDQ1ZmU4NmIiLCJyc25hbWUiOiJzY29vdGVyX2RlbGl2ZXJ5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzViYTRhMjEtYmFhNS00MDYwLTljZTktNTM4YzAxODcxNDAzIiwicnNuYW1lIjoic3dhIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiODFkZTc4MzktNjM0ZC00Yzc3LWI0MjEtODI4NDdlNzllNmNhIiwicnNuYW1lIjoiYmF0dGVyeSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImQzODhjM2IzLTNjMzItNDE1OC04NTM4LTZhZmNiZGU5YmRhZiIsInJzbmFtZSI6ImVzX2JpbGxfd3JpdGVvZmYifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiIxN2NkOGY0OC0yODBjLTQ5ZDQtOWFlZS05YWFjNmY5MmFlZjEiLCJyc25hbWUiOiJzY29vdGVyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzYxMmEwYjQtZDMxYS00MDA5LWJkZjQtODAxMmRjMmE1N2M3IiwicnNuYW1lIjoiZXNfYmlsbCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6Ijg4MDM5NDlhLWJiMjctNDMzNS1iMGQ4LWNmMTc5NjQ3NjA5OSIsInJzbmFtZSI6ImNvbXBhbnkifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4Y2U1ZDY0Ny0yMzViLTQ4OTItYWU0OC05NmJlZmM5OWUyMDYiLCJyc25hbWUiOiJzYWxlc19vcmRlciJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImYxNTE0ZWVjLWJhN2EtNGU5Ny05ZWRhLThmZmMxNjAzYjg0ZSIsInJzbmFtZSI6ImNhcnJpZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4MmY3NTY1Yy04OTllLTRjOTItOWM2MC1hNWM3MDI5ZjZlYTAiLCJyc25hbWUiOiJyd19wYWQifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3OTczODk4NC1mYTA2LTQ0NDYtYWVlZS1iYjlhMjlhMzM4MjQiLCJyc25hbWUiOiJwcmljaW5nIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiMzZmZjhlMmMtMzgyMy00MGI4LTk5NjYtZjZmZGI2YjMxYzRiIiwicnNuYW1lIjoicGFydHMifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI5NmY1MWIxNy1kZjU3LTQ0YWQtYjllMS1jMDE5ZTMwMGFhNDkiLCJyc25hbWUiOiJzY29vdGVyX2NvbnRyYWN0X3VzZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiJkMDg5MGYwMy01YzBmLTQ4MTQtYjExZS1mN2NjNmVlNzIyNzUiLCJyc25hbWUiOiJiYW5rIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNjI4MTY4YzItNjkxYS00NzliLTljNmYtZTIzNDE5MjlmY2EyIiwicnNuYW1lIjoiZXNfY29udHJhY3QifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3YjBmZWY2Yi0yZjdhLTQ1MGItYmJjMC1jMTZjMjg3YzE0NWYiLCJyc25hbWUiOiJzZXJ2aWNlX29yZGVyIn1dfSwic2NvcGUiOiJlbXBsb3llZSBlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImNvbXBhbnlfaWQiOiJacExieE5RSyIsImRlcGFydG1lbnRfaWQiOiJhNm1uTU5vYiIsImVtcGxveWVlX2lkIjoieUptNHFPTGEiLCJuYW1lIjoicGEgZ2VuX2FkbWluIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20iLCJnaXZlbl9uYW1lIjoicGEiLCJmYW1pbHlfbmFtZSI6Imdlbl9hZG1pbiIsImVtYWlsIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20ifQ.FrU5gOMzzVoiSZ3avUXg4Fw5gFoddIiktkRcofsy45DqhR9Ut-A7ZJHE5yi05hZlPGnam-yEBwkaXaPPmDNMJns6vVxKdZL5ofg2FfF9MSwalztbC0Y_oUCkTBQKc0OnqE2QVM9_bU0R8slkym-Fx6rMPSxSPRYwSJul80B8CTUoEcnJ7cWA9snZczJrRsNGGuMCg_kvxrKv3oGmTKlppb01uvQQHRn3ZWlk9dmQRQoXKZoM3vQ85U2B4zCmfmfhbez0YcHPwdZfpbis3OrU2hg2vUeDNtNNxIBL_rnm_k7o-1NRHoQRBun2mJ6f_HEjFkA1MNqs6aVUzZtgGU1SKg' \
+   --header 'content-type: application/json' --header 'go-client: pa' \
+   --data '{
+    "op_code": "add",
+    "add_data": [
+        {
+            "company_code": 1300,
+            "first_name": "KROMU",
+            "last_name": "PASWNQCXW",
+            "nick_name": "PASWNQCXWKROMU",
+            "gender": "M",
+            "birthday": "2000-02-14",
+            "email": "pasw.verify+1598500417@gogoro.com",
+            "contact_address": "\u9577\u5b89\u6771\u8def\u4e8c\u6bb5225\u865fC\u68df11\u6a13",
+            "contact_district": "\u677e\u5c71\u5340",
+            "contact_city": "\u81fa\u5317\u5e02",
+            "contact_zip": "10552",
+            "invoice_address": "\u9577\u5b89\u6771\u8def\u4e8c\u6bb5225\u865fC\u68df11\u6a13",
+            "invoice_district": "\u677e\u5c71\u5340",
+            "invoice_city": "\u81fa\u5317\u5e02",
+            "invoice_zip": "10552",
+            "country_code": "TW",
+            "mobile_phone1": "0914470121",
+            "mobile_phone2": null,
+            "home_phone1": null,
+            "home_phone2": null,
+            "profile_id": "E123456789",
+            "password": "c1SmbaR8oM1hzVW0AlwvKyO/drw8gIxePQLqQK2u1r/U5C/E9lYF4CthppfVPWA5PoLEHT1AczH6ztcoVAaWoQ==",
+            "status": "1",
+            "gogoro_guid": "de777ee2-f81d-45a4-8991-469d7e79c320",
+            "enable_e_carrier": 1,
+            "photo_url": null,
+            "occupation": "1",
+            "eula_status": null,
+            "unit": null
+        }
+    ]
+}'</msg>
+<msg timestamp="20200827 11:53:38.369" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200827 11:53:37.234" endtime="20200827 11:53:38.369"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${user_Id}</arg>
+<arg>${resp.json()['data'][0]['user_id']}</arg>
+</arguments>
+<msg timestamp="20200827 11:53:38.372" level="INFO">${user_Id} = rLOqOkNO</msg>
+<status status="PASS" starttime="20200827 11:53:38.370" endtime="20200827 11:53:38.372"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>login_phone=${User.phone}</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:53:38.373" endtime="20200827 11:53:38.373"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp.text}</arg>
+</arguments>
+<msg timestamp="20200827 11:53:38.375" level="INFO">{"code":0,"msg":"success","data":[{"user_id":"rLOqOkNO"}]}</msg>
+<status status="PASS" starttime="20200827 11:53:38.374" endtime="20200827 11:53:38.375"></status>
+</kw>
+<kw name="Users Update Email Verified" library="LibUsers">
+<doc>Update user email_verified</doc>
+<arguments>
+<arg>${user_Id}</arg>
+<arg>1</arg>
+</arguments>
+<msg timestamp="20200827 11:53:39.010" level="INFO">http://10.6.1.46:3032/app/cipher?env=pa&amp;app=pa&amp;resource=pa&amp;username=pa.gen_admin@gogoro.com&amp;password=123</msg>
+<msg timestamp="20200827 11:53:39.178" level="INFO">Response message: 200
+Body: {
+    "code": 0
+}
+CURL:
+   curl -i --request POST --url https://pa-goplatform.gogoro.com:443/go-platform/v1/users \
+   --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI0RF82RE04Nm9BQ2ZkNWwzLTMzVzU4LVVQTUZoQVEzV1FWbDVQSFVoTE5BIn0.eyJqdGkiOiIxM2IzYzlhMC00Y2JmLTRjNDYtODdjNC0zNjY5NjZhZTdkNGIiLCJleHAiOjE1OTg1MDEzMTgsIm5iZiI6MCwiaWF0IjoxNTk4NTAwNDE4LCJpc3MiOiJodHRwczovL3BhLWF1dGgta2V5Y2xvYWsuZ29nb3JvLmNvbS9hdXRoL3JlYWxtcy9nb2dvcm8iLCJhdWQiOiJwYSIsInN1YiI6IjIwMzUxNjllLTQ4NmQtNDM1YS1iMTZiLTgxMjdkYzM2MGFlZiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImF1dGgiLCJhdXRoX3RpbWUiOjAsInNlc3Npb25fc3RhdGUiOiI2NTg0ODNmZS00NTQ4LTQ4ZWEtYmIxMi1iYzJlNmIwZmI1NTEiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImFwcF9wYSJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InBhIjp7InJvbGVzIjpbInBhX2FkbWluIl19fSwiYXV0aG9yaXphdGlvbiI6eyJwZXJtaXNzaW9ucyI6W3sic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6IjhiMzFiZDgxLTEzZmEtNDhjMC1hZGRlLWUyMDZlYzdlYjgzNyIsInJzbmFtZSI6ImdvZ29yb191c2VyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNDZhZmRhYzYtNzg3ZC00ZDdmLWJjMWMtMDM2M2QzNjlkNTI3IiwicnNuYW1lIjoic2Nvb3Rlcl9jb250cmFjdCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImU4YWJjMTA3LTM0ZTgtNDdhYS04NjY4LTg4ODMyNmUwMjczOCIsInJzbmFtZSI6ImdvX2NoYXJnZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3ODc1MWJmNi00ZjU0LTQ0OTUtYTQ4YS0xMDA3MWE4Y2U0YTkiLCJyc25hbWUiOiJlbXBsb3llZSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImY0ZTVkNTJlLTQwNGQtNGY4OC1iNmEwLWY3N2I1NjBjMzA1MSIsInJzbmFtZSI6ImVzX2NhdGVnb3J5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiYTMxMzNjOWEtYzZkMC00ZTA1LThmZDgtZDBiMWM4OTA1Yzk1IiwicnNuYW1lIjoidm0ifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI1YTg0MTYyZC04MzM4LTRjY2ItOTNjYS05NjY4MDQ1ZmU4NmIiLCJyc25hbWUiOiJzY29vdGVyX2RlbGl2ZXJ5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzViYTRhMjEtYmFhNS00MDYwLTljZTktNTM4YzAxODcxNDAzIiwicnNuYW1lIjoic3dhIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiODFkZTc4MzktNjM0ZC00Yzc3LWI0MjEtODI4NDdlNzllNmNhIiwicnNuYW1lIjoiYmF0dGVyeSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImQzODhjM2IzLTNjMzItNDE1OC04NTM4LTZhZmNiZGU5YmRhZiIsInJzbmFtZSI6ImVzX2JpbGxfd3JpdGVvZmYifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiIxN2NkOGY0OC0yODBjLTQ5ZDQtOWFlZS05YWFjNmY5MmFlZjEiLCJyc25hbWUiOiJzY29vdGVyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzYxMmEwYjQtZDMxYS00MDA5LWJkZjQtODAxMmRjMmE1N2M3IiwicnNuYW1lIjoiZXNfYmlsbCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6Ijg4MDM5NDlhLWJiMjctNDMzNS1iMGQ4LWNmMTc5NjQ3NjA5OSIsInJzbmFtZSI6ImNvbXBhbnkifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4Y2U1ZDY0Ny0yMzViLTQ4OTItYWU0OC05NmJlZmM5OWUyMDYiLCJyc25hbWUiOiJzYWxlc19vcmRlciJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImYxNTE0ZWVjLWJhN2EtNGU5Ny05ZWRhLThmZmMxNjAzYjg0ZSIsInJzbmFtZSI6ImNhcnJpZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4MmY3NTY1Yy04OTllLTRjOTItOWM2MC1hNWM3MDI5ZjZlYTAiLCJyc25hbWUiOiJyd19wYWQifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3OTczODk4NC1mYTA2LTQ0NDYtYWVlZS1iYjlhMjlhMzM4MjQiLCJyc25hbWUiOiJwcmljaW5nIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiMzZmZjhlMmMtMzgyMy00MGI4LTk5NjYtZjZmZGI2YjMxYzRiIiwicnNuYW1lIjoicGFydHMifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI5NmY1MWIxNy1kZjU3LTQ0YWQtYjllMS1jMDE5ZTMwMGFhNDkiLCJyc25hbWUiOiJzY29vdGVyX2NvbnRyYWN0X3VzZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiJkMDg5MGYwMy01YzBmLTQ4MTQtYjExZS1mN2NjNmVlNzIyNzUiLCJyc25hbWUiOiJiYW5rIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNjI4MTY4YzItNjkxYS00NzliLTljNmYtZTIzNDE5MjlmY2EyIiwicnNuYW1lIjoiZXNfY29udHJhY3QifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3YjBmZWY2Yi0yZjdhLTQ1MGItYmJjMC1jMTZjMjg3YzE0NWYiLCJyc25hbWUiOiJzZXJ2aWNlX29yZGVyIn1dfSwic2NvcGUiOiJlbXBsb3llZSBlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImNvbXBhbnlfaWQiOiJacExieE5RSyIsImRlcGFydG1lbnRfaWQiOiJhNm1uTU5vYiIsImVtcGxveWVlX2lkIjoieUptNHFPTGEiLCJuYW1lIjoicGEgZ2VuX2FkbWluIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20iLCJnaXZlbl9uYW1lIjoicGEiLCJmYW1pbHlfbmFtZSI6Imdlbl9hZG1pbiIsImVtYWlsIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20ifQ.SnV9wwui-tVzlcHn8MT_ZH8anONnW3devhmyOhGGEfWTwkx5DvfubotvkZuWAUPGBU2I1jDJcggHvLizzc2QLKvHXePrt7D69e8R_ivOwcc-YrRgtXdy3ynSPcrsmAlK_yyoc1TZlAzxdqqwekl1G_gFrAVJETsBzCyomqnZLc08dtT6fIM9MbkrwiEXubNyIDqDJlfwOHuY-CLWNO0QcbvLAJbkRNzJhjyDiRbUnOPe3KDL5fNAynZ_Z4fY27EhdV7ggzxiDdlecDeC9hVUaNsM1smSBshKXFSRyF8ls-FdoU1LPc5IUyIq-2qzd2obBZXMb5RN0VwJWrVT4Is0Aw' \
+   --header 'content-type: application/json' --header 'go-client: pa' \
+   --data '{
+    "op_code": "update",
+    "update_data": [
+        {
+            "user_id": "rLOqOkNO",
+            "email_verified": "1"
+        }
+    ]
+}'</msg>
+<status status="PASS" starttime="20200827 11:53:38.376" endtime="20200827 11:53:39.178"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:37.179" endtime="20200827 11:53:39.178"></status>
+</kw>
+<kw name="Login With Email And Password" library="keyword_mggr_login">
+<doc>Login My Account domain with user email and password</doc>
+<arguments>
+<arg>${User.email}</arg>
+<arg>Gogoro123</arg>
+</arguments>
+<kw name="Input User Mail" library="keyword_mggr_login">
+<doc>Input user email at login page</doc>
+<arguments>
+<arg>${email}</arg>
+</arguments>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//input[@type="text"][@name="email"]</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:53:39.180" endtime="20200827 11:53:39.214"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>//input[@type="text"][@name="email"]</arg>
+<arg>${email}</arg>
+</arguments>
+<msg timestamp="20200827 11:53:39.216" level="INFO">Typing text 'pasw.verify+1598500417@gogoro.com' into text field '//input[@type="text"][@name="email"]'.</msg>
+<status status="PASS" starttime="20200827 11:53:39.215" endtime="20200827 11:53:39.753"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:39.179" endtime="20200827 11:53:39.753"></status>
+</kw>
+<kw name="Input User Passwords" library="keyword_mggr_login">
+<doc>Input user password at login page</doc>
+<arguments>
+<arg>${password}</arg>
+</arguments>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//input[@type="password"][@name="password"]</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:53:39.754" endtime="20200827 11:53:39.780"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>//input[@type="password"][@name="password"]</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20200827 11:53:39.781" level="INFO">Typing text 'Gogoro123' into text field '//input[@type="password"][@name="password"]'.</msg>
+<status status="PASS" starttime="20200827 11:53:39.780" endtime="20200827 11:53:39.907"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:39.753" endtime="20200827 11:53:39.907"></status>
+</kw>
+<kw name="Click Rounded Button" library="keywords_common">
+<doc>Click rounded button</doc>
+<arguments>
+<arg>登入</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>0.5s</arg>
+</arguments>
+<msg timestamp="20200827 11:53:40.411" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20200827 11:53:39.911" endtime="20200827 11:53:40.412"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//*[contains(@class,'RoundedButton__ThemedButton-iaiki0-0')][contains(.,"${text}")]</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:53:40.413" endtime="20200827 11:53:40.438"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//*[contains(@class,'RoundedButton__ThemedButton-iaiki0-0')][contains(.,"${text}")]</arg>
+</arguments>
+<msg timestamp="20200827 11:53:40.439" level="INFO">Clicking element '//*[contains(@class,'RoundedButton__ThemedButton-iaiki0-0')][contains(.,"登入")]'.</msg>
+<status status="PASS" starttime="20200827 11:53:40.439" endtime="20200827 11:53:40.510"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:39.908" endtime="20200827 11:53:40.510"></status>
+</kw>
+<kw name="Wait Until Location Is" library="Selenium2Library">
+<doc>Waits until the current URL is ``expected``.</doc>
+<arguments>
+<arg>https://${MYGOGORO_GN_HOST}/new-sub</arg>
+<arg>30s</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:53:40.511" endtime="20200827 11:53:42.701"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:39.178" endtime="20200827 11:53:42.702"></status>
+</kw>
+<kw name="Sign In MyGogoro Account To Return New Cookie" library="keywords_account_signin">
+<doc>Sign-in MyGogoro account and return new gogoro-sess cookie</doc>
+<arguments>
+<arg>${User.email}</arg>
+<arg>${User.encode_password}</arg>
+</arguments>
+<assign>
+<var>${gogoro-sess}</var>
+<var>${csrf_token}</var>
+</assign>
+<kw name="Account Signin Post" library="LibAccountSignin">
+<doc>Sign-in mygogoro account.
+If need to return new gogoro-sess token, please use auth variable</doc>
+<arguments>
+<arg>${email}</arg>
+<arg>${password}</arg>
+<arg>auth=return_gogoro_sess</arg>
+</arguments>
+<assign>
+<var>${gogoro_sess}</var>
+<var>${csrf_token}</var>
+</assign>
+<msg timestamp="20200827 11:53:43.523" level="INFO">Method: get, uri: https://pa-network-my.gogoro.com/login
+https://pa-network-my.gogoro.com
+
+                Response message: {"id":"rLOqOkNO","guid":"de777ee2-f81d-45a4-8991-469d7e79c320","firstName":"KROMU","lastName":"PASWNQCXW","displayName":"PASWNQCXWKROMU","username":{"email":"pasw.verify+1598500417@gogoro.com","emailVerified":1,"mobileVerified":0},"gender":"male","isVerified":true,"isEulaAccepted":false,"returnTo":"/","csrfToken":"ruKb3NeI-UyN02oLaRgYPnuFnt4C7S_G2nB8"}
+                CURL: 
+curl -i --request POST --url https://pa-network-my.gogoro.com/account/sign-in --data 'b'{"username": {"email": "pasw.verify+1598500417@gogoro.com"}, "password": "c1SmbaR8oM1hzVW0AlwvKyO/drw8gIxePQLqQK2u1r/U5C/E9lYF4CthppfVPWA5PoLEHT1AczH6ztcoVAaWoQ==", "emailLogin": true}'' --hearder {'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'content-type': 'application/json', 'cookie': 'pa_gogoro-sess=s%3AfQ6WVCiICxL_dFp71knOuAJ9NFniY-qA.qRZm1IBhr%2BGp1tVw%2BdozQMfH4Daj%2BLrjCLnaqfCF%2BXE;', 'x-xsrf-token': 'FWF45v6M-vAiU-BgHJz0qQfBD5_ihMFGIUcQ', 'Content-Length': '184'}</msg>
+<msg timestamp="20200827 11:53:43.523" level="INFO">${gogoro_sess} = pa_gogoro-sess=s%3AazQ4H4r0p18v6U-8o0PgUbkH_B2WRslw.zL11o3UsNLdzCETsmdt3WS2hv4GGypGejTKH4d0Oxsw;</msg>
+<msg timestamp="20200827 11:53:43.523" level="INFO">${csrf_token} = ruKb3NeI-UyN02oLaRgYPnuFnt4C7S_G2nB8</msg>
+<status status="PASS" starttime="20200827 11:53:42.703" endtime="20200827 11:53:43.523"></status>
+</kw>
+<msg timestamp="20200827 11:53:43.524" level="INFO">${gogoro-sess} = pa_gogoro-sess=s%3AazQ4H4r0p18v6U-8o0PgUbkH_B2WRslw.zL11o3UsNLdzCETsmdt3WS2hv4GGypGejTKH4d0Oxsw;</msg>
+<msg timestamp="20200827 11:53:43.524" level="INFO">${csrf_token} = ruKb3NeI-UyN02oLaRgYPnuFnt4C7S_G2nB8</msg>
+<status status="PASS" starttime="20200827 11:53:42.702" endtime="20200827 11:53:43.524"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${gogoro-sess}</arg>
+</arguments>
+<msg timestamp="20200827 11:53:43.524" level="INFO">${gogoro-sess} = pa_gogoro-sess=s%3AazQ4H4r0p18v6U-8o0PgUbkH_B2WRslw.zL11o3UsNLdzCETsmdt3WS2hv4GGypGejTKH4d0Oxsw;</msg>
+<status status="PASS" starttime="20200827 11:53:43.524" endtime="20200827 11:53:43.525"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${csrf_token}</arg>
+</arguments>
+<msg timestamp="20200827 11:53:43.525" level="INFO">${csrf_token} = ruKb3NeI-UyN02oLaRgYPnuFnt4C7S_G2nB8</msg>
+<status status="PASS" starttime="20200827 11:53:43.525" endtime="20200827 11:53:43.525"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:30.808" endtime="20200827 11:53:43.526"></status>
+</kw>
+<test id="s1-t1" name="Create new subscription with addon">
+<kw name="Mapping Scooter VIN And Batteries" type="setup">
+<kw name="Generate Random String" library="String">
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<arguments>
+<arg>8</arg>
+<arg>[NUMBERS]</arg>
+</arguments>
+<assign>
+<var>${swap_id}</var>
+</assign>
+<msg timestamp="20200827 11:53:43.529" level="INFO">${swap_id} = 58900061</msg>
+<status status="PASS" starttime="20200827 11:53:43.529" endtime="20200827 11:53:43.529"></status>
+</kw>
+<kw name="Create Scooter">
+<kw name="Setup Scooter Variables">
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${Scooter}</arg>
+<arg>${Scooters('B22318608', 'BUS')}</arg>
+</arguments>
+<msg timestamp="20200827 11:53:43.534" level="INFO">${Scooter} = &lt;MyGogoroObject.Scooters object at 0x10d8f5f10&gt;</msg>
+<status status="PASS" starttime="20200827 11:53:43.530" endtime="20200827 11:53:43.534"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:43.529" endtime="20200827 11:53:43.534"></status>
+</kw>
+<kw name="Scooters Post" library="LibScooters">
+<doc>Create scooter</doc>
+<arguments>
+<arg>${Scooter.company_code}</arg>
+<arg>TW</arg>
+<arg>${Scooter.scooter_vin}\</arg>
+<arg>${Scooter.scooter_guid}</arg>
+<arg>${Scooter.matnr}</arg>
+<arg>${Scooter.atmel_key}</arg>
+<arg>${Scooter.state}</arg>
+<arg>${Scooter.es_state}\</arg>
+<arg>${Scooter.ecu_status}</arg>
+<arg>${Scooter.keyfobs_status}</arg>
+<arg>keyfobs_id=${Scooter.keyfobs_id}\</arg>
+<arg>motor_num=${Scooter.motor_num}</arg>
+<arg>atmel_sn=${Scooter.atmel_sn}</arg>
+<arg>ecu_mac=${Scooter.ecu_mac}\</arg>
+<arg>ecu_sn=${Scooter.ecu_sn}</arg>
+<arg>manufacture_date=${Scooter.manufacture_date}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200827 11:53:44.242" level="INFO">http://10.6.1.46:3032/app/cipher?env=pa&amp;app=pa&amp;resource=pa&amp;username=pa.gen_admin@gogoro.com&amp;password=123</msg>
+<msg timestamp="20200827 11:53:44.514" level="INFO">Response message: 200
+Body: {
+    "code": 0,
+    "total_count": 1,
+    "data": [
+        {
+            "scooter_id": "8RAVO06N",
+            "scooter_guid": "2856a014-052b-49ea-84a3-d6954a8d1df9",
+            "vin": "PASWXK937QSJH8BT4",
+            "brand_company_code": "GSS",
+            "material_num": "PIBUS-160-ORI",
+            "atmel_key": "bTmWNdSA8OA/IoOzRfDW7rfVjGfWQKGtdxrkyKONRtRKgRT/AjLoWaEHc4sIbMdkwTUduwv7iwQfkHZgLKeqjY/guu14ShHUw3aaAYp2QtVz12utHJrTNrvv5reIdboeUUAxaEfiuok49YuXfL97XalBh5hKdHTWqWSlclxhWk4=",
+            "atmel_sn": "0123F61FCBFED2A0B1",
+            "state": 9,
+            "es_state": 13,
+            "manufacture_time": 1598486400,
+            "country_code": "TW",
+            "ecu_mac": "rpNx83uY",
+            "motor_num": "PIBUS-160-ORI"
+        }
+    ],
+    "error_list": []
+}
+CURL:
+   curl -i --request POST --url https://pa-goplatform.gogoro.com:443/go-platform/v1/scooters \
+   --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI0RF82RE04Nm9BQ2ZkNWwzLTMzVzU4LVVQTUZoQVEzV1FWbDVQSFVoTE5BIn0.eyJqdGkiOiI1ZGRmM2JmNy1hNzE4LTQ2ODctOGIyOC0xN2FkMzQ2NGExYTIiLCJleHAiOjE1OTg1MDEzMjQsIm5iZiI6MCwiaWF0IjoxNTk4NTAwNDI0LCJpc3MiOiJodHRwczovL3BhLWF1dGgta2V5Y2xvYWsuZ29nb3JvLmNvbS9hdXRoL3JlYWxtcy9nb2dvcm8iLCJhdWQiOiJwYSIsInN1YiI6IjIwMzUxNjllLTQ4NmQtNDM1YS1iMTZiLTgxMjdkYzM2MGFlZiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImF1dGgiLCJhdXRoX3RpbWUiOjAsInNlc3Npb25fc3RhdGUiOiIyZmI3MDE1Ni0zN2NhLTQ4NWQtYWY0Ni0xNzNmYmI1OTMwZTUiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImFwcF9wYSJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InBhIjp7InJvbGVzIjpbInBhX2FkbWluIl19fSwiYXV0aG9yaXphdGlvbiI6eyJwZXJtaXNzaW9ucyI6W3sic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6IjhiMzFiZDgxLTEzZmEtNDhjMC1hZGRlLWUyMDZlYzdlYjgzNyIsInJzbmFtZSI6ImdvZ29yb191c2VyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNDZhZmRhYzYtNzg3ZC00ZDdmLWJjMWMtMDM2M2QzNjlkNTI3IiwicnNuYW1lIjoic2Nvb3Rlcl9jb250cmFjdCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImU4YWJjMTA3LTM0ZTgtNDdhYS04NjY4LTg4ODMyNmUwMjczOCIsInJzbmFtZSI6ImdvX2NoYXJnZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3ODc1MWJmNi00ZjU0LTQ0OTUtYTQ4YS0xMDA3MWE4Y2U0YTkiLCJyc25hbWUiOiJlbXBsb3llZSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImY0ZTVkNTJlLTQwNGQtNGY4OC1iNmEwLWY3N2I1NjBjMzA1MSIsInJzbmFtZSI6ImVzX2NhdGVnb3J5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiYTMxMzNjOWEtYzZkMC00ZTA1LThmZDgtZDBiMWM4OTA1Yzk1IiwicnNuYW1lIjoidm0ifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI1YTg0MTYyZC04MzM4LTRjY2ItOTNjYS05NjY4MDQ1ZmU4NmIiLCJyc25hbWUiOiJzY29vdGVyX2RlbGl2ZXJ5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzViYTRhMjEtYmFhNS00MDYwLTljZTktNTM4YzAxODcxNDAzIiwicnNuYW1lIjoic3dhIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiODFkZTc4MzktNjM0ZC00Yzc3LWI0MjEtODI4NDdlNzllNmNhIiwicnNuYW1lIjoiYmF0dGVyeSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImQzODhjM2IzLTNjMzItNDE1OC04NTM4LTZhZmNiZGU5YmRhZiIsInJzbmFtZSI6ImVzX2JpbGxfd3JpdGVvZmYifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiIxN2NkOGY0OC0yODBjLTQ5ZDQtOWFlZS05YWFjNmY5MmFlZjEiLCJyc25hbWUiOiJzY29vdGVyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzYxMmEwYjQtZDMxYS00MDA5LWJkZjQtODAxMmRjMmE1N2M3IiwicnNuYW1lIjoiZXNfYmlsbCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6Ijg4MDM5NDlhLWJiMjctNDMzNS1iMGQ4LWNmMTc5NjQ3NjA5OSIsInJzbmFtZSI6ImNvbXBhbnkifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4Y2U1ZDY0Ny0yMzViLTQ4OTItYWU0OC05NmJlZmM5OWUyMDYiLCJyc25hbWUiOiJzYWxlc19vcmRlciJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImYxNTE0ZWVjLWJhN2EtNGU5Ny05ZWRhLThmZmMxNjAzYjg0ZSIsInJzbmFtZSI6ImNhcnJpZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4MmY3NTY1Yy04OTllLTRjOTItOWM2MC1hNWM3MDI5ZjZlYTAiLCJyc25hbWUiOiJyd19wYWQifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3OTczODk4NC1mYTA2LTQ0NDYtYWVlZS1iYjlhMjlhMzM4MjQiLCJyc25hbWUiOiJwcmljaW5nIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiMzZmZjhlMmMtMzgyMy00MGI4LTk5NjYtZjZmZGI2YjMxYzRiIiwicnNuYW1lIjoicGFydHMifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI5NmY1MWIxNy1kZjU3LTQ0YWQtYjllMS1jMDE5ZTMwMGFhNDkiLCJyc25hbWUiOiJzY29vdGVyX2NvbnRyYWN0X3VzZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiJkMDg5MGYwMy01YzBmLTQ4MTQtYjExZS1mN2NjNmVlNzIyNzUiLCJyc25hbWUiOiJiYW5rIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNjI4MTY4YzItNjkxYS00NzliLTljNmYtZTIzNDE5MjlmY2EyIiwicnNuYW1lIjoiZXNfY29udHJhY3QifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3YjBmZWY2Yi0yZjdhLTQ1MGItYmJjMC1jMTZjMjg3YzE0NWYiLCJyc25hbWUiOiJzZXJ2aWNlX29yZGVyIn1dfSwic2NvcGUiOiJlbXBsb3llZSBlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImNvbXBhbnlfaWQiOiJacExieE5RSyIsImRlcGFydG1lbnRfaWQiOiJhNm1uTU5vYiIsImVtcGxveWVlX2lkIjoieUptNHFPTGEiLCJuYW1lIjoicGEgZ2VuX2FkbWluIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20iLCJnaXZlbl9uYW1lIjoicGEiLCJmYW1pbHlfbmFtZSI6Imdlbl9hZG1pbiIsImVtYWlsIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20ifQ.M4RriU0rG3P5Tak_3nblUb_sMc8OXSEC8IeqRqZo0sfAcfYUTmP4KndvytkCA4A7WN6V0-GDyKZ7-GMzkXHFnCJm4MZSXIFNyYxhSrqD1JvN92C_DxkOLjRtFNq2NxQfJQ0o2zL3faBCH7J9iOr0AYZv6IH536_xG6hXXOOl605WfTvqxKXyfp8eN3jcnpv49LX7VE1_Zd090ARv_tz55hnQzxlk4mf5DBhxnGk037zW7tfOtFb7lUkdB95W9vAWDIDNeO14YbJqxppCz_AabXVs1d7RVpXQNEaPNChwUblvJAEcTGjgtpyEuqv1yoANp5pFZ4SP85-Sa3CXqESXAQ' \
+   --header 'content-type: application/json' --header 'go-client: pa' \
+   --data '{
+    "op_code": "add",
+    "add_data": [
+        {
+            "deletion_flag": null,
+            "company_code": "B22318608",
+            "country_code": "TW",
+            "scooter_vin": "PASWXK937QSJH8BT4",
+            "scooter_guid": "2856a014-052b-49ea-84a3-d6954a8d1df9",
+            "matnr": "PIBUS-160-ORI",
+            "motor_num": "PIBUS-160-ORI",
+            "atmel_key": "ED554638AD91C64694A39262CA1A3C14663B8ACBDF8E074E98BBD965EA1969C8",
+            "atmel_sn": "0123F61FCBFED2A0B1",
+            "battery_count": null,
+            "manufacture_date": "2020-08-27",
+            "color_code": null,
+            "state": "9",
+            "es_state": "13",
+            "ecu_mac": "rpNx83uY",
+            "ecu_sn": "MABBQUFCBBIwABYzRQBkEA==",
+            "ecu_status": "1",
+            "keyfobs": [
+                {
+                    "id": "269",
+                    "mac": null,
+                    "sn": null,
+                    "status": "1"
+                }
+            ]
+        }
+    ]
+}'</msg>
+<msg timestamp="20200827 11:53:44.515" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200827 11:53:43.535" endtime="20200827 11:53:44.515"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${scooter_Id}</arg>
+<arg>${resp.json()['data'][0]['scooter_id']}</arg>
+</arguments>
+<msg timestamp="20200827 11:53:44.518" level="INFO">${scooter_Id} = 8RAVO06N</msg>
+<status status="PASS" starttime="20200827 11:53:44.516" endtime="20200827 11:53:44.518"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:43.529" endtime="20200827 11:53:44.518"></status>
+</kw>
+<kw name="Create Batteries">
+<kw name="${index} IN RANGE [ 2 ]" type="for">
+<kw name="${index} = 0" type="foritem">
+<kw name="Create Battery">
+<arguments>
+<arg>${index}</arg>
+</arguments>
+<kw name="Setup Battery Variables">
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${Battery}</arg>
+<arg>${Batteries()}</arg>
+</arguments>
+<msg timestamp="20200827 11:53:44.523" level="INFO">${Battery} = &lt;MyGogoroObject.Batteries object at 0x10d918cd0&gt;</msg>
+<status status="PASS" starttime="20200827 11:53:44.520" endtime="20200827 11:53:44.523"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:44.519" endtime="20200827 11:53:44.523"></status>
+</kw>
+<kw name="Batteries Post" library="LibBatteries">
+<doc>Create batteries</doc>
+<arguments>
+<arg>${Battery.battery_guid}</arg>
+<arg>${Battery.battery_sn}</arg>
+<arg>${Battery.charge_cycles}\</arg>
+<arg>${Battery.state}</arg>
+<arg>${Battery.manufacture_date}</arg>
+<arg>${Battery.pn}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200827 11:53:45.198" level="INFO">http://10.6.1.46:3032/app/cipher?env=pa&amp;app=pa&amp;resource=pa&amp;username=pa.gen_admin@gogoro.com&amp;password=123</msg>
+<msg timestamp="20200827 11:53:45.493" level="INFO">Response message: 200
+Body: {
+    "code": 0,
+    "total_count": 1
+}
+CURL:
+   curl -i --request POST --url https://pa-goplatform.gogoro.com:443/go-platform/v1/batteries \
+   --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI0RF82RE04Nm9BQ2ZkNWwzLTMzVzU4LVVQTUZoQVEzV1FWbDVQSFVoTE5BIn0.eyJqdGkiOiIyZTQ0M2ViMy1jNTk1LTQxNTYtOThmOS0zN2VhOWM2YzJkNzYiLCJleHAiOjE1OTg1MDEzMjUsIm5iZiI6MCwiaWF0IjoxNTk4NTAwNDI1LCJpc3MiOiJodHRwczovL3BhLWF1dGgta2V5Y2xvYWsuZ29nb3JvLmNvbS9hdXRoL3JlYWxtcy9nb2dvcm8iLCJhdWQiOiJwYSIsInN1YiI6IjIwMzUxNjllLTQ4NmQtNDM1YS1iMTZiLTgxMjdkYzM2MGFlZiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImF1dGgiLCJhdXRoX3RpbWUiOjAsInNlc3Npb25fc3RhdGUiOiJhZTRlYzM1YS0xMTA2LTQxZjQtYjQ1Ni0xNDllMDljZWRjYzEiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImFwcF9wYSJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InBhIjp7InJvbGVzIjpbInBhX2FkbWluIl19fSwiYXV0aG9yaXphdGlvbiI6eyJwZXJtaXNzaW9ucyI6W3sic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6IjhiMzFiZDgxLTEzZmEtNDhjMC1hZGRlLWUyMDZlYzdlYjgzNyIsInJzbmFtZSI6ImdvZ29yb191c2VyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNDZhZmRhYzYtNzg3ZC00ZDdmLWJjMWMtMDM2M2QzNjlkNTI3IiwicnNuYW1lIjoic2Nvb3Rlcl9jb250cmFjdCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImU4YWJjMTA3LTM0ZTgtNDdhYS04NjY4LTg4ODMyNmUwMjczOCIsInJzbmFtZSI6ImdvX2NoYXJnZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3ODc1MWJmNi00ZjU0LTQ0OTUtYTQ4YS0xMDA3MWE4Y2U0YTkiLCJyc25hbWUiOiJlbXBsb3llZSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImY0ZTVkNTJlLTQwNGQtNGY4OC1iNmEwLWY3N2I1NjBjMzA1MSIsInJzbmFtZSI6ImVzX2NhdGVnb3J5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiYTMxMzNjOWEtYzZkMC00ZTA1LThmZDgtZDBiMWM4OTA1Yzk1IiwicnNuYW1lIjoidm0ifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI1YTg0MTYyZC04MzM4LTRjY2ItOTNjYS05NjY4MDQ1ZmU4NmIiLCJyc25hbWUiOiJzY29vdGVyX2RlbGl2ZXJ5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzViYTRhMjEtYmFhNS00MDYwLTljZTktNTM4YzAxODcxNDAzIiwicnNuYW1lIjoic3dhIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiODFkZTc4MzktNjM0ZC00Yzc3LWI0MjEtODI4NDdlNzllNmNhIiwicnNuYW1lIjoiYmF0dGVyeSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImQzODhjM2IzLTNjMzItNDE1OC04NTM4LTZhZmNiZGU5YmRhZiIsInJzbmFtZSI6ImVzX2JpbGxfd3JpdGVvZmYifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiIxN2NkOGY0OC0yODBjLTQ5ZDQtOWFlZS05YWFjNmY5MmFlZjEiLCJyc25hbWUiOiJzY29vdGVyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzYxMmEwYjQtZDMxYS00MDA5LWJkZjQtODAxMmRjMmE1N2M3IiwicnNuYW1lIjoiZXNfYmlsbCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6Ijg4MDM5NDlhLWJiMjctNDMzNS1iMGQ4LWNmMTc5NjQ3NjA5OSIsInJzbmFtZSI6ImNvbXBhbnkifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4Y2U1ZDY0Ny0yMzViLTQ4OTItYWU0OC05NmJlZmM5OWUyMDYiLCJyc25hbWUiOiJzYWxlc19vcmRlciJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImYxNTE0ZWVjLWJhN2EtNGU5Ny05ZWRhLThmZmMxNjAzYjg0ZSIsInJzbmFtZSI6ImNhcnJpZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4MmY3NTY1Yy04OTllLTRjOTItOWM2MC1hNWM3MDI5ZjZlYTAiLCJyc25hbWUiOiJyd19wYWQifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3OTczODk4NC1mYTA2LTQ0NDYtYWVlZS1iYjlhMjlhMzM4MjQiLCJyc25hbWUiOiJwcmljaW5nIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiMzZmZjhlMmMtMzgyMy00MGI4LTk5NjYtZjZmZGI2YjMxYzRiIiwicnNuYW1lIjoicGFydHMifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI5NmY1MWIxNy1kZjU3LTQ0YWQtYjllMS1jMDE5ZTMwMGFhNDkiLCJyc25hbWUiOiJzY29vdGVyX2NvbnRyYWN0X3VzZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiJkMDg5MGYwMy01YzBmLTQ4MTQtYjExZS1mN2NjNmVlNzIyNzUiLCJyc25hbWUiOiJiYW5rIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNjI4MTY4YzItNjkxYS00NzliLTljNmYtZTIzNDE5MjlmY2EyIiwicnNuYW1lIjoiZXNfY29udHJhY3QifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3YjBmZWY2Yi0yZjdhLTQ1MGItYmJjMC1jMTZjMjg3YzE0NWYiLCJyc25hbWUiOiJzZXJ2aWNlX29yZGVyIn1dfSwic2NvcGUiOiJlbXBsb3llZSBlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImNvbXBhbnlfaWQiOiJacExieE5RSyIsImRlcGFydG1lbnRfaWQiOiJhNm1uTU5vYiIsImVtcGxveWVlX2lkIjoieUptNHFPTGEiLCJuYW1lIjoicGEgZ2VuX2FkbWluIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20iLCJnaXZlbl9uYW1lIjoicGEiLCJmYW1pbHlfbmFtZSI6Imdlbl9hZG1pbiIsImVtYWlsIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20ifQ.FpKX7Y9BlgIzPMSSdC62yrwq9vHK-wWHC2kNEOueipXfnxQsY_iBAKrx5HJPQ_KYp2_LV2KmNNQC6byBHlZheiNI3MIj9XXkJtDzpBGOqUkKbIbD4D1AwtdJms50i-5aeFstAUdIe9pRS_OVCZ6QHcocYFQ78JhOZ9tljWYeXlTHZ90hQTXx_oQyBnnvZnkW7299oWU1t2jj_zz6Qvg79QvI2ArzVBuKlSji3PJdJfwiZ4DTmts0zNogPOdvo5npUczNW2gSerkmqaKwU8XRWnySu-at-5Cge1FzY0GjqW1L3HWYzMNr-NBrRnRWoVrP6k-GJBzpQ9UtNZl3_0ttqQ' \
+   --header 'content-type: application/json' --header 'go-client: pa' \
+   --data '{
+    "op_code": "add",
+    "add_data": [
+        {
+            "battery_guid": "a213bb1a-0a7a-4fa5-8a01-50a54d81a582",
+            "battery_sn": "TWPASWI9B8J0B",
+            "company_code": "1300",
+            "charge_cycles": "0",
+            "asset_type": "string",
+            "asset_owner": "string",
+            "state": "1",
+            "version": "string",
+            "supplier": "string",
+            "country_code": "TW",
+            "manufacture_date": "2020-08-27",
+            "stock_in_date": "string",
+            "stock_out_date": "string",
+            "pn": "QA_TEST_03",
+            "model_no": "string",
+            "manufacture_sn": "string",
+            "mainboard_pn": "string",
+            "mainboard_sn": "string",
+            "bb1_pn": "string",
+            "bb1_sn": "string",
+            "bb2_pn": "string",
+            "bb2_sn": "string",
+            "bb3_pn": "string",
+            "bb3_sn": "string",
+            "fpc_pn": "string",
+            "fpc_sn": "string",
+            "weight": "string"
+        }
+    ]
+}'</msg>
+<msg timestamp="20200827 11:53:45.493" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200827 11:53:44.523" endtime="20200827 11:53:45.493"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${battery_guid${index}}</arg>
+<arg>${Battery.battery_guid}</arg>
+</arguments>
+<msg timestamp="20200827 11:53:45.497" level="INFO">${battery_guid0} = a213bb1a-0a7a-4fa5-8a01-50a54d81a582</msg>
+<status status="PASS" starttime="20200827 11:53:45.494" endtime="20200827 11:53:45.497"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${battery_sn${index}}</arg>
+<arg>${Battery.battery_sn}</arg>
+</arguments>
+<msg timestamp="20200827 11:53:45.501" level="INFO">${battery_sn0} = TWPASWI9B8J0B</msg>
+<status status="PASS" starttime="20200827 11:53:45.498" endtime="20200827 11:53:45.501"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:44.519" endtime="20200827 11:53:45.501"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:44.519" endtime="20200827 11:53:45.501"></status>
+</kw>
+<kw name="${index} = 1" type="foritem">
+<kw name="Create Battery">
+<arguments>
+<arg>${index}</arg>
+</arguments>
+<kw name="Setup Battery Variables">
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${Battery}</arg>
+<arg>${Batteries()}</arg>
+</arguments>
+<msg timestamp="20200827 11:53:45.503" level="INFO">${Battery} = &lt;MyGogoroObject.Batteries object at 0x10d918450&gt;</msg>
+<status status="PASS" starttime="20200827 11:53:45.502" endtime="20200827 11:53:45.503"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:45.502" endtime="20200827 11:53:45.503"></status>
+</kw>
+<kw name="Batteries Post" library="LibBatteries">
+<doc>Create batteries</doc>
+<arguments>
+<arg>${Battery.battery_guid}</arg>
+<arg>${Battery.battery_sn}</arg>
+<arg>${Battery.charge_cycles}\</arg>
+<arg>${Battery.state}</arg>
+<arg>${Battery.manufacture_date}</arg>
+<arg>${Battery.pn}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200827 11:53:46.175" level="INFO">http://10.6.1.46:3032/app/cipher?env=pa&amp;app=pa&amp;resource=pa&amp;username=pa.gen_admin@gogoro.com&amp;password=123</msg>
+<msg timestamp="20200827 11:53:46.289" level="INFO">Response message: 200
+Body: {
+    "code": 0,
+    "total_count": 1
+}
+CURL:
+   curl -i --request POST --url https://pa-goplatform.gogoro.com:443/go-platform/v1/batteries \
+   --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI0RF82RE04Nm9BQ2ZkNWwzLTMzVzU4LVVQTUZoQVEzV1FWbDVQSFVoTE5BIn0.eyJqdGkiOiI2YWFmMjUwNS1iMDFlLTQ2MDgtODcwNS1iYjk5NTBjOTM5NDMiLCJleHAiOjE1OTg1MDEzMjYsIm5iZiI6MCwiaWF0IjoxNTk4NTAwNDI2LCJpc3MiOiJodHRwczovL3BhLWF1dGgta2V5Y2xvYWsuZ29nb3JvLmNvbS9hdXRoL3JlYWxtcy9nb2dvcm8iLCJhdWQiOiJwYSIsInN1YiI6IjIwMzUxNjllLTQ4NmQtNDM1YS1iMTZiLTgxMjdkYzM2MGFlZiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImF1dGgiLCJhdXRoX3RpbWUiOjAsInNlc3Npb25fc3RhdGUiOiJmNDZiNWZiYy0wZGU5LTQyZGItOTY4MC00M2MwY2ZiNWIyZGIiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImFwcF9wYSJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InBhIjp7InJvbGVzIjpbInBhX2FkbWluIl19fSwiYXV0aG9yaXphdGlvbiI6eyJwZXJtaXNzaW9ucyI6W3sic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6IjhiMzFiZDgxLTEzZmEtNDhjMC1hZGRlLWUyMDZlYzdlYjgzNyIsInJzbmFtZSI6ImdvZ29yb191c2VyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNDZhZmRhYzYtNzg3ZC00ZDdmLWJjMWMtMDM2M2QzNjlkNTI3IiwicnNuYW1lIjoic2Nvb3Rlcl9jb250cmFjdCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImU4YWJjMTA3LTM0ZTgtNDdhYS04NjY4LTg4ODMyNmUwMjczOCIsInJzbmFtZSI6ImdvX2NoYXJnZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3ODc1MWJmNi00ZjU0LTQ0OTUtYTQ4YS0xMDA3MWE4Y2U0YTkiLCJyc25hbWUiOiJlbXBsb3llZSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImY0ZTVkNTJlLTQwNGQtNGY4OC1iNmEwLWY3N2I1NjBjMzA1MSIsInJzbmFtZSI6ImVzX2NhdGVnb3J5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiYTMxMzNjOWEtYzZkMC00ZTA1LThmZDgtZDBiMWM4OTA1Yzk1IiwicnNuYW1lIjoidm0ifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI1YTg0MTYyZC04MzM4LTRjY2ItOTNjYS05NjY4MDQ1ZmU4NmIiLCJyc25hbWUiOiJzY29vdGVyX2RlbGl2ZXJ5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzViYTRhMjEtYmFhNS00MDYwLTljZTktNTM4YzAxODcxNDAzIiwicnNuYW1lIjoic3dhIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiODFkZTc4MzktNjM0ZC00Yzc3LWI0MjEtODI4NDdlNzllNmNhIiwicnNuYW1lIjoiYmF0dGVyeSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImQzODhjM2IzLTNjMzItNDE1OC04NTM4LTZhZmNiZGU5YmRhZiIsInJzbmFtZSI6ImVzX2JpbGxfd3JpdGVvZmYifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiIxN2NkOGY0OC0yODBjLTQ5ZDQtOWFlZS05YWFjNmY5MmFlZjEiLCJyc25hbWUiOiJzY29vdGVyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzYxMmEwYjQtZDMxYS00MDA5LWJkZjQtODAxMmRjMmE1N2M3IiwicnNuYW1lIjoiZXNfYmlsbCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6Ijg4MDM5NDlhLWJiMjctNDMzNS1iMGQ4LWNmMTc5NjQ3NjA5OSIsInJzbmFtZSI6ImNvbXBhbnkifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4Y2U1ZDY0Ny0yMzViLTQ4OTItYWU0OC05NmJlZmM5OWUyMDYiLCJyc25hbWUiOiJzYWxlc19vcmRlciJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImYxNTE0ZWVjLWJhN2EtNGU5Ny05ZWRhLThmZmMxNjAzYjg0ZSIsInJzbmFtZSI6ImNhcnJpZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4MmY3NTY1Yy04OTllLTRjOTItOWM2MC1hNWM3MDI5ZjZlYTAiLCJyc25hbWUiOiJyd19wYWQifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3OTczODk4NC1mYTA2LTQ0NDYtYWVlZS1iYjlhMjlhMzM4MjQiLCJyc25hbWUiOiJwcmljaW5nIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiMzZmZjhlMmMtMzgyMy00MGI4LTk5NjYtZjZmZGI2YjMxYzRiIiwicnNuYW1lIjoicGFydHMifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI5NmY1MWIxNy1kZjU3LTQ0YWQtYjllMS1jMDE5ZTMwMGFhNDkiLCJyc25hbWUiOiJzY29vdGVyX2NvbnRyYWN0X3VzZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiJkMDg5MGYwMy01YzBmLTQ4MTQtYjExZS1mN2NjNmVlNzIyNzUiLCJyc25hbWUiOiJiYW5rIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNjI4MTY4YzItNjkxYS00NzliLTljNmYtZTIzNDE5MjlmY2EyIiwicnNuYW1lIjoiZXNfY29udHJhY3QifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3YjBmZWY2Yi0yZjdhLTQ1MGItYmJjMC1jMTZjMjg3YzE0NWYiLCJyc25hbWUiOiJzZXJ2aWNlX29yZGVyIn1dfSwic2NvcGUiOiJlbXBsb3llZSBlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImNvbXBhbnlfaWQiOiJacExieE5RSyIsImRlcGFydG1lbnRfaWQiOiJhNm1uTU5vYiIsImVtcGxveWVlX2lkIjoieUptNHFPTGEiLCJuYW1lIjoicGEgZ2VuX2FkbWluIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20iLCJnaXZlbl9uYW1lIjoicGEiLCJmYW1pbHlfbmFtZSI6Imdlbl9hZG1pbiIsImVtYWlsIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20ifQ.E_EwaqSwYeebQyBRku4QMLuPnnOWNqMklPDdeSNX4n0UgwA3TWj7vrhsLO40lIMGy7-PdJHYDO9VBwKevMoKDRkSbickVPrdyBOS05YkvV3kiPlsIPbPbKW6McVPokoPhSzPsCGu4NuQ20-ziTVsoXZ4akRbhbsEQb6lCn4M-QCCKIcidXVyXTtTose24WJavokUJAm76v5hDccYoF40YArtTRWKl4ZeVpfHFMO6tmLhfIcHuZ5rWBrDQL7jCgoNs7aEzQU8FyR1vc7kdsv-TpjfZzq5MQJYDBX6eqIIN-tNxUnm2RrUHg43ceOeCNLAhB7Jc9nqevwShLjIgtpHzg' \
+   --header 'content-type: application/json' --header 'go-client: pa' \
+   --data '{
+    "op_code": "add",
+    "add_data": [
+        {
+            "battery_guid": "a9231340-15f1-48a0-bfe3-4e41c9e49ca0",
+            "battery_sn": "TWPASWWDV8KHT",
+            "company_code": "1300",
+            "charge_cycles": "0",
+            "asset_type": "string",
+            "asset_owner": "string",
+            "state": "1",
+            "version": "string",
+            "supplier": "string",
+            "country_code": "TW",
+            "manufacture_date": "2020-08-27",
+            "stock_in_date": "string",
+            "stock_out_date": "string",
+            "pn": "QA_TEST_75",
+            "model_no": "string",
+            "manufacture_sn": "string",
+            "mainboard_pn": "string",
+            "mainboard_sn": "string",
+            "bb1_pn": "string",
+            "bb1_sn": "string",
+            "bb2_pn": "string",
+            "bb2_sn": "string",
+            "bb3_pn": "string",
+            "bb3_sn": "string",
+            "fpc_pn": "string",
+            "fpc_sn": "string",
+            "weight": "string"
+        }
+    ]
+}'</msg>
+<msg timestamp="20200827 11:53:46.289" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200827 11:53:45.504" endtime="20200827 11:53:46.290"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${battery_guid${index}}</arg>
+<arg>${Battery.battery_guid}</arg>
+</arguments>
+<msg timestamp="20200827 11:53:46.296" level="INFO">${battery_guid1} = a9231340-15f1-48a0-bfe3-4e41c9e49ca0</msg>
+<status status="PASS" starttime="20200827 11:53:46.293" endtime="20200827 11:53:46.296"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${battery_sn${index}}</arg>
+<arg>${Battery.battery_sn}</arg>
+</arguments>
+<msg timestamp="20200827 11:53:46.300" level="INFO">${battery_sn1} = TWPASWWDV8KHT</msg>
+<status status="PASS" starttime="20200827 11:53:46.297" endtime="20200827 11:53:46.300"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:45.501" endtime="20200827 11:53:46.300"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:45.501" endtime="20200827 11:53:46.300"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:44.518" endtime="20200827 11:53:46.300"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:44.518" endtime="20200827 11:53:46.300"></status>
+</kw>
+<kw name="Batteries Swap Logs Post Gds" library="LibBatteriesSwapLogs">
+<doc>Add swap-log with gds source</doc>
+<arguments>
+<arg>${swap_id}</arg>
+<arg>${Scooter.scooter_guid}</arg>
+<arg>${battery_guid0}</arg>
+<arg>${battery_guid1}</arg>
+</arguments>
+<msg timestamp="20200827 11:53:46.962" level="INFO">http://10.6.1.46:3032/app/cipher?env=pa&amp;app=pa&amp;resource=pa&amp;username=pa.gen_admin@gogoro.com&amp;password=123</msg>
+<msg timestamp="20200827 11:53:47.248" level="INFO">Response message: 200
+Body: {
+    "code": 0
+}
+CURL:
+   curl -i --request POST --url https://pa-goplatform.gogoro.com:443/go-platform/v1/batteries/swap-logs \
+   --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI0RF82RE04Nm9BQ2ZkNWwzLTMzVzU4LVVQTUZoQVEzV1FWbDVQSFVoTE5BIn0.eyJqdGkiOiIxZjAyYzllMC0zMjcyLTQ2NTctYThhYi1lZDlhYzlkYmU5YzMiLCJleHAiOjE1OTg1MDEzMjYsIm5iZiI6MCwiaWF0IjoxNTk4NTAwNDI2LCJpc3MiOiJodHRwczovL3BhLWF1dGgta2V5Y2xvYWsuZ29nb3JvLmNvbS9hdXRoL3JlYWxtcy9nb2dvcm8iLCJhdWQiOiJwYSIsInN1YiI6IjIwMzUxNjllLTQ4NmQtNDM1YS1iMTZiLTgxMjdkYzM2MGFlZiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImF1dGgiLCJhdXRoX3RpbWUiOjAsInNlc3Npb25fc3RhdGUiOiIwZGJmZTE5Ny01YTI4LTQxOTEtYjA0OS1kY2ZiYWExYmQxODUiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImFwcF9wYSJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InBhIjp7InJvbGVzIjpbInBhX2FkbWluIl19fSwiYXV0aG9yaXphdGlvbiI6eyJwZXJtaXNzaW9ucyI6W3sic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6IjhiMzFiZDgxLTEzZmEtNDhjMC1hZGRlLWUyMDZlYzdlYjgzNyIsInJzbmFtZSI6ImdvZ29yb191c2VyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNDZhZmRhYzYtNzg3ZC00ZDdmLWJjMWMtMDM2M2QzNjlkNTI3IiwicnNuYW1lIjoic2Nvb3Rlcl9jb250cmFjdCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImU4YWJjMTA3LTM0ZTgtNDdhYS04NjY4LTg4ODMyNmUwMjczOCIsInJzbmFtZSI6ImdvX2NoYXJnZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3ODc1MWJmNi00ZjU0LTQ0OTUtYTQ4YS0xMDA3MWE4Y2U0YTkiLCJyc25hbWUiOiJlbXBsb3llZSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImY0ZTVkNTJlLTQwNGQtNGY4OC1iNmEwLWY3N2I1NjBjMzA1MSIsInJzbmFtZSI6ImVzX2NhdGVnb3J5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiYTMxMzNjOWEtYzZkMC00ZTA1LThmZDgtZDBiMWM4OTA1Yzk1IiwicnNuYW1lIjoidm0ifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI1YTg0MTYyZC04MzM4LTRjY2ItOTNjYS05NjY4MDQ1ZmU4NmIiLCJyc25hbWUiOiJzY29vdGVyX2RlbGl2ZXJ5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzViYTRhMjEtYmFhNS00MDYwLTljZTktNTM4YzAxODcxNDAzIiwicnNuYW1lIjoic3dhIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiODFkZTc4MzktNjM0ZC00Yzc3LWI0MjEtODI4NDdlNzllNmNhIiwicnNuYW1lIjoiYmF0dGVyeSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImQzODhjM2IzLTNjMzItNDE1OC04NTM4LTZhZmNiZGU5YmRhZiIsInJzbmFtZSI6ImVzX2JpbGxfd3JpdGVvZmYifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiIxN2NkOGY0OC0yODBjLTQ5ZDQtOWFlZS05YWFjNmY5MmFlZjEiLCJyc25hbWUiOiJzY29vdGVyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzYxMmEwYjQtZDMxYS00MDA5LWJkZjQtODAxMmRjMmE1N2M3IiwicnNuYW1lIjoiZXNfYmlsbCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6Ijg4MDM5NDlhLWJiMjctNDMzNS1iMGQ4LWNmMTc5NjQ3NjA5OSIsInJzbmFtZSI6ImNvbXBhbnkifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4Y2U1ZDY0Ny0yMzViLTQ4OTItYWU0OC05NmJlZmM5OWUyMDYiLCJyc25hbWUiOiJzYWxlc19vcmRlciJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImYxNTE0ZWVjLWJhN2EtNGU5Ny05ZWRhLThmZmMxNjAzYjg0ZSIsInJzbmFtZSI6ImNhcnJpZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4MmY3NTY1Yy04OTllLTRjOTItOWM2MC1hNWM3MDI5ZjZlYTAiLCJyc25hbWUiOiJyd19wYWQifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3OTczODk4NC1mYTA2LTQ0NDYtYWVlZS1iYjlhMjlhMzM4MjQiLCJyc25hbWUiOiJwcmljaW5nIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiMzZmZjhlMmMtMzgyMy00MGI4LTk5NjYtZjZmZGI2YjMxYzRiIiwicnNuYW1lIjoicGFydHMifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI5NmY1MWIxNy1kZjU3LTQ0YWQtYjllMS1jMDE5ZTMwMGFhNDkiLCJyc25hbWUiOiJzY29vdGVyX2NvbnRyYWN0X3VzZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiJkMDg5MGYwMy01YzBmLTQ4MTQtYjExZS1mN2NjNmVlNzIyNzUiLCJyc25hbWUiOiJiYW5rIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNjI4MTY4YzItNjkxYS00NzliLTljNmYtZTIzNDE5MjlmY2EyIiwicnNuYW1lIjoiZXNfY29udHJhY3QifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3YjBmZWY2Yi0yZjdhLTQ1MGItYmJjMC1jMTZjMjg3YzE0NWYiLCJyc25hbWUiOiJzZXJ2aWNlX29yZGVyIn1dfSwic2NvcGUiOiJlbXBsb3llZSBlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImNvbXBhbnlfaWQiOiJacExieE5RSyIsImRlcGFydG1lbnRfaWQiOiJhNm1uTU5vYiIsImVtcGxveWVlX2lkIjoieUptNHFPTGEiLCJuYW1lIjoicGEgZ2VuX2FkbWluIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20iLCJnaXZlbl9uYW1lIjoicGEiLCJmYW1pbHlfbmFtZSI6Imdlbl9hZG1pbiIsImVtYWlsIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20ifQ.Csxh3G_RcNSy19jr61XdG4RvQfmaJmj_fmDJiNCflWq2mXtbuNJ2GcMatRp88wosIfzPK6QMfAdjl5KWPa-HDfhhCLjq-YgN2Wte4iweOCncvqd8MWBYJydJOxihaDUZFXSsAwjEJddrHcCBj2Q4SFMZoixgMcILUVkBbBvAnJ54cfjid9qtU1DPoqwEi7nCjglF7grbJJtqkGlUGbl9etVCxzQxk15F1bPCidv1LtvTXbR3r_wCdexeU1S9jdG9euONKAHbm-f1OQznXyZwvkErV1f9BCaLrQC5gyJmY_rB1TqoN07sJdFqK3bFE8zTJv1AdZs_G6WYCRQ2z8XA1A' \
+   --header 'content-type: application/json' --header 'go-client: pa' \
+   --data '{
+    "op_code": "add",
+    "type": 2,
+    "add_data": [
+        {
+            "source": "gds",
+            "swap_logs": [
+                {
+                    "swap_id": "58900061",
+                    "scooter_guid": "2856a014-052b-49ea-84a3-d6954a8d1df9",
+                    "other_id": "53435754-3032-3230-0000-000000000000",
+                    "swap_out": [
+                        {
+                            "battery_guid": "a213bb1a-0a7a-4fa5-8a01-50a54d81a582",
+                            "capacity": 15,
+                            "health": 1,
+                            "recycle_count": 400,
+                            "consumption": 30,
+                            "slot_id": 1,
+                            "slot_serial_id": "a213bb1a-0a7a-4fa5-8a01-50a54d81a582",
+                            "temp_cell": 31,
+                            "temp_mos": 32,
+                            "charging_rate": 0,
+                            "locked": true,
+                            "payload": "0x6464011E0000001E00000044C34610451046104410481046104810471043104310451043104810431004052310000000004B0B4B0B285A14004AEA110000000000000000000000000064131F00DE6F0200D7650200330600004B0B0000DE0A000000FFFF0000000000000000000000000000000000000000000000000080000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000FFFFFFFF00000000008000800000000000000000008000000000000000000000FF7F00000000000000000000000000000000000000000000000000000000000000000000FFFF00000000000000000000000000000000000000000000010414",
+                            "cell_type": 1,
+                            "case_type": 1,
+                            "ups": 0,
+                            "max_charging_rate": 0,
+                            "chargeable": true,
+                            "dischargeable": false
+                        },
+                        {
+                            "battery_guid": "a9231340-15f1-48a0-bfe3-4e41c9e49ca0",
+                            "capacity": 16,
+                            "health": 1,
+                            "recycle_count": 400,
+                            "consumption": 32,
+                            "slot_id": 1,
+                            "slot_serial_id": "a9231340-15f1-48a0-bfe3-4e41c9e49ca0",
+                            "temp_cell": 33,
+                            "temp_mos": 34,
+                            "charging_rate": 0,
+                            "locked": true,
+                            "payload": "0x6464011E0000001E00000044C34610451046104410481046104810471043104310451043104810431004052310000000004B0B4B0B285A14004AEA110000000000000000000000000064131F00DE6F0200D7650200330600004B0B0000DE0A000000FFFF0000000000000000000000000000000000000000000000000080000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000FFFFFFFF00000000008000800000000000000000008000000000000000000000FF7F00000000000000000000000000000000000000000000000000000000000000000000FFFF00000000000000000000000000000000000000000000010414",
+                            "cell_type": 1,
+                            "case_type": 1,
+                            "ups": 0,
+                            "max_charging_rate": 0,
+                            "chargeable": true,
+                            "dischargeable": false
+                        }
+                    ],
+                    "exchange_time": "2019-05-22T14:01:42.960000Z",
+                    "extra_exchange": 0,
+                    "rating": 9000,
+                    "rating_rule_id": "5EDBF33A-B7F7-64AB-8FB8-489D66395B7F",
+                    "action": 1,
+                    "rating_rule_type": 1,
+                    "eject_new_candidate": false,
+                    "base_price": 2.0,
+                    "pps_price": 124.0,
+                    "eula_state": 1,
+                    "real_time_scooter_info": 1,
+                    "eject_fail": 0
+                }
+            ]
+        }
+    ]
+}'</msg>
+<status status="PASS" starttime="20200827 11:53:46.305" endtime="20200827 11:53:47.248"></status>
+</kw>
+<kw name="Scooters Batteries Get" library="LibScootersBatteries">
+<doc>Get scooter batteries info</doc>
+<arguments>
+<arg>${scooter_Id}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200827 11:53:47.904" level="INFO">http://10.6.1.46:3032/app/cipher?env=pa&amp;app=pa&amp;resource=pa&amp;username=pa.gen_admin@gogoro.com&amp;password=123</msg>
+<msg timestamp="20200827 11:53:48.155" level="INFO">Response message: 200
+Body: {
+    "code": 0,
+    "total_count": 2,
+    "data": [
+        {
+            "id": "8RAVO06N",
+            "batteries": [
+                {
+                    "swap_source": 1,
+                    "id": "8RAVO06N",
+                    "battery_id": "ZL36bnm9",
+                    "battery_sn": "TWPASWI9B8J0B",
+                    "snap_time": 1558533702
+                },
+                {
+                    "swap_source": 1,
+                    "id": "8RAVO06N",
+                    "battery_id": "QLjgJbRk",
+                    "battery_sn": "TWPASWWDV8KHT",
+                    "snap_time": 1558533702
+                }
+            ]
+        }
+    ]
+}
+CURL:
+   curl -i --request POST --url https://pa-goplatform.gogoro.com:443/go-platform/v1/scooters/batteries \
+   --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI0RF82RE04Nm9BQ2ZkNWwzLTMzVzU4LVVQTUZoQVEzV1FWbDVQSFVoTE5BIn0.eyJqdGkiOiIzZTliZmJkMC0yZTllLTQzZTUtYTkzMC02NTk5YzFhMzYzMWUiLCJleHAiOjE1OTg1MDEzMjcsIm5iZiI6MCwiaWF0IjoxNTk4NTAwNDI3LCJpc3MiOiJodHRwczovL3BhLWF1dGgta2V5Y2xvYWsuZ29nb3JvLmNvbS9hdXRoL3JlYWxtcy9nb2dvcm8iLCJhdWQiOiJwYSIsInN1YiI6IjIwMzUxNjllLTQ4NmQtNDM1YS1iMTZiLTgxMjdkYzM2MGFlZiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImF1dGgiLCJhdXRoX3RpbWUiOjAsInNlc3Npb25fc3RhdGUiOiI0NWIzNGIyNS0wMWFlLTQwNTgtOWY3Yi1iZjY1MTQzZDc0ZDUiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImFwcF9wYSJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InBhIjp7InJvbGVzIjpbInBhX2FkbWluIl19fSwiYXV0aG9yaXphdGlvbiI6eyJwZXJtaXNzaW9ucyI6W3sic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6IjhiMzFiZDgxLTEzZmEtNDhjMC1hZGRlLWUyMDZlYzdlYjgzNyIsInJzbmFtZSI6ImdvZ29yb191c2VyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNDZhZmRhYzYtNzg3ZC00ZDdmLWJjMWMtMDM2M2QzNjlkNTI3IiwicnNuYW1lIjoic2Nvb3Rlcl9jb250cmFjdCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImU4YWJjMTA3LTM0ZTgtNDdhYS04NjY4LTg4ODMyNmUwMjczOCIsInJzbmFtZSI6ImdvX2NoYXJnZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3ODc1MWJmNi00ZjU0LTQ0OTUtYTQ4YS0xMDA3MWE4Y2U0YTkiLCJyc25hbWUiOiJlbXBsb3llZSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImY0ZTVkNTJlLTQwNGQtNGY4OC1iNmEwLWY3N2I1NjBjMzA1MSIsInJzbmFtZSI6ImVzX2NhdGVnb3J5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiYTMxMzNjOWEtYzZkMC00ZTA1LThmZDgtZDBiMWM4OTA1Yzk1IiwicnNuYW1lIjoidm0ifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI1YTg0MTYyZC04MzM4LTRjY2ItOTNjYS05NjY4MDQ1ZmU4NmIiLCJyc25hbWUiOiJzY29vdGVyX2RlbGl2ZXJ5In0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzViYTRhMjEtYmFhNS00MDYwLTljZTktNTM4YzAxODcxNDAzIiwicnNuYW1lIjoic3dhIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiODFkZTc4MzktNjM0ZC00Yzc3LWI0MjEtODI4NDdlNzllNmNhIiwicnNuYW1lIjoiYmF0dGVyeSJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImQzODhjM2IzLTNjMzItNDE1OC04NTM4LTZhZmNiZGU5YmRhZiIsInJzbmFtZSI6ImVzX2JpbGxfd3JpdGVvZmYifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiIxN2NkOGY0OC0yODBjLTQ5ZDQtOWFlZS05YWFjNmY5MmFlZjEiLCJyc25hbWUiOiJzY29vdGVyIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNzYxMmEwYjQtZDMxYS00MDA5LWJkZjQtODAxMmRjMmE1N2M3IiwicnNuYW1lIjoiZXNfYmlsbCJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6Ijg4MDM5NDlhLWJiMjctNDMzNS1iMGQ4LWNmMTc5NjQ3NjA5OSIsInJzbmFtZSI6ImNvbXBhbnkifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4Y2U1ZDY0Ny0yMzViLTQ4OTItYWU0OC05NmJlZmM5OWUyMDYiLCJyc25hbWUiOiJzYWxlc19vcmRlciJ9LHsic2NvcGVzIjpbImFkbWluX3JlYWRfYWRtaW5fd3JpdGUiXSwicnNpZCI6ImYxNTE0ZWVjLWJhN2EtNGU5Ny05ZWRhLThmZmMxNjAzYjg0ZSIsInJzbmFtZSI6ImNhcnJpZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI4MmY3NTY1Yy04OTllLTRjOTItOWM2MC1hNWM3MDI5ZjZlYTAiLCJyc25hbWUiOiJyd19wYWQifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3OTczODk4NC1mYTA2LTQ0NDYtYWVlZS1iYjlhMjlhMzM4MjQiLCJyc25hbWUiOiJwcmljaW5nIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiMzZmZjhlMmMtMzgyMy00MGI4LTk5NjYtZjZmZGI2YjMxYzRiIiwicnNuYW1lIjoicGFydHMifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI5NmY1MWIxNy1kZjU3LTQ0YWQtYjllMS1jMDE5ZTMwMGFhNDkiLCJyc25hbWUiOiJzY29vdGVyX2NvbnRyYWN0X3VzZXIifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiJkMDg5MGYwMy01YzBmLTQ4MTQtYjExZS1mN2NjNmVlNzIyNzUiLCJyc25hbWUiOiJiYW5rIn0seyJzY29wZXMiOlsiYWRtaW5fcmVhZF9hZG1pbl93cml0ZSJdLCJyc2lkIjoiNjI4MTY4YzItNjkxYS00NzliLTljNmYtZTIzNDE5MjlmY2EyIiwicnNuYW1lIjoiZXNfY29udHJhY3QifSx7InNjb3BlcyI6WyJhZG1pbl9yZWFkX2FkbWluX3dyaXRlIl0sInJzaWQiOiI3YjBmZWY2Yi0yZjdhLTQ1MGItYmJjMC1jMTZjMjg3YzE0NWYiLCJyc25hbWUiOiJzZXJ2aWNlX29yZGVyIn1dfSwic2NvcGUiOiJlbXBsb3llZSBlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImNvbXBhbnlfaWQiOiJacExieE5RSyIsImRlcGFydG1lbnRfaWQiOiJhNm1uTU5vYiIsImVtcGxveWVlX2lkIjoieUptNHFPTGEiLCJuYW1lIjoicGEgZ2VuX2FkbWluIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20iLCJnaXZlbl9uYW1lIjoicGEiLCJmYW1pbHlfbmFtZSI6Imdlbl9hZG1pbiIsImVtYWlsIjoicGEuZ2VuX2FkbWluQGdvZ29yby5jb20ifQ.J4Z9lL7e5aL5OgYcfMgEba-DnDnEmnBd9eEJAAQUYWnBmQ4I3py8Y-OWsz4M7tAP_ijKD_z-zTLVWGsG-LBNrGmEjKAdH9_HFAkTlM1NUC2U5ufZCBEbARtiMZDJbueiYYC_AnRIgnNwDPK_FHTRZeFC_LbFn52piKM9498aY6ZVQ9ODx4pjAM6M9NpfMhcCvCRb8inJyIOQYx3dyZ5GrV3Ic78Vx60ZMV7XaAM1xF-O2wwRBNSIv_GuSL6jrJqkxhfhs3dmK19a911PenoGOO2btzq5w1j2lJmzGBz8LGbxOa_HKMEJgspcV38l-KpcS5TKZfY6dhnVjri7h3nd4Q' \
+   --header 'content-type: application/json' --header 'go-client: pa' \
+   --data '{
+    "op_code": "get",
+    "get_data": {
+        "scooter_ids": [
+            "8RAVO06N"
+        ],
+        "snap_time_from": 0,
+        "snap_time_to": 0,
+        "current": 1,
+        "pagination_criteria": {
+            "offset": 0,
+            "limit": 2
+        }
+    }
+}'</msg>
+<msg timestamp="20200827 11:53:48.156" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200827 11:53:47.249" endtime="20200827 11:53:48.156"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>str('${battery_sn0}')[-6:]</arg>
+</arguments>
+<assign>
+<var>${last_six_sn}</var>
+</assign>
+<msg timestamp="20200827 11:53:48.157" level="INFO">${last_six_sn} = 9B8J0B</msg>
+<status status="PASS" starttime="20200827 11:53:48.156" endtime="20200827 11:53:48.157"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${last_six_sn}</arg>
+</arguments>
+<msg timestamp="20200827 11:53:48.158" level="INFO">${last_six_sn} = 9B8J0B</msg>
+<status status="PASS" starttime="20200827 11:53:48.158" endtime="20200827 11:53:48.158"></status>
+</kw>
+<kw name="Verify Response Contains Expected" library="keywords_common">
+<doc>Verify response message should be equals expected</doc>
+<arguments>
+<arg>${resp.json()['data'][0]['batteries'][0]['battery_sn']}</arg>
+<arg>${battery_sn0}</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="keywords_common">
+<doc>Build in compare two variables keyword with log</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+</arguments>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${key}'=='${EMPTY}'</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+<arg>ELSE</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: \nkey = ${key} Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:53:48.161" endtime="20200827 11:53:48.162"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:48.160" endtime="20200827 11:53:48.162"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:48.159" endtime="20200827 11:53:48.162"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:48.158" endtime="20200827 11:53:48.162"></status>
+</kw>
+<kw name="Verify Response Contains Expected" library="keywords_common">
+<doc>Verify response message should be equals expected</doc>
+<arguments>
+<arg>${resp.json()['data'][0]['batteries'][1]['battery_sn']}</arg>
+<arg>${battery_sn1}</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="keywords_common">
+<doc>Build in compare two variables keyword with log</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+</arguments>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${key}'=='${EMPTY}'</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+<arg>ELSE</arg>
+<arg>BuiltIn.Should Be Equal As Strings</arg>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: \nkey = ${key} Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp}</arg>
+<arg>${message}</arg>
+<arg>msg=Response: Actual result: ${resp} != Expected result: ${message}</arg>
+<arg>values=False</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:53:48.164" endtime="20200827 11:53:48.165"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:48.164" endtime="20200827 11:53:48.165"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:48.163" endtime="20200827 11:53:48.165"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:48.162" endtime="20200827 11:53:48.165"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:43.528" endtime="20200827 11:53:48.165"></status>
+</kw>
+<kw name="Click Button Type Button" library="keywords_common">
+<doc>Click button type button</doc>
+<arguments>
+<arg>為你的新車建立電池服務合約</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>0.5s</arg>
+</arguments>
+<msg timestamp="20200827 11:53:48.668" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20200827 11:53:48.166" endtime="20200827 11:53:48.668"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//button[@type="button"][contains(.,"${text}")]</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:53:48.668" endtime="20200827 11:53:48.692"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//button[@type="button"][contains(.,"${text}")]</arg>
+</arguments>
+<msg timestamp="20200827 11:53:48.693" level="INFO">Clicking element '//button[@type="button"][contains(.,"為你的新車建立電池服務合約")]'.</msg>
+<status status="PASS" starttime="20200827 11:53:48.693" endtime="20200827 11:53:48.785"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:48.166" endtime="20200827 11:53:48.785"></status>
+</kw>
+<kw name="Click Button Type Button" library="keywords_common">
+<doc>Click button type button</doc>
+<arguments>
+<arg>建立電池服務合約</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>0.5s</arg>
+</arguments>
+<msg timestamp="20200827 11:53:49.287" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20200827 11:53:48.786" endtime="20200827 11:53:49.288"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//button[@type="button"][contains(.,"${text}")]</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:53:49.290" endtime="20200827 11:53:49.348"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//button[@type="button"][contains(.,"${text}")]</arg>
+</arguments>
+<msg timestamp="20200827 11:53:49.350" level="INFO">Clicking element '//button[@type="button"][contains(.,"建立電池服務合約")]'.</msg>
+<status status="PASS" starttime="20200827 11:53:49.350" endtime="20200827 11:53:49.518"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:48.786" endtime="20200827 11:53:49.519"></status>
+</kw>
+<kw name="Agree Terms And Conditions" library="keywords_new_subscription">
+<doc>Agree terms/condiitions and click next step</doc>
+<kw name="Click Agree Terms And Conditions Checkbox" library="keywords_new_subscription">
+<doc>Click agree terms and conditions checkbox</doc>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>0.5s</arg>
+</arguments>
+<msg timestamp="20200827 11:53:50.045" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20200827 11:53:49.521" endtime="20200827 11:53:50.045"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//*[@id="app"]/div[2]/div/label/label[contains(.,"已閱讀並同意使用此帳號簽署服務合約")]</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:53:50.046" endtime="20200827 11:53:50.108"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//*[@id="app"]/div[2]/div/label/label[contains(.,"已閱讀並同意使用此帳號簽署服務合約")]</arg>
+</arguments>
+<msg timestamp="20200827 11:53:50.110" level="INFO">Clicking element '//*[@id="app"]/div[2]/div/label/label[contains(.,"已閱讀並同意使用此帳號簽署服務合約")]'.</msg>
+<status status="PASS" starttime="20200827 11:53:50.110" endtime="20200827 11:53:50.219"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:49.520" endtime="20200827 11:53:50.219"></status>
+</kw>
+<kw name="Click Button Type Button" library="keywords_common">
+<doc>Click button type button</doc>
+<arguments>
+<arg>下一步</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>0.5s</arg>
+</arguments>
+<msg timestamp="20200827 11:53:50.722" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20200827 11:53:50.221" endtime="20200827 11:53:50.722"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//button[@type="button"][contains(.,"${text}")]</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:53:50.723" endtime="20200827 11:53:50.755"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//button[@type="button"][contains(.,"${text}")]</arg>
+</arguments>
+<msg timestamp="20200827 11:53:50.757" level="INFO">Clicking element '//button[@type="button"][contains(.,"下一步")]'.</msg>
+<status status="PASS" starttime="20200827 11:53:50.756" endtime="20200827 11:53:50.977"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:50.220" endtime="20200827 11:53:50.977"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:49.519" endtime="20200827 11:53:50.979"></status>
+</kw>
+<kw name="Input User Information As Subscriber" library="keywords_new_subscription">
+<doc>Input user information as Subscriber</doc>
+<kw name="Click Input Account Information Checkbox" library="keywords_new_subscription">
+<doc>Click input account information checkbox in new subscription flow</doc>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>0.5s</arg>
+</arguments>
+<msg timestamp="20200827 11:53:51.490" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20200827 11:53:50.983" endtime="20200827 11:53:51.490"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//*[@id="app"]/div[2]/div/form/div[1]/label/label[contains(.,"帶入我的帳號資料")]</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:53:51.492" endtime="20200827 11:53:51.538"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//*[@id="app"]/div[2]/div/form/div[1]/label/label[contains(.,"帶入我的帳號資料")]</arg>
+</arguments>
+<msg timestamp="20200827 11:53:51.540" level="INFO">Clicking element '//*[@id="app"]/div[2]/div/form/div[1]/label/label[contains(.,"帶入我的帳號資料")]'.</msg>
+<status status="PASS" starttime="20200827 11:53:51.540" endtime="20200827 11:53:51.735"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:50.981" endtime="20200827 11:53:51.735"></status>
+</kw>
+<kw name="Click Submit Type Button" library="keywords_common">
+<doc>Click submit type button</doc>
+<arguments>
+<arg>下一步</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>0.5s</arg>
+</arguments>
+<msg timestamp="20200827 11:53:52.238" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20200827 11:53:51.736" endtime="20200827 11:53:52.239"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//button[@type="submit"][contains(.,"${text}")]</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:53:52.240" endtime="20200827 11:53:52.306"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//button[@type="submit"][contains(.,"${text}")]</arg>
+</arguments>
+<msg timestamp="20200827 11:53:52.308" level="INFO">Clicking element '//button[@type="submit"][contains(.,"下一步")]'.</msg>
+<status status="PASS" starttime="20200827 11:53:52.307" endtime="20200827 11:53:52.521"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:51.735" endtime="20200827 11:53:52.521"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:50.980" endtime="20200827 11:53:52.522"></status>
+</kw>
+<kw name="Choose Es Contract Settings" library="keywords_new_subscription">
+<doc>Choose es-contract setting, include es-plan, addon and invoice settings</doc>
+<kw name="Click Button Type Button" library="keywords_common">
+<doc>Click button type button</doc>
+<arguments>
+<arg>下一步</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>0.5s</arg>
+</arguments>
+<msg timestamp="20200827 11:53:53.027" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20200827 11:53:52.525" endtime="20200827 11:53:53.027"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//button[@type="button"][contains(.,"${text}")]</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:53:53.029" endtime="20200827 11:53:53.166"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//button[@type="button"][contains(.,"${text}")]</arg>
+</arguments>
+<msg timestamp="20200827 11:53:53.167" level="INFO">Clicking element '//button[@type="button"][contains(.,"下一步")]'.</msg>
+<status status="PASS" starttime="20200827 11:53:53.167" endtime="20200827 11:53:53.401"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:52.523" endtime="20200827 11:53:53.401"></status>
+</kw>
+<kw name="Click Button Type Button" library="keywords_common">
+<doc>Click button type button</doc>
+<arguments>
+<arg>確認</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>0.5s</arg>
+</arguments>
+<msg timestamp="20200827 11:53:53.905" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20200827 11:53:53.403" endtime="20200827 11:53:53.905"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//button[@type="button"][contains(.,"${text}")]</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:53:53.906" endtime="20200827 11:53:54.248"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//button[@type="button"][contains(.,"${text}")]</arg>
+</arguments>
+<msg timestamp="20200827 11:53:54.249" level="INFO">Clicking element '//button[@type="button"][contains(.,"確認")]'.</msg>
+<status status="PASS" starttime="20200827 11:53:54.249" endtime="20200827 11:53:54.338"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:53.402" endtime="20200827 11:53:54.339"></status>
+</kw>
+<kw name="Click Button Type Button" library="keywords_common">
+<doc>Click button type button</doc>
+<arguments>
+<arg>下一步</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>0.5s</arg>
+</arguments>
+<msg timestamp="20200827 11:53:54.841" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20200827 11:53:54.340" endtime="20200827 11:53:54.841"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//button[@type="button"][contains(.,"${text}")]</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:53:54.842" endtime="20200827 11:53:54.879"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//button[@type="button"][contains(.,"${text}")]</arg>
+</arguments>
+<msg timestamp="20200827 11:53:54.880" level="INFO">Clicking element '//button[@type="button"][contains(.,"下一步")]'.</msg>
+<status status="PASS" starttime="20200827 11:53:54.879" endtime="20200827 11:53:54.970"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:54.339" endtime="20200827 11:53:54.970"></status>
+</kw>
+<kw name="Run Keyword Unless" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments if ``condition`` is false.</doc>
+<arguments>
+<arg>'${addon}' == 'default'</arg>
+<arg>Click Addon Card</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:53:54.970" endtime="20200827 11:53:54.971"></status>
+</kw>
+<kw name="Click Button Type Button" library="keywords_common">
+<doc>Click button type button</doc>
+<arguments>
+<arg>下一步</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>0.5s</arg>
+</arguments>
+<msg timestamp="20200827 11:53:55.473" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20200827 11:53:54.972" endtime="20200827 11:53:55.473"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//button[@type="button"][contains(.,"${text}")]</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:53:55.474" endtime="20200827 11:53:55.517"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//button[@type="button"][contains(.,"${text}")]</arg>
+</arguments>
+<msg timestamp="20200827 11:53:55.518" level="INFO">Clicking element '//button[@type="button"][contains(.,"下一步")]'.</msg>
+<status status="PASS" starttime="20200827 11:53:55.518" endtime="20200827 11:53:55.595"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:54.971" endtime="20200827 11:53:55.596"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${addon}' == 'default'</arg>
+<arg>Click Button Type Button</arg>
+<arg>確認</arg>
+</arguments>
+<kw name="Click Button Type Button" library="keywords_common">
+<doc>Click button type button</doc>
+<arguments>
+<arg>確認</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>0.5s</arg>
+</arguments>
+<msg timestamp="20200827 11:53:56.099" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20200827 11:53:55.599" endtime="20200827 11:53:56.100"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//button[@type="button"][contains(.,"${text}")]</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:53:56.101" endtime="20200827 11:53:56.155"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//button[@type="button"][contains(.,"${text}")]</arg>
+</arguments>
+<msg timestamp="20200827 11:53:56.157" level="INFO">Clicking element '//button[@type="button"][contains(.,"確認")]'.</msg>
+<status status="PASS" starttime="20200827 11:53:56.156" endtime="20200827 11:53:56.315"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:55.597" endtime="20200827 11:53:56.315"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:55.597" endtime="20200827 11:53:56.315"></status>
+</kw>
+<kw name="Click Submit Type Button" library="keywords_common">
+<doc>Click submit type button</doc>
+<arguments>
+<arg>下一步</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>0.5s</arg>
+</arguments>
+<msg timestamp="20200827 11:53:56.818" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20200827 11:53:56.317" endtime="20200827 11:53:56.818"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//button[@type="submit"][contains(.,"${text}")]</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:53:56.820" endtime="20200827 11:53:56.846"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//button[@type="submit"][contains(.,"${text}")]</arg>
+</arguments>
+<msg timestamp="20200827 11:53:56.847" level="INFO">Clicking element '//button[@type="submit"][contains(.,"下一步")]'.</msg>
+<status status="PASS" starttime="20200827 11:53:56.847" endtime="20200827 11:53:56.981"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:56.316" endtime="20200827 11:53:56.982"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:52.522" endtime="20200827 11:53:56.982"></status>
+</kw>
+<kw name="Upload User Id Card" library="keywords_new_subscription">
+<doc>Upload user front/back Id card</doc>
+<kw name="Click Upload Front ID Card Button" library="keywords_new_subscription">
+<doc>Click upload Id card button</doc>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//*[@id="app"]/div[2]/div/form/div[2]/div/div[1]/div[contains(.,"身分證正面")]</arg>
+<arg>10s</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:53:56.986" endtime="20200827 11:53:58.213"></status>
+</kw>
+<kw name="Choose File" library="Selenium2Library">
+<doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
+<arguments>
+<arg>//*[@id="app"]/div[2]/div/form/div[2]/div/div[1]/div/input</arg>
+<arg>${normalize_path}</arg>
+</arguments>
+<msg timestamp="20200827 11:53:58.214" level="INFO">Sending /Users/peter.yf.cheng/Gitlab/Automation-test/MyGogoro_web/res/car.png to browser.</msg>
+<status status="PASS" starttime="20200827 11:53:58.214" endtime="20200827 11:53:58.282"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:56.984" endtime="20200827 11:53:58.283"></status>
+</kw>
+<kw name="Click Upload Back ID Card Button" library="keywords_new_subscription">
+<doc>Click upload Id card button</doc>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>//img[@src="/images/icon-success-1paq9Zw.svg"]</arg>
+<arg>30s</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:53:58.284" endtime="20200827 11:54:03.680"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//*[@id="app"]/div[2]/div/form/div[2]/div/div[2]/div[contains(.,"身分證背面")]</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:54:03.682" endtime="20200827 11:54:03.726"></status>
+</kw>
+<kw name="Choose File" library="Selenium2Library">
+<doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
+<arguments>
+<arg>//*[@id="app"]/div[2]/div/form/div[2]/div/div[2]/div/input</arg>
+<arg>${normalize_path}</arg>
+</arguments>
+<msg timestamp="20200827 11:54:03.729" level="INFO">Sending /Users/peter.yf.cheng/Gitlab/Automation-test/MyGogoro_web/res/car.png to browser.</msg>
+<status status="PASS" starttime="20200827 11:54:03.728" endtime="20200827 11:54:03.800"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:58.283" endtime="20200827 11:54:03.800"></status>
+</kw>
+<kw name="Click Submit Type Button" library="keywords_common">
+<doc>Click submit type button</doc>
+<arguments>
+<arg>下一步</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>0.5s</arg>
+</arguments>
+<msg timestamp="20200827 11:54:04.304" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20200827 11:54:03.803" endtime="20200827 11:54:04.304"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//button[@type="submit"][contains(.,"${text}")]</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:54:04.305" endtime="20200827 11:54:04.986"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//button[@type="submit"][contains(.,"${text}")]</arg>
+</arguments>
+<msg timestamp="20200827 11:54:04.988" level="INFO">Clicking element '//button[@type="submit"][contains(.,"下一步")]'.</msg>
+<status status="PASS" starttime="20200827 11:54:04.987" endtime="20200827 11:54:05.091"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:54:03.801" endtime="20200827 11:54:05.091"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:53:56.982" endtime="20200827 11:54:05.092"></status>
+</kw>
+<kw name="Send Es Contract To User Email After Sign A Signature" library="keywords_new_subscription">
+<doc>Sign es-contract</doc>
+<kw name="Sign Canvas" library="keywords_new_subscription">
+<doc>Sign canvas in new subscription flow</doc>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20200827 11:54:10.097" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20200827 11:54:05.096" endtime="20200827 11:54:10.098"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//canvas[@class="SigningArea__StyledSigningPad-p4fa1g-4 JrsyE"]</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:54:10.099" endtime="20200827 11:54:10.751"></status>
+</kw>
+<kw name="Mouse Down" library="Selenium2Library">
+<doc>Simulates pressing the left mouse button on the element ``locator``.</doc>
+<arguments>
+<arg>//canvas[@class="SigningArea__StyledSigningPad-p4fa1g-4 JrsyE"]</arg>
+</arguments>
+<msg timestamp="20200827 11:54:10.753" level="INFO">Simulating Mouse Down on element '//canvas[@class="SigningArea__StyledSigningPad-p4fa1g-4 JrsyE"]'.</msg>
+<status status="PASS" starttime="20200827 11:54:10.753" endtime="20200827 11:54:11.068"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:54:05.094" endtime="20200827 11:54:11.068"></status>
+</kw>
+<kw name="Click Agree Es Contract Checkbox" library="keywords_new_subscription">
+<doc>Click agree es-contract checkbox</doc>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//*[@id="app"]/div[2]/div/div[2]/label/label[contains(.,"我已閱讀並同意電池服務合約")]</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:54:11.070" endtime="20200827 11:54:11.105"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//*[@id="app"]/div[2]/div/div[2]/label/label[contains(.,"我已閱讀並同意電池服務合約")]</arg>
+</arguments>
+<msg timestamp="20200827 11:54:11.106" level="INFO">Clicking element '//*[@id="app"]/div[2]/div/div[2]/label/label[contains(.,"我已閱讀並同意電池服務合約")]'.</msg>
+<status status="PASS" starttime="20200827 11:54:11.105" endtime="20200827 11:54:11.165"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:54:11.069" endtime="20200827 11:54:11.166"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//*[@id="app"]/div[2]/div/footer/button[2]</arg>
+<arg>timeout=30</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:54:11.166" endtime="20200827 11:54:11.201"></status>
+</kw>
+<kw name="Click Button Type Button" library="keywords_common">
+<doc>Click button type button</doc>
+<arguments>
+<arg>簽下一份</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>0.5s</arg>
+</arguments>
+<msg timestamp="20200827 11:54:11.704" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20200827 11:54:11.203" endtime="20200827 11:54:11.705"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//button[@type="button"][contains(.,"${text}")]</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:54:11.705" endtime="20200827 11:54:11.734"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//button[@type="button"][contains(.,"${text}")]</arg>
+</arguments>
+<msg timestamp="20200827 11:54:11.736" level="INFO">Clicking element '//button[@type="button"][contains(.,"簽下一份")]'.</msg>
+<status status="PASS" starttime="20200827 11:54:11.735" endtime="20200827 11:54:11.800"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:54:11.202" endtime="20200827 11:54:11.800"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>6s</arg>
+</arguments>
+<msg timestamp="20200827 11:54:17.803" level="INFO">Slept 6 seconds</msg>
+<status status="PASS" starttime="20200827 11:54:11.802" endtime="20200827 11:54:17.803"></status>
+</kw>
+<kw name="Sign Canvas" library="keywords_new_subscription">
+<doc>Sign canvas in new subscription flow</doc>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20200827 11:54:22.806" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20200827 11:54:17.805" endtime="20200827 11:54:22.806"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//canvas[@class="SigningArea__StyledSigningPad-p4fa1g-4 JrsyE"]</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:54:22.807" endtime="20200827 11:54:22.841"></status>
+</kw>
+<kw name="Mouse Down" library="Selenium2Library">
+<doc>Simulates pressing the left mouse button on the element ``locator``.</doc>
+<arguments>
+<arg>//canvas[@class="SigningArea__StyledSigningPad-p4fa1g-4 JrsyE"]</arg>
+</arguments>
+<msg timestamp="20200827 11:54:22.842" level="INFO">Simulating Mouse Down on element '//canvas[@class="SigningArea__StyledSigningPad-p4fa1g-4 JrsyE"]'.</msg>
+<status status="PASS" starttime="20200827 11:54:22.842" endtime="20200827 11:54:23.155"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:54:17.803" endtime="20200827 11:54:23.156"></status>
+</kw>
+<kw name="Click Agree Use Personal Data" library="keywords_new_subscription">
+<doc>Click agree gogoro use personal data</doc>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//*[@id="app"]/div[2]/div/div[2]/label/label[contains(.,"我已同意並閱讀個資使用同意書")]</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:54:23.158" endtime="20200827 11:54:23.199"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//*[@id="app"]/div[2]/div/div[2]/label/label[contains(.,"我已同意並閱讀個資使用同意書")]</arg>
+</arguments>
+<msg timestamp="20200827 11:54:23.200" level="INFO">Clicking element '//*[@id="app"]/div[2]/div/div[2]/label/label[contains(.,"我已同意並閱讀個資使用同意書")]'.</msg>
+<status status="PASS" starttime="20200827 11:54:23.200" endtime="20200827 11:54:23.319"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:54:23.156" endtime="20200827 11:54:23.319"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//*[@id="app"]/div[2]/div/footer/button[2]</arg>
+<arg>timeout=30</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:54:23.320" endtime="20200827 11:54:23.355"></status>
+</kw>
+<kw name="Click Button Type Button" library="keywords_common">
+<doc>Click button type button</doc>
+<arguments>
+<arg>簽署完成</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>0.5s</arg>
+</arguments>
+<msg timestamp="20200827 11:54:23.891" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20200827 11:54:23.357" endtime="20200827 11:54:23.892"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//button[@type="button"][contains(.,"${text}")]</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:54:23.893" endtime="20200827 11:54:23.923"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//button[@type="button"][contains(.,"${text}")]</arg>
+</arguments>
+<msg timestamp="20200827 11:54:23.924" level="INFO">Clicking element '//button[@type="button"][contains(.,"簽署完成")]'.</msg>
+<status status="PASS" starttime="20200827 11:54:23.924" endtime="20200827 11:54:24.080"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:54:23.355" endtime="20200827 11:54:24.080"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20200827 11:54:29.087" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20200827 11:54:24.081" endtime="20200827 11:54:29.087"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//*[@id="app"]/div[2]/div/h2</arg>
+<arg>timeout=30</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:54:29.088" endtime="20200827 11:54:29.110"></status>
+</kw>
+<kw name="Click Submit Type Button" library="keywords_common">
+<doc>Click submit type button</doc>
+<arguments>
+<arg>下一步</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>0.5s</arg>
+</arguments>
+<msg timestamp="20200827 11:54:29.612" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20200827 11:54:29.111" endtime="20200827 11:54:29.612"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//button[@type="submit"][contains(.,"${text}")]</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:54:29.613" endtime="20200827 11:54:29.636"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//button[@type="submit"][contains(.,"${text}")]</arg>
+</arguments>
+<msg timestamp="20200827 11:54:29.637" level="INFO">Clicking element '//button[@type="submit"][contains(.,"下一步")]'.</msg>
+<status status="PASS" starttime="20200827 11:54:29.637" endtime="20200827 11:54:29.694"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:54:29.110" endtime="20200827 11:54:29.694"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:54:05.092" endtime="20200827 11:54:29.694"></status>
+</kw>
+<kw name="Upload User Scooter Information" library="keywords_new_subscription">
+<doc>Upload user scooter information</doc>
+<arguments>
+<arg>${Scooter.plate}</arg>
+<arg>${User.last_name}${User.first_name}</arg>
+<arg>${Scooter.scooter_vin}</arg>
+<arg>${last_six_sn}</arg>
+</arguments>
+<kw name="Click Upload Scooter License Button" library="keywords_new_subscription">
+<doc>Click upload scooter license button</doc>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//*[@id="app"]/div[2]/div/form/div[1]/div/div/div[contains(.,"行照")]</arg>
+<arg>20s</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:54:29.698" endtime="20200827 11:54:34.722"></status>
+</kw>
+<kw name="Choose File" library="Selenium2Library">
+<doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
+<arguments>
+<arg>//*[@id="app"]/div[2]/div/form/div[1]/div/div/div/input</arg>
+<arg>${normalize_path}</arg>
+</arguments>
+<msg timestamp="20200827 11:54:34.724" level="INFO">Sending /Users/peter.yf.cheng/Gitlab/Automation-test/MyGogoro_web/res/car.png to browser.</msg>
+<status status="PASS" starttime="20200827 11:54:34.723" endtime="20200827 11:54:34.791"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:54:29.696" endtime="20200827 11:54:34.791"></status>
+</kw>
+<kw name="Input Scooter And Battery Information" library="keywords_new_subscription">
+<doc>Input scooter and battery information at new subscription flow</doc>
+<arguments>
+<arg>您的車牌號碼</arg>
+<arg>${plate}</arg>
+</arguments>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//input[@type="text"][@placeholder="${field}"]</arg>
+<arg>40s</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:54:34.793" endtime="20200827 11:54:39.730"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>//input[@type="text"][@placeholder="${field}"]</arg>
+<arg>${input}</arg>
+</arguments>
+<msg timestamp="20200827 11:54:39.731" level="INFO">Typing text 'EET-1192' into text field '//input[@type="text"][@placeholder="您的車牌號碼"]'.</msg>
+<status status="PASS" starttime="20200827 11:54:39.730" endtime="20200827 11:54:40.029"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:54:34.791" endtime="20200827 11:54:40.029"></status>
+</kw>
+<kw name="Input Scooter And Battery Information" library="keywords_new_subscription">
+<doc>Input scooter and battery information at new subscription flow</doc>
+<arguments>
+<arg>車主姓名</arg>
+<arg>${user_name}</arg>
+</arguments>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//input[@type="text"][@placeholder="${field}"]</arg>
+<arg>40s</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:54:40.031" endtime="20200827 11:54:40.056"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>//input[@type="text"][@placeholder="${field}"]</arg>
+<arg>${input}</arg>
+</arguments>
+<msg timestamp="20200827 11:54:40.057" level="INFO">Typing text 'PASWNQCXWKROMU' into text field '//input[@type="text"][@placeholder="車主姓名"]'.</msg>
+<status status="PASS" starttime="20200827 11:54:40.057" endtime="20200827 11:54:40.376"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:54:40.030" endtime="20200827 11:54:40.376"></status>
+</kw>
+<kw name="Input Scooter And Battery Information" library="keywords_new_subscription">
+<doc>Input scooter and battery information at new subscription flow</doc>
+<arguments>
+<arg>車身號碼</arg>
+<arg>${scooter_vin}</arg>
+</arguments>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//input[@type="text"][@placeholder="${field}"]</arg>
+<arg>40s</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:54:40.378" endtime="20200827 11:54:40.409"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>//input[@type="text"][@placeholder="${field}"]</arg>
+<arg>${input}</arg>
+</arguments>
+<msg timestamp="20200827 11:54:40.411" level="INFO">Typing text 'PASWXK937QSJH8BT4' into text field '//input[@type="text"][@placeholder="車身號碼"]'.</msg>
+<status status="PASS" starttime="20200827 11:54:40.410" endtime="20200827 11:54:40.820"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:54:40.377" endtime="20200827 11:54:40.820"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg timestamp="20200827 11:54:42.823" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20200827 11:54:40.821" endtime="20200827 11:54:42.823"></status>
+</kw>
+<kw name="Input Scooter And Battery Information" library="keywords_new_subscription">
+<doc>Input scooter and battery information at new subscription flow</doc>
+<arguments>
+<arg>請輸入電池序號末 6 碼</arg>
+<arg>${last_six_battery_sn}</arg>
+</arguments>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//input[@type="text"][@placeholder="${field}"]</arg>
+<arg>40s</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:54:42.825" endtime="20200827 11:54:42.913"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>//input[@type="text"][@placeholder="${field}"]</arg>
+<arg>${input}</arg>
+</arguments>
+<msg timestamp="20200827 11:54:42.915" level="INFO">Typing text '9B8J0B' into text field '//input[@type="text"][@placeholder="請輸入電池序號末 6 碼"]'.</msg>
+<status status="PASS" starttime="20200827 11:54:42.915" endtime="20200827 11:54:43.350"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:54:42.823" endtime="20200827 11:54:43.351"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${plate}</arg>
+</arguments>
+<msg timestamp="20200827 11:54:43.352" level="INFO">EET-1192</msg>
+<status status="PASS" starttime="20200827 11:54:43.351" endtime="20200827 11:54:43.352"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${user_name}</arg>
+</arguments>
+<msg timestamp="20200827 11:54:43.354" level="INFO">PASWNQCXWKROMU</msg>
+<status status="PASS" starttime="20200827 11:54:43.354" endtime="20200827 11:54:43.354"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${scooter_vin}</arg>
+</arguments>
+<msg timestamp="20200827 11:54:43.356" level="INFO">PASWXK937QSJH8BT4</msg>
+<status status="PASS" starttime="20200827 11:54:43.355" endtime="20200827 11:54:43.356"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${last_six_battery_sn}</arg>
+</arguments>
+<msg timestamp="20200827 11:54:43.357" level="INFO">9B8J0B</msg>
+<status status="PASS" starttime="20200827 11:54:43.357" endtime="20200827 11:54:43.358"></status>
+</kw>
+<kw name="Click Button Type Button" library="keywords_common">
+<doc>Click button type button</doc>
+<arguments>
+<arg>下一步</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>0.5s</arg>
+</arguments>
+<msg timestamp="20200827 11:54:43.860" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20200827 11:54:43.359" endtime="20200827 11:54:43.860"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//button[@type="button"][contains(.,"${text}")]</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:54:43.861" endtime="20200827 11:54:43.891"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//button[@type="button"][contains(.,"${text}")]</arg>
+</arguments>
+<msg timestamp="20200827 11:54:43.892" level="INFO">Clicking element '//button[@type="button"][contains(.,"下一步")]'.</msg>
+<status status="PASS" starttime="20200827 11:54:43.891" endtime="20200827 11:54:48.958"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:54:43.358" endtime="20200827 11:54:48.958"></status>
+</kw>
+<kw name="Click Button Type Button" library="keywords_common">
+<doc>Click button type button</doc>
+<arguments>
+<arg>確認</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>0.5s</arg>
+</arguments>
+<msg timestamp="20200827 11:54:49.460" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20200827 11:54:48.959" endtime="20200827 11:54:49.460"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//button[@type="button"][contains(.,"${text}")]</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:54:49.461" endtime="20200827 11:54:49.519"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//button[@type="button"][contains(.,"${text}")]</arg>
+</arguments>
+<msg timestamp="20200827 11:54:49.520" level="INFO">Clicking element '//button[@type="button"][contains(.,"確認")]'.</msg>
+<status status="PASS" starttime="20200827 11:54:49.520" endtime="20200827 11:54:51.964"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:54:48.958" endtime="20200827 11:54:51.965"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:54:29.694" endtime="20200827 11:54:51.965"></status>
+</kw>
+<kw name="Agree And Activate Es Contract" library="keywords_new_subscription">
+<doc>Agree and activate es-contract</doc>
+<kw name="Click I Agree Activate Contract Checkbox" library="keywords_new_subscription">
+<doc>Click I agree to activate the contract</doc>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//*[@id="app"]/div[2]/div/label/label[contains(.,"我是使用者本人、法定代理人、或授權之人，我已確認以上資訊無誤並同意啟用電池服務合約。")]</arg>
+<arg>10s</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:54:51.969" endtime="20200827 11:54:52.943"></status>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>10s</arg>
+<arg>2s</arg>
+<arg>Click Element</arg>
+<arg>//*[@id="app"]/div[2]/div/label/label[contains(.,"我是使用者本人、法定代理人、或授權之人，我已確認以上資訊無誤並同意啟用電池服務合約。")]</arg>
+</arguments>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//*[@id="app"]/div[2]/div/label/label[contains(.,"我是使用者本人、法定代理人、或授權之人，我已確認以上資訊無誤並同意啟用電池服務合約。")]</arg>
+</arguments>
+<msg timestamp="20200827 11:54:52.947" level="INFO">Clicking element '//*[@id="app"]/div[2]/div/label/label[contains(.,"我是使用者本人、法定代理人、或授權之人，我已確認以上資訊無誤並同意啟用電池服務合約。")]'.</msg>
+<status status="PASS" starttime="20200827 11:54:52.946" endtime="20200827 11:54:53.006"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:54:52.945" endtime="20200827 11:54:53.006"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:54:51.966" endtime="20200827 11:54:53.006"></status>
+</kw>
+<kw name="Click Button Type Button" library="keywords_common">
+<doc>Click button type button</doc>
+<arguments>
+<arg>下一步</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>0.5s</arg>
+</arguments>
+<msg timestamp="20200827 11:54:53.510" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20200827 11:54:53.008" endtime="20200827 11:54:53.510"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//button[@type="button"][contains(.,"${text}")]</arg>
+</arguments>
+<status status="PASS" starttime="20200827 11:54:53.511" endtime="20200827 11:54:53.546"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//button[@type="button"][contains(.,"${text}")]</arg>
+</arguments>
+<msg timestamp="20200827 11:54:53.548" level="INFO">Clicking element '//button[@type="button"][contains(.,"下一步")]'.</msg>
+<status status="PASS" starttime="20200827 11:54:53.547" endtime="20200827 11:54:53.643"></status>
+</kw>
+<status status="PASS" starttime="20200827 11:54:53.007" endtime="20200827 11:54:53.643"></status>
+</kw>
+<kw name="Click Button Type Button" library="keywords_common">
+<doc>Click button type button</doc>
+<arguments>
+<arg>完成</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>0.5s</arg>
+</arguments>
+<msg timestamp="20200827 11:54:54.149" level="INFO">Slept 500 milliseconds</msg>
+<status status="PASS" starttime="20200827 11:54:53.646" endtime="20200827 11:54:54.149"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>//button[@type="button"][contains(.,"${text}")]</arg>
+</arguments>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20200827 11:54:59.749" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3.png"&gt;&lt;img src="selenium-screenshot-3.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20200827 11:54:59.248" endtime="20200827 11:54:59.749"></status>
+</kw>
+<msg timestamp="20200827 11:54:59.754" level="FAIL">Element with locator '//button[@type="button"][contains(.,"完成")]' not found.</msg>
+<status status="FAIL" starttime="20200827 11:54:54.151" endtime="20200827 11:54:59.754"></status>
+</kw>
+<status status="FAIL" starttime="20200827 11:54:53.644" endtime="20200827 11:54:59.755"></status>
+</kw>
+<status status="FAIL" starttime="20200827 11:54:51.965" endtime="20200827 11:54:59.755"></status>
+</kw>
+<tags>
+<tag>MyGogoroWeb</tag>
+<tag>New-Sub</tag>
+</tags>
+<timeout value="5 minutes"></timeout>
+<status status="FAIL" starttime="20200827 11:53:43.526" endtime="20200827 11:54:59.755" critical="yes">Element with locator '//button[@type="button"][contains(.,"完成")]' not found.</status>
+</test>
+<doc>Test suite for MyGogoro new subscription flow</doc>
+<status status="FAIL" starttime="20200827 11:53:30.046" endtime="20200827 11:54:59.771"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1">Critical Tests</stat>
+<stat pass="0" fail="1">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1">MyGogoroWeb</stat>
+<stat pass="0" fail="1">New-Sub</stat>
+</tag>
+<suite>
+<stat pass="0" fail="1" id="s1" name="Mggr-New Subscription">Mggr-New Subscription</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

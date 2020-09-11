@@ -1,0 +1,78 @@
+{
+  "companiesGet": {
+    "type": "object",
+    "required": [
+        "code",
+        "data"
+    ],
+    "properties": {
+      "code": {
+        "type": "integer"
+      },
+      "data": {
+        "type": "array",
+        "items": [
+          {
+            "type": "object",
+            "properties": {
+              "company_id": {
+                "type": "string"
+              },
+              "code": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "brand_name": {
+                "type": "string"
+              },
+              "address": {
+                "type": "string"
+              },
+              "zip": {
+                "type": "string"
+              },
+              "country_code": {
+                "type": "string"
+              },
+              "contact_person_firstname": {
+                "type": "string"
+              },
+              "contact_person_lastname": {
+                "type": "string"
+              },
+              "contact_email": {
+                "type": "string"
+              },
+              "contact_phone1": {
+                "type": "string"
+              },
+              "contact_phone2": {
+                "type": "string"
+              },
+              "status": {
+                "type": "integer"
+              },
+              "update_time": {
+                "type": "integer"
+              },
+              "create_time": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "company_id",
+              "code",
+              "name",
+              "country_code",
+              "status",
+              "update_time",
+              "create_time"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

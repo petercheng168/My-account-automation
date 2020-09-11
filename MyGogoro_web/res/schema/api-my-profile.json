@@ -1,0 +1,397 @@
+{
+    "getUserProfile": {
+        "type": "object",
+        "required": [
+            "username",
+            "emails",
+            "firstName",
+            "lastName",
+            "displayName",
+            "gender",
+            "birthday",
+            "occupation",
+            "mobile",
+            "mobiles",
+            "country",
+            "contactAddress",
+            "invoiceAddress",
+            "invoiceConfig",
+            "billConfig"
+        ],
+        "properties": {
+            "username": {
+                "type": "object",
+                "required": [
+                    "email"
+                ],
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    }
+                }
+            },
+            "emails": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "required": [
+                        "target",
+                        "isVerified",
+                        "isPrimary"
+                    ],
+                    "properties": {
+                        "target": {
+                            "type": "string"
+                        },
+                        "isVerified": {
+                            "type": "boolean"
+                        },
+                        "isPrimary": {
+                            "type": "boolean"
+                        }
+                    }
+                }
+            },
+            "firstName": {
+                "type": "string"
+            },
+            "lastName": {
+                "type": "string"
+            },
+            "displayName": {
+                "type": "string"
+            },
+            "gender": {
+                "type": "string"
+            },
+            "birthday": {
+                "type": "string"
+            },
+            "occupation": {
+                "type": "string"
+            },
+            "mobile": {
+                "type": "string"
+            },
+            "mobiles": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "required": [
+                        "target",
+                        "isPrimary"
+                    ],
+                    "properties": {
+                        "target": {
+                            "type": "string"
+                        },
+                        "isPrimary": {
+                            "type": "boolean"
+                        }
+                    }
+                }
+            },
+            "country": {
+                "type": "string"
+            },
+            "contactAddress": {
+                "type": "object",
+                "required": [
+                    "city",
+                    "district",
+                    "zipCode",
+                    "address"
+                ],
+                "properties": {
+                    "city": {
+                        "type": "string"
+                    },
+                    "district": {
+                        "type": "string"
+                    },
+                    "zipCode": {
+                        "type": "string"
+                    },
+                    "address": {
+                        "type": "string"
+                    }
+                }
+            },
+            "invoiceAddress": {
+                "type": "object",
+                "required": [
+                    "city",
+                    "district",
+                    "zipCode",
+                    "address"
+                ],
+                "properties": {
+                    "city": {
+                        "type": "string"
+                    },
+                    "district": {
+                        "type": "string"
+                    },
+                    "zipCode": {
+                        "type": "string"
+                    },
+                    "address": {
+                        "type": "string"
+                    }
+                }
+            },
+            "invoiceConfig": {
+                "type": "object",
+                "required": [
+                    "format",
+                    "includeVat"
+                ],
+                "properties": {
+                    "format": {
+                        "type": "string"
+                    },
+                    "includeVat": {
+                        "type": "boolean"
+                    },
+                    "eCarriers": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "serial",
+                                "issuer",
+                                "isSubsumed"
+                            ],
+                            "properties": {
+                                "serial": {
+                                    "type": "string"
+                                },
+                                "issuer": {
+                                    "type": "string"
+                                },
+                                "isSubsumed": {
+                                    "type": "boolean"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "billConfig": {
+                "type": "object",
+                "required": [
+                    "isConsolidated"
+                ],
+                "properties": {
+                    "isConsolidated": {
+                        "type": "integer"
+                    }
+                }
+            }
+        }
+    },
+    "updateUserProfile": {
+        "type": "object",
+        "required": [
+            "username",
+            "emails",
+            "firstName",
+            "lastName",
+            "displayName",
+            "idNumber",
+            "gender",
+            "birthday",
+            "occupation",
+            "mobile",
+            "mobiles",
+            "country",
+            "contactAddress",
+            "invoiceAddress",
+            "invoiceConfig",
+            "billConfig"
+        ],
+        "properties": {
+            "username": {
+                "type": "object",
+                "required": [
+                    "email"
+                ],
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    }
+                }
+            },
+            "emails": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "required": [
+                        "target",
+                        "isVerified",
+                        "isPrimary"
+                    ],
+                    "properties": {
+                        "target": {
+                            "type": "string"
+                        },
+                        "isVerified": {
+                            "type": "boolean"
+                        },
+                        "isPrimary": {
+                            "type": "boolean"
+                        }
+                    }
+                }
+            },
+            "firstName": {
+                "type": "string"
+            },
+            "lastName": {
+                "type": "string"
+            },
+            "displayName": {
+                "type": "string"
+            },
+            "idNumber": {
+                "type": "string"
+            },
+            "gender": {
+                "type": "string"
+            },
+            "birthday": {
+                "type": "string"
+            },
+            "occupation": {
+                "type": "string"
+            },
+            "mobile": {
+                "type": "string"
+            },
+            "mobiles": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "required": [
+                        "target",
+                        "isPrimary"
+                    ],
+                    "properties": {
+                        "target": {
+                            "type": "string"
+                        },
+                        "isPrimary": {
+                            "type": "boolean"
+                        }
+                    }
+                }
+            },
+            "country": {
+                "type": "string"
+            },
+            "contactAddress": {
+                "type": "object",
+                "required": [
+                    "city",
+                    "district",
+                    "zipCode",
+                    "address"
+                ],
+                "properties": {
+                    "city": {
+                        "type": "string"
+                    },
+                    "district": {
+                        "type": "string"
+                    },
+                    "zipCode": {
+                        "type": "string"
+                    },
+                    "address": {
+                        "type": "string"
+                    }
+                }
+            },
+            "invoiceAddress": {
+                "type": "object",
+                "required": [
+                    "city",
+                    "district",
+                    "zipCode",
+                    "address"
+                ],
+                "properties": {
+                    "city": {
+                        "type": "string"
+                    },
+                    "district": {
+                        "type": "string"
+                    },
+                    "zipCode": {
+                        "type": "string"
+                    },
+                    "address": {
+                        "type": "string"
+                    }
+                }
+            },
+            "invoiceConfig": {
+                "type": "object",
+                "required": [
+                    "format",
+                    "title",
+                    "vatNumber",
+                    "includeVat",
+                    "eCarriers"
+                ],
+                "properties": {
+                    "format": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "vatNumber": {
+                        "type": "string"
+                    },
+                    "includeVat": {
+                        "type": "boolean"
+                    },
+                    "eCarriers": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "serial",
+                                "issuer",
+                                "isSubsumed"
+                            ],
+                            "properties": {
+                                "serial": {
+                                    "type": "string"
+                                },
+                                "issuer": {
+                                    "type": "string"
+                                },
+                                "isSubsumed": {
+                                    "type": "boolean"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "billConfig": {
+                "type": "object",
+                "required": [
+                    "isConsolidated"
+                ],
+                "properties": {
+                    "isConsolidated": {
+                        "type": "integer"
+                    }
+                }
+            }
+        }
+    }
+}
